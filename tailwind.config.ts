@@ -12,6 +12,9 @@ const config: Config = {
                 "primary-500": "#1E1E1E",
                 "secondary-500": "#FEFEFE",
             },
+            backgroundImage: {
+                grainy: "url(/textures/grainy-blue.png)",
+            },
         },
     },
     plugins: [],
