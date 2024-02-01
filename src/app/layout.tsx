@@ -1,28 +1,28 @@
-import './globals.css'
+import "./globals.css"
 
-import { Inter } from 'next/font/google'
-import type { Metadata } from 'next'
-import Navbar from '@/components/navbar'
+import { Inter } from "next/font/google"
+import type { Metadata } from "next"
+import Navbar from "@/components/navbar"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {}
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode
+    children: React.ReactNode
 }) {
-  return (
-    <html lang='en'>
-      <body
-        className={`w-screen min-h-screen ${inter.className} bg-secondary-500 flex flex-col custom-scrollbar`}
-      >
-        <Navbar />
-        <main className='w-full flex flex-col flex-grow items-center'>
-          {children}
-        </main>
-      </body>
-    </html>
-  )
+    return (
+        <html lang='en'>
+            <body
+                className={`w-screen min-h-screen ${inter.className} bg-secondary-500 flex flex-col custom-scrollbar`}
+            >
+                <Navbar />
+                <main className='w-full flex flex-col flex-grow items-center'>
+                    {children}
+                </main>
+            </body>
+        </html>
+    )
 }
