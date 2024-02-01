@@ -5,4 +5,6 @@ interface Email {
     text: string
 }
 
-function sendEmail(email: Email) {}
+function sendEmail(email: Email) {
+    
+}
