@@ -106,16 +106,16 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                             </NavigationLink>
                         </li>
                         <li className="w-fit h-fit">
-                            <NavigationLink href="/about" pathname={pathname}>
-                                About
+                            <NavigationLink
+                                href="/competitions"
+                                pathname={pathname}
+                            >
+                                Competitions
                             </NavigationLink>
                         </li>
                         <li className="w-fit h-fit">
-                            <NavigationLink
-                                href="/contact"
-                                pathname={pathname}
-                            >
-                                Contact
+                            <NavigationLink href="/about" pathname={pathname}>
+                                About
                             </NavigationLink>
                         </li>
                     </ul>
