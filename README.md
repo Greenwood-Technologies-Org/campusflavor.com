@@ -41,4 +41,4 @@ The following is the list of supported scopes:
 - **db**
 - **s3**
 
-*Note: The scope can be omitted when the change is a global or difficult to assign to a single component.*
+_Note: The scope can be omitted when the change is a global or difficult to assign to a single component._

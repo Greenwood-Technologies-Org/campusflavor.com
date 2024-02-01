@@ -1,19 +1,19 @@
 interface APIResponse {
-    timestamp: number;
-    message: string;
-    data: Object;
+  timestamp: number
+  message: string
+  data: Object
 }
 
 function handleApiResponse(
-    data: Object,
-    message: string = "OK",
-    timestamp: number = Date.now()
+  data: Object,
+  message: string = 'OK',
+  timestamp: number = Date.now()
 ): APIResponse {
-    return {
-        timestamp: timestamp,
-        message: message,
-        data: data,
-    };
+  return {
+    timestamp: timestamp,
+    message: message,
+    data: data,
+  }
 }
 
-export { handleApiResponse };
+export { handleApiResponse }
