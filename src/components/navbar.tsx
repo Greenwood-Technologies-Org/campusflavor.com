@@ -79,7 +79,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                 ref={ref}
             >
                 <div className='w-fit h-full flex flex-row items-center justify-center'>
-                    <Link href='/home'>
+                    <Link href='/competitions'>
                         <Image
                             src='/brand/cf_logo.png'
                             height={40}
@@ -91,15 +91,6 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                 </div>
                 <div className='w-full h-full flex flex-row justify-center md:justify-end items-center'>
                     <ul className='w-fit h-full flex flex-row justify-center items-center gap-3'>
-                        <li className='w-fit h-fit'>
-                            <NavigationLink
-                                href='/home'
-                                pathname={pathname}
-                                activeOnSubpath
-                            >
-                                Home
-                            </NavigationLink>
-                        </li>
                         <li className='w-fit h-fit'>
                             <NavigationLink
                                 href='/shop'

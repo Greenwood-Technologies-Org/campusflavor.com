@@ -19,9 +19,7 @@ export default function RootLayout({
                 className={`w-screen min-h-screen ${inter.className} bg-secondary-500 flex flex-col custom-scrollbar overflow-x-hidden`}
             >
                 <Navbar />
-                <main className='w-full flex flex-col flex-grow items-center'>
-                    {children}
-                </main>
+                {children}
             </body>
         </html>
     )
