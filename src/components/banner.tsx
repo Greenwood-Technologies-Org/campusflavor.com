@@ -55,12 +55,12 @@ interface CountdownTimerProps extends HTMLAttributes<HTMLDivElement> {
     timestamp: number
 }
 
-const CountdownTimerProps = React.forwardRef<
-    HTMLDivElement,
-    CountdownTimerProps
->(({ className, children, timestamp, ...props }, ref) => {
-    return <div className={cn("", className)} {...props} ref={ref}></div>
-})
+const CountdownTimer = React.forwardRef<HTMLDivElement, CountdownTimerProps>(
+    ({ className, children, timestamp, ...props }, ref) => {
+        return <div className={cn("", className)} {...props} ref={ref}></div>
+    }
+)
+CountdownTimer.displayName = "CountdownTimer"
 
 interface BannerProps extends HTMLAttributes<HTMLDivElement> {
     rotatingBannerItems: string[]
