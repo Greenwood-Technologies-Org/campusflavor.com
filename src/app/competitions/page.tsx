@@ -2,7 +2,14 @@ import { Banner, BannerProps } from "@/components/banner"
 
 export default function Competitions() {
     const data = {
-        rotatingBannerItems: ["Item 1", "Item 2", "Item 3", "Item 4"],
+        rotatingBannerItems: [
+            "Winners get their desgin on merch for free!",
+            "Submissions Open: March 18th - Mar 25th",
+            "Voting Open: March 26th - Mar 28th",
+            "Winners Announced: March 29th",
+            "Win cash prizes!",
+            "Voting opens in 7 days!",
+        ],
     }
 
     return (

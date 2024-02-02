@@ -1,85 +1,54 @@
 import { cn } from "@/lib/utils"
 import React from "react"
 import { HTMLAttributes } from "react"
+import Marquee from "react-fast-marquee"
 
-interface RotatingBannerProps extends HTMLAttributes<HTMLDivElement> {
+interface RotatingTickerProps extends HTMLAttributes<HTMLDivElement> {
     items: string[]
-    separator: string
+    separator?: string
 }
 
-const RotatingBanner = React.forwardRef<HTMLDivElement, RotatingBannerProps>(
-    ({ className, items, separator, ...props }, ref) => {
-        // Assuming each item + separator takes up approx. 200px width, adjust as needed
-        const totalWidth = items.length * 200 * 2 // Multiply by 2 for the duplicate
-
+const RotatingTicker = React.forwardRef<HTMLDivElement, RotatingTickerProps>(
+    ({ className, children, items, ...props }, ref) => {
         return (
             <div
                 className={cn(
-                    "w-full h-14 min-h-14 shadow-xl overflow-hidden flex items-center justify-start",
+                    "w-full h-14 min-h-14 shadow-xl overflow-hidden",
                     className
                 )}
                 {...props}
                 ref={ref}
             >
-                <div
-                    className="flex flex-row gap-8"
-                    style={{
-                        animation: "rotateBanner 20s linear infinite",
-                        width: `${totalWidth}px`,
-                    }}
-                >
-                    {/* Original Items */}
+                <Marquee className="w-full h-full flex flex-row items-center gap-12">
                     {items.map((value, index) => (
-                        <React.Fragment key={`original-${index}`}>
-                            <p className="text-xl font-bold text-primary-500 flex items-center justify-center">
+                        <React.Fragment key={`marquee-item-${index}`}>
+                            {index <= 0 && (
+                                <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
+                                    ·
+                                </p>
+                            )}
+                            <p className="text-xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
                                 {value}
                             </p>
-                            {index < items.length - 1 && (
-                                <p className="text-4xl font-bold text-primary-500 flex items-center justify-center">
-                                    {separator}
+                            {index < items.length - 3 && (
+                                <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
+                                    ·
+                                </p>
+                            )}
+                            {index == items.length - 2 && (
+                                <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
+                                    ·
                                 </p>
                             )}
                         </React.Fragment>
                     ))}
-                    <p className="text-4xl font-bold text-primary-500 flex items-center justify-center">
-                        {separator}
-                    </p>
-                    {/* Duplicate Items for Continuous Loop */}
-                    {items.map((value, index) => (
-                        <React.Fragment key={`duplicate1-${index}`}>
-                            <p className="text-xl font-bold text-primary-500 flex items-center justify-center">
-                                {value}
-                            </p>
-                            {index < items.length - 1 && (
-                                <p className="text-4xl font-bold text-primary-500 flex items-center justify-center">
-                                    {separator}
-                                </p>
-                            )}
-                        </React.Fragment>
-                    ))}
-                    <p className="text-4xl font-bold text-primary-500 flex items-center justify-center">
-                        {separator}
-                    </p>
-                    {/* Duplicate Items for Continuous Loop */}
-                    {items.map((value, index) => (
-                        <React.Fragment key={`duplicate2-${index}`}>
-                            <p className="text-xl font-bold text-primary-500 flex items-center justify-center">
-                                {value}
-                            </p>
-                            {index < items.length - 1 && (
-                                <p className="text-4xl font-bold text-primary-500 flex items-center justify-center">
-                                    {separator}
-                                </p>
-                            )}
-                        </React.Fragment>
-                    ))}
-                </div>
+                </Marquee>
             </div>
         )
     }
 )
 
-RotatingBanner.displayName = "RotatingBanner"
+RotatingTicker.displayName = "RotatingTicker"
 
 interface BannerProps extends HTMLAttributes<HTMLDivElement> {
     rotatingBannerItems: string[]
@@ -94,14 +63,11 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                     {...props}
                     ref={ref}
                 ></div>
-                <RotatingBanner
-                    items={rotatingBannerItems}
-                    separator="·"
-                ></RotatingBanner>
+                <RotatingTicker items={rotatingBannerItems} />
             </div>
         )
     }
 )
 Banner.displayName = "Banner"
 
-export { Banner, type BannerProps, RotatingBanner, type RotatingBannerProps }
+export { Banner, type BannerProps }
