@@ -37,8 +37,8 @@ const NavigationLink = React.forwardRef<HTMLAnchorElement, NavigationLinkProps>(
             <Link
                 className={cn(
                     isActive()
-                        ? "text-xl md:text-xl font-bold rounded-md py-1 px-1 md:px-2 text-secondary-500 bg-primary-500"
-                        : "text-xl md:text-xl font-bold rounded-md py-1 px-1 md:px-2 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500",
+                        ? "text-xl md:text-xl font-bold rounded-md py-2 px-2 md:px-3 text-secondary-500 bg-primary-500"
+                        : "text-xl md:text-xl font-bold rounded-md py-2 px-2 md:px-3 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500",
                     className
                 )}
                 href={href}
@@ -80,7 +80,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
             >
                 <div className="w-fit h-full flex flex-row items-center justify-center">
                     <Link href="/competitions">
-                        <div className="text-secondary-500 bg-primary-500 h-full w-fit font-extrabold text-lg p-2 leading-tight">
+                        <div className="text-secondary-500 bg-primary-500 h-full w-fit font-extrabold text-xl px-3 py-2 leading-none">
                             <div className="flex flex-row justify-start mr-4">
                                 CAMPUS
                             </div>

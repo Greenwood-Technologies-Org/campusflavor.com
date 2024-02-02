@@ -19,7 +19,10 @@ const RotatingTicker = React.forwardRef<HTMLDivElement, RotatingTickerProps>(
                 {...props}
                 ref={ref}
             >
-                <Marquee className="w-full h-full flex flex-row items-center">
+                <Marquee
+                    className="w-full h-full flex flex-row items-center"
+                    pauseOnHover
+                >
                     {items.map((value, index) => (
                         <React.Fragment key={`marquee-item-${index}`}>
                             {/* Always add a separator before each item except the first one */}
