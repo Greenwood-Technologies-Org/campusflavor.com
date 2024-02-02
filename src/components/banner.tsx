@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 import React from "react"
 import { HTMLAttributes } from "react"
 import Marquee from "react-fast-marquee"
@@ -50,6 +51,17 @@ const RotatingTicker = React.forwardRef<HTMLDivElement, RotatingTickerProps>(
 
 RotatingTicker.displayName = "RotatingTicker"
 
+interface CountdownTimerProps extends HTMLAttributes<HTMLDivElement> {
+    timestamp: number
+}
+
+const CountdownTimerProps = React.forwardRef<
+    HTMLDivElement,
+    CountdownTimerProps
+>(({ className, children, timestamp, ...props }, ref) => {
+    return <div className={cn("", className)} {...props} ref={ref}></div>
+})
+
 interface BannerProps extends HTMLAttributes<HTMLDivElement> {
     rotatingBannerItems: string[]
 }
@@ -59,10 +71,27 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
         return (
             <div className="w-full h-fit">
                 <div
-                    className={cn("w-full h-72 min-h-72 bg-grainy", className)}
+                    className={cn(
+                        "w-full h-72 min-h-72 bg-grainy flex flex-col items-center justify-center relative",
+                        className
+                    )}
                     {...props}
                     ref={ref}
-                ></div>
+                >
+                    <div className="w-fit flex flex-row gap-4 items-center justify-center text-4xl text-secondary-500">
+                        <div className="font-bold">Campus Flavor</div>
+                        <p className="text-6xl font-bold">·</p>
+                        <div className="font-bold">
+                            Case Western Reserve University
+                        </div>
+                    </div>
+                    <Link
+                        href="/info"
+                        className="absolute bottom-0 right-0 mb-4 mr-4 text-2xl font-semibold text-secondary-500 hover:underline underline-offset-2" // Adjust styling as needed
+                    >
+                        more info
+                    </Link>
+                </div>
                 <RotatingTicker items={rotatingBannerItems} />
             </div>
         )
