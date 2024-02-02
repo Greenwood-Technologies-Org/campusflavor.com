@@ -19,10 +19,11 @@ const RotatingTicker = React.forwardRef<HTMLDivElement, RotatingTickerProps>(
                 {...props}
                 ref={ref}
             >
-                <Marquee className="w-full h-full flex flex-row items-center gap-12">
+                <Marquee className="w-full h-full flex flex-row items-center">
                     {items.map((value, index) => (
                         <React.Fragment key={`marquee-item-${index}`}>
-                            {index <= 0 && (
+                            {/* Always add a separator before each item except the first one */}
+                            {index > 0 && (
                                 <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
                                     ·
                                 </p>
@@ -30,12 +31,8 @@ const RotatingTicker = React.forwardRef<HTMLDivElement, RotatingTickerProps>(
                             <p className="text-xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
                                 {value}
                             </p>
-                            {index < items.length - 3 && (
-                                <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
-                                    ·
-                                </p>
-                            )}
-                            {index == items.length - 2 && (
+                            {/* Optionally, if you want a separator after the last item, adjust the condition */}
+                            {index === items.length - 1 && (
                                 <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
                                     ·
                                 </p>
