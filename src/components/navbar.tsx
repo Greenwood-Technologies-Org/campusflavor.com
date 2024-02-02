@@ -78,38 +78,39 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                 {...props}
                 ref={ref}
             >
-                <div className='w-fit h-full flex flex-row items-center justify-center'>
-                    <Link href='/competitions'>
-                        <Image
-                            src='/brand/cf_logo.png'
-                            height={40}
-                            width={114}
-                            alt='Campus Flavor logo'
-                            priority
-                        />
+                <div className="w-fit h-full flex flex-row items-center justify-center">
+                    <Link href="/competitions">
+                        <div className="text-secondary-500 bg-primary-500 h-full w-fit font-extrabold text-lg p-2 leading-tight">
+                            <div className="flex flex-row justify-start mr-4">
+                                CAMPUS
+                            </div>
+                            <div className="flex flex-row justify-end">
+                                FLAVOR
+                            </div>
+                        </div>
                     </Link>
                 </div>
-                <div className='w-full h-full flex flex-row justify-center md:justify-end items-center'>
-                    <ul className='w-fit h-full flex flex-row justify-center items-center gap-3'>
-                        <li className='w-fit h-fit'>
+                <div className="w-full h-full flex flex-row justify-center md:justify-end items-center">
+                    <ul className="w-fit h-full flex flex-row justify-center items-center gap-3">
+                        <li className="w-fit h-fit">
                             <NavigationLink
-                                href='/shop'
+                                href="/shop"
                                 pathname={pathname}
                                 activeOnSubpath
                             >
                                 Shop
                             </NavigationLink>
                         </li>
-                        <li className='w-fit h-fit'>
+                        <li className="w-fit h-fit">
                             <NavigationLink
-                                href='/competitions'
+                                href="/competitions"
                                 pathname={pathname}
                             >
                                 Competitions
                             </NavigationLink>
                         </li>
-                        <li className='w-fit h-fit'>
-                            <NavigationLink href='/about' pathname={pathname}>
+                        <li className="w-fit h-fit">
+                            <NavigationLink href="/about" pathname={pathname}>
                                 About
                             </NavigationLink>
                         </li>
