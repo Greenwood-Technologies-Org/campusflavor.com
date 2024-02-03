@@ -31,16 +31,16 @@ const RotatingTicker = React.forwardRef<HTMLDivElement, RotatingTickerProps>(
                             <div className="flex flex-row items-center justify-center">
                                 {/* Always add a separator before each item except the first one */}
                                 {index > 0 && (
-                                    <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
+                                    <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-2 md:mx-4">
                                         ·
                                     </p>
                                 )}
-                                <p className="text-xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
+                                <p className="text-md md:text-xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-2 md:mx-4">
                                     {value}
                                 </p>
                                 {/* Separator for last item */}
                                 {index === items.length - 1 && (
-                                    <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-6">
+                                    <p className="text-4xl font-bold text-primary-500 flex items-center justify-center flex-shrink-0 mx-2 md:mx-4">
                                         ·
                                     </p>
                                 )}
@@ -77,7 +77,7 @@ const CountdownTimer = React.forwardRef<HTMLDivElement, CountdownTimerProps>(
         return (
             <div
                 className={cn(
-                    "flex flex-col gap-1 justify-start items-center w-fit h-fit bg-primary-500 text-secondary-500 text-lg font-bold p-2 rounded-lg shadow-lg",
+                    "flex flex-col gap-1 justify-start items-center w-fit h-fit bg-primary-500 text-secondary-500 text-sm md:text-lg font-bold p-2 rounded-lg shadow-lg",
                     className
                 )}
                 {...props}
@@ -126,27 +126,34 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                     {...props}
                     ref={ref}
                 >
-                    <div className="w-fit flex flex-col gap-2 items-center justify-center text-4xl text-secondary-500">
-                        <div className="flex flex-row items-center justify-center gap-4">
-                            <div className="font-bold">Campus Flavor</div>
-                            <p className="text-6xl font-bold">·</p>
-                            <div className="font-bold">
+                    <div className="flex flex-col w-fit gap-3 md:gap-2 items-center justify-center text-2xl md:text-3xl lg:text-4xl text-secondary-500">
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4">
+                            <div className="hidden md:inline font-bold">
+                                Campus Flavor
+                            </div>
+                            <p className="hidden md:inline text-6xl font-bold">
+                                ·
+                            </p>
+                            <div className="font-bold text-center">
                                 Case Western Reserve University
                             </div>
                         </div>
-                        <CountdownTimer timestamp={1000000}></CountdownTimer>
-                        <button className="p-2 bg-tertiary-500 rounded-lg text-xl">
+                        <CountdownTimer
+                            className=""
+                            timestamp={1000000}
+                        ></CountdownTimer>
+                        <button className="p-2 bg-tertiary-500 rounded-lg text-sm md:text-xl">
                             Submit a Design
                         </button>
                     </div>
                     <Link
                         href="/info"
-                        className="absolute bottom-0 right-0 mb-4 mr-4 text-2xl font-semibold text-secondary-500 hover:underline underline-offset-2" // Adjust styling as needed
+                        className="absolute bottom-0 right-0 mb-4 mr-4 text-lg md:text-2xl font-semibold text-secondary-500 hover:underline underline-offset-2" // Adjust styling as needed
                     >
                         more info
                     </Link>
                 </div>
-                <RotatingTicker items={rotatingBannerItems} />
+                <RotatingTicker className="" items={rotatingBannerItems} />
             </div>
         );
     }
