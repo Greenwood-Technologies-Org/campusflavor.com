@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
     content: [
@@ -11,6 +11,7 @@ const config: Config = {
             colors: {
                 "primary-500": "#1E1E1E",
                 "secondary-500": "#FEFEFE",
+                "tertiary-500": "#FF3333",
             },
             backgroundImage: {
                 grainy: "url(/textures/grainy-blue.png)",
@@ -18,5 +19,5 @@ const config: Config = {
         },
     },
     plugins: [],
-}
-export default config
+};
+export default config;
