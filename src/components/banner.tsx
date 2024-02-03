@@ -1,12 +1,12 @@
-import { cn } from "@/lib/utils"
-import Link from "next/link"
-import React from "react"
-import { HTMLAttributes } from "react"
-import Marquee from "react-fast-marquee"
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import React from "react";
+import { HTMLAttributes } from "react";
+import Marquee from "react-fast-marquee";
 
 interface RotatingTickerProps extends HTMLAttributes<HTMLDivElement> {
-    items: string[]
-    separator?: string
+    items: string[];
+    separator?: string;
 }
 
 const RotatingTicker = React.forwardRef<HTMLDivElement, RotatingTickerProps>(
@@ -45,25 +45,25 @@ const RotatingTicker = React.forwardRef<HTMLDivElement, RotatingTickerProps>(
                     ))}
                 </Marquee>
             </div>
-        )
+        );
     }
-)
+);
 
-RotatingTicker.displayName = "RotatingTicker"
+RotatingTicker.displayName = "RotatingTicker";
 
 interface CountdownTimerProps extends HTMLAttributes<HTMLDivElement> {
-    timestamp: number
+    timestamp: number;
 }
 
 const CountdownTimer = React.forwardRef<HTMLDivElement, CountdownTimerProps>(
     ({ className, children, timestamp, ...props }, ref) => {
-        return <div className={cn("", className)} {...props} ref={ref}></div>
+        return <div className={cn("", className)} {...props} ref={ref}></div>;
     }
-)
-CountdownTimer.displayName = "CountdownTimer"
+);
+CountdownTimer.displayName = "CountdownTimer";
 
 interface BannerProps extends HTMLAttributes<HTMLDivElement> {
-    rotatingBannerItems: string[]
+    rotatingBannerItems: string[];
 }
 
 const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
@@ -94,9 +94,9 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                 </div>
                 <RotatingTicker items={rotatingBannerItems} />
             </div>
-        )
+        );
     }
-)
-Banner.displayName = "Banner"
+);
+Banner.displayName = "Banner";
 
-export { Banner, type BannerProps }
+export { Banner, type BannerProps };
