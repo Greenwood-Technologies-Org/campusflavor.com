@@ -9,7 +9,7 @@ const nextConfig = {
             },
             {
                 source: "/shop",
-                destination: "https://store.campusflavor.com/",
+                destination: "https://shop.campusflavor.com/",
                 permanent: true,
             },
         ];
