@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import React, { HTMLAttributes } from "react"
+import React, { HTMLAttributes } from "react";
 
-import Image from "next/image"
-import Link from "next/link"
-import { cn } from "@/lib/utils"
-import { usePathname } from "next/navigation"
-import { useScroll } from "@/hooks/use-scroll"
+import Image from "next/image";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
+import { useScroll } from "@/hooks/use-scroll";
 
 interface NavigationLinkProps extends HTMLAttributes<HTMLAnchorElement> {
-    href: string
-    pathname: string
-    activeOnSubpath?: boolean
+    href: string;
+    pathname: string;
+    activeOnSubpath?: boolean;
 }
 
 const NavigationLink = React.forwardRef<HTMLAnchorElement, NavigationLinkProps>(
@@ -28,10 +28,10 @@ const NavigationLink = React.forwardRef<HTMLAnchorElement, NavigationLinkProps>(
     ) => {
         const isActive = (): boolean => {
             if (activeOnSubpath) {
-                return pathname.startsWith(href)
+                return pathname.startsWith(href);
             }
-            return pathname === href
-        }
+            return pathname === href;
+        };
 
         return (
             <Link
@@ -47,26 +47,26 @@ const NavigationLink = React.forwardRef<HTMLAnchorElement, NavigationLinkProps>(
             >
                 {children}
             </Link>
-        )
+        );
     }
-)
+);
 
-NavigationLink.displayName = "NavigationLink"
+NavigationLink.displayName = "NavigationLink";
 
 const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     ({ className, ...props }, ref) => {
-        const pathname = usePathname()
-        const scroll = useScroll()
+        const pathname = usePathname();
+        const scroll = useScroll();
 
-        const [hideNavbar, setHideNavbar] = React.useState<boolean>(false)
+        const [hideNavbar, setHideNavbar] = React.useState<boolean>(false);
 
         React.useEffect(() => {
             if (scroll.y > 150 && scroll.lastY - scroll.y < 0) {
-                setHideNavbar(true)
+                setHideNavbar(true);
             } else {
-                setHideNavbar(false)
+                setHideNavbar(false);
             }
-        }, [scroll.y, scroll.lastY])
+        }, [scroll.y, scroll.lastY]);
 
         return (
             <nav
@@ -117,9 +117,9 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     </ul>
                 </div>
             </nav>
-        )
+        );
     }
-)
-Navbar.displayName = "Navbar"
+);
+Navbar.displayName = "Navbar";
 
-export default Navbar
+export default Navbar;

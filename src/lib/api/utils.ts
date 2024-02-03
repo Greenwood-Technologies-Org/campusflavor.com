@@ -1,7 +1,7 @@
 interface APIResponse {
-    timestamp: number
-    message: string
-    data: Object
+    timestamp: number;
+    message: string;
+    data: Object;
 }
 
 function handleApiResponse(
@@ -13,7 +13,7 @@ function handleApiResponse(
         timestamp: timestamp,
         message: message,
         data: data,
-    }
+    };
 }
 
-export { handleApiResponse }
+export { handleApiResponse };

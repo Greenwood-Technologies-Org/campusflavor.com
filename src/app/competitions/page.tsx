@@ -1,4 +1,4 @@
-import { Banner, BannerProps } from "@/components/banner"
+import { Banner, BannerProps } from "@/components/banner";
 
 export default function Competitions() {
     const data = {
@@ -10,11 +10,11 @@ export default function Competitions() {
             "Win cash prizes!",
             "Voting opens in 7 days!",
         ],
-    }
+    };
 
     return (
         <main className="w-full flex flex-col flex-grow items-center">
             <Banner rotatingBannerItems={data.rotatingBannerItems}></Banner>
         </main>
-    )
+    );
 }

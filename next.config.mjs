@@ -12,8 +12,8 @@ const nextConfig = {
                 destination: "https://store.campusflavor.com/",
                 permanent: true,
             },
-        ]
+        ];
     },
-}
+};
 
-export default nextConfig
+export default nextConfig;
