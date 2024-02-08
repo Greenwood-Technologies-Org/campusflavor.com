@@ -35,15 +35,6 @@ export default async function Page() {
         school_affiliation
     );
 
-    // const submissions: SubmissionObject[] = rows.map(row => ({
-    //     url_link: row.url_link,
-    //     username: row.username,
-    //     posted_date: row.posted_date // Make sure this matches the alias in the function
-    //   }));
-
-    // console.log("Bruh");
-    // console.log(submissions);
-    // console.log("Bruh");
     // Extract the url_link for the Banner component
     const bannerItems = submissions.map((submission) => submission.url_link);
 
