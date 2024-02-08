@@ -2,6 +2,36 @@
 
 The official site for [campusflavor.com](campusflavor.com).
 
+## Getting Started
+
+Install all of the packages.
+
+```bash
+npm i
+```
+
+Run development server
+
+```bash
+npm run dev
+```
+
+## .env
+
+```.env
+# vercel
+VERCEL_URL=https://campusflavor.com
+
+# supabase
+SUPABASE_URL=
+SUPABASE_KEY=
+
+# s3
+
+# resend
+RESEND_NOTIFICATIONS=
+```
+
 ## Git Commit Message Guidelines
 
 This document offers guidelines for writing commit messages in this repository, based on the Angular commit message format.
