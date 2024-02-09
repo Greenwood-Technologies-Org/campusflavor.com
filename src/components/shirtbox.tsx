@@ -1,5 +1,5 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
 interface ShirtBoxProps {
     imageUrl: string;
@@ -41,7 +41,7 @@ const ShirtBox = React.forwardRef<HTMLDivElement, ShirtBoxProps>(
                     textAlign: "center",
                 }}
             >
-                <img
+                <Image
                     src={imageUrl}
                     alt="Shirt"
                     style={{
