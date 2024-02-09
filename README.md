@@ -23,8 +23,8 @@ npm run dev
 VERCEL_URL=https://campusflavor.com
 
 # supabase
-SUPABASE_URL=
-SUPABASE_KEY=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 # s3
 

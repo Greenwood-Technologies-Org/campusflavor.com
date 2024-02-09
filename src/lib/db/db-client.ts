@@ -5,14 +5,14 @@ let cachedClient: SupabaseClient | null = null;
 export function getDbClient(): SupabaseClient {
     if (cachedClient) return cachedClient;
 
-    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     if (!supabaseUrl) {
-        throw new Error("`SUPABASE_URL` undefined.");
+        throw new Error("`NEXT_PUBLIC_SUPABASE_URL` undefined.");
     }
 
-    const supabaseKey = process.env.SUPABASE_KEY;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
     if (!supabaseKey) {
-        throw new Error("`SUPABASE_KEY` undefined.");
+        throw new Error("`NEXT_PUBLIC_SUPABASE_ANON_KEY` undefined.");
     }
 
     const client = createClient(supabaseUrl, supabaseKey);
