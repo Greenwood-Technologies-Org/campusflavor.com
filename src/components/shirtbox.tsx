@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
+
 interface ShirtBoxProps {
     imageUrl: string;
     username: string;
