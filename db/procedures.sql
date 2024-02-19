@@ -12,8 +12,7 @@ BEGIN
     JOIN users ON submission.user_id = users.id
     JOIN file_uploads ON submission.id = file_uploads.submission_id
   WHERE 
-    users.school_affiliation = school_affil
-    AND competition.voting_end_date > NOW();
+    users.school_affiliation = school_affil;
 END;
 $$ LANGUAGE plpgsql;
 
