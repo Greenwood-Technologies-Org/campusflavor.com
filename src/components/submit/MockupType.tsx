@@ -17,7 +17,7 @@ const MockupType: React.FC<MockupTypeProps> = ({ types, onTypeSelect }) => {
     <div className="flex flex-col">
       <div className="flex items-center mb-2">
         <p className="text-lg font-semibold text-black text-left">Mockup Type</p>
-        <img src="/info-icon.svg" alt="Info" className="ml-2 w-5 h-5" />
+        <img src="/icons/info.svg" alt="Info" className="ml-2 w-5 h-5" />
       </div>
       <div className="flex gap-2 items-start">
         {types.map((type, index) => (

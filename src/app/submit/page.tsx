@@ -39,7 +39,7 @@ const SubmitPage = () => {
             <div className="text-center">
                 <h1 className="text-2xl font-bold my-8">Submit Design</h1>
 
-                <div className="space-y-4 mx-[5%] max-w-screen-xl 2xl:mx-auto md:flex md:space-x-10 md:space-y-0">
+                <div className="space-y-4 mx-[10%] max-w-screen-xl 2xl:mx-auto md:flex md:space-x-[5%] md:space-y-0">
 
                     <div className="md:flex-1">
                         <div className="relative" style={{ paddingBottom: '100%' }}>

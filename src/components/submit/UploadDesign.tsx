@@ -8,7 +8,7 @@ interface UploadDesignProps {
 }
 
 const UploadDesign: React.FC<UploadDesignProps> = ({ onImageUpload }) => {
-  
+
   const onDrop = useCallback((acceptedFiles: File[]) => {
     // Directly handle the file here
     const file = acceptedFiles[0];
@@ -30,7 +30,7 @@ const UploadDesign: React.FC<UploadDesignProps> = ({ onImageUpload }) => {
       className="w-full h-full border-dashed border-4 border-gray-500 rounded-xl cursor-pointer hover:border-black transition-colors duration-300">
       <input {...getInputProps()} />
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <img src="/plus_icon.svg" alt="Upload" className="mb-2 w-12 h-12" />
+        <img src="/icons/plus.svg" alt="Upload" className="mb-2 w-12 h-12" />
         <p className="text-gray-500">
           Drag or drop to upload design.
         </p>
