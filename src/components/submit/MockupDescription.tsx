@@ -5,13 +5,13 @@ interface MockupDescriptionProps {
 }
 
 const MockupDescription: React.FC<MockupDescriptionProps> = ({ onDescriptionChange }) => {
-  const maxChars = 300;
+  const maxChars = 200;
   const [description, setDescription] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newDescription = event.target.value.slice(0, maxChars);
-    setDescription(newDescription); // Update local state
-    onDescriptionChange(newDescription); // Update parent state
+    setDescription(newDescription);
+    onDescriptionChange(newDescription);
   };
 
   return (

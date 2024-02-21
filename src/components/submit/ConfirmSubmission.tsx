@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+
 import SubmissionCard from '@/components/submit/SubmissionCard';
 import { SyncLoader } from 'react-spinners';
 
@@ -64,13 +66,14 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
             <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
                 <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
                     <h1 className="text-3xl mb-4">Success!</h1>
-                    <p className="text-gray-700 text-center">Your submission was successful. You can view it in the gallery.</p>
-                    <button
-                        className="bg-black text-white py-2 w-full rounded-lg focus:outline-none mt-4"
-                        onClick={onClose}
-                    >
-                        Close
-                    </button>
+                    <p className="text-gray-700 text-center">Your submission was successful. You can view it on the design board.</p>
+                    <Link href="/">
+                        <button
+                            className="bg-black text-white py-2 px-5 rounded-lg focus:outline-none mt-4"
+                        >
+                            Close
+                        </button>
+                    </Link>
                 </div>
             </div>
         )
