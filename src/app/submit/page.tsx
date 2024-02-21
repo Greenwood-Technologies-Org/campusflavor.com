@@ -66,11 +66,13 @@ const SubmitPage = () => {
 
 
                 <button
-                    className="bg-black hover:bg-gray-700 text-white py-2 px-8 rounded-lg my-8"
+                    disabled={!imageFile}
+                    className={`flex-grow py-2 px-8 my-8 rounded-lg focus:outline-none ${!imageFile ? 'bg-gray-500 text-white' : 'bg-black text-white hover:bg-gray-700'}`}
                     onClick={handleSubmit}
                 >
                     Submit
                 </button>
+
 
                 <ConfirmSubmission
                     isOpen={showConfirmationModal}
