@@ -12,6 +12,4 @@ const SubmitPage = () => {
 
 
 
-export default async function Page() {
-    return <SubmitPage />;
-}
+export default SubmitPage;
