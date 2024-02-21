@@ -14,6 +14,13 @@ const nextConfig = {
             },
         ];
     },
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
+        // Add external library config here
+        config.externals.push({ canvas: 'commonjs canvas' });
+
+        // Return the modified config
+        return config;
+    },
 };
 
 export default nextConfig;
