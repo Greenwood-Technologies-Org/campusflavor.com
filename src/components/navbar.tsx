@@ -81,6 +81,86 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
         }, [scroll.y, scroll.lastY]);
 
         return (
+            <div>
+                <nav
+                    className="sticky top-0 z-50 w-full flex items-center justify-between bg-secondary-500 shadow-md px-4 md:px-6 py-2 transform duration-300 ease-in-out"
+                    {...props}
+                    ref={ref}
+                >
+                    {/* Logo Left-aligned */}
+                    <Link href="/competitions">
+                        <div className="flex items-center">
+                            <img src="/logos/250x100.svg" alt="Campus Flavor Logo" width={150} />
+                        </div>
+                    </Link>
+
+                    {/* Navigation Items - Center-aligned for larger screens */}
+                    <ul className="hidden md:flex flex-1 justify-center items-center space-x-4">
+                        <li>
+                            <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                                Shop
+                            </NavigationLink>
+                        </li>
+                        <li>
+                            <NavigationLink href="/competitions" pathname={pathname}>
+                                Competitions
+                            </NavigationLink>
+                        </li>
+                        <li>
+                            <NavigationLink href="/about" pathname={pathname}>
+                                About
+                            </NavigationLink>
+                        </li>
+                    </ul>
+
+                    {/* Session Data - Right-aligned */}
+                    <div className="hidden md:flex items-center">
+                        <SessionData {...sessionDataProps} />
+                    </div>
+
+
+
+                    {/* Hamburger Menu - Right-aligned for medium screens and smaller */}
+                    <div className="md:hidden">
+                        <Hamburger toggled={isOpen} toggle={setOpen} />
+                    </div>
+                </nav>
+
+                <div className="md:hidden">
+                    {/* Slide-in Menu */}
+                    {isOpen && (
+                        <div className="absolute right-0 h-full shadow-xl flex-row p-4 z-40 bg-white">
+                            {/* Menu Content */}
+                            <ul className="flex flex-col space-y-8">
+                                <li>
+                                    <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                                        Shop
+                                    </NavigationLink>
+                                </li>
+                                <li>
+                                    <NavigationLink href="/competitions" pathname={pathname}>
+                                        Competitions
+                                    </NavigationLink>
+                                </li>
+                                <li>
+                                    <NavigationLink href="/about" pathname={pathname}>
+                                        About
+                                    </NavigationLink>
+                                </li>
+                                {/* Session Data Component */}
+                                <li>
+                                    <div className="p-2">
+                                        <SessionData {...sessionDataProps} />
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
+                </div>
+            </div>
+        );
+
+        return (
             <nav
                 className="sticky top-0 z-50 w-full flex items-center justify-between bg-secondary-500 shadow-md px-4 py-2 transform duration-300 ease-in-out"
                 {...props}
@@ -121,45 +201,45 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 
                 {/* Hamburger Menu - Right-aligned for medium screens and smaller */}
                 <div className="md:hidden">
-                    <div className="md:hidden">
-                        <Hamburger toggled={isOpen} toggle={setOpen} />
-                    </div>
-                    <div className="md:hidden">
-                        {/* Slide-in Menu */}
-                        {isOpen && (
-                            <div className="absolute right-0 h-full shadow-xl flex-row">
-                                {/* Menu Content */}
-                                <ul className="flex flex-col p-4 space-y-8">
-                                    <li>
-                                        <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
-                                            Shop
-                                        </NavigationLink>
-                                    </li>
-                                    <li>
-                                        <NavigationLink href="/competitions" pathname={pathname}>
-                                            Competitions
-                                        </NavigationLink>
-                                    </li>
-                                    <li>
-                                        <NavigationLink href="/about" pathname={pathname}>
-                                            About
-                                        </NavigationLink>
-                                    </li>
-                                    {/* Session Data Component */}
-                                    <li>
-                                        <div className="p-2">
-                                            <SessionData {...sessionDataProps} />
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        )}
-                    </div>
+                    <Hamburger toggled={isOpen} toggle={setOpen} />
+                </div>
+
+                <div className="md:hidden">
+                    {/* Slide-in Menu */}
+                    {isOpen && (
+                        <div className="absolute right-0 h-full shadow-xl flex-row">
+                            {/* Menu Content */}
+                            <ul className="flex flex-col p-4 space-y-8">
+                                <li>
+                                    <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                                        Shop
+                                    </NavigationLink>
+                                </li>
+                                <li>
+                                    <NavigationLink href="/competitions" pathname={pathname}>
+                                        Competitions
+                                    </NavigationLink>
+                                </li>
+                                <li>
+                                    <NavigationLink href="/about" pathname={pathname}>
+                                        About
+                                    </NavigationLink>
+                                </li>
+                                {/* Session Data Component */}
+                                <li>
+                                    <div className="p-2">
+                                        <SessionData {...sessionDataProps} />
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
                 </div>
 
 
 
             </nav>
+
         );
 
     }
