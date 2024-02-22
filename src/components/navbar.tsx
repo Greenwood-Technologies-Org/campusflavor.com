@@ -80,7 +80,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 
         return (
             <nav
-                className="sticky top-0 w-full flex items-center justify-between bg-secondary-500 shadow-md px-5 md:px-10 py-2 transform duration-300 ease-in-out"
+                className="sticky top-0 w-full flex items-center justify-between bg-secondary-500 shadow-md px-[3%] py-2 transform duration-300 ease-in-out"
                 {...props}
                 ref={ref}
             >
@@ -111,7 +111,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                 </ul>
 
                 {/* Session Data - Right-aligned */}
-                <div className="flex items-center">
+                <div className="hidden md:flex items-center">
                     <SessionData {...sessionDataProps} />
                 </div>
             </nav>
