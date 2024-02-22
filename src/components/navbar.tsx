@@ -1,6 +1,6 @@
 "use client";
 
-import React, { HTMLAttributes } from "react";
+import React, { HTMLAttributes, useState } from "react";
 import { SessionData, SessionDataProps } from "./session-data";
 
 import Link from "next/link";
@@ -57,8 +57,8 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     ({ className, ...props }, ref) => {
         const pathname = usePathname();
         const scroll = useScroll();
-
-        const [hideNavbar, setHideNavbar] = React.useState<boolean>(false);
+        const [hideNavbar, setHideNavbar] = useState<boolean>(false);
+        const [isOpen, setOpen] = useState(false); // State to manage Hamburger menu toggle
 
         const sessionDataProps: SessionDataProps = {
             session: {
@@ -80,62 +80,46 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 
         return (
             <nav
-                className={cn(
-                    "sticky top-0 w-full min-h-20 md:min-h-20 flex flex-col md:flex-row items-center justify-center gap-2 md:px-20 lg:px-24 xl:px-28 shadow-md bg-secondary-500 transform duration-300 ease-in-out",
-                    hideNavbar ? "-translate-y-full" : "",
-                    className
-                )}
+                className="sticky top-0 w-full flex items-center justify-between bg-secondary-500 shadow-md px-5 md:px-10 py-2 transform duration-300 ease-in-out"
                 {...props}
                 ref={ref}
             >
-                <div className="w-fit h-full flex flex-row items-center justify-center">
-                    <Link href="/competitions">
-                        <div className="text-secondary-500 bg-primary-500 h-full w-fit font-extrabold text-xl px-3 py-2 leading-none">
-                            <div className="flex flex-row justify-start mr-4">
-                                CAMPUS
-                            </div>
-                            <div className="flex flex-row justify-end">
-                                FLAVOR
-                            </div>
-                        </div>
-                    </Link>
-                </div>
-                <div className="w-full h-full flex flex-row justify-between items-center md:pl-24">
-                    <ul className="flex flex-row justify-start items-center gap-3">
-                        <li>
-                            <NavigationLink
-                                href="/shop"
-                                pathname={pathname}
-                                activeOnSubpath
-                            >
-                                Shop
-                            </NavigationLink>
-                        </li>
-                        <li>
-                            <NavigationLink
-                                href="/competitions"
-                                pathname={pathname}
-                            >
-                                Competitions
-                            </NavigationLink>
-                        </li>
-                        <li>
-                            <NavigationLink href="/about" pathname={pathname}>
-                                About
-                            </NavigationLink>
-                        </li>
-                    </ul>
+                {/* Logo Left-aligned */}
+                <Link href="/competitions">
+                    <div className="flex items-center">
+                        <img src="/logos/250x100.svg" alt="Campus Flavor Logo" width={150} />
+                    </div>
+                </Link>
 
-                    <ul className="flex flex-row justify-end items-center gap-3">
-                        <li>
-                            <SessionData {...sessionDataProps}></SessionData>
-                        </li>
-                    </ul>
+                {/* Navigation Items - Center-aligned for larger screens */}
+                <ul className="hidden md:flex flex-1 justify-center items-center space-x-4">
+                    <li>
+                        <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                            Shop
+                        </NavigationLink>
+                    </li>
+                    <li>
+                        <NavigationLink href="/competitions" pathname={pathname}>
+                            Competitions
+                        </NavigationLink>
+                    </li>
+                    <li>
+                        <NavigationLink href="/about" pathname={pathname}>
+                            About
+                        </NavigationLink>
+                    </li>
+                </ul>
+
+                {/* Session Data - Right-aligned */}
+                <div className="flex items-center">
+                    <SessionData {...sessionDataProps} />
                 </div>
             </nav>
         );
+
     }
 );
+
 Navbar.displayName = "Navbar";
 
 export default Navbar;
