@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 interface SubmissionInfo {
     imageURL: string;
@@ -8,22 +8,21 @@ interface SubmissionInfo {
     username: string;
 }
 
-
 const useSubmissionApi = () => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
 
     const submit = async (submissionInfo: SubmissionInfo) => {
         setLoading(true);
-        setError('');
+        setError("");
         try {
             // Simulate API call with a timeout
             await new Promise((resolve) => setTimeout(resolve, 2000));
             // Set success state
             setSuccess(true);
         } catch (e) {
-            setError('Submission failed');
+            setError("Submission failed");
         } finally {
             setLoading(false);
         }

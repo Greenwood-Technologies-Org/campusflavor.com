@@ -1,9 +1,11 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
-import getDbClient from "@/lib/db/db-client";
+
 import { Banner } from "@/components/banner";
-import { SubmissionObject } from "../../lib/types";
 import GalleryPage from "@/components/gallery";
+import { SubmissionObject } from "../../lib/types";
+import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
 
 async function getURLsForSchool(school_affiliation: string) {

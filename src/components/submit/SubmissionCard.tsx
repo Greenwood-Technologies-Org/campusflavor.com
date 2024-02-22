@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
 type SubmissionCardProps = {
     mockupImageUrl: string;
@@ -26,9 +26,7 @@ const SubmissionCard: React.FC<SubmissionCardProps> = ({
             <div className="border-t-2 border-gray w-full"></div>
             <div className="px-4 py-2 text-left">
                 <div className="text-xl mb-1">@{username}</div>
-                <p className="text-gray-700 text-base">
-                    {description}
-                </p>
+                <p className="text-gray-700 text-base">{description}</p>
             </div>
         </div>
     );

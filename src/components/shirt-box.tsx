@@ -1,12 +1,5 @@
-import React from "react";
 import Image from "next/image";
-
-
-interface ShirtBoxProps {
-    imageUrl: string;
-    username: string;
-    postedDate: string;
-}
+import React from "react";
 
 function timeAgo(dateStr: string): string {
     const date = new Date(dateStr);
@@ -26,6 +19,12 @@ function timeAgo(dateStr: string): string {
         return `${daysAgo} days ago`;
     }
 }
+
+export type ShirtBoxProps = {
+    imageUrl: string;
+    username: string;
+    postedDate: string;
+};
 
 const ShirtBox = React.forwardRef<HTMLDivElement, ShirtBoxProps>(
     ({ imageUrl, username, postedDate, ...props }, ref) => {

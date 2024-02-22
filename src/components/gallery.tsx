@@ -1,6 +1,6 @@
-import ShirtBox from "./shirtbox";
-import { SubmissionObject } from "../lib/types";
 import React from "react";
+import ShirtBox from "./shirt-box";
+import { SubmissionObject } from "../lib/types";
 
 interface GalleryPageProps {
     gallery: SubmissionObject[];

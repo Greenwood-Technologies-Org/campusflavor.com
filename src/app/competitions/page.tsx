@@ -1,4 +1,5 @@
 import { Banner, BannerProps } from "@/components/banner";
+
 import { rotatingBannerItems } from "@/lib/constants";
 
 export default function Competitions() {
