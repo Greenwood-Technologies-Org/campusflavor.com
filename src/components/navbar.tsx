@@ -1,8 +1,8 @@
 "use client";
 
 import React, { HTMLAttributes } from "react";
+import { SessionData, SessionDataProps } from "./session-data";
 
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -60,6 +60,16 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 
         const [hideNavbar, setHideNavbar] = React.useState<boolean>(false);
 
+        const sessionDataProps: SessionDataProps = {
+            session: {
+                user: {
+                    name: "sampleUser",
+                    email: "user@example.com",
+                    image: "https://imgs.search.brave.com/6QbDWLNh3Wfj0NcrvOnoPVd5r6WhBN_ghhhPul7Pyk0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9oaXBz/LmhlYXJzdGFwcHMu/Y29tL2htZy1wcm9k/L2ltYWdlcy9nZXR0/eWltYWdlcy0xMjI5/ODkyOTgzLXNxdWFy/ZS5qcGc_Y3JvcD0x/eHc6MS4weGg7Y2Vu/dGVyLHRvcCZyZXNp/emU9NjQwOio",
+                },
+            },
+        };
+
         React.useEffect(() => {
             if (scroll.y > 150 && scroll.lastY - scroll.y < 0) {
                 setHideNavbar(true);
@@ -90,9 +100,9 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                         </div>
                     </Link>
                 </div>
-                <div className="w-full h-full flex flex-row justify-center md:justify-end items-center">
-                    <ul className="w-fit h-full flex flex-row justify-center items-center gap-3">
-                        <li className="w-fit h-fit">
+                <div className="w-full h-full flex flex-row justify-between items-center md:pl-24">
+                    <ul className="flex flex-row justify-start items-center gap-3">
+                        <li>
                             <NavigationLink
                                 href="/shop"
                                 pathname={pathname}
@@ -101,7 +111,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                                 Shop
                             </NavigationLink>
                         </li>
-                        <li className="w-fit h-fit">
+                        <li>
                             <NavigationLink
                                 href="/competitions"
                                 pathname={pathname}
@@ -109,10 +119,16 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                                 Competitions
                             </NavigationLink>
                         </li>
-                        <li className="w-fit h-fit">
+                        <li>
                             <NavigationLink href="/about" pathname={pathname}>
                                 About
                             </NavigationLink>
+                        </li>
+                    </ul>
+
+                    <ul className="flex flex-row justify-end items-center gap-3">
+                        <li>
+                            <SessionData {...sessionDataProps}></SessionData>
                         </li>
                     </ul>
                 </div>
