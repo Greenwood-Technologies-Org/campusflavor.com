@@ -139,9 +139,11 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                             className=""
                             timestamp={1000000}
                         ></CountdownTimer>
-                        <button className="p-2 bg-tertiary-500 rounded-lg text-sm md:text-xl">
-                            Submit a Design
-                        </button>
+                        <Link href="/submit">
+                            <button className="p-2 bg-tertiary-500 rounded-lg text-sm md:text-xl">
+                                Submit a Design
+                            </button>
+                        </Link>
                     </div>
                     <Link
                         href="/info"
