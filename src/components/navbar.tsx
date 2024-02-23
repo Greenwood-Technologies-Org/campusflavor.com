@@ -111,8 +111,11 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                 </nav>
 
                 {/* Slide-down Menu */}
-                <div className="md:hidden z-45 shadow-xl overflow-hidden transition-height duration-500 ease-in-out" style={{ height: isOpen ? '250px' : '0' }}>
-                    <div className="p-4 bg-white items-center">
+                <div
+                    className="md:hidden z-45 shadow-xl overflow-hidden transition-all duration-500 ease-in-out"
+                    style={{ height: isOpen ? `${document.getElementById('menu-content')?.scrollHeight}px` : '0' }}
+                >
+                    <div className="p-4 bg-white items-center" id="menu-content">
                         {/* Menu Content */}
                         <div className="flex flex-col space-y-4">
                             <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
