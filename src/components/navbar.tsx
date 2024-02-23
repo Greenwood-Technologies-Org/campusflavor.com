@@ -39,8 +39,8 @@ const NavigationLink = React.forwardRef<HTMLAnchorElement, NavigationLinkProps>(
             <Link
                 className={cn(
                     isActive()
-                        ? "text-xl md:text-xl font-bold rounded-md py-2 px-2 md:px-3 text-secondary-500 bg-primary-500"
-                        : "text-xl md:text-xl font-bold rounded-md py-2 px-2 md:px-3 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500",
+                        ? "text-center text-xl font-bold rounded-md py-2 px-2 text-secondary-500 bg-primary-500"
+                        : "text-center text-xl font-bold rounded-md py-2 px-2 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500",
                     className
                 )}
                 href={href}
@@ -81,9 +81,9 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
         }, [scroll.y, scroll.lastY]);
 
         return (
-            <div>
+            <div className="sticky top-0 z-40">
                 <nav
-                    className="sticky top-0 z-50 w-full flex items-center justify-between bg-secondary-500 shadow-md px-4 md:px-6 py-2 transform duration-300 ease-in-out"
+                    className="z-50 w-full flex items-center justify-between bg-secondary-500 shadow-md px-4 md:px-6 py-2 transform duration-300 ease-in-out"
                     {...props}
                     ref={ref}
                 >
@@ -95,29 +95,22 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     </Link>
 
                     {/* Navigation Items - Center-aligned for larger screens */}
-                    <ul className="hidden md:flex flex-1 justify-center items-center space-x-4">
-                        <li>
-                            <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
-                                Shop
-                            </NavigationLink>
-                        </li>
-                        <li>
-                            <NavigationLink href="/competitions" pathname={pathname}>
-                                Competitions
-                            </NavigationLink>
-                        </li>
-                        <li>
-                            <NavigationLink href="/about" pathname={pathname}>
-                                About
-                            </NavigationLink>
-                        </li>
-                    </ul>
+                    <div className="hidden md:flex flex-1 justify-center items-center space-x-4">
+                        <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                            Shop
+                        </NavigationLink>
+                        <NavigationLink href="/competitions" pathname={pathname}>
+                            Competitions
+                        </NavigationLink>
+                        <NavigationLink href="/about" pathname={pathname}>
+                            About
+                        </NavigationLink>
+                    </div>
 
                     {/* Session Data - Right-aligned */}
                     <div className="hidden md:flex items-center">
                         <SessionData {...sessionDataProps} />
                     </div>
-
 
 
                     {/* Hamburger Menu - Right-aligned for medium screens and smaller */}
@@ -126,120 +119,33 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     </div>
                 </nav>
 
-                <div className="md:hidden">
+                <div className="md:hidden w-full">
                     {/* Slide-in Menu */}
                     {isOpen && (
-                        <div className="absolute right-0 h-full shadow-xl flex-row p-4 z-40 bg-white">
+                        <div className="shadow-xl p-4 z-45 bg-white items-center">
                             {/* Menu Content */}
-                            <ul className="flex flex-col space-y-8">
-                                <li>
-                                    <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
-                                        Shop
-                                    </NavigationLink>
-                                </li>
-                                <li>
-                                    <NavigationLink href="/competitions" pathname={pathname}>
-                                        Competitions
-                                    </NavigationLink>
-                                </li>
-                                <li>
-                                    <NavigationLink href="/about" pathname={pathname}>
-                                        About
-                                    </NavigationLink>
-                                </li>
+                            <div className="flex flex-col space-y-4">
+                                <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                                    Shop
+                                </NavigationLink>
+                                <NavigationLink href="/competitions" pathname={pathname}>
+                                    Competitions
+                                </NavigationLink>
+                                <NavigationLink href="/about" pathname={pathname}>
+                                    About
+                                </NavigationLink>
+
+                                <div className="border-t-2 border-gray w-full"></div>
+
                                 {/* Session Data Component */}
-                                <li>
-                                    <div className="p-2">
-                                        <SessionData {...sessionDataProps} />
-                                    </div>
-                                </li>
-                            </ul>
+                                <div className="p-2">
+                                    <SessionData {...sessionDataProps} />
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>
             </div>
-        );
-
-        return (
-            <nav
-                className="sticky top-0 z-50 w-full flex items-center justify-between bg-secondary-500 shadow-md px-4 py-2 transform duration-300 ease-in-out"
-                {...props}
-                ref={ref}
-            >
-                {/* Logo Left-aligned */}
-                <Link href="/competitions">
-                    <div className="flex items-center">
-                        <img src="/logos/250x100.svg" alt="Campus Flavor Logo" width={150} />
-                    </div>
-                </Link>
-
-                {/* Navigation Items - Center-aligned for larger screens */}
-                <ul className="hidden md:flex flex-1 justify-center items-center space-x-4">
-                    <li>
-                        <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
-                            Shop
-                        </NavigationLink>
-                    </li>
-                    <li>
-                        <NavigationLink href="/competitions" pathname={pathname}>
-                            Competitions
-                        </NavigationLink>
-                    </li>
-                    <li>
-                        <NavigationLink href="/about" pathname={pathname}>
-                            About
-                        </NavigationLink>
-                    </li>
-                </ul>
-
-                {/* Session Data - Right-aligned */}
-                <div className="hidden md:flex items-center">
-                    <SessionData {...sessionDataProps} />
-                </div>
-
-
-
-                {/* Hamburger Menu - Right-aligned for medium screens and smaller */}
-                <div className="md:hidden">
-                    <Hamburger toggled={isOpen} toggle={setOpen} />
-                </div>
-
-                <div className="md:hidden">
-                    {/* Slide-in Menu */}
-                    {isOpen && (
-                        <div className="absolute right-0 h-full shadow-xl flex-row">
-                            {/* Menu Content */}
-                            <ul className="flex flex-col p-4 space-y-8">
-                                <li>
-                                    <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
-                                        Shop
-                                    </NavigationLink>
-                                </li>
-                                <li>
-                                    <NavigationLink href="/competitions" pathname={pathname}>
-                                        Competitions
-                                    </NavigationLink>
-                                </li>
-                                <li>
-                                    <NavigationLink href="/about" pathname={pathname}>
-                                        About
-                                    </NavigationLink>
-                                </li>
-                                {/* Session Data Component */}
-                                <li>
-                                    <div className="p-2">
-                                        <SessionData {...sessionDataProps} />
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    )}
-                </div>
-
-
-
-            </nav>
-
         );
 
     }
