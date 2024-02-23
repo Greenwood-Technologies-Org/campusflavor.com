@@ -1,12 +1,14 @@
 "use client";
 
-import React, { HTMLAttributes } from "react";
+import React, { HTMLAttributes, useState } from "react";
 import { SessionData, SessionDataProps } from "./session-data";
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useScroll } from "@/hooks/use-scroll";
+
+import { Squash as Hamburger } from 'hamburger-react';
 
 interface NavigationLinkProps extends HTMLAttributes<HTMLAnchorElement> {
     href: string;
@@ -37,8 +39,8 @@ const NavigationLink = React.forwardRef<HTMLAnchorElement, NavigationLinkProps>(
             <Link
                 className={cn(
                     isActive()
-                        ? "text-xl md:text-xl font-bold rounded-md py-2 px-2 md:px-3 text-secondary-500 bg-primary-500"
-                        : "text-xl md:text-xl font-bold rounded-md py-2 px-2 md:px-3 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500",
+                        ? "text-center text-xl font-bold rounded-md py-2 px-2 text-secondary-500 bg-primary-500"
+                        : "text-center text-xl font-bold rounded-md py-2 px-2 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500",
                     className
                 )}
                 href={href}
@@ -57,8 +59,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     ({ className, ...props }, ref) => {
         const pathname = usePathname();
         const scroll = useScroll();
-
-        const [hideNavbar, setHideNavbar] = React.useState<boolean>(false);
+        const [isOpen, setOpen] = useState(false); // State to manage Hamburger menu toggle
 
         const sessionDataProps: SessionDataProps = {
             session: {
@@ -70,72 +71,78 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
             },
         };
 
-        React.useEffect(() => {
-            if (scroll.y > 150 && scroll.lastY - scroll.y < 0) {
-                setHideNavbar(true);
-            } else {
-                setHideNavbar(false);
-            }
-        }, [scroll.y, scroll.lastY]);
-
         return (
-            <nav
-                className={cn(
-                    "sticky top-0 w-full min-h-20 md:min-h-20 flex flex-col md:flex-row items-center justify-center gap-2 md:px-20 lg:px-24 xl:px-28 shadow-md bg-secondary-500 transform duration-300 ease-in-out",
-                    hideNavbar ? "-translate-y-full" : "",
-                    className
-                )}
-                {...props}
-                ref={ref}
-            >
-                <div className="w-fit h-full flex flex-row items-center justify-center">
+            <div className="sticky top-0 z-40">
+                <nav
+                    className="z-50 w-full flex items-center justify-between bg-secondary-500 shadow-md px-4 md:px-6 py-2 transform duration-300 ease-in-out"
+                    {...props}
+                    ref={ref}
+                >
+                    {/* Logo Left-aligned */}
                     <Link href="/competitions">
-                        <div className="text-secondary-500 bg-primary-500 h-full w-fit font-extrabold text-xl px-3 py-2 leading-none">
-                            <div className="flex flex-row justify-start mr-4">
-                                CAMPUS
-                            </div>
-                            <div className="flex flex-row justify-end">
-                                FLAVOR
-                            </div>
+                        <div className="flex items-center">
+                            <img src="/logos/250x100.svg" alt="Campus Flavor Logo" width={150} />
                         </div>
                     </Link>
-                </div>
-                <div className="w-full h-full flex flex-row justify-between items-center md:pl-24">
-                    <ul className="flex flex-row justify-start items-center gap-3">
-                        <li>
-                            <NavigationLink
-                                href="/shop"
-                                pathname={pathname}
-                                activeOnSubpath
-                            >
+
+                    {/* Navigation Items - Center-aligned for larger screens */}
+                    <div className="hidden md:flex flex-1 justify-center items-center space-x-4">
+                        <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                            Shop
+                        </NavigationLink>
+                        <NavigationLink href="/competitions" pathname={pathname}>
+                            Competitions
+                        </NavigationLink>
+                        <NavigationLink href="/about" pathname={pathname}>
+                            About
+                        </NavigationLink>
+                    </div>
+
+                    {/* Session Data - Right-aligned */}
+                    <div className="hidden md:flex items-center">
+                        <SessionData {...sessionDataProps} />
+                    </div>
+
+
+                    {/* Hamburger Menu - Right-aligned for medium screens and smaller */}
+                    <div className="md:hidden">
+                        <Hamburger toggled={isOpen} toggle={setOpen} />
+                    </div>
+                </nav>
+
+                {/* Slide-down Menu */}
+                <div
+                    className="md:hidden z-45 shadow-xl overflow-hidden transition-all duration-500 ease-in-out"
+                    style={{ height: isOpen ? `${document.getElementById('menu-content')?.scrollHeight}px` : '0' }}
+                >
+                    <div className="p-4 bg-white items-center" id="menu-content">
+                        {/* Menu Content */}
+                        <div className="flex flex-col space-y-4">
+                            <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
                                 Shop
                             </NavigationLink>
-                        </li>
-                        <li>
-                            <NavigationLink
-                                href="/competitions"
-                                pathname={pathname}
-                            >
+                            <NavigationLink href="/competitions" pathname={pathname}>
                                 Competitions
                             </NavigationLink>
-                        </li>
-                        <li>
                             <NavigationLink href="/about" pathname={pathname}>
                                 About
                             </NavigationLink>
-                        </li>
-                    </ul>
 
-                    <ul className="flex flex-row justify-end items-center gap-3">
-                        <li>
-                            <SessionData {...sessionDataProps}></SessionData>
-                        </li>
-                    </ul>
+                            <div className="border-t-2 border-gray w-full"></div>
+
+                            {/* Session Data Component */}
+                            <div className="p-2">
+                                <SessionData {...sessionDataProps} />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </nav>
+            </div>
         );
+
     }
 );
+
 Navbar.displayName = "Navbar";
 
 export default Navbar;
