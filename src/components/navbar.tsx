@@ -59,7 +59,6 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     ({ className, ...props }, ref) => {
         const pathname = usePathname();
         const scroll = useScroll();
-        const [hideNavbar, setHideNavbar] = useState<boolean>(false);
         const [isOpen, setOpen] = useState(false); // State to manage Hamburger menu toggle
 
         const sessionDataProps: SessionDataProps = {
@@ -71,14 +70,6 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                 },
             },
         };
-
-        React.useEffect(() => {
-            if (scroll.y > 150 && scroll.lastY - scroll.y < 0) {
-                setHideNavbar(true);
-            } else {
-                setHideNavbar(false);
-            }
-        }, [scroll.y, scroll.lastY]);
 
         return (
             <div className="sticky top-0 z-40">
@@ -119,31 +110,29 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     </div>
                 </nav>
 
-                <div className="md:hidden w-full">
-                    {/* Slide-in Menu */}
-                    {isOpen && (
-                        <div className="shadow-xl p-4 z-45 bg-white items-center">
-                            {/* Menu Content */}
-                            <div className="flex flex-col space-y-4">
-                                <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
-                                    Shop
-                                </NavigationLink>
-                                <NavigationLink href="/competitions" pathname={pathname}>
-                                    Competitions
-                                </NavigationLink>
-                                <NavigationLink href="/about" pathname={pathname}>
-                                    About
-                                </NavigationLink>
+                {/* Slide-down Menu */}
+                <div className="md:hidden z-45 shadow-xl overflow-hidden transition-height duration-500 ease-in-out" style={{ height: isOpen ? '250px' : '0' }}>
+                    <div className="p-4 bg-white items-center">
+                        {/* Menu Content */}
+                        <div className="flex flex-col space-y-4">
+                            <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                                Shop
+                            </NavigationLink>
+                            <NavigationLink href="/competitions" pathname={pathname}>
+                                Competitions
+                            </NavigationLink>
+                            <NavigationLink href="/about" pathname={pathname}>
+                                About
+                            </NavigationLink>
 
-                                <div className="border-t-2 border-gray w-full"></div>
+                            <div className="border-t-2 border-gray w-full"></div>
 
-                                {/* Session Data Component */}
-                                <div className="p-2">
-                                    <SessionData {...sessionDataProps} />
-                                </div>
+                            {/* Session Data Component */}
+                            <div className="p-2">
+                                <SessionData {...sessionDataProps} />
                             </div>
                         </div>
-                    )}
+                    </div>
                 </div>
             </div>
         );
