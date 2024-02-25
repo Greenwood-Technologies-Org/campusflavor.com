@@ -1,26 +1,11 @@
-import "./globals.css";
+import React from 'react';
 
-import { Inter } from "next/font/google";
-import type { Metadata } from "next";
-import Navbar from "@/components/navbar";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {};
-
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
-    return (
-        <html lang="en">
-            <body
-                className={`w-screen min-h-screen ${inter.className} bg-secondary-500 flex flex-col custom-scrollbar overflow-x-hidden`}
-            >
-                <Navbar />
-                {children}
-            </body>
-        </html>
-    );
+interface LayoutProps {
+  children: React.ReactNode;
 }
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+  return <>{children}</>;
+};
+
+export default Layout;
