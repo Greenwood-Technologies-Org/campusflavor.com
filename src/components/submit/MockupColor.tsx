@@ -46,7 +46,7 @@ const MockupColor: React.FC<MockupColorProps> = ({ colors, onColorSelect }) => {
             <InformationModal
                 isOpen={isModalOpen}
                 title="Mockup Color"
-                information="Color of mockup background. Choose a color that best suits your design."
+                information="Choose a color to preview your design in the mockup! If chosen for printing, your design will be offered on all listed colors."
                 onClose={() => setIsModalOpen(false)} // Function to close the modal
             />
         </div>
