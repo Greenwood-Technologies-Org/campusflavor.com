@@ -75,15 +75,15 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
     if (submissionSuccess) {
         return (
-            <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
-                <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
-                    <h1 className="text-3xl mb-4">Success!</h1>
-                    <p className="text-gray-700 text-center">
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
+                <div className="bg-white p-8 space-y-5 rounded-lg shadow-lg flex flex-col items-center max-w-xs">
+                    <h1 className="text-3xl">Success!</h1>
+                    <p>
                         Your submission was successful. You can view it on the
                         design board.
                     </p>
                     <Link href="/">
-                        <button className="bg-black text-white py-2 px-5 rounded-lg focus:outline-none mt-4">
+                        <button className="text-white py-2 px-5 rounded-lg focus:outline-none bg-black hover:bg-gray-700">
                             Close
                         </button>
                     </Link>
@@ -144,11 +144,10 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                     <button
                         disabled={!isCheckboxSelected}
-                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${
-                            !isCheckboxSelected
-                                ? "bg-gray-500 text-white"
-                                : "bg-black text-white hover:bg-gray-700"
-                        }`}
+                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${!isCheckboxSelected
+                            ? "bg-gray-500 text-white"
+                            : "bg-black text-white hover:bg-gray-700"
+                            }`}
                         onClick={handleSubmit}
                     >
                         Submit
