@@ -30,20 +30,19 @@ const MockupType: React.FC<MockupTypeProps> = ({ types, onTypeSelect }) => {
                 />
             </div>
 
-            <div className="flex gap-2 items-start">
+            <div className="flex overflow-x-auto gap-2 items-start py-2" style={{ scrollbarWidth: 'none' }}>
                 {types.map((type, index) => (
                     <button
                         key={index}
-                        className={`px-4 py-2 rounded-full border ${type === selectedType
-                            ? "border-black"
-                            : "border-gray-300"
-                            } cursor-pointer`}
+                        className={`px-4 py-2 rounded-full border ${type === selectedType ? "border-black" : "border-gray-300"
+                            } cursor-pointer whitespace-nowrap`}
                         onClick={() => handleTypeSelect(type)}
                     >
                         {type}
                     </button>
                 ))}
             </div>
+
 
             <InformationModal
                 isOpen={isModalOpen}

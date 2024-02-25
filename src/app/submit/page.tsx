@@ -20,7 +20,7 @@ const SubmitPage = () => {
         setImageFile(file);
     };
 
-    const colors = ["#1E1E1E", "#4354D2", "#4CB7EC", "#FF80E1", "#FFFFFF"];
+    const colors = ["#ffffff", "#b2afaa", "#f59382", "#335231", "#2d407d", "#3a3a38", "#171f2c", "#101010"];
     const [selectedColor, setSelectedColor] = useState<string>(colors[0]);
 
     const types = ["T-shirt", "Sweater", "Hoodie"];
@@ -84,11 +84,10 @@ const SubmitPage = () => {
 
                 <button
                     disabled={!imageFile}
-                    className={`flex-grow py-2 px-8 my-8 rounded-lg focus:outline-none ${
-                        !imageFile
-                            ? "bg-gray-500 text-white"
-                            : "bg-black text-white hover:bg-gray-700"
-                    }`}
+                    className={`flex-grow py-2 px-8 my-8 rounded-lg focus:outline-none ${!imageFile
+                        ? "bg-gray-500 text-white"
+                        : "bg-black text-white hover:bg-gray-700"
+                        }`}
                     onClick={handleSubmit}
                 >
                     Submit

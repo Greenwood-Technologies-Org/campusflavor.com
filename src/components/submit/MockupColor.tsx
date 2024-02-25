@@ -29,11 +29,12 @@ const MockupColor: React.FC<MockupColorProps> = ({ colors, onColorSelect }) => {
                     onClick={() => setIsModalOpen(true)} // Open the modal on click
                 />
             </div>
-            <div className="flex gap-2 items-start">
+
+            <div className="flex flex-row items-start overflow-x-auto gap-2" style={{ scrollbarWidth: 'none' }}>
                 {colors.map((color, index) => (
                     <div
                         key={index}
-                        className={`w-10 h-10 rounded-lg border ${color === selectedColor
+                        className={`min-w-10 min-h-10 rounded-lg border ${color === selectedColor
                             ? "border-black"
                             : "border-gray-300"
                             } cursor-pointer`}
@@ -42,6 +43,8 @@ const MockupColor: React.FC<MockupColorProps> = ({ colors, onColorSelect }) => {
                     ></div>
                 ))}
             </div>
+
+
 
             <InformationModal
                 isOpen={isModalOpen}
