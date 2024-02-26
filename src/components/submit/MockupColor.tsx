@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import InformationModal from "@/components/InformationModal";
+
 type MockupColorProps = {
     colors: string[];
     onColorSelect: (color: string) => void;
@@ -7,6 +9,7 @@ type MockupColorProps = {
 
 const MockupColor: React.FC<MockupColorProps> = ({ colors, onColorSelect }) => {
     const [selectedColor, setSelectedColor] = useState(colors[0]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleColorSelect = (color: string) => {
         setSelectedColor(color);
@@ -22,23 +25,33 @@ const MockupColor: React.FC<MockupColorProps> = ({ colors, onColorSelect }) => {
                 <img
                     src="/icons/info.svg"
                     alt="Info"
-                    className="ml-2 w-5 h-5"
+                    className="ml-2 w-5 h-5 cursor-pointer"
+                    onClick={() => setIsModalOpen(true)} // Open the modal on click
                 />
             </div>
-            <div className="flex gap-2 items-start">
+
+            <div className="flex flex-row items-start overflow-x-auto gap-2" style={{ scrollbarWidth: 'none' }}>
                 {colors.map((color, index) => (
                     <div
                         key={index}
-                        className={`w-10 h-10 rounded-lg border ${
-                            color === selectedColor
-                                ? "border-black"
-                                : "border-gray-300"
-                        } cursor-pointer`}
+                        className={`min-w-10 min-h-10 rounded-lg border ${color === selectedColor
+                            ? "border-black"
+                            : "border-gray-300"
+                            } cursor-pointer`}
                         style={{ backgroundColor: color }}
                         onClick={() => handleColorSelect(color)}
                     ></div>
                 ))}
             </div>
+
+
+
+            <InformationModal
+                isOpen={isModalOpen}
+                title="Mockup Color"
+                information="Choose a color to preview your design in the mockup! If chosen for printing, your design will be offered on all listed colors."
+                onClose={() => setIsModalOpen(false)} // Function to close the modal
+            />
         </div>
     );
 };
