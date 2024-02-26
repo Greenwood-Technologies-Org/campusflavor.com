@@ -1,4 +1,4 @@
-import { Image, Layer, Rect, Stage, Transformer } from "react-konva";
+import { Image, Layer, Stage, Transformer } from "react-konva";
 import React, { useEffect, useRef, useState } from "react";
 
 import useImage from "use-image";
@@ -71,15 +71,10 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
     return (
         <div
             ref={containerRef}
-            className="border-2 border-gray-300 w-full h-full rounded-xl overflow-hidden"
+            className={`${backgroundColor} border-2 border-gray-300 w-full h-full rounded-xl overflow-hidden`}
         >
             <Stage width={dimensions.width} height={dimensions.height}>
                 <Layer>
-                    <Rect
-                        width={dimensions.width}
-                        height={dimensions.height}
-                        fill={backgroundColor}
-                    />
                     {image && (
                         <Image
                             image={image}

@@ -79,8 +79,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
                 <div className="bg-white p-8 space-y-5 rounded-lg shadow-lg flex flex-col items-center max-w-xs">
                     <h1 className="text-3xl">Success!</h1>
                     <p>
-                        Your submission was successful. You can view it on the
-                        design board.
+                        Your submission was successful. It will be posted to the design board after review.
                     </p>
                     <Link href="/">
                         <button className="text-white py-2 px-5 rounded-lg focus:outline-none bg-black hover:bg-gray-700">

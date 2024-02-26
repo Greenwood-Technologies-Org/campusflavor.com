@@ -63,6 +63,38 @@ const callCreateMockupApi = async (designImageUrl: string, mockupType: string): 
                 },
             ],
         };
+    } else if (mockupType === "Sweater") {
+        mockupTypeData = {
+            nr: 520,
+            layer_inputs: [
+                {
+                    id: "juqu6evm8k4dtcu835p",
+                    data: designImageUrl,
+                    checked: true,
+                },
+                {
+                    id: "ea18e8f6-1e41-4a5e-bbe2-a469e2fea45d",
+                    checked: true,
+                },
+            ],
+        };
+    } else if (mockupType === "Hoodie") {
+        mockupTypeData = {
+            nr: 520,
+            layer_inputs: [
+                {
+                    id: "juqu6evm8k4dtcu835p",
+                    data: designImageUrl,
+                    checked: true,
+                },
+                {
+                    id: "ea18e8f6-1e41-4a5e-bbe2-a469e2fea45d",
+                    checked: true,
+                },
+            ],
+        };
+    } else {
+        throw new Error("Mockup type not found");
     }
 
     const options = {
@@ -85,6 +117,18 @@ const fakeCallCreateMockupApi = async (
     designImageUrl: string, mockupType: string
 ): Promise<ApiResponse> => {
     await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate delay
+
+    // Download design image from blob URL
+    const response = await fetch(designImageUrl);
+    const blob = await response.blob();
+    const downloadUrl = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = downloadUrl;
+    a.download = 'designImage'; // You can give it a more descriptive name based on your requirements
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(downloadUrl);
 
     var mockupTypeUrl;
 
