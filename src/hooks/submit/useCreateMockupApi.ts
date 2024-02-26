@@ -12,21 +12,20 @@ interface ApiError {
     message: string;
 }
 
-const useCreateMockupApi = (imageUrl: string) => {
+const useCreateMockupApi = (designImageUrl: string) => {
     const [data, setData] = useState<ApiResponse | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<ApiError | null>(null);
 
     useEffect(() => {
-        console.log("useCreateMockupApi imageUrl:", imageUrl);
-        if (!imageUrl || imageUrl == "") return;
+        if (!designImageUrl || designImageUrl == "") return;
 
         setLoading(true);
         // Replace fakeCallCreateMockupApi with callCreateMockupApi to use the real API call
         const fetchData = async () => {
             try {
-                // const response = await callCreateMockupApi(imageUrl); // Uncomment this line to use the real API call
-                const response = await fakeCallCreateMockupApi(imageUrl); // Comment this line when using the real API call
+                // const response = await callCreateMockupApi(designImageUrl); // Uncomment this line to use the real API call
+                const response = await fakeCallCreateMockupApi(designImageUrl); // Comment this line when using the real API call
                 setData(response);
                 setLoading(false);
             } catch (error: any) {
@@ -39,13 +38,13 @@ const useCreateMockupApi = (imageUrl: string) => {
         };
 
         fetchData();
-    }, [imageUrl]);
+    }, [designImageUrl]);
 
     return { data, loading, error };
 };
 
 // Actual API call function (not used initially, but ready for easy switch)
-const callCreateMockupApi = async (imageUrl: string): Promise<ApiResponse> => {
+const callCreateMockupApi = async (designImageUrl: string): Promise<ApiResponse> => {
     const options = {
         method: "POST",
         url: "https://api.mediamodifier.com/v2/mockup/render",
@@ -60,7 +59,7 @@ const callCreateMockupApi = async (imageUrl: string): Promise<ApiResponse> => {
                 {
                     id: "juqu6evm8k4dtcu835p",
                     data: "https://images.vexels.com/media/users/3/300913/isolated/preview/09363b792ee41663cb7e659c661ca7f4-beer-reaper-t-shirt-with-a-skeleton-holding-a-scythe.png",
-                    // data: imageUrl, // use this line to use the actual imageUrl
+                    // data: designImageUrl, // use this line to use the actual designImageUrl
                     checked: true,
                 },
                 {
@@ -77,9 +76,8 @@ const callCreateMockupApi = async (imageUrl: string): Promise<ApiResponse> => {
 
 // Simulated API call function for testing without actual API request
 const fakeCallCreateMockupApi = async (
-    imageUrl: string
+    designImageUrl: string
 ): Promise<ApiResponse> => {
-    console.log("Simulating API call with imageUrl:", imageUrl);
     await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate delay
     return {
         success: true,

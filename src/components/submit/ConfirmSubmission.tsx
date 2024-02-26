@@ -9,7 +9,7 @@ import useSubmissionApi from "@/hooks/submit/useSubmissionApi";
 interface ConfirmSubmissionProps {
     isOpen: boolean;
     onClose: () => void;
-    designImage: string;
+    designImageUrl: string;
     mockupColor: string;
     mockupType: string;
     description: string;
@@ -19,7 +19,7 @@ interface ConfirmSubmissionProps {
 const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     isOpen,
     onClose,
-    designImage,
+    designImageUrl,
     mockupColor,
     mockupType,
     description,
@@ -31,7 +31,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         data: mockupData,
         loading: mockupLoading,
         error: mockupError,
-    } = useCreateMockupApi(designImage);
+    } = useCreateMockupApi(designImageUrl);
 
     const {
         submit,
@@ -42,9 +42,9 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     const [showSuccess, setShowSuccess] = useState(false);
 
     const handleSubmit = async () => {
-        console.log("Submitting...");
         const submissionInfo = {
-            imageURL: designImage,
+            mockupImageURL: mockupData!.url,
+            designImageURL: designImageUrl,
             mockupColor: mockupColor,
             mockupType: mockupType,
             description: description,
@@ -109,7 +109,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
                 ) : (
                     <SubmissionCard
                         mockupImageUrl={
-                            mockupData ? mockupData.url : designImage
+                            mockupData ? mockupData.url : designImageUrl
                         }
                         username={username}
                         description={description}

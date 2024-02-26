@@ -111,7 +111,7 @@ const SubmitPage = () => {
                 <ConfirmSubmission
                     isOpen={showConfirmationModal}
                     onClose={() => setShowConfirmationModal(false)}
-                    designImage={
+                    designImageUrl={
                         imageFile ? URL.createObjectURL(imageFile) : ""
                     }
                     mockupColor={selectedColor}
