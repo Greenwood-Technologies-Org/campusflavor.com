@@ -6,7 +6,6 @@ import { SessionData, SessionDataProps } from "./session-data";
 import Link from "next/link";
 import { Session } from "@supabase/supabase-js";
 import { cn } from "@/lib/utils";
-import { createClient } from "@/lib/db/client";
 import { usePathname } from "next/navigation";
 import { useScroll } from "@/hooks/use-scroll";
 import useSession from "@/hooks/use-session";

@@ -1,8 +1,8 @@
-import { createClient } from "@/lib/db/server";
+import { getServerClient } from "@/lib/db/db-server";
 import { redirect } from "next/navigation";
 
 export default async function PrivatePage() {
-    const supabase = createClient();
+    const supabase = getServerClient();
 
     const { data, error } = await supabase.auth.getUser();
     if (error || !data?.user) {

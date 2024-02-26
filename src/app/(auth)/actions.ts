@@ -1,11 +1,11 @@
 "use server";
 
-import { createClient } from "@/lib/db/server";
+import { getServerClient } from "@/lib/db/db-server";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
 export async function signin(formData: FormData) {
-    const supabase = createClient();
+    const supabase = getServerClient();
 
     // type-casting here for convenience
     // in practice, you should validate your inputs
@@ -25,7 +25,7 @@ export async function signin(formData: FormData) {
 }
 
 export async function signup(formData: FormData) {
-    const supabase = createClient();
+    const supabase = getServerClient();
 
     // type-casting here for convenience
     // in practice, you should validate your inputs
