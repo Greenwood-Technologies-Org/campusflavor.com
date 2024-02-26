@@ -1,16 +1,15 @@
 "use client";
 
 import React, { HTMLAttributes, useState } from "react";
-import { SessionData, SessionDataProps } from "./session-data";
+import { SessionData } from "./session-data";
 
 import Link from "next/link";
-import { Session } from "@supabase/supabase-js";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useScroll } from "@/hooks/use-scroll";
 import useSession from "@/hooks/use-session";
 
-import { Squash as Hamburger } from 'hamburger-react';
+import { Squash as Hamburger } from "hamburger-react";
 
 interface NavigationLinkProps extends HTMLAttributes<HTMLAnchorElement> {
     href: string;
@@ -64,6 +63,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
         const pathname = usePathname();
         const scroll = useScroll();
         const [isOpen, setOpen] = useState(false); // State to manage Hamburger menu toggle
+        const [hideNavbar, setHideNavbar] = useState(false);
 
         React.useEffect(() => {
             if (scroll.y > 150 && scroll.lastY - scroll.y < 0) {
@@ -83,16 +83,27 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     {/* Logo Left-aligned */}
                     <Link href="/competitions">
                         <div className="flex items-center">
-                            <img src="/logos/250x100.svg" alt="Campus Flavor Logo" width={150} />
+                            <img
+                                src="/logos/250x100.svg"
+                                alt="Campus Flavor Logo"
+                                width={150}
+                            />
                         </div>
                     </Link>
 
                     {/* Navigation Items - Center-aligned for larger screens */}
                     <div className="hidden md:flex flex-1 justify-center items-center space-x-4">
-                        <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                        <NavigationLink
+                            href="/shop"
+                            pathname={pathname}
+                            activeOnSubpath
+                        >
                             Shop
                         </NavigationLink>
-                        <NavigationLink href="/competitions" pathname={pathname}>
+                        <NavigationLink
+                            href="/competitions"
+                            pathname={pathname}
+                        >
                             Competitions
                         </NavigationLink>
                         <NavigationLink href="/about" pathname={pathname}>
@@ -102,9 +113,8 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 
                     {/* Session Data - Right-aligned */}
                     <div className="hidden md:flex items-center">
-                        <SessionData {...sessionDataProps} />
+                        <SessionData session={session} />
                     </div>
-
 
                     {/* Hamburger Menu - Right-aligned for medium screens and smaller */}
                     <div className="md:hidden">
@@ -115,22 +125,39 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                 {/* Slide-down Menu */}
                 <div
                     className="md:hidden z-45 shadow-xl overflow-hidden transition-all duration-500 ease-in-out"
-                    style={{ height: isOpen ? `${document.getElementById('menu-content')?.scrollHeight}px` : '0' }}
+                    style={{
+                        height: isOpen
+                            ? `${
+                                  document.getElementById("menu-content")
+                                      ?.scrollHeight
+                              }px`
+                            : "0",
+                    }}
                 >
-                    <div className="p-4 bg-white items-center" id="menu-content">
+                    <div
+                        className="p-4 bg-white items-center"
+                        id="menu-content"
+                    >
                         {/* Menu Content */}
                         <div className="flex flex-col space-y-4">
-                            <NavigationLink href="/shop" pathname={pathname} activeOnSubpath>
+                            <NavigationLink
+                                href="/shop"
+                                pathname={pathname}
+                                activeOnSubpath
+                            >
                                 Shop
                             </NavigationLink>
-                            <NavigationLink href="/competitions" pathname={pathname}>
+                            <NavigationLink
+                                href="/competitions"
+                                pathname={pathname}
+                            >
                                 Competitions
                             </NavigationLink>
                             <NavigationLink href="/about" pathname={pathname}>
                                 About
                             </NavigationLink>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
 
                     <ul className="flex flex-row justify-end items-center gap-3">
                         <li>
@@ -140,7 +167,6 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                 </div>
             </div>
         );
-
     }
 );
 
