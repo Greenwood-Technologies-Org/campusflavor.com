@@ -22,8 +22,10 @@ export async function GET(request: NextRequest) {
             type,
             token_hash,
         });
+
         if (!error) {
             redirectTo.searchParams.delete("next");
+            redirectTo.basePath = "/signin";
             return NextResponse.redirect(redirectTo);
         }
     }

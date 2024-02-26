@@ -8,25 +8,22 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
-import {
-    emailSchema,
-    passwordSchema,
-    usernameSchema,
-} from "@/lib/validations/auth";
-import { redirect, useRouter } from "next/navigation";
+import { emailSchema, passwordSchema } from "@/lib/validations/auth";
 
+import { AuthError } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/password-input";
 import React from "react";
+import { getBrowserClient } from "@/lib/db/db-client";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
-    username: usernameSchema,
     email: emailSchema,
     password: passwordSchema,
 });
@@ -34,24 +31,45 @@ const formSchema = z.object({
 type Inputs = z.infer<typeof formSchema>;
 
 export function SignUpForm() {
-    const [errorMessage, setErrorMessage] = React.useState<string>("");
     const router = useRouter();
+    const [errorMessage, setErrorMessage] = React.useState<string>("");
 
     const form = useForm<Inputs>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            username: "",
             email: "",
             password: "",
         },
     });
 
-    const mutation = useMutation(async (data: Inputs) => {}, { retry: false });
+    const dbClient = getBrowserClient();
+
+    const mutation = useMutation(
+        async (data: Inputs) => {
+            const { data: resSignUp, error: errorSignUp } =
+                await dbClient.auth.signUp(data);
+
+            if (errorSignUp) {
+                throw new AuthError(errorSignUp.message);
+            }
+        },
+        { retry: false }
+    );
 
     async function onSubmit(data: Inputs) {
         mutation.mutate(data, {
-            onSuccess: () => {},
-            onError: (e: any) => {},
+            onSuccess: () => {
+                router.push(`/signup/verify-email?email=${data.email}`);
+            },
+            onError: (e: any) => {
+                console.log(e);
+
+                if (e instanceof AuthError) {
+                    setErrorMessage(e.message);
+                } else {
+                    setErrorMessage("Unknown Error.");
+                }
+            },
         });
     }
 
