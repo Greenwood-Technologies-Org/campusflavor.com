@@ -33,15 +33,16 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         error: mockupError,
     } = useCreateMockupApi(designImageUrl, mockupType);
 
+    // code for handling user pressing the submit button
     const {
         submit,
         loading: submissionLoading,
         success: submissionSuccess,
         error: submissionError,
     } = useSubmissionApi();
-    const [showSuccess, setShowSuccess] = useState(false);
 
     const handleSubmit = async () => {
+
         const submissionInfo = {
             mockupImageURL: mockupData!.url,
             designImageURL: designImageUrl,
@@ -51,12 +52,11 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
             username: username,
         };
         await submit(submissionInfo);
-        setShowSuccess(true);
     };
 
     if (!isOpen) return null;
 
-    if (submissionLoading) {
+    if (submissionLoading || mockupLoading) {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
                 <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
@@ -96,24 +96,13 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
             <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
                 <h1 className="text-3xl mb-4">Preview</h1>
 
-                {mockupLoading ? (
-                    <div className="flex justify-center items-center my-8">
-                        <SyncLoader
-                            color="#000000"
-                            size={20}
-                            speedMultiplier={0.6}
-                            margin={5}
-                        />
-                    </div>
-                ) : (
-                    <SubmissionCard
-                        mockupImageUrl={
-                            mockupData ? mockupData.url : designImageUrl
-                        }
-                        username={username}
-                        description={description}
-                    />
-                )}
+                <SubmissionCard
+                    mockupImageUrl={
+                        mockupData ? mockupData.url : designImageUrl
+                    }
+                    username={username}
+                    description={description}
+                />
 
                 <div className="max-w-xs flex items-center space-x-2 my-4 px-4">
                     <input

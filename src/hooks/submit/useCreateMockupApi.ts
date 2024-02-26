@@ -13,23 +13,36 @@ interface ApiError {
     message: string;
 }
 
-const useCreateMockupApi = (designImageUrl: string, mockupType: string): ApiResponse | null => {
+const useCreateMockupApi = (designImageUrl: string, mockupType: string) => {
     const [data, setData] = useState<ApiResponse | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [error, setError] = useState<ApiError | null>(null);
 
     useEffect(() => {
-        if (!designImageUrl) return;
 
-        fakeCallCreateMockupApi(designImageUrl, mockupType)
-            .then(setData)
-            .catch((error) => {
-                console.error("Error fetching data: ", error);
-                setData(null); // Optionally handle errors more gracefully
-            });
+        setLoading(true);
+        // Replace fakeCallCreateMockupApi with callCreateMockupApi to use the real API call
+        const fetchData = async () => {
+            try {
+                // const response = await callCreateMockupApi(designImageUrl, mockupType); // Uncomment this line to use the real API call
+                console.log("Using fake API call");
+                const response = await fakeCallCreateMockupApi(designImageUrl, mockupType); // Comment this line when using the real API call
 
-        // The dependency array ensures this effect runs only when designImageUrl or mockupType changes
-    }, [designImageUrl, mockupType]);
+                setData(response);
+                setLoading(false);
+            } catch (error: any) {
+                // Using 'any' for catch clause variable type is a common practice in TypeScript for handling unknown errors.
+                setError({
+                    message: error.message || "An unknown error occurred",
+                });
+                setLoading(false);
+            }
+        };
 
-    return data; // This will initially be null and then update to the actual data once the promise resolves
+        fetchData();
+    }, [designImageUrl]);
+
+    return { data, loading, error };
 };
 
 // Actual API call function (not used initially, but ready for easy switch)
@@ -107,16 +120,16 @@ const fakeCallCreateMockupApi = async (
     await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate delay
 
     // Download design image from blob URL
-    const response = await fetch(designImageUrl);
-    const blob = await response.blob();
-    const downloadUrl = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = downloadUrl;
-    a.download = 'designImage'; // You can give it a more descriptive name based on your requirements
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(downloadUrl);
+    // const response = await fetch(designImageUrl);
+    // const blob = await response.blob();
+    // const downloadUrl = window.URL.createObjectURL(blob);
+    // const a = document.createElement('a');
+    // a.href = downloadUrl;
+    // a.download = 'designImage'; // You can give it a more descriptive name based on your requirements
+    // document.body.appendChild(a);
+    // a.click();
+    // document.body.removeChild(a);
+    // window.URL.revokeObjectURL(downloadUrl);
 
     var mockupTypeUrl;
 
