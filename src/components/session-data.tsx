@@ -1,3 +1,5 @@
+"use client";
+
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 import React, { HTMLAttributes } from "react";
@@ -6,6 +8,7 @@ import { ExitIcon } from "@radix-ui/react-icons";
 import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
 import { Session } from "@supabase/supabase-js";
+import { useRouter } from "next/navigation";
 
 interface SessionDataProps extends HTMLAttributes<HTMLDivElement> {
     session: Session | null;
@@ -13,6 +16,7 @@ interface SessionDataProps extends HTMLAttributes<HTMLDivElement> {
 
 const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
     ({ className, session, ...props }, ref) => {
+        const router = useRouter();
         const hasSession = !!session;
 
         if (!hasSession) {
@@ -20,7 +24,7 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                 <div className={cn(className)} ref={ref} {...props}>
                     <button
                         className="flex flex-row items-center justify-center gap-2"
-                        onClick={() => console.log("Sign In")}
+                        onClick={() => router.push("/signin")}
                     >
                         <Icons.account width={40} height={40} />
                         <div className="flex flex-col">
@@ -52,7 +56,7 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                             sideOffset={5}
                         >
                             <DropdownMenu.Item
-                                onClick={() => console.log("Sign Out")}
+                                onClick={() => router.push("/signout")}
                                 className="group text-sm p-2 leading-none text-primary-500 rounded-md flex flex-row gap-2 items-center h-[25px] relative select-none outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-primary-500 data-[highlighted]:text-secondary-500"
                             >
                                 <ExitIcon className="w-5 h-5" />
