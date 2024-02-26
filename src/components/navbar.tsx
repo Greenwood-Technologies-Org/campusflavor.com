@@ -57,18 +57,12 @@ NavigationLink.displayName = "NavigationLink";
 
 const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     ({ className, ...props }, ref) => {
-        const [session, setSession] = React.useState<Session | null>(
-            useSession()
-        );
+        const session = useSession();
 
         const pathname = usePathname();
         const scroll = useScroll();
 
         const [hideNavbar, setHideNavbar] = React.useState<boolean>(false);
-
-        const sessionDataProps: SessionDataProps = {
-            session,
-        };
 
         React.useEffect(() => {
             if (scroll.y > 150 && scroll.lastY - scroll.y < 0) {
@@ -128,7 +122,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 
                     <ul className="flex flex-row justify-end items-center gap-3">
                         <li>
-                            <SessionData {...sessionDataProps}></SessionData>
+                            <SessionData session={session}></SessionData>
                         </li>
                     </ul>
                 </div>
