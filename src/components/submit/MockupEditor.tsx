@@ -1,4 +1,4 @@
-import { Image, Layer, Stage, Transformer } from "react-konva";
+import { Image, Layer, Rect, Stage, Transformer } from "react-konva";
 import React, { useEffect, useRef, useState } from "react";
 
 import useImage from "use-image";
@@ -75,6 +75,11 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         >
             <Stage width={dimensions.width} height={dimensions.height}>
                 <Layer>
+                    <Rect
+                        width={dimensions.width}
+                        height={dimensions.height}
+                        fill={backgroundColor}
+                    />
                     {image && (
                         <Image
                             image={image}
