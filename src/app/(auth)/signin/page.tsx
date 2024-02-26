@@ -2,24 +2,21 @@
 
 import { SignInForm } from "@/components/forms/signin-form";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 
 export default function LoginPage() {
     const params = useSearchParams();
     const fsi = params.get("fsi");
 
     return (
-        <Suspense>
-            <div className="w-fit h-fit flex flex-col items-center gap-4">
-                <h1 className="text-xl font-bold">Sign In</h1>
-                {fsi && (
-                    <div className="flex flex-col text-center">
-                        <h2>Email Verified Succesfully.</h2>
-                        <h2>Please Sign In.</h2>
-                    </div>
-                )}
-                <SignInForm />
-            </div>
-        </Suspense>
+        <div className="w-fit h-fit flex flex-col items-center gap-4">
+            <h1 className="text-xl font-bold">Sign In</h1>
+            {fsi && (
+                <div className="flex flex-col text-center">
+                    <h2>Email Verified Succesfully.</h2>
+                    <h2>Please Sign In.</h2>
+                </div>
+            )}
+            <SignInForm />
+        </div>
     );
 }
