@@ -37,9 +37,7 @@ export function SignInForm() {
         },
     });
 
-    function onSubmit(data: Inputs) {
-        startTransition(async () => {});
-    }
+    function onSubmit(data: Inputs) {}
 
     return (
         <Form {...form}>

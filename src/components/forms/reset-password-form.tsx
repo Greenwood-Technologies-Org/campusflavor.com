@@ -25,13 +25,7 @@ const formSchema = z.object({
 
 type Inputs = z.infer<typeof formSchema>;
 
-export function ResetPasswordForm({
-    token,
-    reset,
-}: {
-    token: string;
-    reset: string;
-}) {
+export function ResetPasswordForm() {
     const form = useForm<Inputs>({
         resolver: zodResolver(formSchema),
         defaultValues: {

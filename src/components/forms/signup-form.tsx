@@ -13,6 +13,7 @@ import {
     passwordSchema,
     usernameSchema,
 } from "@/lib/validations/auth";
+import { redirect, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
@@ -21,7 +22,6 @@ import { PasswordInput } from "@/components/password-input";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
-import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -63,19 +63,6 @@ export function SignUpForm() {
                     void form.handleSubmit(onSubmit)(...args)
                 }
             >
-                <FormField
-                    control={form.control}
-                    name="username"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Username</FormLabel>
-                            <FormControl>
-                                <Input placeholder="username" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
                 <FormField
                     control={form.control}
                     name="email"
