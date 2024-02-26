@@ -4,9 +4,12 @@ import React, { HTMLAttributes } from "react";
 import { SessionData, SessionDataProps } from "./session-data";
 
 import Link from "next/link";
+import { Session } from "@supabase/supabase-js";
 import { cn } from "@/lib/utils";
+import { createClient } from "@/lib/db/client";
 import { usePathname } from "next/navigation";
 import { useScroll } from "@/hooks/use-scroll";
+import useSession from "@/hooks/use-session";
 
 interface NavigationLinkProps extends HTMLAttributes<HTMLAnchorElement> {
     href: string;
@@ -55,19 +58,17 @@ NavigationLink.displayName = "NavigationLink";
 
 const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     ({ className, ...props }, ref) => {
+        const [session, setSession] = React.useState<Session | null>(
+            useSession()
+        );
+
         const pathname = usePathname();
         const scroll = useScroll();
 
         const [hideNavbar, setHideNavbar] = React.useState<boolean>(false);
 
         const sessionDataProps: SessionDataProps = {
-            session: {
-                user: {
-                    name: "sampleUser",
-                    email: "user@example.com",
-                    image: "https://imgs.search.brave.com/6QbDWLNh3Wfj0NcrvOnoPVd5r6WhBN_ghhhPul7Pyk0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9oaXBz/LmhlYXJzdGFwcHMu/Y29tL2htZy1wcm9k/L2ltYWdlcy9nZXR0/eWltYWdlcy0xMjI5/ODkyOTgzLXNxdWFy/ZS5qcGc_Y3JvcD0x/eHc6MS4weGg7Y2Vu/dGVyLHRvcCZyZXNp/emU9NjQwOio",
-                },
-            },
+            session,
         };
 
         React.useEffect(() => {

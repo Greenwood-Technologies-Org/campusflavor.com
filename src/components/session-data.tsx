@@ -4,16 +4,8 @@ import React, { HTMLAttributes } from "react";
 
 import { ExitIcon } from "@radix-ui/react-icons";
 import { Icons } from "./icons";
-import UserAvatar from "@/components/ui/user-avatar";
 import { cn } from "@/lib/utils";
-
-interface Session {
-    user: {
-        name: string;
-        email: string;
-        image: string;
-    };
-}
+import { Session } from "@supabase/supabase-js";
 
 interface SessionDataProps extends HTMLAttributes<HTMLDivElement> {
     session: Session | null;
@@ -44,15 +36,9 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                 <DropdownMenu.Root>
                     <DropdownMenu.Trigger asChild>
                         <button className="flex flex-row gap-2">
-                            <UserAvatar
-                                src={session.user.image || "unknown"}
-                                altText={
-                                    session.user.name?.substring(2) || "unknown"
-                                }
-                            />
                             <div className="flex flex-col w-fit h-fit items-start justify-start">
                                 <p className="text-lg font-bold -mb-1">
-                                    {session.user.name}
+                                    {session.user.email}
                                 </p>
                                 <p className="text-sm font-normal">
                                     {session.user.email}
