@@ -156,14 +156,11 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                             <NavigationLink href="/about" pathname={pathname}>
                                 About
                             </NavigationLink>
+                            <div className="flex flex-row justify-center items-center">
+                                <SessionData session={session}></SessionData>
+                            </div>
                         </div>
                     </div>
-
-                    <ul className="flex flex-row justify-end items-center gap-3">
-                        <li>
-                            <SessionData session={session}></SessionData>
-                        </li>
-                    </ul>
                 </div>
             </div>
         );
