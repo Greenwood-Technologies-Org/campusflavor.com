@@ -1,6 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function VerifyEmailPage() {
     const params = useSearchParams();
@@ -12,11 +13,13 @@ export default function VerifyEmailPage() {
                 Please verify your email address
             </h1>
             <div>
-                <h2 className="text-lg">
-                    We sent an email to{" "}
-                    <span className="text-blue-700">{email}</span>, with a
-                    verification link.
-                </h2>
+                <Suspense>
+                    <h2 className="text-lg">
+                        We sent an email to{" "}
+                        <span className="text-blue-700">{email}</span>, with a
+                        verification link.
+                    </h2>
+                </Suspense>
                 <h2 className="text-lg">
                     Please click it to verify your email address.
                 </h2>
