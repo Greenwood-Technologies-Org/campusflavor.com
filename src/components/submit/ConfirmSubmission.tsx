@@ -9,7 +9,7 @@ import useSubmissionApi from "@/hooks/submit/useSubmissionApi";
 interface ConfirmSubmissionProps {
     isOpen: boolean;
     onClose: () => void;
-    designImage: string;
+    designImageUrl: string;
     mockupColor: string;
     mockupType: string;
     description: string;
@@ -19,7 +19,7 @@ interface ConfirmSubmissionProps {
 const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     isOpen,
     onClose,
-    designImage,
+    designImageUrl,
     mockupColor,
     mockupType,
     description,
@@ -31,32 +31,32 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         data: mockupData,
         loading: mockupLoading,
         error: mockupError,
-    } = useCreateMockupApi(designImage);
+    } = useCreateMockupApi(designImageUrl, mockupType);
 
+    // code for handling user pressing the submit button
     const {
         submit,
         loading: submissionLoading,
         success: submissionSuccess,
         error: submissionError,
     } = useSubmissionApi();
-    const [showSuccess, setShowSuccess] = useState(false);
 
     const handleSubmit = async () => {
-        console.log("Submitting...");
+
         const submissionInfo = {
-            imageURL: designImage,
+            mockupImageURL: mockupData!.url,
+            designImageURL: designImageUrl,
             mockupColor: mockupColor,
             mockupType: mockupType,
             description: description,
             username: username,
         };
         await submit(submissionInfo);
-        setShowSuccess(true);
     };
 
     if (!isOpen) return null;
 
-    if (submissionLoading) {
+    if (submissionLoading || mockupLoading) {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
                 <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
@@ -79,8 +79,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
                 <div className="bg-white p-8 space-y-5 rounded-lg shadow-lg flex flex-col items-center max-w-xs">
                     <h1 className="text-3xl">Success!</h1>
                     <p>
-                        Your submission was successful. You can view it on the
-                        design board.
+                        Your submission was successful. It will be posted to the design board after review.
                     </p>
                     <Link href="/">
                         <button className="text-white py-2 px-5 rounded-lg focus:outline-none bg-black hover:bg-gray-700">
@@ -97,24 +96,13 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
             <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
                 <h1 className="text-3xl mb-4">Preview</h1>
 
-                {mockupLoading ? (
-                    <div className="flex justify-center items-center my-8">
-                        <SyncLoader
-                            color="#000000"
-                            size={20}
-                            speedMultiplier={0.6}
-                            margin={5}
-                        />
-                    </div>
-                ) : (
-                    <SubmissionCard
-                        mockupImageUrl={
-                            mockupData ? mockupData.url : designImage
-                        }
-                        username={username}
-                        description={description}
-                    />
-                )}
+                <SubmissionCard
+                    mockupImageUrl={
+                        mockupData ? mockupData.url : designImageUrl
+                    }
+                    username={username}
+                    description={description}
+                />
 
                 <div className="max-w-xs flex items-center space-x-2 my-4 px-4">
                     <input

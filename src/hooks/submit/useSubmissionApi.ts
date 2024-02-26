@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 interface SubmissionInfo {
-    imageURL: string;
+    mockupImageURL: string;
+    designImageURL: string;
     mockupColor: string;
     mockupType: string;
     description: string;
@@ -14,6 +15,9 @@ const useSubmissionApi = () => {
     const [error, setError] = useState("");
 
     const submit = async (submissionInfo: SubmissionInfo) => {
+        console.log("Submitting");
+        console.log(submissionInfo);
+
         setLoading(true);
         setError("");
         try {

@@ -71,7 +71,7 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
     return (
         <div
             ref={containerRef}
-            className="border-2 border-gray-300 w-full h-full rounded-xl overflow-hidden"
+            className={`${backgroundColor} border-2 border-gray-300 w-full h-full rounded-xl overflow-hidden`}
         >
             <Stage width={dimensions.width} height={dimensions.height}>
                 <Layer>
