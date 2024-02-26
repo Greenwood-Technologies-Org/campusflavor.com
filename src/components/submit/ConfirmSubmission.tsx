@@ -31,7 +31,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         data: mockupData,
         loading: mockupLoading,
         error: mockupError,
-    } = useCreateMockupApi(designImageUrl);
+    } = useCreateMockupApi(designImageUrl, mockupType);
 
     const {
         submit,
