@@ -13,35 +13,23 @@ interface ApiError {
     message: string;
 }
 
-const useCreateMockupApi = (designImageUrl: string, mockupType: string) => {
+const useCreateMockupApi = (designImageUrl: string, mockupType: string): ApiResponse | null => {
     const [data, setData] = useState<ApiResponse | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<ApiError | null>(null);
 
     useEffect(() => {
-        if (!designImageUrl || designImageUrl == "") return;
+        if (!designImageUrl) return;
 
-        setLoading(true);
-        // Replace fakeCallCreateMockupApi with callCreateMockupApi to use the real API call
-        const fetchData = async () => {
-            try {
-                // const response = await callCreateMockupApi(designImageUrl, mockupType); // Uncomment this line to use the real API call
-                const response = await fakeCallCreateMockupApi(designImageUrl, mockupType); // Comment this line when using the real API call
-                setData(response);
-                setLoading(false);
-            } catch (error: any) {
-                // Using 'any' for catch clause variable type is a common practice in TypeScript for handling unknown errors.
-                setError({
-                    message: error.message || "An unknown error occurred",
-                });
-                setLoading(false);
-            }
-        };
+        fakeCallCreateMockupApi(designImageUrl, mockupType)
+            .then(setData)
+            .catch((error) => {
+                console.error("Error fetching data: ", error);
+                setData(null); // Optionally handle errors more gracefully
+            });
 
-        fetchData();
-    }, [designImageUrl]);
+        // The dependency array ensures this effect runs only when designImageUrl or mockupType changes
+    }, [designImageUrl, mockupType]);
 
-    return { data, loading, error };
+    return data; // This will initially be null and then update to the actual data once the promise resolves
 };
 
 // Actual API call function (not used initially, but ready for easy switch)
