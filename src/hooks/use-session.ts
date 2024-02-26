@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Session } from "@supabase/supabase-js";
 import { getBrowserClient } from "@/lib/db/db-client";
