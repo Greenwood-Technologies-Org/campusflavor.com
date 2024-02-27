@@ -20,6 +20,10 @@ function useSession() {
         fetchSession();
     }, []);
 
+    supabase.auth.onAuthStateChange((event, session) => {
+        setSession(session);
+    });
+
     return session;
 }
 

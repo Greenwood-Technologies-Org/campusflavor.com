@@ -9,8 +9,6 @@ import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
 import { Session } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
-import { useMutation } from "react-query";
-import getDbClient from "@/lib/db/db-client";
 
 interface SessionDataProps extends HTMLAttributes<HTMLDivElement> {
     session: Session | null;
