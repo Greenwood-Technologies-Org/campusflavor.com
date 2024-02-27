@@ -16,5 +16,25 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
+CREATE OR REPLACE FUNCTION insert_submission(
+    _competition_id UUID,
+    _user_id UUID,
+    _description TEXT,
+    _mockup_type public.mockup_type,
+    _approved BOOLEAN,
+    _mockup_color TEXT
+) RETURNS VOID AS $$
+BEGIN
+    INSERT INTO submission (
+        competition_id, user_id, description, mockup_type, approved, mockup_color
+    ) VALUES (
+        _competition_id,
+        _user_id,
+        _description,
+        _mockup_type,
+        _approved,
+        _mockup_color
+    );
+END;
+$$ LANGUAGE plpgsql;
 
