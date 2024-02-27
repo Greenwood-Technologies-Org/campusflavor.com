@@ -13,36 +13,34 @@ interface ApiError {
     message: string;
 }
 
-const useCreateMockupApi = (designImageUrl: string, mockupType: string) => {
-    const [data, setData] = useState<ApiResponse | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<ApiError | null>(null);
+const useCreateMockupApi = () => {
+    const [loading, setLoading] = useState(false);
+    const [mockupUrl, setmockupUrl] = useState("");
+    const [error, setError] = useState("");
 
-    useEffect(() => {
+    const fetchMockupUrl = async (designImageUrl: string, mockupType: string) => {
+        console.log("Getting Mockup Data");
+        console.log(designImageUrl, mockupType);
 
         setLoading(true);
-        // Replace fakeCallCreateMockupApi with callCreateMockupApi to use the real API call
-        const fetchData = async () => {
-            try {
-                // const response = await callCreateMockupApi(designImageUrl, mockupType); // Uncomment this line to use the real API call
-                console.log("Using fake API call");
-                const response = await fakeCallCreateMockupApi(designImageUrl, mockupType); // Comment this line when using the real API call
+        setError("");
 
-                setData(response);
-                setLoading(false);
-            } catch (error: any) {
-                // Using 'any' for catch clause variable type is a common practice in TypeScript for handling unknown errors.
-                setError({
-                    message: error.message || "An unknown error occurred",
-                });
-                setLoading(false);
-            }
-        };
+        try {
+            // const response = await callCreateMockupApi(designImageUrl, mockupType); // Uncomment this line to use the real API call
+            const response = await fakeCallCreateMockupApi(designImageUrl, mockupType);
+            console.log(response);
+            setmockupUrl(response.url);
 
-        fetchData();
-    }, [designImageUrl]);
+        } catch (e) {
+            setError("Getting mockup failed");
+            console.log(e);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    return { data, loading, error };
+
+    return { fetchMockupUrl, loading, mockupUrl, error };
 };
 
 // Actual API call function (not used initially, but ready for easy switch)

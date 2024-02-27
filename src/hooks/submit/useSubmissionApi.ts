@@ -69,12 +69,6 @@ const useSubmissionApi = () => {
         setLoading(true);
         setError("");
         try {
-            // Simulate API call with a timeout
-            await new Promise((resolve) => setTimeout(resolve, 2000));
-
-            // console.log(
-            //     "Who's stronger you or him? If Sukuna regained all his fingers I might have a little trouble. But would you lose? Nah I'd win"
-            // );
 
             const { mockupImageUrl, designImageUrl } =
                 await uploadMockupAndDesignImages(
@@ -96,6 +90,7 @@ const useSubmissionApi = () => {
             setSuccess(true);
         } catch (e) {
             setError("Submission failed");
+            console.log(e);
         } finally {
             setLoading(false);
         }
