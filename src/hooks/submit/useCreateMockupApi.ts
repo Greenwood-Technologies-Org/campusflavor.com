@@ -15,7 +15,7 @@ interface ApiError {
 
 const useCreateMockupApi = () => {
     const [loading, setLoading] = useState(false);
-    const [mockupUrl, setmockupUrl] = useState("");
+    const [url, setUrl] = useState("");
     const [error, setError] = useState("");
 
     const fetchMockupUrl = async (designImageUrl: string, mockupType: string) => {
@@ -29,7 +29,7 @@ const useCreateMockupApi = () => {
             // const response = await callCreateMockupApi(designImageUrl, mockupType); // Uncomment this line to use the real API call
             const response = await fakeCallCreateMockupApi(designImageUrl, mockupType);
             console.log(response);
-            setmockupUrl(response.url);
+            setUrl(response.url);
 
         } catch (e) {
             setError("Getting mockup failed");
@@ -40,7 +40,7 @@ const useCreateMockupApi = () => {
     };
 
 
-    return { fetchMockupUrl, loading, mockupUrl, error };
+    return { fetchMockupUrl, loading, url, error };
 };
 
 // Actual API call function (not used initially, but ready for easy switch)
