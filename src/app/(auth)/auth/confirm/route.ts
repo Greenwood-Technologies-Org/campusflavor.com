@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
 
         if (!error) {
             redirectTo.searchParams.delete("next");
-            redirectTo.basePath = "/signin";
+            redirectTo.basePath = "/";
             return NextResponse.redirect(redirectTo);
         }
     }
