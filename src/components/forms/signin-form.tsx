@@ -11,8 +11,8 @@ import {
 import { emailSchema, passwordSchema } from "@/lib/validations/auth";
 
 import { AuthError } from "@supabase/supabase-js";
-import { Button } from "../ui/button";
-import { Icons } from "../icons";
+import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/icons";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/password-input";
 import React from "react";

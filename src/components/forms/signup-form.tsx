@@ -59,7 +59,9 @@ export function SignUpForm() {
     async function onSubmit(data: Inputs) {
         mutation.mutate(data, {
             onSuccess: () => {
-                router.push(`/signup/verify-email?email=${data.email}`);
+                router.push(
+                    `/signup/verify-email?email=${data.email}&resend=false`
+                );
             },
             onError: (e: any) => {
                 console.log(e);
