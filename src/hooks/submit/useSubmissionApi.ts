@@ -1,6 +1,7 @@
 import { cwru_competition_id } from "@/lib/constants";
 import getDbClient from "@/lib/db/db-client";
 import { useState } from "react";
+import { uploadMockupAndDesignImages } from "./fileGenerationUpload";
 
 interface SubmissionInfo {
     mockupImageURL: string;
@@ -11,7 +12,9 @@ interface SubmissionInfo {
     username: string;
 }
 
-async function insert_submission_records(submissionInfo: SubmissionInfo) {
+async function insert_submission_records(
+    submissionInfo: SubmissionInfo
+): Promise<String> {
     const supabase = getDbClient();
     const user_uuid = await get_user_id(submissionInfo.username);
     const { data, error } = await supabase.rpc<any, any>("insert_submission", {
@@ -25,6 +28,28 @@ async function insert_submission_records(submissionInfo: SubmissionInfo) {
     if (error) {
         console.log(error.message);
         throw new Error(error.message);
+    }
+    return data;
+}
+async function insert_file_records(
+    submission_id: String,
+    file_url: String,
+    mockup_image_url: String
+): Promise<void> {
+    const supabase = getDbClient();
+    const result = await supabase.rpc("insert_file_upload", {
+        _submission_id: submission_id,
+        _time: new Date(),
+        _used: false,
+        _metadata: "Some metadata",
+        _file_url: file_url,
+        _mockup_image_url: mockup_image_url,
+    });
+
+    if (result.error) {
+        console.error(result.error.message);
+    } else {
+        console.log("New file upload entry inserted with ID:", result.data);
     }
 }
 
@@ -47,11 +72,25 @@ const useSubmissionApi = () => {
             // Simulate API call with a timeout
             await new Promise((resolve) => setTimeout(resolve, 2000));
 
-            console.log(
-                "Who's stronger you or him? If Sukuna regained all his fingers I might have a little trouble. But would you lose? Nah I'd win"
+            // console.log(
+            //     "Who's stronger you or him? If Sukuna regained all his fingers I might have a little trouble. But would you lose? Nah I'd win"
+            // );
+
+            const { mockupImageUrl, designImageUrl } =
+                await uploadMockupAndDesignImages(
+                    submissionInfo.mockupImageURL,
+                    submissionInfo.designImageURL
+                );
+
+            const submission_id = await insert_submission_records(
+                submissionInfo
             );
 
-            await insert_submission_records(submissionInfo);
+            await insert_file_records(
+                submission_id,
+                designImageUrl,
+                mockupImageUrl
+            );
 
             // Set success state
             setSuccess(true);
