@@ -68,18 +68,34 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         }
     }, [image]);
 
+    const exportDesignImage = () => {
+        transformerRef.current.visible(false);
+        transformerRef.current.getLayer().draw();
+        if (containerRef.current) {
+            // Ensuring the container exists
+            const stage = containerRef.current.querySelector('canvas');
+            if (stage) {
+                const dataURL = stage.toDataURL('design-image.png', 1);
+                // Create a temporary link to trigger the download
+                const link = document.createElement('a');
+                link.download = 'design-image.png'; // Set the download file name
+                link.href = dataURL;
+                document.body.appendChild(link); // Required for Firefox
+                link.click(); // Trigger the download
+                document.body.removeChild(link); // Clean up
+            }
+        }
+    };
+
+
     return (
         <div
             ref={containerRef}
-            className={`${backgroundColor} border-2 border-gray-300 w-full h-full rounded-xl overflow-hidden`}
+            style={{ borderColor: 'gray', borderWidth: 2, backgroundColor: backgroundColor }} // Example for directly using backgroundColor prop.
+            className={`w-full h-full rounded-xl overflow-hidden`}
         >
             <Stage width={dimensions.width} height={dimensions.height}>
                 <Layer>
-                    <Rect
-                        width={dimensions.width}
-                        height={dimensions.height}
-                        fill={backgroundColor}
-                    />
                     {image && (
                         <Image
                             image={image}
