@@ -33,7 +33,10 @@ export default function LoginPage() {
             )}
             <SignInForm />
             <div className="w-full h-fit flex flex-row text-gray-500 items-center justify-center">
-                <Link className="text-blue-500 underline" href="/reset">
+                <Link
+                    className="text-blue-500 underline"
+                    href="/reset-password"
+                >
                     Reset password?
                 </Link>
             </div>
