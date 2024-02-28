@@ -39,7 +39,8 @@ const SubmitPage = () => {
 
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        // SOMEHOW CALL MOCKUP EDITOR updateDesignImageUrl FUNCTION AND WAIT FOR RESPONSE
         setShowConfirmationModal(true);
     };
 
@@ -119,9 +120,7 @@ const SubmitPage = () => {
                 <ConfirmSubmission
                     isOpen={showConfirmationModal}
                     onClose={() => setShowConfirmationModal(false)}
-                    designImageUrl={
-                        imageFile ? URL.createObjectURL(imageFile) : ""
-                    }
+                    designImageUrl={designImageUrl}
                     mockupColor={selectedColor}
                     mockupType={selectedType}
                     description={description}
