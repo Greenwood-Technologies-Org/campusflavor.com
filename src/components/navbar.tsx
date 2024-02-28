@@ -104,6 +104,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                         <NavigationLink
                             href="/competitions"
                             pathname={pathname}
+                            activeOnSubpath
                         >
                             Competitions
                         </NavigationLink>
@@ -151,6 +152,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                             <NavigationLink
                                 href="/competitions"
                                 pathname={pathname}
+                                activeOnSubpath
                             >
                                 Competitions
                             </NavigationLink>
