@@ -39,7 +39,9 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                             onClick={() => router.push("/signin")}
                         >
                             <div className="flex flex-col">
-                                <p className="text-xl font-bold">Sign In</p>
+                                <p className="text-lg font-bold text-center rounded-md py-1 px-1 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500">
+                                    Sign In
+                                </p>
                             </div>
                         </button>
                         <div className="border-r-2 border-primary-500 min-h-4 h-full" />
@@ -48,7 +50,9 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                             onClick={() => router.push("/signin")}
                         >
                             <div className="flex flex-col">
-                                <p className="text-xl font-bold">Sign Up</p>
+                                <p className="text-lg font-bold text-center rounded-md py-1 px-1 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500">
+                                    Sign Up
+                                </p>
                             </div>
                         </button>
                     </div>
@@ -69,7 +73,7 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                     </div>
                     <div className="border-r-2 border-primary-500 min-h-4 h-full" />
                     <button
-                        className="text-lg font-bold"
+                        className="text-lg font-bold text-center rounded-md py-1 px-1 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500"
                         onClick={() => router.push("/signout")}
                     >
                         Sign Out
