@@ -17,6 +17,7 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
     const [imageSrc, setImageSrc] = useState<string | null>(null);
     const [image] = useImage(imageSrc!);
     const containerRef = useRef<HTMLDivElement>(null);
+    const stageRef = useRef<any>(null);
     const imageRef = useRef<any>(null);
     const transformerRef = useRef<any>(null);
     const [dimensions, setDimensions] = useState({
@@ -30,6 +31,7 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         if (imageFile) {
             const fileSrc = URL.createObjectURL(imageFile);
             setImageSrc(fileSrc);
+            updateDesignImageUrl();
         }
     }, [imageFile]);
 
@@ -95,7 +97,6 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
 
     const updateDesignImageUrl = async () => {
         const designImageUrl = await getDesignImageUrl();
-        console.log(designImageUrl);
         setDesignImageUrl(designImageUrl);
     };
 
@@ -105,7 +106,7 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
             style={{ borderColor: 'gray', borderWidth: 2, backgroundColor: backgroundColor }} // Example for directly using backgroundColor prop.
             className={`w-full h-full rounded-xl overflow-hidden`}
         >
-            <Stage width={dimensions.width} height={dimensions.height}>
+            <Stage width={dimensions.width} height={dimensions.height} ref={stageRef}>
                 <Layer>
                     {image && (
                         <Image
@@ -124,9 +125,10 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
                             height={image.height * dimensions.scaleY}
                             ref={imageRef}
                             draggable
+                            onDragEnd={updateDesignImageUrl}
                         />
                     )}
-                    <Transformer ref={transformerRef} />
+                    <Transformer ref={transformerRef} onTransformEnd={updateDesignImageUrl} />
                 </Layer>
             </Stage>
         </div>
