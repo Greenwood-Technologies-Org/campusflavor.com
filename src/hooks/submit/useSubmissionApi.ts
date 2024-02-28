@@ -1,7 +1,7 @@
 import { cwru_competition_id } from "@/lib/constants";
 import getDbClient from "@/lib/db/db-client";
-import { useState } from "react";
 import { uploadMockupAndDesignImages } from "./fileGenerationUpload";
+import { useState } from "react";
 
 interface SubmissionInfo {
     mockupImageURL: string;
@@ -31,6 +31,7 @@ async function insert_submission_records(
     }
     return data;
 }
+
 async function insert_file_records(
     submission_id: String,
     file_url: String,
@@ -69,7 +70,6 @@ const useSubmissionApi = () => {
         setLoading(true);
         setError("");
         try {
-
             const { mockupImageUrl, designImageUrl } =
                 await uploadMockupAndDesignImages(
                     submissionInfo.mockupImageURL,

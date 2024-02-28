@@ -18,16 +18,20 @@ const useCreateMockupApi = () => {
     const [url, setUrl] = useState("");
     const [error, setError] = useState("");
 
-    const fetchMockupUrl = async (designImageUrl: string, mockupType: string) => {
-
+    const fetchMockupUrl = async (
+        designImageUrl: string,
+        mockupType: string
+    ) => {
         setLoading(true);
         setError("");
 
         try {
             // const response = await callCreateMockupApi(designImageUrl, mockupType); // Uncomment this line to use the real API call
-            const response = await fakeCallCreateMockupApi(designImageUrl, mockupType);
+            const response = await fakeCallCreateMockupApi(
+                designImageUrl,
+                mockupType
+            );
             setUrl(response.url);
-
         } catch (e) {
             setError("Getting mockup failed");
             console.log(e);
@@ -36,12 +40,14 @@ const useCreateMockupApi = () => {
         }
     };
 
-
     return { fetchMockupUrl, loading, url, error };
 };
 
 // Actual API call function (not used initially, but ready for easy switch)
-const callCreateMockupApi = async (designImageUrl: string, mockupType: string): Promise<ApiResponse> => {
+const callCreateMockupApi = async (
+    designImageUrl: string,
+    mockupType: string
+): Promise<ApiResponse> => {
     var mockupTypeData;
 
     if (mockupType === "T-shirt") {
@@ -101,7 +107,7 @@ const callCreateMockupApi = async (designImageUrl: string, mockupType: string): 
             Accept: "application/json",
             api_key: "e4da0953-6fa4-4546-9e8d-df4b89723fef",
         },
-        data: mockupTypeData
+        data: mockupTypeData,
     };
 
     const response = await axios.request(options);
@@ -110,18 +116,22 @@ const callCreateMockupApi = async (designImageUrl: string, mockupType: string): 
 
 // Simulated API call function for testing without actual API request
 const fakeCallCreateMockupApi = async (
-    designImageUrl: string, mockupType: string
+    designImageUrl: string,
+    mockupType: string
 ): Promise<ApiResponse> => {
     await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate delay
 
     var mockupTypeUrl;
 
     if (mockupType === "T-shirt") {
-        mockupTypeUrl = "https://assets.mediamodifier.com/mockups/60215527042f6804dbdd9e1c/shirt-template-ghost-model_thumb.jpg";
+        mockupTypeUrl =
+            "https://assets.mediamodifier.com/mockups/60215527042f6804dbdd9e1c/shirt-template-ghost-model_thumb.jpg";
     } else if (mockupType === "Sweater") {
-        mockupTypeUrl = "https://assets.mediamodifier.com/mockups/5fbcafa06ed8231339c7e5a0/athletic-lady-wearing-white-long-sleeve_thumb.jpg";
+        mockupTypeUrl =
+            "https://assets.mediamodifier.com/mockups/5fbcafa06ed8231339c7e5a0/athletic-lady-wearing-white-long-sleeve_thumb.jpg";
     } else if (mockupType === "Hoodie") {
-        mockupTypeUrl = "https://assets.mediamodifier.com/mockups/5fcf32fa96de08215cc655f5/front-view-hoodie-mockup_thumb.jpg";
+        mockupTypeUrl =
+            "https://assets.mediamodifier.com/mockups/5fcf32fa96de08215cc655f5/front-view-hoodie-mockup_thumb.jpg";
     } else {
         throw new Error("Mockup type not found");
     }
