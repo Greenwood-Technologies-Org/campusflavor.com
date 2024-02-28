@@ -6,11 +6,13 @@ import useImage from "use-image";
 interface MockupEditorProps {
     imageFile: File;
     backgroundColor: string;
+    setDesignImageUrl: (url: string) => void;
 }
 
 const MockupEditor: React.FC<MockupEditorProps> = ({
     imageFile,
     backgroundColor,
+    setDesignImageUrl,
 }) => {
     const [imageSrc, setImageSrc] = useState<string | null>(null);
     const [image] = useImage(imageSrc!);
@@ -68,20 +70,33 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         }
     }, [image]);
 
-    const getDesignImageUrl = (): string => {
-        let designImageUrl = "";
+    const getDesignImageUrl = async (): Promise<string> => {
+        let designBlobUrl = "";
 
         transformerRef.current.visible(false);
         transformerRef.current.getLayer().draw();
         if (containerRef.current) {
-            // Ensuring the container exists
             const stage = containerRef.current.querySelector('canvas');
             if (stage) {
-                designImageUrl = stage.toDataURL();
+                // Convert canvas to data URL
+                const dataUrl = stage.toDataURL();
+
+                // Convert data URL to Blob
+                const fetchResponse = await fetch(dataUrl);
+                const blob = await fetchResponse.blob();
+
+                // Create a blob URL from the Blob
+                designBlobUrl = URL.createObjectURL(blob);
             }
         }
         transformerRef.current.visible(true);
-        return designImageUrl;
+        return designBlobUrl;
+    };
+
+    const updateDesignImageUrl = async () => {
+        const designImageUrl = await getDesignImageUrl();
+        console.log(designImageUrl);
+        setDesignImageUrl(designImageUrl);
     };
 
     return (

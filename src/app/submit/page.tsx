@@ -22,6 +22,13 @@ const SubmitPage = () => {
         setImageFile(file);
     };
 
+    // Add a new state for designImageUrl
+    const [designImageUrl, setDesignImageUrl] = useState<string>("");
+    // Function to update designImageUrl state
+    const handleSetDesignImageUrl = (url: string) => {
+        setDesignImageUrl(url);
+    };
+
     const colors = ["#ffffff", "#b2afaa", "#f59382", "#335231", "#2d407d", "#3a3a38", "#171f2c", "#101010"];
     const [selectedColor, setSelectedColor] = useState<string>(colors[0]);
 
@@ -65,6 +72,7 @@ const SubmitPage = () => {
                                     <MockupEditor
                                         imageFile={imageFile}
                                         backgroundColor={selectedColor}
+                                        setDesignImageUrl={handleSetDesignImageUrl}
                                     />
                                 ) : (
                                     <UploadDesign
