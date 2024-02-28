@@ -31,9 +31,12 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         if (imageFile) {
             const fileSrc = URL.createObjectURL(imageFile);
             setImageSrc(fileSrc);
-            updateDesignImageUrl();
         }
     }, [imageFile]);
+
+    useEffect(() => {
+        updateDesignImageUrl();
+    }, [imageRef]);
 
     useEffect(() => {
         const resizeObserver = new ResizeObserver((entries) => {
@@ -96,6 +99,8 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
     };
 
     const updateDesignImageUrl = async () => {
+        console.log("Updating design image URL");
+        await new Promise(resolve => setTimeout(resolve, 500));
         const designImageUrl = await getDesignImageUrl();
         setDesignImageUrl(designImageUrl);
     };
