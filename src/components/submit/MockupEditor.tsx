@@ -68,25 +68,19 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         }
     }, [image]);
 
-    const exportDesignImage = () => {
+    const getDesignImageUrl = () => {
         transformerRef.current.visible(false);
         transformerRef.current.getLayer().draw();
         if (containerRef.current) {
             // Ensuring the container exists
             const stage = containerRef.current.querySelector('canvas');
             if (stage) {
-                const dataURL = stage.toDataURL('design-image.png', 1);
-                // Create a temporary link to trigger the download
-                const link = document.createElement('a');
-                link.download = 'design-image.png'; // Set the download file name
-                link.href = dataURL;
-                document.body.appendChild(link); // Required for Firefox
-                link.click(); // Trigger the download
-                document.body.removeChild(link); // Clean up
+                const designImageUrl = stage.toDataURL();
+                console.log(designImageUrl);
+                transformerRef.current.visible(true);
             }
         }
     };
-
 
     return (
         <div
