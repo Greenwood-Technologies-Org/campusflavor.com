@@ -1,15 +1,15 @@
 "use client";
 
 import React, { HTMLAttributes, useState } from "react";
-import { SessionData } from "./session-data";
 
+import { Squash as Hamburger } from "hamburger-react";
+import Image from "next/image";
 import Link from "next/link";
+import { SessionData } from "./session-data";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useScroll } from "@/hooks/use-scroll";
 import useSession from "@/hooks/use-session";
-
-import { Squash as Hamburger } from "hamburger-react";
 
 interface NavigationLinkProps extends HTMLAttributes<HTMLAnchorElement> {
     href: string;
@@ -83,9 +83,10 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     {/* Logo Left-aligned */}
                     <Link href="/competitions">
                         <div className="flex items-center">
-                            <img
-                                src="/logos/250x100.svg"
+                            <Image
+                                src="/logos/logo_main_no_bg.svg"
                                 alt="Campus Flavor Logo"
+                                height={60}
                                 width={150}
                             />
                         </div>
