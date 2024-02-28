@@ -13,36 +13,31 @@ interface ApiError {
     message: string;
 }
 
-const useCreateMockupApi = (designImageUrl: string, mockupType: string) => {
-    const [data, setData] = useState<ApiResponse | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<ApiError | null>(null);
+const useCreateMockupApi = () => {
+    const [loading, setLoading] = useState(false);
+    const [url, setUrl] = useState("");
+    const [error, setError] = useState("");
 
-    useEffect(() => {
+    const fetchMockupUrl = async (designImageUrl: string, mockupType: string) => {
 
         setLoading(true);
-        // Replace fakeCallCreateMockupApi with callCreateMockupApi to use the real API call
-        const fetchData = async () => {
-            try {
-                // const response = await callCreateMockupApi(designImageUrl, mockupType); // Uncomment this line to use the real API call
-                console.log("Using fake API call");
-                const response = await fakeCallCreateMockupApi(designImageUrl, mockupType); // Comment this line when using the real API call
+        setError("");
 
-                setData(response);
-                setLoading(false);
-            } catch (error: any) {
-                // Using 'any' for catch clause variable type is a common practice in TypeScript for handling unknown errors.
-                setError({
-                    message: error.message || "An unknown error occurred",
-                });
-                setLoading(false);
-            }
-        };
+        try {
+            // const response = await callCreateMockupApi(designImageUrl, mockupType); // Uncomment this line to use the real API call
+            const response = await fakeCallCreateMockupApi(designImageUrl, mockupType);
+            setUrl(response.url);
 
-        fetchData();
-    }, [designImageUrl]);
+        } catch (e) {
+            setError("Getting mockup failed");
+            console.log(e);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    return { data, loading, error };
+
+    return { fetchMockupUrl, loading, url, error };
 };
 
 // Actual API call function (not used initially, but ready for easy switch)
@@ -118,18 +113,6 @@ const fakeCallCreateMockupApi = async (
     designImageUrl: string, mockupType: string
 ): Promise<ApiResponse> => {
     await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate delay
-
-    // Download design image from blob URL
-    // const response = await fetch(designImageUrl);
-    // const blob = await response.blob();
-    // const downloadUrl = window.URL.createObjectURL(blob);
-    // const a = document.createElement('a');
-    // a.href = downloadUrl;
-    // a.download = 'designImage'; // You can give it a more descriptive name based on your requirements
-    // document.body.appendChild(a);
-    // a.click();
-    // document.body.removeChild(a);
-    // window.URL.revokeObjectURL(downloadUrl);
 
     var mockupTypeUrl;
 

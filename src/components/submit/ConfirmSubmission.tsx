@@ -27,11 +27,24 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 }) => {
     const [isCheckboxSelected, setIsCheckboxSelected] = useState(false);
 
+    // code for handling the creation of the mockup image
     const {
-        data: mockupData,
+        fetchMockupUrl,
         loading: mockupLoading,
+        url: mockupUrl,
         error: mockupError,
-    } = useCreateMockupApi(designImageUrl, mockupType);
+    } = useCreateMockupApi();
+
+    const handleOpen = async () => {
+        await fetchMockupUrl(designImageUrl, mockupType);
+    };
+
+    useEffect(() => {
+        if (isOpen) {
+            handleOpen();
+        }
+    }, [isOpen]);
+
 
     // code for handling user pressing the submit button
     const {
@@ -44,7 +57,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     const handleSubmit = async () => {
 
         const submissionInfo = {
-            mockupImageURL: mockupData!.url,
+            mockupImageURL: mockupUrl,
             designImageURL: designImageUrl,
             mockupColor: mockupColor,
             mockupType: mockupType,
@@ -98,7 +111,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                 <SubmissionCard
                     mockupImageUrl={
-                        mockupData ? mockupData.url : designImageUrl
+                        mockupUrl ? mockupUrl : designImageUrl
                     }
                     username={username}
                     description={description}
