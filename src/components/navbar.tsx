@@ -1,15 +1,15 @@
 "use client";
 
 import React, { HTMLAttributes, useState } from "react";
-import { SessionData } from "./session-data";
 
+import { Squash as Hamburger } from "hamburger-react";
+import Image from "next/image";
 import Link from "next/link";
+import { SessionData } from "./session-data";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useScroll } from "@/hooks/use-scroll";
 import useSession from "@/hooks/use-session";
-
-import { Squash as Hamburger } from "hamburger-react";
 
 interface NavigationLinkProps extends HTMLAttributes<HTMLAnchorElement> {
     href: string;
@@ -74,7 +74,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
         }, [scroll.y, scroll.lastY]);
 
         return (
-            <div className="sticky top-0 z-40">
+            <div className="sticky top-0 z-40 w-full">
                 <nav
                     className="z-50 w-full flex items-center justify-between bg-secondary-500 shadow-md px-4 md:px-6 py-2 transform duration-300 ease-in-out"
                     {...props}
@@ -83,9 +83,10 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     {/* Logo Left-aligned */}
                     <Link href="/competitions">
                         <div className="flex items-center">
-                            <img
-                                src="/logos/250x100.svg"
+                            <Image
+                                src="/logos/logo_main_no_bg.svg"
                                 alt="Campus Flavor Logo"
+                                height={60}
                                 width={150}
                             />
                         </div>
@@ -103,6 +104,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                         <NavigationLink
                             href="/competitions"
                             pathname={pathname}
+                            activeOnSubpath
                         >
                             Competitions
                         </NavigationLink>
@@ -150,6 +152,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                             <NavigationLink
                                 href="/competitions"
                                 pathname={pathname}
+                                activeOnSubpath
                             >
                                 Competitions
                             </NavigationLink>

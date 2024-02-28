@@ -24,7 +24,6 @@ export default function RootLayout({
                 className={`w-screen min-h-screen ${inter.className} bg-secondary-500 flex flex-col custom-scrollbar overflow-x-hidden`}
             >
                 <QueryClientProvider client={client}>
-                    <Navbar />
                     {children}
                 </QueryClientProvider>
             </body>
