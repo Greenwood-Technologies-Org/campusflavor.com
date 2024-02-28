@@ -45,7 +45,7 @@ const SubmitPage = () => {
     };
 
     return (
-        <div className="h-screen justify-center items-center">
+        <div className="h-screen w-full justify-center items-center">
 
             <div className="flex justify-between items-start pt-5 px-5">
                 <Link href="/submit-info">
