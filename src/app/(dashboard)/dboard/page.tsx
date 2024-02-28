@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 import { Banner } from "@/components/banner";
 import GalleryPage from "@/components/gallery";
-import { SubmissionObject } from "../../lib/types";
+import { SubmissionObject } from "@/lib/types";
 import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
 

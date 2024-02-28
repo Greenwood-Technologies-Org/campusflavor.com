@@ -1,4 +1,4 @@
-import ExampleEmail from "@/app/competitions/emails/example";
+import ExampleEmail from "@/components/emails/example";
 import { Resend } from "resend";
 
 async function sendEmail() {

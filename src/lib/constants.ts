@@ -6,3 +6,6 @@ export const rotatingBannerItems: string[] = [
     "Win cash prizes!",
     "Voting opens in 7 days!",
 ];
+
+export const cwru_competition_id = "ca61ef73-99b5-43cc-b1b9-b9f6ba6a16ec";
+export const cwru_folder = "cwru_sp_2024";

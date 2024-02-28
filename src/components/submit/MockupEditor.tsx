@@ -68,18 +68,30 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         }
     }, [image]);
 
+    const getDesignImageUrl = (): string => {
+        let designImageUrl = "";
+
+        transformerRef.current.visible(false);
+        transformerRef.current.getLayer().draw();
+        if (containerRef.current) {
+            // Ensuring the container exists
+            const stage = containerRef.current.querySelector('canvas');
+            if (stage) {
+                designImageUrl = stage.toDataURL();
+            }
+        }
+        transformerRef.current.visible(true);
+        return designImageUrl;
+    };
+
     return (
         <div
             ref={containerRef}
-            className="border-2 border-gray-300 w-full h-full rounded-xl overflow-hidden"
+            style={{ borderColor: 'gray', borderWidth: 2, backgroundColor: backgroundColor }} // Example for directly using backgroundColor prop.
+            className={`w-full h-full rounded-xl overflow-hidden`}
         >
             <Stage width={dimensions.width} height={dimensions.height}>
                 <Layer>
-                    <Rect
-                        width={dimensions.width}
-                        height={dimensions.height}
-                        fill={backgroundColor}
-                    />
                     {image && (
                         <Image
                             image={image}
