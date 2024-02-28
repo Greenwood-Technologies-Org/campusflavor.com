@@ -19,8 +19,6 @@ const useCreateMockupApi = () => {
     const [error, setError] = useState("");
 
     const fetchMockupUrl = async (designImageUrl: string, mockupType: string) => {
-        console.log("Getting Mockup Data");
-        console.log(designImageUrl, mockupType);
 
         setLoading(true);
         setError("");
@@ -28,7 +26,6 @@ const useCreateMockupApi = () => {
         try {
             // const response = await callCreateMockupApi(designImageUrl, mockupType); // Uncomment this line to use the real API call
             const response = await fakeCallCreateMockupApi(designImageUrl, mockupType);
-            console.log(response);
             setUrl(response.url);
 
         } catch (e) {
@@ -116,18 +113,6 @@ const fakeCallCreateMockupApi = async (
     designImageUrl: string, mockupType: string
 ): Promise<ApiResponse> => {
     await new Promise((resolve) => setTimeout(resolve, 5000)); // Simulate delay
-
-    // Download design image from blob URL
-    // const response = await fetch(designImageUrl);
-    // const blob = await response.blob();
-    // const downloadUrl = window.URL.createObjectURL(blob);
-    // const a = document.createElement('a');
-    // a.href = downloadUrl;
-    // a.download = 'designImage'; // You can give it a more descriptive name based on your requirements
-    // document.body.appendChild(a);
-    // a.click();
-    // document.body.removeChild(a);
-    // window.URL.revokeObjectURL(downloadUrl);
 
     var mockupTypeUrl;
 
