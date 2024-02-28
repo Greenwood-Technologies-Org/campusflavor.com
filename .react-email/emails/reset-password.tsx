@@ -48,7 +48,7 @@ export const ResetPasswordEmail = ({
                         following the steps below.
                     </Text>
                     <Text className="mb-4 text-base leading-normal font-semibold text-gray-900">
-                        If you didn't request a password reset, you can just
+                        If you didn't request a password reset, you can safely
                         ignore this email.
                     </Text>
                     <Section className="py-3 flex flex-row items-center justify-center w-full">
