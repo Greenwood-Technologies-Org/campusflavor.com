@@ -67,7 +67,7 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                             {session.user.email}
                         </p>
                     </div>
-                    <div className="border-r-2 border-primary-500" />
+                    <div className="border-r-2 border-primary-500 min-h-4 h-full" />
                     <button
                         className="text-lg font-bold"
                         onClick={() => router.push("/signout")}
