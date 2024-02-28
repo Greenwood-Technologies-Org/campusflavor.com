@@ -45,7 +45,8 @@ export const VerificationCodeEmail = ({
                         Verify your email
                     </Heading>
                     <Text className="mb-4 text-base leading-normal text-gray-900">
-                        Press the button to verify your email.
+                        Thank you for signing up to Campus Flavor. To complete
+                        registration please verify your email.
                     </Text>
                     <Section className="py-3 flex flex-row items-center justify-center w-full">
                         <Button
