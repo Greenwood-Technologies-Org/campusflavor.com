@@ -6,15 +6,18 @@ import useImage from "use-image";
 interface MockupEditorProps {
     imageFile: File;
     backgroundColor: string;
+    setDesignImageUrl: (url: string) => void;
 }
 
 const MockupEditor: React.FC<MockupEditorProps> = ({
     imageFile,
     backgroundColor,
+    setDesignImageUrl,
 }) => {
     const [imageSrc, setImageSrc] = useState<string | null>(null);
     const [image] = useImage(imageSrc!);
     const containerRef = useRef<HTMLDivElement>(null);
+    const stageRef = useRef<any>(null);
     const imageRef = useRef<any>(null);
     const transformerRef = useRef<any>(null);
     const [dimensions, setDimensions] = useState({
@@ -30,6 +33,10 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
             setImageSrc(fileSrc);
         }
     }, [imageFile]);
+
+    useEffect(() => {
+        updateDesignImageUrl();
+    }, [imageRef]);
 
     useEffect(() => {
         const resizeObserver = new ResizeObserver((entries) => {
@@ -68,20 +75,34 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         }
     }, [image]);
 
-    const getDesignImageUrl = (): string => {
-        let designImageUrl = "";
+    const getDesignImageUrl = async (): Promise<string> => {
+        let designBlobUrl = "";
 
         transformerRef.current.visible(false);
         transformerRef.current.getLayer().draw();
         if (containerRef.current) {
-            // Ensuring the container exists
             const stage = containerRef.current.querySelector('canvas');
             if (stage) {
-                designImageUrl = stage.toDataURL();
+                // Convert canvas to data URL
+                const dataUrl = stage.toDataURL();
+
+                // Convert data URL to Blob
+                const fetchResponse = await fetch(dataUrl);
+                const blob = await fetchResponse.blob();
+
+                // Create a blob URL from the Blob
+                designBlobUrl = URL.createObjectURL(blob);
             }
         }
         transformerRef.current.visible(true);
-        return designImageUrl;
+        return designBlobUrl;
+    };
+
+    const updateDesignImageUrl = async () => {
+        console.log("Updating design image URL");
+        await new Promise(resolve => setTimeout(resolve, 500));
+        const designImageUrl = await getDesignImageUrl();
+        setDesignImageUrl(designImageUrl);
     };
 
     return (
@@ -90,7 +111,7 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
             style={{ borderColor: 'gray', borderWidth: 2, backgroundColor: backgroundColor }} // Example for directly using backgroundColor prop.
             className={`w-full h-full rounded-xl overflow-hidden`}
         >
-            <Stage width={dimensions.width} height={dimensions.height}>
+            <Stage width={dimensions.width} height={dimensions.height} ref={stageRef}>
                 <Layer>
                     {image && (
                         <Image
@@ -109,9 +130,10 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
                             height={image.height * dimensions.scaleY}
                             ref={imageRef}
                             draggable
+                            onDragEnd={updateDesignImageUrl}
                         />
                     )}
-                    <Transformer ref={transformerRef} />
+                    <Transformer ref={transformerRef} onTransformEnd={updateDesignImageUrl} />
                 </Layer>
             </Stage>
         </div>

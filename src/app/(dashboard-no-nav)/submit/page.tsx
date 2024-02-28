@@ -1,13 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
+import Link from 'next/link';
+import { useState } from "react";
+
 import ConfirmSubmission from "@/components/submit/ConfirmSubmission";
-import Link from "next/link";
 import MockupColor from "@/components/submit/MockupColor";
 import MockupDescription from "@/components/submit/MockupDescription";
 import MockupType from "@/components/submit/MockupType";
 import UploadDesign from "@/components/submit/UploadDesign";
-import dynamic from "next/dynamic";
-import { useState } from "react";
 
 // Dynamically import the MockupEditor with SSR disabled
 const MockupEditor = dynamic(() => import("@/components/submit/MockupEditor"), {
@@ -21,16 +22,14 @@ const SubmitPage = () => {
         setImageFile(file);
     };
 
-    const colors = [
-        "#ffffff",
-        "#b2afaa",
-        "#f59382",
-        "#335231",
-        "#2d407d",
-        "#3a3a38",
-        "#171f2c",
-        "#101010",
-    ];
+    // Add a new state for designImageUrl
+    const [designImageUrl, setDesignImageUrl] = useState<string>("");
+    // Function to update designImageUrl state
+    const handleSetDesignImageUrl = (url: string) => {
+        setDesignImageUrl(url);
+    };
+
+    const colors = ["#ffffff", "#b2afaa", "#f59382", "#335231", "#2d407d", "#3a3a38", "#171f2c", "#101010"];
     const [selectedColor, setSelectedColor] = useState<string>(colors[0]);
 
     const types = ["T-shirt", "Sweater", "Hoodie"];
@@ -40,21 +39,18 @@ const SubmitPage = () => {
 
     const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        // SOMEHOW CALL MOCKUP EDITOR updateDesignImageUrl FUNCTION AND WAIT FOR RESPONSE
         setShowConfirmationModal(true);
     };
 
     return (
-        <div className="w-full h-full justify-center items-center">
+        <div className="h-screen w-full justify-center items-center">
+
             <div className="flex justify-between items-start pt-5 px-5">
                 <Link href="/submit-info">
-                    <div className="flex items-center space-x-1">
-                        {/* Use flex to align items horizontally */}
-                        <img
-                            src="/icons/left-chevron.svg"
-                            alt="Back"
-                            className="w-6 h-6"
-                        />
+                    <div className="flex items-center space-x-1"> {/* Use flex to align items horizontally */}
+                        <img src="/icons/left-chevron.svg" alt="Back" className="w-6 h-6" />
                         <span>Back</span> {/* Add text next to the chevron */}
                     </div>
                 </Link>
@@ -77,6 +73,7 @@ const SubmitPage = () => {
                                     <MockupEditor
                                         imageFile={imageFile}
                                         backgroundColor={selectedColor}
+                                        setDesignImageUrl={handleSetDesignImageUrl}
                                     />
                                 ) : (
                                     <UploadDesign
@@ -111,11 +108,10 @@ const SubmitPage = () => {
 
                 <button
                     disabled={!imageFile}
-                    className={`flex-grow py-2 px-8 my-8 rounded-lg focus:outline-none ${
-                        !imageFile
-                            ? "bg-gray-500 text-white"
-                            : "bg-black text-white hover:bg-gray-700"
-                    }`}
+                    className={`flex-grow py-2 px-8 my-8 rounded-lg focus:outline-none ${!imageFile
+                        ? "bg-gray-500 text-white"
+                        : "bg-black text-white hover:bg-gray-700"
+                        }`}
                     onClick={handleSubmit}
                 >
                     Submit
@@ -124,9 +120,7 @@ const SubmitPage = () => {
                 <ConfirmSubmission
                     isOpen={showConfirmationModal}
                     onClose={() => setShowConfirmationModal(false)}
-                    designImageUrl={
-                        imageFile ? URL.createObjectURL(imageFile) : ""
-                    }
+                    designImageUrl={designImageUrl}
                     mockupColor={selectedColor}
                     mockupType={selectedType}
                     description={description}
