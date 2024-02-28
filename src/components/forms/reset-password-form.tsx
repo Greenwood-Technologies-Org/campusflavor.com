@@ -54,8 +54,6 @@ export function ResetPasswordForm() {
             const token_hash = searchParams.get("token_hash");
             const type = searchParams.get("type") as EmailOtpType | null;
 
-            console.log(token_hash, type);
-
             if (token_hash && type) {
                 const { error: authError } = await dbClient.auth.verifyOtp({
                     type,
