@@ -35,7 +35,7 @@ export const ResetPasswordEmail = ({
             <Body className="bg-white font-sans">
                 <Container className="mx-auto py-5 px-0 max-w-xl flex flex-col">
                     <Img
-                        src={`${baseUrl}/static/logo_main_no_bg.svg`}
+                        src={`https://www.campusflavor.com/logos/logo_main_no_bg.svg`}
                         width="150"
                         alt="Campus Flavor"
                     />
