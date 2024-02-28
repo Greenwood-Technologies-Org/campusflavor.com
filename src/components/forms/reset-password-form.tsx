@@ -12,6 +12,7 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { Button } from "../ui/button";
+import { Icons } from "../icons";
 import { PasswordInput } from "@/components/password-input";
 import React from "react";
 import { getBrowserClient } from "@/lib/db/db-client";
@@ -35,6 +36,7 @@ type Inputs = z.infer<typeof formSchema>;
 
 export function ResetPasswordForm() {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [errorMessage, setErrorMessage] = React.useState<string>("");
 
     const form = useForm<Inputs>({
@@ -49,9 +51,10 @@ export function ResetPasswordForm() {
 
     const mutation = useMutation(
         async (data: Inputs) => {
-            const searchParams = useSearchParams();
             const token_hash = searchParams.get("token_hash");
             const type = searchParams.get("type") as EmailOtpType | null;
+
+            console.log(token_hash, type);
 
             if (token_hash && type) {
                 const { error: authError } = await dbClient.auth.verifyOtp({
@@ -134,12 +137,12 @@ export function ResetPasswordForm() {
                     )}
                 />
                 <Button disabled={mutation.isLoading}>
-                    {/* {isPending && (
+                    {mutation.isLoading && (
                         <Icons.spinner
                             className="mr-2 size-4 animate-spin"
                             aria-hidden="true"
                         />
-                    )} */}
+                    )}
                     Reset Password
                     <span className="sr-only">Reset password</span>
                 </Button>
