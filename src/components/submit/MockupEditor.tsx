@@ -68,18 +68,20 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         }
     }, [image]);
 
-    const getDesignImageUrl = () => {
+    const getDesignImageUrl = (): string => {
+        let designImageUrl = "";
+
         transformerRef.current.visible(false);
         transformerRef.current.getLayer().draw();
         if (containerRef.current) {
             // Ensuring the container exists
             const stage = containerRef.current.querySelector('canvas');
             if (stage) {
-                const designImageUrl = stage.toDataURL();
-                console.log(designImageUrl);
-                transformerRef.current.visible(true);
+                designImageUrl = stage.toDataURL();
             }
         }
+        transformerRef.current.visible(true);
+        return designImageUrl;
     };
 
     return (
