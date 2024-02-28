@@ -18,7 +18,7 @@ function useSession() {
             }
         }
         fetchSession();
-    }, []);
+    }, [supabase.auth]);
 
     supabase.auth.onAuthStateChange((event, session) => {
         setSession(session);

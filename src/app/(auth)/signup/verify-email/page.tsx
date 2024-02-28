@@ -20,17 +20,15 @@ export default function VerifyEmailPage() {
 
     return (
         <div className="w-fit h-fit flex flex-col items-center gap-4">
-            <h1 className="text-xl font-bold">
-                Please verify your email address
-            </h1>
-            <div>
+            <h1 className="text-xl font-bold">Check your Inbox</h1>
+            <div className="flex flex-col items-center justify-center">
                 <h2 className="text-lg">
-                    We sent an email to{" "}
-                    <span className="text-blue-700">{email}</span>, with a
+                    We sent an email to&nbsp;
+                    <span className="text-blue-500">{email}</span>, with a
                     verification link.
                 </h2>
                 <h2 className="text-lg">
-                    Please click it to verify your email address.
+                    Please open it to verify your account.
                 </h2>
             </div>
         </div>
