@@ -18,9 +18,10 @@ const SubmissionCard: React.FC<SubmissionCardProps> = ({
                 <Image
                     src={mockupImageUrl}
                     alt="Mockup Image"
-                    width={768}
-                    height={929}
-                    className="object-cover object-center"
+                    width={500}
+                    height={500}
+                    className="aspect-square object-cover rounded-t-xl"
+                    loading="eager"
                 />
             </div>
             <div className="border-t-2 border-gray w-full"></div>
