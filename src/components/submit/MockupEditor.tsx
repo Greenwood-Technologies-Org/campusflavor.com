@@ -1,7 +1,9 @@
-import { Image, Layer, Rect, Stage, Transformer } from "react-konva";
 import React, { useEffect, useRef, useState } from "react";
 
+import { Image, Layer, Stage, Transformer } from "react-konva";
 import useImage from "use-image";
+
+import axios from "axios";
 
 interface MockupEditorProps {
     imageFile: File;
@@ -98,8 +100,11 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         return designBlobUrl;
     };
 
+
+
     const updateDesignImageUrl = async () => {
         console.log("Updating design image URL");
+        // need a delay to allow the updateImageUrl to start after the image has been uploaded
         await new Promise(resolve => setTimeout(resolve, 500));
         const designImageUrl = await getDesignImageUrl();
         setDesignImageUrl(designImageUrl);
