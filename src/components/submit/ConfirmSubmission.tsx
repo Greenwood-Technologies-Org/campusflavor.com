@@ -35,7 +35,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         error: mockupError,
     } = useCreateMockupApi();
     const handleOpen = async () => {
-        await fetchMockupUrl(designImageUrl, mockupType);
+        await fetchMockupUrl(designImageUrl, mockupType, mockupColor);
     };
     useEffect(() => {
         if (isOpen) {

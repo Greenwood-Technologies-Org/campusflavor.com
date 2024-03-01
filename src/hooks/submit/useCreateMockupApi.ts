@@ -13,7 +13,7 @@ interface ApiError {
 }
 
 // NEEDS TO BE HIDDEN BEFORE PUBLISHING SITE
-const mediaModifierApiKey = "e4da0953-6fa4-4546-9e8d-df4b89723fef";
+const mediaModifierApiKey = "89cee3be-166b-4070-a7a9-e5c6417303d4";
 
 const getPublicDesignImageUrl = async (
     designImageBlob: string,
@@ -33,7 +33,8 @@ const useCreateMockupApi = () => {
 
     const fetchMockupUrl = async (
         designImageUrl: string,
-        mockupType: string
+        mockupType: string,
+        mockupColor: string
     ) => {
         setLoading(true);
         setError("");
@@ -41,10 +42,11 @@ const useCreateMockupApi = () => {
         try {
             const publicDesignImageUrl = await getPublicDesignImageUrl(designImageUrl);
 
-            const response = await callCreateMockupApi(publicDesignImageUrl, mockupType); // Uncomment this line to use the real API call
+            const response = await callCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor); // Uncomment this line to use the real API call
             // const response = await fakeCallCreateMockupApi(
             //     publicDesignImageUrl,
             //     mockupType
+            //     mockupColor
             // );
             setUrl(response.url);
         } catch (e) {
@@ -58,11 +60,30 @@ const useCreateMockupApi = () => {
     return { fetchMockupUrl, loading, url, error };
 };
 
+function hexToJsonRgb(hex: string): { red: number; green: number; blue: number } {
+    // Remove the hash at the start if it's there
+    hex = hex.replace(/^#/, '');
+
+    // Parse the hex string into integers for red, green, and blue
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+
+    return { red: r, green: g, blue: b };
+}
+
+
 // Actual API call function (not used initially, but ready for easy switch)
 const callCreateMockupApi = async (
     designImageUrl: string,
-    mockupType: string
+    mockupType: string,
+    mockupColor: string,
 ): Promise<ApiResponse> => {
+    // get json RBG data for mockupColor
+    const mockupColorJson = hexToJsonRgb(mockupColor);
+    console.log(mockupColor);
+
+
     var mockupTypeData;
 
     if (mockupType === "T-shirt") {
@@ -78,7 +99,7 @@ const callCreateMockupApi = async (
                 {
                     id: '16d9837d-8463-49ba-934b-42653270afaa',
                     checked: true,
-                    color: { red: 255, green: 205, blue: 205 }
+                    color: mockupColorJson
                 },
                 {
                     id: '3c7aee09-37b7-42fe-9275-b5f0c7788dc6',
@@ -100,7 +121,7 @@ const callCreateMockupApi = async (
                 {
                     id: '9ba9ee04-4859-4f38-8837-0786af210b6d',
                     checked: true,
-                    color: { red: 255, green: 205, blue: 205 }
+                    color: mockupColorJson
                 },
                 {
                     id: 'd47d677f-d35f-44b9-bd2c-648a0a293259',
@@ -122,7 +143,7 @@ const callCreateMockupApi = async (
                 {
                     id: '0f4ad8a2-70cf-4381-bc0a-e5f6754d388b',
                     checked: true,
-                    color: { red: 255, green: 205, blue: 205 }
+                    color: mockupColorJson
                 },
                 {
                     id: '904d0277-b414-4179-b4e7-4ad8eedfe53d',
