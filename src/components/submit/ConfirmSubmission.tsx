@@ -35,7 +35,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         error: mockupError,
     } = useCreateMockupApi();
     const handleOpen = async () => {
-        await fetchMockupUrl(designImageUrl, mockupType);
+        await fetchMockupUrl(designImageUrl, mockupType, mockupColor);
     };
     useEffect(() => {
         if (isOpen) {
@@ -140,11 +140,10 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                     <button
                         disabled={!isCheckboxSelected}
-                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${
-                            !isCheckboxSelected
-                                ? "bg-gray-500 text-white"
-                                : "bg-black text-white hover:bg-gray-700"
-                        }`}
+                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${!isCheckboxSelected
+                            ? "bg-gray-500 text-white"
+                            : "bg-black text-white hover:bg-gray-700"
+                            }`}
                         onClick={handleSubmit}
                     >
                         Submit
