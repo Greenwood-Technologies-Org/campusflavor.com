@@ -38,6 +38,7 @@
         "react-dropdown-menu": "^0.0.2",
         "react-dropzone": "^14.2.3",
         "react-fast-marquee": "^1.6.3",
+        "react-fontawesome": "^1.7.1",
         "react-hook-form": "^7.50.1",
         "react-konva": "^18.2.10",
         "react-query": "^3.39.3",
