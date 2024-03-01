@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 
 import { Banner } from "@/components/banner";
 import GalleryPage from "@/components/gallery";
@@ -25,6 +25,7 @@ async function getURLsForSchool(school_affiliation: string) {
         url_link: item.url_link,
         username: item.username,
         posted_date: item.posted_date,
+        submission_id: item.submission_id,
     }));
 }
 
@@ -36,15 +37,16 @@ function Page() {
         getURLsForSchool(school_affiliation)
             .then(setSubmissions)
             .catch(console.error);
-    }, [school_affiliation]); // Dependency array controls when the effect runs
+    }, [school_affiliation]);
 
-    // Since submissions is always an array, no need to check for null before mapping
     const bannerItems = submissions.map((submission) => submission.url_link);
 
     return (
         <main className="w-full flex flex-col flex-grow items-center">
             <Banner rotatingBannerItems={rotatingBannerItems} />
-            <GalleryPage gallery={submissions} />
+            <Suspense fallback={<div>Loading...</div>}>
+                <GalleryPage gallery={submissions} />
+            </Suspense>
         </main>
     );
 }
