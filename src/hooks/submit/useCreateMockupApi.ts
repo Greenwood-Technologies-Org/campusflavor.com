@@ -69,7 +69,6 @@ const getPublicDesignImageUrl = async (
 ): Promise<string> => {
     // convert our image to 500x500px
     const resizedImage = await resizeImage(designImageBlob, 500, 500);
-    downloadImage(resizedImage);
 
     // THIS IS WHERE WE NEED TO UPLOAD IMAGE AND GET PUBLICLY ACCESSIBLE URL FOR 500X500 IMAGE
     // simulate delay while getting image url
@@ -97,8 +96,8 @@ const useCreateMockupApi = () => {
         try {
             const publicDesignImageUrl = await getPublicDesignImageUrl(designImageUrl);
 
-            //const response = await callCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor); // Uncomment this line to use the real API call
-            const response = await fakeCallCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor);
+            const response = await callCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor); // Uncomment this line to use the real API call
+            //const response = await fakeCallCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor);
             setUrl(response.url);
         } catch (e) {
             setError("Getting mockup failed");
