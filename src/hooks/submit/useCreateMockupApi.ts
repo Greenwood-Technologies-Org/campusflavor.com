@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import axios from "axios";
+import { get } from "http";
 
 interface ApiResponse {
     success: boolean;
@@ -72,6 +73,11 @@ function hexToJsonRgb(hex: string): { red: number; green: number; blue: number }
     return { red: r, green: g, blue: b };
 }
 
+function getBackgroundColorJson(): { red: number; green: number; blue: number } {
+    // RGB for white
+    return { red: 255, green: 255, blue: 255 };
+}
+
 
 // Actual API call function (not used initially, but ready for easy switch)
 const callCreateMockupApi = async (
@@ -81,6 +87,7 @@ const callCreateMockupApi = async (
 ): Promise<ApiResponse> => {
     // get json RBG data for mockupColor
     const mockupColorJson = hexToJsonRgb(mockupColor);
+    const backgroundColorJson = getBackgroundColorJson();
     console.log(mockupColor);
 
 
@@ -104,7 +111,7 @@ const callCreateMockupApi = async (
                 {
                     id: '3c7aee09-37b7-42fe-9275-b5f0c7788dc6',
                     checked: true,
-                    color: { red: 173, green: 216, blue: 230 }
+                    color: backgroundColorJson
                 }
             ]
         };
@@ -126,7 +133,7 @@ const callCreateMockupApi = async (
                 {
                     id: 'd47d677f-d35f-44b9-bd2c-648a0a293259',
                     checked: true,
-                    color: { red: 173, green: 216, blue: 230 }
+                    color: backgroundColorJson
                 }
             ]
         };
@@ -148,7 +155,7 @@ const callCreateMockupApi = async (
                 {
                     id: '904d0277-b414-4179-b4e7-4ad8eedfe53d',
                     checked: true,
-                    color: { red: 173, green: 216, blue: 230 }
+                    color: backgroundColorJson
                 }
             ]
         };
