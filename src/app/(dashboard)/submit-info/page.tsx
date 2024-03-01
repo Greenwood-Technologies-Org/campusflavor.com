@@ -5,7 +5,7 @@ export default function SubmitInfo() {
         <div className="w-full flex flex-col flex-grow items-center pt-11">
             <h1 className="text-3xl font-medium">Submission Info</h1>
 
-            <div className="grid grid-cols-2 grid-rows-3 h-screen w-full p-4">
+            <div className="grid grid-cols-2 grid-rows-3 gap-8 h-screen w-full p-4">
                 <div className="bg-red-500 text-white p-4">1</div>
                 <div className="bg-green-500 text-white p-4">2</div>
                 <div className="bg-blue-500 text-white p-4">3</div>
