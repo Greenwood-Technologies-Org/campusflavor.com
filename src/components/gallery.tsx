@@ -2,16 +2,36 @@
 
 import React, { useState, useEffect } from "react";
 import ShirtBox from "./shirt-box";
-import { SubmissionObject } from "../lib/types";
+import { SubmissionObject, VotingStatus } from "../lib/types";
 import { usePathname, useSearchParams } from "next/navigation";
 
 interface GalleryPageProps {
     gallery: SubmissionObject[];
+    votingStatusParam: VotingStatus;
 }
 
-const GalleryPage: React.FC<GalleryPageProps> = ({ gallery }) => {
+function determineVotingStatusByDate(): VotingStatus {
+    const currentDate = new Date();
+    const prevotingEndDate = new Date("2024-03-05"); // Example date for when prevoting ends
+    const votingEndDate = new Date("2024-04-02"); // Example date for when voting ends
+
+    if (currentDate <= prevotingEndDate) {
+        return VotingStatus.Prevoting;
+    } else if (currentDate <= votingEndDate) {
+        return VotingStatus.Voting;
+    } else {
+        return VotingStatus.Finished;
+    }
+}
+
+const GalleryPage: React.FC<GalleryPageProps> = ({
+    gallery,
+    votingStatusParam,
+}) => {
     const [searchParams] = useSearchParams();
     const [urlSubmissionId, setUrlSubmissionId] = useState<string | null>(null);
+    const [votingStatus, setVotingStatus] =
+        useState<VotingStatus>(votingStatusParam);
 
     useEffect(() => {
         try {
@@ -29,6 +49,23 @@ const GalleryPage: React.FC<GalleryPageProps> = ({ gallery }) => {
             setUrlSubmissionId(null);
         }
     }, [searchParams]);
+
+    useEffect(() => {
+        // Example usage
+
+        const statusFromApi: VotingStatus = determineVotingStatusByDate(); // This should just be a function that checks the date and returns a votingStatus depending on the result
+
+        if (statusFromApi === VotingStatus.Prevoting) {
+            // Handle prevoting logic here
+            setVotingStatus(VotingStatus.Prevoting);
+        } else if (statusFromApi === VotingStatus.Voting) {
+            // Handle voting logic here
+            setVotingStatus(VotingStatus.Voting);
+        } else if (votingStatus === VotingStatus.Finished) {
+            // Handle finished logic here
+            setVotingStatus(VotingStatus.Finished);
+        }
+    }, [votingStatus]);
 
     return (
         <div
@@ -48,6 +85,7 @@ const GalleryPage: React.FC<GalleryPageProps> = ({ gallery }) => {
                     isHighlightedInitially={
                         urlSubmissionId === item.submission_id
                     }
+                    votingStatus={votingStatus}
                 />
             ))}
         </div>

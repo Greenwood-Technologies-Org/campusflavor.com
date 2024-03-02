@@ -5,6 +5,7 @@ import React, { useState, useEffect, forwardRef, useRef } from "react";
 import LikeButton from "./ui/like_button";
 import getDbClient from "@/lib/db/db-client";
 import ShareButton from "./ui/share_botton";
+import { VotingStatus } from "@/lib/types";
 
 function timeAgo(dateStr: string): string {
     const date = new Date(dateStr);
@@ -27,6 +28,7 @@ export type ShirtBoxProps = {
     postedDate: string;
     submissionId: string;
     isHighlightedInitially?: boolean;
+    votingStatus: VotingStatus;
 };
 
 async function getInitialVoteCount(submission_id: string) {
@@ -67,6 +69,7 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             postedDate,
             submissionId,
             isHighlightedInitially = false,
+            votingStatus,
             ...props
         },
         ref
@@ -158,12 +161,14 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
                         });
                     }}
                 />
-                <LikeButton
-                    initialCount={likeStatus.initialCount}
-                    isInitiallyLiked={likeStatus.isInitiallyLiked}
-                    submissionId={submissionId}
-                    user_id={user_id}
-                />
+                {votingStatus === VotingStatus.Voting && (
+                    <LikeButton
+                        initialCount={likeStatus.initialCount}
+                        isInitiallyLiked={likeStatus.isInitiallyLiked}
+                        submissionId={submissionId}
+                        user_id={user_id}
+                    />
+                )}
             </div>
         );
     }

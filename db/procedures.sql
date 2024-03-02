@@ -17,6 +17,27 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION get_competition_dates(school_affil text)
+RETURNS TABLE(
+    submission_start timestamp,
+    submission_end timestamp,
+    voting_start timestamp,
+    voting_end timestamp
+) AS $$
+BEGIN
+  RETURN QUERY
+  SELECT 
+    competition.submission_start_date, 
+    competition.submission_end_date,
+    competition.voting_start_date,
+    competition.voting_end_date
+  FROM 
+    competition
+  WHERE 
+    competition.school_affiliation = school_affil;
+END;
+$$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION insert_file_upload(
     _submission_id UUID,
     _time TIMESTAMP WITHOUT TIME ZONE,
