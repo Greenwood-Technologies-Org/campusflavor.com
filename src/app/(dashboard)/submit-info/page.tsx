@@ -25,9 +25,13 @@ export default function SubmitInfo() {
                     </div>
                 </div>
 
-                {/* Review Content */}
-                <div className="flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
-                    <div className="flex items-center justify-center w-full md:w-1/2 order-2 md:order-1"> {/* Adjusted: removed fixed height */}
+                {/* Review Content (below medium size) */}
+                <div className="md:hidden flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
+                    <div className="w-full md:w-1/2">
+                        <h2 className="text-4xl font-semibold pb-4">Review</h2>
+                        <span>We will review your submission  to make sure it doesn’t violate any CWRU trademarks. These submissions go to the design board!</span>
+                    </div>
+                    <div className="flex items-center justify-center w-full md:w-1/2"> {/* Adjusted: removed fixed height */}
                         <div className="max-w-md md:max-w-xs w-full h-auto"> {/* New: Control width, auto-adjust height */}
                             <Image
                                 src="/images/submit-info/review.png"
@@ -39,7 +43,23 @@ export default function SubmitInfo() {
                             />
                         </div>
                     </div>
-                    <div className="w-full md:w-1/2 order-1 md:order-2 pb-8 md:pb-0">
+                </div>
+
+                {/* Review Content (above medium size) */}
+                <div className="hidden md:flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
+                    <div className="flex items-center justify-center w-full md:w-1/2"> {/* Adjusted: removed fixed height */}
+                        <div className="max-w-md md:max-w-xs w-full h-auto"> {/* New: Control width, auto-adjust height */}
+                            <Image
+                                src="/images/submit-info/review.png"
+                                alt="Review"
+                                layout="responsive"
+                                width={500} // Example width, adjust based on your actual image aspect ratio
+                                height={500} // Example height, adjust based on your actual image aspect ratio
+                                objectFit="contain" // Use contain to ensure the image fits within the bounds of its container
+                            />
+                        </div>
+                    </div>
+                    <div className="w-full md:w-1/2">
                         <h2 className="text-4xl font-semibold pb-4">Review</h2>
                         <span>We will review your submission  to make sure it doesn’t violate any CWRU trademarks. These submissions go to the design board!</span>
                     </div>
