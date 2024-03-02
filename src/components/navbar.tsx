@@ -129,10 +129,9 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     className="md:hidden z-45 shadow-xl overflow-hidden transition-all duration-500 ease-in-out"
                     style={{
                         height: isOpen
-                            ? `${
-                                  document.getElementById("menu-content")
-                                      ?.scrollHeight
-                              }px`
+                            ? `${document.getElementById("menu-content")
+                                ?.scrollHeight
+                            }px`
                             : "0",
                     }}
                 >
