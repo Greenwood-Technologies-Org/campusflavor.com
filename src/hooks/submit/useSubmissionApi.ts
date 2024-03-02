@@ -1,4 +1,4 @@
-import { cwru_competition_id } from "@/lib/constants";
+import { cwru_competition_id, get_user_id } from "@/lib/constants";
 import getDbClient from "@/lib/db/db-client";
 import { uploadMockupAndDesignImages } from "./fileGenerationUpload";
 import { useState } from "react";
@@ -53,11 +53,6 @@ async function insert_file_records(
         console.log("New file upload entry inserted with ID:", result.data);
     }
 }
-
-async function get_user_id(username: string) {
-    return "6cce32da-7bf7-42f9-a487-25cf27b52cf4";
-}
-
 const useSubmissionApi = () => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);

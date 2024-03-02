@@ -1,5 +1,6 @@
 "use client";
 
+import { VotingStatus } from "@/lib/types";
 import { cn, formatMilliseconds } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
@@ -109,10 +110,11 @@ CountdownTimer.displayName = "CountdownTimer";
 
 interface BannerProps extends HTMLAttributes<HTMLDivElement> {
     rotatingBannerItems: string[];
+    votingStatusParam: VotingStatus;
 }
 
 const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
-    ({ className, rotatingBannerItems, ...props }, ref) => {
+    ({ className, rotatingBannerItems, votingStatusParam, ...props }, ref) => {
         return (
             <div className="w-full h-fit">
                 <div
@@ -139,10 +141,13 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                             className=""
                             timestamp={1000000}
                         ></CountdownTimer>
+
                         <Link href="/submit-info">
-                            <button className="p-2 bg-tertiary-500 rounded-lg text-sm md:text-xl">
-                                Submit a Design
-                            </button>
+                            {votingStatusParam === VotingStatus.Prevoting && (
+                                <button className="p-2 bg-tertiary-500 rounded-lg text-sm md:text-xl">
+                                    Submit a Design
+                                </button>
+                            )}
                         </Link>
                     </div>
                     <Link
