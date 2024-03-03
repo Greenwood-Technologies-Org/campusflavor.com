@@ -1,6 +1,7 @@
 "use client";
 
 import React, { HTMLAttributes, useState } from "react";
+import { UserSession, useSession } from "@/hooks/use-session";
 
 import { Squash as Hamburger } from "hamburger-react";
 import Image from "next/image";
@@ -9,7 +10,6 @@ import { SessionData } from "./session-data";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useScroll } from "@/hooks/use-scroll";
-import useSession from "@/hooks/use-session";
 
 interface NavigationLinkProps extends HTMLAttributes<HTMLAnchorElement> {
     href: string;
@@ -129,9 +129,10 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     className="md:hidden z-45 shadow-xl overflow-hidden transition-all duration-500 ease-in-out"
                     style={{
                         height: isOpen
-                            ? `${document.getElementById("menu-content")
-                                ?.scrollHeight
-                            }px`
+                            ? `${
+                                  document.getElementById("menu-content")
+                                      ?.scrollHeight
+                              }px`
                             : "0",
                     }}
                 >

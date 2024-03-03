@@ -3,7 +3,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE Users (
     id UUID PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
-    submitted_designs INTEGER DEFAULT 0
+    api_calls INTEGER DEFAULT 0
 );
 
 CREATE TABLE Notification_Requests (
