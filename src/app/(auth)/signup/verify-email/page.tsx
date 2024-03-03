@@ -9,10 +9,13 @@ export default function VerifyEmailPage() {
     const email = params.get("email");
     const resend = params.get("resend");
 
-    const mutation = useMutation(async (email: string) => {
-        const client = getDbClient();
-        await client.auth.resend({ type: "signup", email });
-    });
+    const mutation = useMutation(
+        async (email: string) => {
+            const client = getDbClient();
+            await client.auth.resend({ type: "signup", email });
+        },
+        { retry: false }
+    );
 
     if (resend !== "false" && email) {
         mutation.mutate(email);
