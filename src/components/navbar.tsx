@@ -88,6 +88,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                                 alt="Campus Flavor Logo"
                                 height={60}
                                 width={150}
+                                priority
                             />
                         </div>
                     </Link>
