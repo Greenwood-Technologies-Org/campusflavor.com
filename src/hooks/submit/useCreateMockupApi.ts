@@ -91,8 +91,8 @@ const useCreateMockupApi = () => {
         try {
             const publicDesignImageUrl = await getPublicDesignImageUrl(designImageUrl);
 
-            //const response = await callCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor); // Uncomment this line to use the real API call
-            const response = await fakeCallCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor);
+            const response = await callCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor); // Uncomment this line to use the real API call
+            //const response = await fakeCallCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor);
 
             setUrl(response.url);
         } catch (e) {
