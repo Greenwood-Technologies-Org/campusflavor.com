@@ -63,12 +63,7 @@ export function SignInForm() {
     async function onSubmit(data: Inputs) {
         mutation.mutate(data, {
             onSuccess: () => {
-                const callback: string | null = params.get("callback");
-                if (callback) {
-                    router.push(callback);
-                }
-
-                router.push("/");
+                router.push(params.get("callback") || "/");
             },
             onError: (e: any) => {
                 console.log(e);
