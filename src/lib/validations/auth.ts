@@ -10,7 +10,7 @@ const usernameSchema = z
     .refine((val) => usernameRegex.test(val), {
         message: "Username can only contain numbers and letters.",
     })
-    .refine((val) => new BadWordsFilter().isProfane(val), {
+    .refine((val) => !new BadWordsFilter().isProfane(val), {
         message: "Username does not pass profanity check.",
     });
 
