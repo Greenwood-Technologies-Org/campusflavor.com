@@ -47,7 +47,7 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                         <div className="border-r-2 border-primary-500 min-h-4 h-full" />
                         <button
                             className="flex flex-row items-center justify-center gap-2"
-                            onClick={() => router.push("/signin")}
+                            onClick={() => router.push("/signup")}
                         >
                             <div className="flex flex-col">
                                 <p className="text-lg font-bold text-center rounded-md py-1 px-1 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500">
