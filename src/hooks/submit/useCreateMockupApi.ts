@@ -11,9 +11,6 @@ interface ApiError {
     message: string;
 }
 
-// NEEDS TO BE HIDDEN BEFORE PUBLISHING SITE
-const mediaModifierApiKey = "89cee3be-166b-4070-a7a9-e5c6417303d4";
-
 const resizeImage = async (blobUrl: string, targetWidth: number, targetHeight: number): Promise<string> => {
     return new Promise((resolve, reject) => {
         // Create an Image object
