@@ -144,18 +144,12 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
 
                         <Link href="/submit-info">
                             {votingStatusParam === VotingStatus.Prevoting && (
-                                <button className="p-2 bg-tertiary-500 rounded-lg text-sm md:text-xl">
+                                <button className="p-2 bg-[#FF3E51] rounded-lg text-sm md:text-xl">
                                     Submit a Design
                                 </button>
                             )}
                         </Link>
                     </div>
-                    <Link
-                        href="/info"
-                        className="absolute bottom-0 right-0 mb-4 mr-4 text-lg md:text-2xl font-semibold text-secondary-500 hover:underline underline-offset-2" // Adjust styling as needed
-                    >
-                        more info
-                    </Link>
                 </div>
                 <RotatingTicker className="" items={rotatingBannerItems} />
             </div>
