@@ -8,7 +8,11 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
-import { emailSchema, passwordSchema } from "@/lib/validations/auth";
+import {
+    emailSchema,
+    passwordSchema,
+    usernameSchema,
+} from "@/lib/validations/auth";
 
 import { AuthError } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
@@ -24,6 +28,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
+    username: usernameSchema,
     email: emailSchema,
     password: passwordSchema,
 });
@@ -83,6 +88,19 @@ export function SignUpForm() {
                     void form.handleSubmit(onSubmit)(...args)
                 }
             >
+                <FormField
+                    control={form.control}
+                    name="username"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Username</FormLabel>
+                            <FormControl>
+                                <Input placeholder="username" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
                 <FormField
                     control={form.control}
                     name="email"
