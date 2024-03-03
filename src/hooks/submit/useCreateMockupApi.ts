@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createMockup } from "./createMockup";
+import { createMockup, fakeCreateMockup } from "./createMockup";
 
 interface ApiResponse {
     success: boolean;
@@ -218,26 +218,8 @@ const fakeCallCreateMockupApi = async (
 ): Promise<ApiResponse> => {
     await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulate delay
 
-    var mockupTypeUrl;
-
-    if (mockupType === "T-shirt") {
-        mockupTypeUrl =
-            "https://mediamodifier.com/temporary/kxT4RMJdre2wLco7.jpeg";
-    } else if (mockupType === "Sweater") {
-        mockupTypeUrl =
-            "https://mediamodifier.com/temporary/6J4zf4zwygI8bkkm.jpeg";
-    } else if (mockupType === "Hoodie") {
-        mockupTypeUrl =
-            "https://mediamodifier.com/temporary/86Ct2gzDtQJAcPQ4.jpeg";
-    } else {
-        throw new Error("Mockup type not found");
-    }
-
-    return {
-        success: true,
-        message: "Image rendered successfully",
-        url: mockupTypeUrl,
-    };
+    const response = await fakeCreateMockup(mockupType);
+    return response;
 };
 
 export default useCreateMockupApi;
