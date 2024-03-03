@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SignUpForm } from "@/components/forms/signup-form";
 import { useRouter } from "next/navigation";
@@ -10,7 +9,7 @@ export default function LoginPage() {
 
     return (
         <div className="w-fit h-fit flex flex-col items-center gap-4">
-            <h1 className="text-xl font-bold">Create an account</h1>
+            <h1 className="text-xl font-bold">Sign Up</h1>
             <SignUpForm />
 
             <div className="w-full h-fit flex flex-row text-gray-500 items-center justify-center">
