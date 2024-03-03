@@ -2,7 +2,6 @@
 
 import React, { HTMLAttributes } from "react";
 
-import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
 import { Session } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
@@ -60,13 +59,13 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
             );
         }
 
-        const { username, provider } = getEmailParts(session.user.email);
-
         return (
             <div className={cn(className)} ref={ref} {...props}>
                 <div className="flex flex-row items-center justify-center gap-2">
                     <div className="flex flex-col w-fit h-fit items-start justify-start">
-                        <p className="text-lg font-bold -mb-2">{username}</p>
+                        <p className="text-lg font-bold -mb-2">
+                            {session.user.user_metadata.username}
+                        </p>
                         <p className="text-sm font-normal">
                             {session.user.email}
                         </p>
