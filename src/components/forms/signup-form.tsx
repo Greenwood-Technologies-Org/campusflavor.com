@@ -60,6 +60,7 @@ export function SignUpForm() {
                             username: data.username,
                             api_calls: 0,
                         },
+                        handleDuplicateEmails: "error",
                     },
                 });
 
