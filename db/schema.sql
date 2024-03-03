@@ -1,10 +1,9 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE Users (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    school_affiliation VARCHAR(255) NOT NULL
+    submitted_designs INTEGER DEFAULT 0
 );
 
 CREATE TABLE Notification_Requests (

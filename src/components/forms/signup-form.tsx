@@ -54,6 +54,18 @@ export function SignUpForm() {
             const { data: resSignUp, error: errorSignUp } =
                 await dbClient.auth.signUp(data);
 
+            const userId = resSignUp.user?.id;
+
+            if (userId) {
+                const { data: resData, error } = await dbClient
+                    .from("users")
+                    .insert({ id: userId, username: data.username });
+
+                if (error) {
+                    throw new AuthError(error.message);
+                }
+            }
+
             if (errorSignUp) {
                 throw new AuthError(errorSignUp.message);
             }
