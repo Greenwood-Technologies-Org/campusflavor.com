@@ -1,7 +1,5 @@
 import { useState } from "react";
-
-import axios from "axios";
-import { get } from "http";
+import { createMockup } from "./createMockup";
 
 interface ApiResponse {
     success: boolean;
@@ -98,6 +96,7 @@ const useCreateMockupApi = () => {
 
             const response = await callCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor); // Uncomment this line to use the real API call
             // const response = await fakeCallCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor);
+
             setUrl(response.url);
         } catch (e) {
             setError("Getting mockup failed");
@@ -210,19 +209,8 @@ const callCreateMockupApi = async (
         throw new Error("Mockup type not found");
     }
 
-    const options = {
-        method: "POST",
-        url: "https://api.mediamodifier.com/v2/mockup/render",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            api_key: mediaModifierApiKey,
-        },
-        data: mockupApiData,
-    };
-
-    const response = await axios.request(options);
-    return response.data;
+    const response = await createMockup(mockupApiData);
+    return response;
 };
 
 // Simulated API call function for testing without actual API request

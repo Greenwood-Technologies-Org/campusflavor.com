@@ -1,4 +1,4 @@
-import axios from 'axios';
+"use server"
 
 interface Crop {
     x: number;
@@ -26,32 +26,30 @@ interface MockupApiData {
     layer_inputs: LayerInput[];
 }
 
-async function handleMediaModifierCall(mockupApiData: MockupApiData): Promise<any> {
-    console.log("Calling MediaModifier API...");
-    const mediaModifierApiKey = process.env.MEDIAMODIFIER_API_KEY; // Ensure you have MEDIAMODIFIER_API_KEY in your environment variables
-
-    if (!mediaModifierApiKey) {
-        throw new Error("MediaModifier API key is not defined in environment variables.");
-    }
-
+export async function createMockup(mockupApiData: MockupApiData): Promise<any> {
     const options = {
         method: "POST",
         url: "https://api.mediamodifier.com/v2/mockup/render",
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            api_key: mediaModifierApiKey,
+            api_key: process.env.PRIVATE_MEDIAMODIFIER_API_KEY,
         },
         data: mockupApiData,
     };
 
     try {
-        const response = await axios.request(options);
-        return response.data;
+        // const response = await axios.request(options);
+        // return response.data;
+
+        return {
+            success: true,
+            message: "Image rendered successfully",
+            url: "https://mediamodifier.com/temporary/kxT4RMJdre2wLco7.jpeg",
+        };
+
     } catch (error) {
         console.error("Failed to call MediaModifier API:", error);
         throw error; // Rethrow or handle as needed
     }
 }
-
-export default handleMediaModifierCall;
