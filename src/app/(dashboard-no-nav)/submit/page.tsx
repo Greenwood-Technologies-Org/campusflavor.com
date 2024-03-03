@@ -154,7 +154,7 @@ const SubmitPage = () => {
                     mockupColor={selectedColor}
                     mockupType={selectedType}
                     description={description}
-                    username="test_username"
+                    username={session?.user.user_metadata.username}
                 />
             </div>
         </div>
