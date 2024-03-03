@@ -58,7 +58,7 @@ NavigationLink.displayName = "NavigationLink";
 
 const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     ({ className, ...props }, ref) => {
-        const session = useSession();
+        const { session, isLoading } = useSession();
 
         const pathname = usePathname();
         const scroll = useScroll();
