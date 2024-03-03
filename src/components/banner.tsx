@@ -144,7 +144,7 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
 
                         <Link href="/submit-info">
                             {votingStatusParam === VotingStatus.Prevoting && (
-                                <button className="p-2 bg-tertiary-500 rounded-lg text-sm md:text-xl">
+                                <button className="p-2 bg-[#FF3E51] rounded-lg text-sm md:text-xl">
                                     Submit a Design
                                 </button>
                             )}
