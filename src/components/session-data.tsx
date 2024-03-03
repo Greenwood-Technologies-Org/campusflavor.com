@@ -2,11 +2,9 @@
 
 import React, { HTMLAttributes } from "react";
 
-import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
 import { Session } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
-import { UserSession } from "@/hooks/use-session";
 
 type EmailParts = {
     username?: string;
@@ -23,13 +21,13 @@ function getEmailParts(email: string | undefined): EmailParts {
 }
 
 interface SessionDataProps extends HTMLAttributes<HTMLDivElement> {
-    session: UserSession | null;
+    session: Session | null;
 }
 
 const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
     ({ className, session, ...props }, ref) => {
         const router = useRouter();
-        const hasSession = !!session?.session;
+        const hasSession = !!session;
 
         if (!hasSession) {
             return (
@@ -66,10 +64,10 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                 <div className="flex flex-row items-center justify-center gap-2">
                     <div className="flex flex-col w-fit h-fit items-start justify-start">
                         <p className="text-lg font-bold -mb-2">
-                            {session.username}
+                            {session.user.email}
                         </p>
                         <p className="text-sm font-normal">
-                            {session.session?.user.email}
+                            {session.user.email}
                         </p>
                     </div>
                     <div className="border-r-2 border-primary-500 min-h-4 h-full" />
