@@ -96,8 +96,8 @@ const useCreateMockupApi = () => {
         try {
             const publicDesignImageUrl = await getPublicDesignImageUrl(designImageUrl);
 
-            //const response = await callCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor); // Uncomment this line to use the real API call
-            const response = await fakeCallCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor);
+            const response = await callCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor); // Uncomment this line to use the real API call
+            // const response = await fakeCallCreateMockupApi(publicDesignImageUrl, mockupType, mockupColor);
             setUrl(response.url);
         } catch (e) {
             setError("Getting mockup failed");
@@ -139,9 +139,9 @@ const callCreateMockupApi = async (
     // get json RBG data for background color
     const backgroundColorJson = getBackgroundColorJson();
 
-    var mockupTypeData;
+    var mockupApiData;
     if (mockupType === "T-shirt") {
-        mockupTypeData = {
+        mockupApiData = {
             nr: 705,
             layer_inputs: [
                 {
@@ -163,7 +163,7 @@ const callCreateMockupApi = async (
             ]
         };
     } else if (mockupType === "Sweater") {
-        mockupTypeData = {
+        mockupApiData = {
             nr: 883,
             layer_inputs: [
                 {
@@ -185,7 +185,7 @@ const callCreateMockupApi = async (
             ]
         };
     } else if (mockupType === "Hoodie") {
-        mockupTypeData = {
+        mockupApiData = {
             nr: 153935,
             layer_inputs: [
                 {
@@ -218,7 +218,7 @@ const callCreateMockupApi = async (
             Accept: "application/json",
             api_key: mediaModifierApiKey,
         },
-        data: mockupTypeData,
+        data: mockupApiData,
     };
 
     const response = await axios.request(options);
