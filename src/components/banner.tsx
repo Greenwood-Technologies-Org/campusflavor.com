@@ -150,12 +150,6 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                             )}
                         </Link>
                     </div>
-                    <Link
-                        href="/info"
-                        className="absolute bottom-0 right-0 mb-4 mr-4 text-lg md:text-2xl font-semibold text-secondary-500 hover:underline underline-offset-2" // Adjust styling as needed
-                    >
-                        more info
-                    </Link>
                 </div>
                 <RotatingTicker className="" items={rotatingBannerItems} />
             </div>
