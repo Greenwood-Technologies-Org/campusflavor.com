@@ -5,8 +5,6 @@ import { SignUpForm } from "@/components/forms/signup-form";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-    const router = useRouter();
-
     return (
         <div className="w-fit h-fit flex flex-col items-center gap-4">
             <h1 className="text-xl font-bold">Sign Up</h1>
