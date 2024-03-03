@@ -64,7 +64,7 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                 <div className="flex flex-row items-center justify-center gap-2">
                     <div className="flex flex-col w-fit h-fit items-start justify-start">
                         <p className="text-lg font-bold -mb-2">
-                            {session.user.email}
+                            {session.user.user_metadata.username}
                         </p>
                         <p className="text-sm font-normal">
                             {session.user.email}
