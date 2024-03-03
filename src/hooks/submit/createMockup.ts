@@ -1,5 +1,7 @@
 "use server"
 
+import axios from "axios";
+
 interface Crop {
     x: number;
     y: number;
@@ -39,15 +41,8 @@ export async function createMockup(mockupApiData: MockupApiData): Promise<any> {
     };
 
     try {
-        // const response = await axios.request(options);
-        // return response.data;
-
-        return {
-            success: true,
-            message: "Image rendered successfully",
-            url: "https://mediamodifier.com/temporary/kxT4RMJdre2wLco7.jpeg",
-        };
-
+        const response = await axios.request(options);
+        return response.data;
     } catch (error) {
         console.error("Failed to call MediaModifier API:", error);
         throw error; // Rethrow or handle as needed
