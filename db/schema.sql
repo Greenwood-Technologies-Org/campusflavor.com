@@ -1,11 +1,5 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE Users (
-    id UUID PRIMARY KEY,
-    username VARCHAR(255) UNIQUE NOT NULL,
-    api_calls INTEGER DEFAULT 0
-);
-
 CREATE TABLE Notification_Requests (
     user_id UUID NOT NULL,
     submission_id UUID NOT NULL,
