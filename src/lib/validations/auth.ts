@@ -14,7 +14,10 @@ const usernameSchema = z
         message: "Username does not pass profanity check.",
     });
 
-const emailSchema = z.string().email();
+const emailSchema = z
+    .string()
+    .email()
+    .regex(/@case\.edu$/, "Please use a CWRU email.");
 
 const passwordSchema = z
     .string()

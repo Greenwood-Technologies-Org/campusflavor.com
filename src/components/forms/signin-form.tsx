@@ -70,6 +70,12 @@ export function SignInForm() {
 
                 if (e instanceof AuthError) {
                     setErrorMessage(e.message);
+
+                    if (e.message === "Email not confirmed") {
+                        router.push(
+                            `/signup/verify-email?email=${data.email}&resend=true`
+                        );
+                    }
                 } else {
                     setErrorMessage("Unknown Error.");
                 }

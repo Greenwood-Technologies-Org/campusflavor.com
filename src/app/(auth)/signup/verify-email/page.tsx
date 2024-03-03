@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import getDbClient from "@/lib/db/db-client";
 import { useMutation } from "react-query";
 import { useSearchParams } from "next/navigation";
@@ -9,14 +10,22 @@ export default function VerifyEmailPage() {
     const email = params.get("email");
     const resend = params.get("resend");
 
-    const mutation = useMutation(async (email: string) => {
-        const client = getDbClient();
-        await client.auth.resend({ type: "signup", email });
-    });
+    const mutation = useMutation(
+        async (variables: { resend: boolean; email: string | null }) => {
+            if (variables.resend && variables.email) {
+                const client = getDbClient();
+                await client.auth.resend({
+                    type: "signup",
+                    email: variables.email,
+                });
+            }
+        },
+        { retry: false }
+    );
 
-    if (resend !== "false" && email) {
-        mutation.mutate(email);
-    }
+    React.useEffect(() => {
+        mutation.mutate({ resend: resend === "true", email });
+    }, [resend, email]);
 
     return (
         <div className="w-fit h-fit flex flex-col items-center gap-4">

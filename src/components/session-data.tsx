@@ -5,6 +5,7 @@ import React, { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 import { Session } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
+import { Icons } from "./icons";
 
 type EmailParts = {
     username?: string;
@@ -22,10 +23,11 @@ function getEmailParts(email: string | undefined): EmailParts {
 
 interface SessionDataProps extends HTMLAttributes<HTMLDivElement> {
     session: Session | null;
+    isLoading: boolean;
 }
 
 const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
-    ({ className, session, ...props }, ref) => {
+    ({ className, isLoading, session, ...props }, ref) => {
         const router = useRouter();
         const hasSession = !!session;
 
@@ -63,6 +65,12 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
             <div className={cn(className)} ref={ref} {...props}>
                 <div className="flex flex-row items-center justify-center gap-2">
                     <div className="flex flex-col w-fit h-fit items-start justify-start">
+                        {isLoading && (
+                            <Icons.spinner
+                                className="mr-2 size-8 animate-spin"
+                                aria-hidden="true"
+                            />
+                        )}
                         <p className="text-lg font-bold -mb-2">
                             {session.user.user_metadata.username}
                         </p>
