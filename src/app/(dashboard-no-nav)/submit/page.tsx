@@ -27,12 +27,6 @@ const SubmitPage = () => {
         if (!session) {
             router.push(`/signin?callback=/submit`);
         }
-
-        if (!session?.user.email_confirmed_at) {
-            router.push(
-                `/signup/verify-email?email=${session?.user.email}&resend=true`
-            );
-        }
     }, [session, isLoading]);
 
     const [imageFile, setImageFile] = useState<File | null>(null); // State to hold the uploaded image file
