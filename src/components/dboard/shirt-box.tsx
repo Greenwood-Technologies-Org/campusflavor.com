@@ -2,9 +2,9 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect, forwardRef, useRef } from "react";
-import LikeButton from "./ui/like_button";
+import LikeButton from "./like_button";
 import getDbClient from "@/lib/db/db-client";
-import ShareButton from "./ui/share_botton";
+import ShareButton from "./share_botton";
 import { VotingStatus } from "@/lib/types";
 
 function timeAgo(dateStr: string): string {
@@ -72,9 +72,9 @@ function getShirtBoxBottom({
 }) {
     return (
         <div>
-            <div className="text-gray-800">
-                <p className="font-bold m-0 mb-1">@{username}</p>
-                <p className="text-gray-600 m-0">{timeAgo(postedDate)}</p>
+            <div className="text-gray-800 my-4">
+                <p className="font-bold">@{username}</p>
+                <p className="text-gray-600">{timeAgo(postedDate)}</p>
             </div>
             <ShareButton
                 submissionId={submissionId}

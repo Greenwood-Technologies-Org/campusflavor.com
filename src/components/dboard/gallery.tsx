@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { SubmissionObject, VotingStatus } from "../lib/types";
+import { SubmissionObject, VotingStatus } from "../../lib/types";
 import { usePathname, useSearchParams } from "next/navigation";
 
 import ShirtBox from "./shirt-box";
