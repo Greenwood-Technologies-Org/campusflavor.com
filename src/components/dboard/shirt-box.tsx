@@ -139,15 +139,15 @@ function getShirtBox({
         <div
             ref={internalRef}
             {...props}
-            className={`border-2 ${isHighlighted ? 'border-[#5A61FF]' : 'border-gray-300'} p-4 rounded-lg w-full max-w-xs my-2 text-center`}
+            className={`border-2 ${isHighlighted ? 'border-[#5A61FF]' : 'border-gray-300'} p-4 rounded-lg w-full text-center`}
         >
             <Image
                 src={imgSrc}
                 alt="Mockup Image"
-                width={500}
-                height={500}
-                className="aspect-square object-cover rounded-lg"
-                priority={true}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-full h-auto aspect-square object-cover rounded-lg"
                 onError={() => setImgSrc(fallbackImage)}
             />
             {getShirtBoxBottom({ username, postedDate, submissionId, likeStatus, votingStatus, user_id, internalRef })}

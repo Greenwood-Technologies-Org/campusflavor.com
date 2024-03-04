@@ -70,10 +70,9 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
 
     return (
         <div
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
             style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
+                gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
             }}
         >
             {gallery.map((item) => (
@@ -83,9 +82,7 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
                     username={item.username}
                     postedDate={item.posted_date}
                     submissionId={item.submission_id}
-                    isHighlighted={
-                        urlSubmissionId === item.submission_id
-                    }
+                    isHighlighted={urlSubmissionId === item.submission_id}
                     votingStatus={votingStatus}
                 />
             ))}
