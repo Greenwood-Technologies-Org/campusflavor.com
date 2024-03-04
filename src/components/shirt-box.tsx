@@ -121,6 +121,9 @@ function getShirtBox({
     votingStatus: VotingStatus;
     user_id: string;
 }) {
+    const [imgSrc, setImgSrc] = useState(imageUrl);
+    const fallbackImage = '/icons/no-image.svg';
+
     return (
         <div
             ref={internalRef}
@@ -128,12 +131,13 @@ function getShirtBox({
             className={`border-2 ${isHighlighted ? 'border-[#5A61FF]' : 'border-gray-300'} p-4 rounded-lg w-full max-w-xs my-2 text-center`}
         >
             <Image
-                src={imageUrl}
+                src={imgSrc}
                 alt="Mockup Image"
                 width={500}
                 height={500}
                 className="aspect-square object-cover rounded-lg"
                 priority={true}
+                onError={() => setImgSrc(fallbackImage)}
             />
             {getShirtBoxBottom({ username, postedDate, submissionId, likeStatus, votingStatus, user_id, internalRef })}
         </div>
