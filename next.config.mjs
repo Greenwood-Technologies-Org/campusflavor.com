@@ -24,7 +24,7 @@ const nextConfig = {
     },
 
     images: {
-        domains: ["mediamodifier.com", "assets.mediamodifier.com"],
+        domains: ["mediamodifier.com", "assets.mediamodifier.com", "nhxchoaxvofyfgvsgssh.supabase.co"],
     },
 };
 

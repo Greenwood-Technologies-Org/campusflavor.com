@@ -127,10 +127,13 @@ function getShirtBox({
             {...props}
             className={`border-2 ${isHighlighted ? 'border-[#5A61FF]' : 'border-gray-300'} p-4 rounded-lg w-full max-w-xs my-2 text-center`}
         >
-            <img
+            <Image
                 src={imageUrl}
-                alt="Shirt"
-                className="max-w-full h-auto mb-4 rounded-lg"
+                alt="Mockup Image"
+                width={500}
+                height={500}
+                className="aspect-square object-cover rounded-lg"
+                priority={true}
             />
             {getShirtBoxBottom({ username, postedDate, submissionId, likeStatus, votingStatus, user_id, internalRef })}
         </div>
