@@ -70,32 +70,43 @@ function getShirtBoxBottom({
     user_id: string;
     internalRef: React.RefObject<HTMLDivElement>;
 }) {
-    return (
-        <div>
-            <div className="text-gray-800 my-4">
-                <p className="font-bold">@{username}</p>
-                <p className="text-gray-600">{timeAgo(postedDate)}</p>
+    if (votingStatus === VotingStatus.NotStarted || votingStatus === VotingStatus.Prevoting || votingStatus === VotingStatus.Intermission) {
+        return (
+            <div className="flex justify-between items-center mx-4 mt-4">
+                <p className="text-gray-800 text-xl">@{username}</p>
+                <p className="text-gray-600 text-xs">{timeAgo(postedDate)}</p>
             </div>
-            <ShareButton
-                submissionId={submissionId}
-                onShare={() => {
-                    internalRef.current?.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center",
-                        inline: "nearest",
-                    });
-                }}
-            />
-            {votingStatus === VotingStatus.Voting && (
+        );
+    } else if (votingStatus === VotingStatus.Voting) {
+        return (
+            <div>
+                <div className="text-gray-800 my-4">
+                    <p className="font-bold">@{username}</p>
+                    <p className="text-gray-600">{timeAgo(postedDate)}</p>
+                </div>
+                <ShareButton
+                    submissionId={submissionId}
+                    onShare={() => {
+                        internalRef.current?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                            inline: "nearest",
+                        });
+                    }}
+                />
                 <LikeButton
                     initialCount={likeStatus.initialCount}
                     isInitiallyLiked={likeStatus.isInitiallyLiked}
                     submissionId={submissionId}
                     user_id={user_id}
                 />
-            )}
-        </div>
-    );
+            </div>
+        );
+    } else if (votingStatus === VotingStatus.Finished) {
+        console.log('Voting has finished.');
+    } else {
+        console.log('Unknown voting status.');
+    }
 }
 
 function getShirtBox({
