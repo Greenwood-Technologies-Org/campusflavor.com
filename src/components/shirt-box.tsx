@@ -22,15 +22,6 @@ function timeAgo(dateStr: string): string {
     }
 }
 
-export type ShirtBoxProps = {
-    imageUrl: string;
-    username: string;
-    postedDate: string;
-    submissionId: string;
-    isHighlightedInitially?: boolean;
-    votingStatus: VotingStatus;
-};
-
 async function getInitialVoteCount(submission_id: string) {
     const supabase = getDbClient();
     const { data, error } = await supabase.rpc<any, any>(
@@ -134,7 +125,7 @@ function getShirtBox({
         <div
             ref={internalRef}
             {...props}
-            className={`border-2 border-gray-300 p-4 rounded-lg w-full max-w-xs my-2 text-center ${isHighlighted ? 'bg-yellow-50' : 'bg-white'}`}
+            className={`border-2 ${isHighlighted ? 'border-[#5A61FF]' : 'border-gray-300'} p-4 rounded-lg w-full max-w-xs my-2 text-center`}
         >
             <img
                 src={imageUrl}
@@ -146,6 +137,14 @@ function getShirtBox({
     );
 }
 
+export type ShirtBoxProps = {
+    imageUrl: string;
+    username: string;
+    postedDate: string;
+    submissionId: string;
+    isHighlighted?: boolean;
+    votingStatus: VotingStatus;
+};
 
 const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
     (
@@ -154,7 +153,7 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             username,
             postedDate,
             submissionId,
-            isHighlightedInitially = false,
+            isHighlighted,
             votingStatus,
             ...props
         },
@@ -164,9 +163,6 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             initialCount: 0,
             isInitiallyLiked: false,
         });
-        const [isHighlighted, setIsHighlighted] = useState(
-            isHighlightedInitially
-        );
 
         const internalRef = useRef<HTMLDivElement>(null); // Internal ref for scrolling
 
@@ -188,12 +184,6 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             fetchLikeStatus();
         }, [submissionId]);
 
-        useEffect(() => {
-            if (isHighlightedInitially) {
-                setTimeout(() => setIsHighlighted(false), 2000); // Remove highlight after 2 seconds
-            }
-        }, [isHighlightedInitially]);
-
 
         return getShirtBox({
             internalRef: internalRef,
@@ -202,7 +192,7 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             username: username,
             postedDate: postedDate,
             submissionId: submissionId,
-            isHighlighted: isHighlighted,
+            isHighlighted: isHighlighted || false,
             likeStatus: likeStatus,
             votingStatus: votingStatus,
             user_id: user_id,

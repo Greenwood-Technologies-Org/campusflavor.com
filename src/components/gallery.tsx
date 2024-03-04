@@ -83,7 +83,7 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
                     username={item.username}
                     postedDate={item.posted_date}
                     submissionId={item.submission_id}
-                    isHighlightedInitially={
+                    isHighlighted={
                         urlSubmissionId === item.submission_id
                     }
                     votingStatus={votingStatus}
