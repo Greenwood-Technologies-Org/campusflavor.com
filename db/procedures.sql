@@ -13,7 +13,7 @@ BEGIN
     JOIN auth.users ON submission.user_id = auth.users.id
     JOIN file_uploads ON submission.id = file_uploads.submission_id;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE OR REPLACE FUNCTION get_competition_dates(school_affil text)
 RETURNS TABLE(
