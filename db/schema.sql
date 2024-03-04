@@ -6,7 +6,7 @@ CREATE TABLE Notification_Requests (
     time_requested TIMESTAMP,
     time_fulfilled TIMESTAMP,
     PRIMARY KEY (user_id, submission_id),
-    FOREIGN KEY (user_id) REFERENCES Users(id)
+    FOREIGN KEY (user_id) REFERENCES auth.users(id)
 );
 
 CREATE TABLE Competition (
@@ -24,7 +24,7 @@ CREATE TABLE Submission (
     user_id UUID NOT NULL,
     description TEXT,
     FOREIGN KEY (competition_id) REFERENCES Competition(id),
-    FOREIGN KEY (user_id) REFERENCES Users(id)
+    FOREIGN KEY (user_id) REFERENCES auth.users(id)
 );
 
 CREATE TABLE Casted_Votes (
@@ -33,7 +33,7 @@ CREATE TABLE Casted_Votes (
     submission_id UUID NOT NULL,
     value INTEGER CHECK (value IN (1, 0, -1)),
     time_cast TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (user_id) REFERENCES auth.users(id),
     FOREIGN KEY (submission_id) REFERENCES Submission(id)
 );
 

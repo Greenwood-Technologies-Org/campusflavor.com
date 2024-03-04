@@ -14,6 +14,7 @@ interface ConfirmSubmissionProps {
     mockupType: string;
     description: string;
     username: string;
+    userId: string;
 }
 
 const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
@@ -24,6 +25,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     mockupType,
     description,
     username,
+    userId,
 }) => {
     const [isCheckboxSelected, setIsCheckboxSelected] = useState(false);
 
@@ -59,6 +61,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
             mockupType: mockupType,
             description: description,
             username: username,
+            userId: userId,
         };
         await submit(submissionInfo);
     };
@@ -140,10 +143,11 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                     <button
                         disabled={!isCheckboxSelected}
-                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${!isCheckboxSelected
-                            ? "bg-gray-500 text-white"
-                            : "bg-black text-white hover:bg-gray-700"
-                            }`}
+                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${
+                            !isCheckboxSelected
+                                ? "bg-gray-500 text-white"
+                                : "bg-black text-white hover:bg-gray-700"
+                        }`}
                         onClick={handleSubmit}
                     >
                         Submit
