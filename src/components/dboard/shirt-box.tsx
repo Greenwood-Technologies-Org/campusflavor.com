@@ -81,22 +81,24 @@ function getShirtBoxBottom({
         return (
             <div className="flex justify-between items-center mx-4 mt-4">
                 <p className="text-gray-800 text-xl">@{username}</p>
-                <ShareButton
-                    submissionId={submissionId}
-                    onShare={() => {
-                        internalRef.current?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center",
-                            inline: "nearest",
-                        });
-                    }}
-                />
-                <LikeButton
-                    initialCount={likeStatus.initialCount}
-                    isInitiallyLiked={likeStatus.isInitiallyLiked}
-                    submissionId={submissionId}
-                    user_id={user_id}
-                />
+                <div className="space-x-2">
+                    <ShareButton
+                        submissionId={submissionId}
+                        onShare={() => {
+                            internalRef.current?.scrollIntoView({
+                                behavior: "smooth",
+                                block: "center",
+                                inline: "nearest",
+                            });
+                        }}
+                    />
+                    <LikeButton
+                        initialCount={likeStatus.initialCount}
+                        isInitiallyLiked={likeStatus.isInitiallyLiked}
+                        submissionId={submissionId}
+                        user_id={user_id}
+                    />
+                </div>
             </div>
         );
     } else if (votingStatus === VotingStatus.Finished) {

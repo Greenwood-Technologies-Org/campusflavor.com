@@ -24,9 +24,8 @@ const ShareButton: React.FC<ShareButtonProps> = ({ submissionId, onShare }) => {
     return (
         <button
             onClick={handleShare}
-            style={{ margin: "10px 0", padding: "8px 16px" }}
         >
-            Share
+            <img src="/icons/share.svg" alt="Share" />
         </button>
     );
 };
