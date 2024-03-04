@@ -11,7 +11,7 @@ BEGIN
     competition
     JOIN submission ON competition.id = submission.competition_id
     JOIN auth.users ON submission.user_id = auth.users.id
-    JOIN file_uploads ON submission.id = file_uploads.submission_id
+    JOIN file_uploads ON submission.id = file_uploads.submission_id;
 END;
 $$ LANGUAGE plpgsql;
 
