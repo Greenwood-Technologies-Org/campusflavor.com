@@ -1,14 +1,16 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import Link from 'next/link';
-import { useState } from "react";
+import React, { useState } from "react";
 
 import ConfirmSubmission from "@/components/submit/ConfirmSubmission";
+import Link from "next/link";
 import MockupColor from "@/components/submit/MockupColor";
 import MockupDescription from "@/components/submit/MockupDescription";
 import MockupType from "@/components/submit/MockupType";
 import UploadDesign from "@/components/submit/UploadDesign";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import useSession from "@/hooks/use-session";
 
 // Dynamically import the MockupEditor with SSR disabled
 const MockupEditor = dynamic(() => import("@/components/submit/MockupEditor"), {
@@ -16,6 +18,17 @@ const MockupEditor = dynamic(() => import("@/components/submit/MockupEditor"), {
 });
 
 const SubmitPage = () => {
+    const router = useRouter();
+    const { session, isLoading } = useSession();
+
+    React.useEffect(() => {
+        if (isLoading) return;
+
+        if (!session) {
+            router.push(`/signin?callback=/submit`);
+        }
+    }, [session, isLoading]);
+
     const [imageFile, setImageFile] = useState<File | null>(null); // State to hold the uploaded image file
     // Handler to update imageFile state, this should be triggered by UploadDesign component
     const handleImageUpload = (file: File) => {
@@ -29,7 +42,16 @@ const SubmitPage = () => {
         setDesignImageUrl(url);
     };
 
-    const colors = ["#ffffff", "#b2afaa", "#f59382", "#335231", "#2d407d", "#3a3a38", "#171f2c", "#101010"];
+    const colors = [
+        "#ffffff",
+        "#b2afaa",
+        "#f59382",
+        "#335231",
+        "#2d407d",
+        "#3a3a38",
+        "#171f2c",
+        "#101010",
+    ];
     const [selectedColor, setSelectedColor] = useState<string>(colors[0]);
 
     const types = ["T-shirt", "Sweater", "Hoodie"];
@@ -46,11 +68,16 @@ const SubmitPage = () => {
 
     return (
         <div className="h-screen w-full justify-center items-center">
-
             <div className="flex justify-between items-start pt-5 px-5">
                 <Link href="/submit-info">
-                    <div className="flex items-center space-x-1"> {/* Use flex to align items horizontally */}
-                        <img src="/icons/left-chevron.svg" alt="Back" className="w-6 h-6" />
+                    <div className="flex items-center space-x-1">
+                        {" "}
+                        {/* Use flex to align items horizontally */}
+                        <img
+                            src="/icons/left-chevron.svg"
+                            alt="Back"
+                            className="w-6 h-6"
+                        />
                         <span>Back</span> {/* Add text next to the chevron */}
                     </div>
                 </Link>
@@ -73,7 +100,9 @@ const SubmitPage = () => {
                                     <MockupEditor
                                         imageFile={imageFile}
                                         backgroundColor={selectedColor}
-                                        setDesignImageUrl={handleSetDesignImageUrl}
+                                        setDesignImageUrl={
+                                            handleSetDesignImageUrl
+                                        }
                                     />
                                 ) : (
                                     <UploadDesign
@@ -108,10 +137,11 @@ const SubmitPage = () => {
 
                 <button
                     disabled={!imageFile}
-                    className={`flex-grow py-2 px-8 my-8 rounded-lg focus:outline-none ${!imageFile
-                        ? "bg-gray-500 text-white"
-                        : "bg-black text-white hover:bg-gray-700"
-                        }`}
+                    className={`flex-grow py-2 px-8 my-8 rounded-lg focus:outline-none ${
+                        !imageFile
+                            ? "bg-gray-500 text-white"
+                            : "bg-black text-white hover:bg-gray-700"
+                    }`}
                     onClick={handleSubmit}
                 >
                     Submit
@@ -124,7 +154,7 @@ const SubmitPage = () => {
                     mockupColor={selectedColor}
                     mockupType={selectedType}
                     description={description}
-                    username="test_username"
+                    username={session?.user.user_metadata.username}
                 />
             </div>
         </div>

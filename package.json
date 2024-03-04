@@ -25,6 +25,7 @@
         "@supabase/ssr": "^0.1.0",
         "@supabase/supabase-js": "^2.39.7",
         "axios": "^1.6.7",
+        "bad-words": "^3.0.4",
         "canvas": "^2.11.2",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.0",
@@ -38,6 +39,7 @@
         "react-dom": "^18",
         "react-dropdown-menu": "^0.0.2",
         "react-dropzone": "^14.2.3",
+        "react-email": "^2.1.0",
         "react-fast-marquee": "^1.6.3",
         "react-fontawesome": "^1.7.1",
         "react-hook-form": "^7.50.1",
@@ -50,6 +52,7 @@
         "zod": "^3.22.4"
     },
     "devDependencies": {
+        "@types/bad-words": "^3.0.3",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",

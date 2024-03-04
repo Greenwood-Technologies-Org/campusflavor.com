@@ -9,6 +9,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { emailSchema, passwordSchema } from "@/lib/validations/auth";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { AuthError } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
@@ -19,7 +20,6 @@ import React from "react";
 import { getBrowserClient } from "@/lib/db/db-client";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
-import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -32,6 +32,7 @@ type Inputs = z.infer<typeof formSchema>;
 
 export function SignInForm() {
     const router = useRouter();
+    const params = useSearchParams();
     const [errorMessage, setErrorMessage] = React.useState<string>("");
 
     // react-hook-form
@@ -62,13 +63,19 @@ export function SignInForm() {
     async function onSubmit(data: Inputs) {
         mutation.mutate(data, {
             onSuccess: () => {
-                router.push("/");
+                router.push(params.get("callback") || "/");
             },
             onError: (e: any) => {
                 console.log(e);
 
                 if (e instanceof AuthError) {
                     setErrorMessage(e.message);
+
+                    if (e.message === "Email not confirmed") {
+                        router.push(
+                            `/signup/verify-email?email=${data.email}&resend=true`
+                        );
+                    }
                 } else {
                     setErrorMessage("Unknown Error.");
                 }

@@ -1,3 +1,4 @@
+import BadWordsFilter from "bad-words";
 import { z } from "zod";
 
 const usernameRegex = new RegExp("^[A-Za-z0-9]{4,20}$");
@@ -8,9 +9,15 @@ const usernameSchema = z
     .max(20, { message: "Username must be at least 4 characters long." })
     .refine((val) => usernameRegex.test(val), {
         message: "Username can only contain numbers and letters.",
+    })
+    .refine((val) => !new BadWordsFilter().isProfane(val), {
+        message: "Username does not pass profanity check.",
     });
 
-const emailSchema = z.string().email();
+const emailSchema = z
+    .string()
+    .email()
+    .regex(/@case\.edu$/, "Please use a CWRU email.");
 
 const passwordSchema = z
     .string()

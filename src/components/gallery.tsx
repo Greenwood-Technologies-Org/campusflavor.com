@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import ShirtBox from "./shirt-box";
+import React, { useEffect, useState } from "react";
 import { SubmissionObject, VotingStatus } from "../lib/types";
 import { usePathname, useSearchParams } from "next/navigation";
+
+import ShirtBox from "./shirt-box";
 
 interface GalleryPageProps {
     gallery: SubmissionObject[];

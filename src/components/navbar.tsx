@@ -88,6 +88,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                                 alt="Campus Flavor Logo"
                                 height={60}
                                 width={150}
+                                priority
                             />
                         </div>
                     </Link>
@@ -115,7 +116,10 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 
                     {/* Session Data - Right-aligned */}
                     <div className="hidden md:flex items-center">
-                        <SessionData session={session} />
+                        <SessionData
+                            session={session.session}
+                            isLoading={session.isLoading}
+                        />
                     </div>
 
                     {/* Hamburger Menu - Right-aligned for medium screens and smaller */}
@@ -164,7 +168,10 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 
                             {/* Session Data Component */}
                             <div className="p-2">
-                                <SessionData session={session} />
+                                <SessionData
+                                    session={session.session}
+                                    isLoading={session.isLoading}
+                                />
                             </div>
                         </div>
                     </div>

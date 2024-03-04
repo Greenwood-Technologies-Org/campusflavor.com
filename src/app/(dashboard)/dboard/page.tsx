@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState, Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
+import { SubmissionObject, VotingStatus } from "@/lib/types";
 
 import { Banner } from "@/components/banner";
 import GalleryPage from "@/components/gallery";
-import { SubmissionObject, VotingStatus } from "@/lib/types";
 import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
 

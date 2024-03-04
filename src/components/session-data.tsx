@@ -2,10 +2,10 @@
 
 import React, { HTMLAttributes } from "react";
 
-import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
 import { Session } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
+import { Icons } from "./icons";
 
 type EmailParts = {
     username?: string;
@@ -23,10 +23,11 @@ function getEmailParts(email: string | undefined): EmailParts {
 
 interface SessionDataProps extends HTMLAttributes<HTMLDivElement> {
     session: Session | null;
+    isLoading: boolean;
 }
 
 const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
-    ({ className, session, ...props }, ref) => {
+    ({ className, isLoading, session, ...props }, ref) => {
         const router = useRouter();
         const hasSession = !!session;
 
@@ -47,7 +48,7 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                         <div className="border-r-2 border-primary-500 min-h-4 h-full" />
                         <button
                             className="flex flex-row items-center justify-center gap-2"
-                            onClick={() => router.push("/signin")}
+                            onClick={() => router.push("/signup")}
                         >
                             <div className="flex flex-col">
                                 <p className="text-lg font-bold text-center rounded-md py-1 px-1 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500">
@@ -60,13 +61,19 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
             );
         }
 
-        const { username, provider } = getEmailParts(session.user.email);
-
         return (
             <div className={cn(className)} ref={ref} {...props}>
                 <div className="flex flex-row items-center justify-center gap-2">
                     <div className="flex flex-col w-fit h-fit items-start justify-start">
-                        <p className="text-lg font-bold -mb-2">{username}</p>
+                        {isLoading && (
+                            <Icons.spinner
+                                className="mr-2 size-8 animate-spin"
+                                aria-hidden="true"
+                            />
+                        )}
+                        <p className="text-lg font-bold -mb-2">
+                            {session.user.user_metadata.username}
+                        </p>
                         <p className="text-sm font-normal">
                             {session.user.email}
                         </p>
