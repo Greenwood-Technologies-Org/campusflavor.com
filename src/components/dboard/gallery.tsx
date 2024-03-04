@@ -12,17 +12,19 @@ interface GalleryPageProps {
 }
 
 function determineVotingStatusByDate(): VotingStatus {
-    const currentDate = new Date();
-    const prevotingEndDate = new Date("2024-03-05"); // Example date for when prevoting ends
-    const votingEndDate = new Date("2024-04-02"); // Example date for when voting ends
+    // const currentDate = new Date();
+    // const prevotingEndDate = new Date("2024-03-05"); // Example date for when prevoting ends
+    // const votingEndDate = new Date("2024-04-02"); // Example date for when voting ends
 
-    if (currentDate <= prevotingEndDate) {
-        return VotingStatus.Prevoting;
-    } else if (currentDate <= votingEndDate) {
-        return VotingStatus.Voting;
-    } else {
-        return VotingStatus.Finished;
-    }
+    // if (currentDate <= prevotingEndDate) {
+    //     return VotingStatus.Prevoting;
+    // } else if (currentDate <= votingEndDate) {
+    //     return VotingStatus.Voting;
+    // } else {
+    //     return VotingStatus.Finished;
+    // }
+
+    return VotingStatus.Voting;
 }
 
 const GalleryPage: React.FC<GalleryPageProps> = ({
@@ -52,13 +54,17 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
     }, [searchParams]);
 
     useEffect(() => {
-        // Example usage
-
         const statusFromApi: VotingStatus = determineVotingStatusByDate(); // This should just be a function that checks the date and returns a votingStatus depending on the result
 
-        if (statusFromApi === VotingStatus.Prevoting) {
+        if (statusFromApi === VotingStatus.NotStarted) {
+            // Handle prevoting logic here
+            setVotingStatus(VotingStatus.NotStarted);
+        } else if (statusFromApi === VotingStatus.Prevoting) {
             // Handle prevoting logic here
             setVotingStatus(VotingStatus.Prevoting);
+        } else if (statusFromApi === VotingStatus.Intermission) {
+            // Handle voting logic here
+            setVotingStatus(VotingStatus.Intermission);
         } else if (statusFromApi === VotingStatus.Voting) {
             // Handle voting logic here
             setVotingStatus(VotingStatus.Voting);
@@ -66,6 +72,7 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
             // Handle finished logic here
             setVotingStatus(VotingStatus.Finished);
         }
+        console.log(votingStatus);
     }, [votingStatus]);
 
     return (

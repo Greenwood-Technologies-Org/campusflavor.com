@@ -79,11 +79,8 @@ function getShirtBoxBottom({
         );
     } else if (votingStatus === VotingStatus.Voting) {
         return (
-            <div>
-                <div className="text-gray-800 my-4">
-                    <p className="font-bold">@{username}</p>
-                    <p className="text-gray-600">{timeAgo(postedDate)}</p>
-                </div>
+            <div className="flex justify-between items-center mx-4 mt-4">
+                <p className="text-gray-800 text-xl">@{username}</p>
                 <ShareButton
                     submissionId={submissionId}
                     onShare={() => {
