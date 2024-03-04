@@ -13,7 +13,7 @@ function timeAgo(dateStr: string): string {
     const diff = now.getTime() - date.getTime();
     const daysAgo = Math.floor(diff / (1000 * 60 * 60 * 24));
 
-    if (daysAgo == 0) {
+    if (daysAgo <= 0) {
         return "today";
     } else if (daysAgo == 1) {
         return "1 day ago";
