@@ -1,5 +1,4 @@
-import { cwru_competition_id, get_user_id } from "@/lib/constants";
-
+import { cwru_competition_id } from "@/lib/constants";
 import getDbClient from "@/lib/db/db-client";
 import { uploadMockupAndDesignImages } from "./fileGenerationUpload";
 import { useState } from "react";
@@ -18,7 +17,7 @@ async function insert_submission_records(
     submissionInfo: SubmissionInfo
 ): Promise<String> {
     const supabase = getDbClient();
-    const user_uuid = await get_user_id(submissionInfo.userId);
+    const user_uuid = submissionInfo.userId;
     const { data, error } = await supabase.rpc<any, any>("insert_submission", {
         _competition_id: cwru_competition_id,
         _user_id: user_uuid,
