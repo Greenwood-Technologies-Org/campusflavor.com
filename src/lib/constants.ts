@@ -1,10 +1,9 @@
 export const rotatingBannerItems: string[] = [
-    "Winners get their desgin on merch for free!",
+    "Winners get their design on clothing for free!",
     "Submissions Open: March 18th - Mar 25th",
     "Voting Open: March 26th - Mar 28th",
     "Winners Announced: March 29th",
     "Win cash prizes!",
-    "Voting opens in 7 days!",
 ];
 
 export const cwru_competition_id = "ca61ef73-99b5-43cc-b1b9-b9f6ba6a16ec";
