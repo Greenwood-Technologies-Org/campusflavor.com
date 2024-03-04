@@ -61,6 +61,92 @@ async function getVotedForUser(user_id: string, submission_id: string) {
     return data;
 }
 
+// Define the getShirtBoxBottom function
+function getShirtBoxBottom({
+    username,
+    postedDate,
+    submissionId,
+    likeStatus,
+    votingStatus,
+    user_id,
+    internalRef,
+}: {
+    username: string;
+    postedDate: string;
+    submissionId: string;
+    likeStatus: { initialCount: number; isInitiallyLiked: boolean };
+    votingStatus: VotingStatus;
+    user_id: string;
+    internalRef: React.RefObject<HTMLDivElement>;
+}) {
+    return (
+        <div>
+            <div className="text-gray-800">
+                <p className="font-bold m-0 mb-1">@{username}</p>
+                <p className="text-gray-600 m-0">{timeAgo(postedDate)}</p>
+            </div>
+            <ShareButton
+                submissionId={submissionId}
+                onShare={() => {
+                    internalRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                        inline: "nearest",
+                    });
+                }}
+            />
+            {votingStatus === VotingStatus.Voting && (
+                <LikeButton
+                    initialCount={likeStatus.initialCount}
+                    isInitiallyLiked={likeStatus.isInitiallyLiked}
+                    submissionId={submissionId}
+                    user_id={user_id}
+                />
+            )}
+        </div>
+    );
+}
+
+function getShirtBox({
+    internalRef,
+    props,
+    imageUrl,
+    username,
+    postedDate,
+    submissionId,
+    isHighlighted,
+    likeStatus,
+    votingStatus,
+    user_id,
+}: {
+    internalRef: React.RefObject<HTMLDivElement>;
+    props: any;
+    imageUrl: string;
+    username: string;
+    postedDate: string;
+    submissionId: string;
+    isHighlighted: boolean;
+    likeStatus: { initialCount: number; isInitiallyLiked: boolean };
+    votingStatus: VotingStatus;
+    user_id: string;
+}) {
+    return (
+        <div
+            ref={internalRef}
+            {...props}
+            className={`border-2 border-gray-300 p-4 rounded-lg w-full max-w-xs my-2 text-center ${isHighlighted ? 'bg-yellow-50' : 'bg-white'}`}
+        >
+            <img
+                src={imageUrl}
+                alt="Shirt"
+                className="max-w-full h-auto mb-4 rounded-lg"
+            />
+            {getShirtBoxBottom({ username, postedDate, submissionId, likeStatus, votingStatus, user_id, internalRef })}
+        </div>
+    );
+}
+
+
 const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
     (
         {
@@ -107,70 +193,20 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
                 setTimeout(() => setIsHighlighted(false), 2000); // Remove highlight after 2 seconds
             }
         }, [isHighlightedInitially]);
-        return (
-            <div
-                ref={internalRef}
-                {...props}
-                style={{
-                    border: "1px solid #ccc",
-                    padding: "1em", // use em units that scale with zoom
-                    borderRadius: "8px",
-                    width: "100%", // use 100% width for fluid responsiveness
-                    maxWidth: "300px", // limit the maximum width to 300px
-                    margin: "0.5em", // use em units for margins
-                    textAlign: "center",
-                    backgroundColor: isHighlighted ? "#ffffe0" : "#fff",
-                    boxShadow: isHighlighted
-                        ? "0 2px 6px rgba(255, 165, 0, 0.7)"
-                        : "0 2px 4px rgba(0, 0, 0, 0.1)",
-                    transition:
-                        "background-color 0.3s ease, box-shadow 0.3s ease",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    flexGrow: 1,
-                    flexShrink: 1,
-                    flexBasis: "auto",
-                }}
-            >
-                <img
-                    src={imageUrl}
-                    alt="Shirt"
-                    style={{
-                        maxWidth: "100%",
-                        height: "auto",
-                        marginBottom: "16px",
-                        borderRadius: "8px",
-                    }}
-                />
-                <div style={{ color: "#333" }}>
-                    <p style={{ fontWeight: "bold", margin: "0 0 4px 0" }}>
-                        @{username}
-                    </p>
-                    <p style={{ color: "#666", margin: 0 }}>
-                        {timeAgo(postedDate)}
-                    </p>
-                </div>
-                <ShareButton
-                    submissionId={submissionId}
-                    onShare={() => {
-                        internalRef.current?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center", // Attempt to center the element in the viewport
-                            inline: "nearest", // For horizontal scrolling, if necessary
-                        });
-                    }}
-                />
-                {votingStatus === VotingStatus.Voting && (
-                    <LikeButton
-                        initialCount={likeStatus.initialCount}
-                        isInitiallyLiked={likeStatus.isInitiallyLiked}
-                        submissionId={submissionId}
-                        user_id={user_id}
-                    />
-                )}
-            </div>
-        );
+
+
+        return getShirtBox({
+            internalRef: internalRef,
+            props: props,
+            imageUrl: imageUrl,
+            username: username,
+            postedDate: postedDate,
+            submissionId: submissionId,
+            isHighlighted: isHighlighted,
+            likeStatus: likeStatus,
+            votingStatus: votingStatus,
+            user_id: user_id,
+        });
     }
 );
 
