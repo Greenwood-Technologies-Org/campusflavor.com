@@ -1,7 +1,7 @@
 import { cwru_folder } from "@/lib/constants";
 import getDbClient from "@/lib/db/db-client";
 
-function generateRandomImageName(extension: string): string {
+export function generateRandomImageName(extension: string): string {
     const randomString = Math.random().toString(36).substring(2, 15);
     return `${cwru_folder}/${randomString}.${extension}`;
 }
@@ -15,7 +15,7 @@ async function fetchImageAsBlob(imageUrl: string): Promise<Blob> {
     return await response.blob();
 }
 
-async function uploadImageToSupabase(
+export async function uploadImageToSupabase(
     bucketName: string,
     path: string,
     imageBlob: Blob
