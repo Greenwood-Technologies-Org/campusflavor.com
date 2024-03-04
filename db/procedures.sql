@@ -3,7 +3,7 @@ RETURNS TABLE(url_link text, username text, posted_date timestamp, submission_id
 BEGIN
   RETURN QUERY
   SELECT
-    file_uploads.file_url,
+    file_uploads.mockup_image_url,
     (raw_user_meta_data ->> 'username') AS username,
     file_uploads.time as posted_date,
     file_uploads.submission_id
