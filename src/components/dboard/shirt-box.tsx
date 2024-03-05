@@ -1,11 +1,13 @@
 // ShirtBox.tsx or wherever your ShirtBox component is defined
 "use client";
-import Image from "next/image";
+
 import React, { useState, useEffect, forwardRef, useRef } from "react";
+
 import LikeButton from "./like_button";
-import getDbClient from "@/lib/db/db-client";
 import ShareButton from "./share_botton";
 import { VotingStatus } from "@/lib/types";
+import getDbClient from "@/lib/db/db-client";
+import useSession from "@/hooks/use-session";
 
 function timeAgo(dateStr: string): string {
     const date = new Date(dateStr);
@@ -132,10 +134,11 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             initialCount: 0,
             isInitiallyLiked: false,
         });
+        const session = useSession();
 
         const internalRef = useRef<HTMLDivElement>(null); // Internal ref for scrolling
 
-        let user_id = "6cce32da-7bf7-42f9-a487-25cf27b52cf4";
+        let user_id = session.session?.user.id || "";
         useEffect(() => {
             const fetchLikeStatus = async () => {
                 let initialCount = await getInitialVoteCount(submissionId);
