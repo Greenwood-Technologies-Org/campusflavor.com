@@ -54,7 +54,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
     return (
         <button
             onClick={() => enableClick && handleLike()}
-            className="${enableClick ? 'cursor-pointer' : 'cursor-default'}"
+            className={enableClick ? 'cursor-pointer' : 'cursor-default'}
         >
             <div className="flex items-center space-x-1">
                 <FontAwesomeIcon

@@ -5,6 +5,7 @@ import { SubmissionObject, VotingStatus } from "../../lib/types";
 import { usePathname, useSearchParams } from "next/navigation";
 
 import ShirtBox from "./shirt-box";
+import { stat } from "fs";
 
 interface GalleryPageProps {
     gallery: SubmissionObject[];
@@ -60,6 +61,7 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
             // Handle prevoting logic here
             setVotingStatus(VotingStatus.NotStarted);
         } else if (statusFromApi === VotingStatus.Prevoting) {
+            console.log("Calling prevoting");
             // Handle prevoting logic here
             setVotingStatus(VotingStatus.Prevoting);
         } else if (statusFromApi === VotingStatus.Intermission) {
@@ -69,10 +71,12 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
             // Handle voting logic here
             setVotingStatus(VotingStatus.Voting);
         } else if (votingStatus === VotingStatus.Finished) {
+            console.log("Calling finished");
             // Handle finished logic here
             setVotingStatus(VotingStatus.Finished);
         }
-        console.log(votingStatus);
+
+        setVotingStatus(VotingStatus.Finished); // This is just a placeholder, remove this line
     }, [votingStatus]);
 
     return (
