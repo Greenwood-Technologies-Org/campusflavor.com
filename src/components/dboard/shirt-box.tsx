@@ -156,10 +156,6 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             fetchLikeStatus();
         }, [submissionId]);
 
-        const [imgSrc, setImgSrc] = useState(imageUrl);
-        const fallbackImage = '/icons/no-image.svg';
-
-
         return (
             <div
                 ref={internalRef}
@@ -167,10 +163,10 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
                 className={`border-2 ${isHighlighted ? 'border-[#5A61FF]' : 'border-gray-300'} p-4 rounded-lg w-full text-center`}
             >
                 <img
-                    src={imgSrc}
+                    src={imageUrl}
                     alt="Mockup Image"
                     className="w-full h-auto aspect-square object-cover rounded-lg"
-                    onError={(e) => e.currentTarget.src = fallbackImage}
+                    onError={(e) => e.currentTarget.src = '/icons/no-image.svg'}
                 />
                 {ShirtBoxBottom({ username, postedDate, submissionId, likeStatus, votingStatus, user_id, internalRef })}
             </div>
