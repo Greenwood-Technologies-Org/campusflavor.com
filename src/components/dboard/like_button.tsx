@@ -10,6 +10,7 @@ type LikeButtonProps = {
     isInitiallyLiked: boolean;
     submissionId: string;
     user_id: string;
+    enableClick: boolean;
 };
 
 const LikeButton: React.FC<LikeButtonProps> = ({
@@ -17,6 +18,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
     isInitiallyLiked,
     submissionId,
     user_id,
+    enableClick
 }) => {
     const [isLiked, setIsLiked] = useState(isInitiallyLiked);
     const [likeCount, setLikeCount] = useState(initialCount);
@@ -51,8 +53,8 @@ const LikeButton: React.FC<LikeButtonProps> = ({
 
     return (
         <button
-            onClick={handleLike}
-            className="border-none bg-none cursor-pointer"
+            onClick={() => enableClick && handleLike()}
+            className="${enableClick ? 'cursor-pointer' : 'cursor-default'}"
         >
             <div className="flex items-center space-x-1">
                 <FontAwesomeIcon
