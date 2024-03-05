@@ -52,13 +52,16 @@ const LikeButton: React.FC<LikeButtonProps> = ({
     return (
         <button
             onClick={handleLike}
-            style={{ border: "none", background: "none", cursor: "pointer" }}
+            className="border-none bg-none cursor-pointer"
         >
-            <FontAwesomeIcon
-                icon={isLiked ? fasHeart : farHeart}
-                color={isLiked ? "red" : "grey"}
-            />
-            <span style={{ marginLeft: "4px" }}>{likeCount}</span>
+            <div className="flex items-center space-x-1">
+                <FontAwesomeIcon
+                    icon={isLiked ? fasHeart : farHeart}
+                    color={isLiked ? "red" : "black"}
+                    className="w-5 h-5"
+                />
+                <span>{likeCount}</span>
+            </div>
         </button>
     );
 };

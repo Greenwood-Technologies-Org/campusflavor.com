@@ -77,11 +77,11 @@ function getShirtBoxBottom({
                 <p className="text-gray-600 text-xs">{timeAgo(postedDate)}</p>
             </div>
         );
-    } else if (votingStatus === VotingStatus.Voting) {
+    } else if (votingStatus === VotingStatus.Voting || votingStatus === VotingStatus.Finished) {
         return (
             <div className="flex justify-between items-center mx-4 mt-4">
                 <p className="text-gray-800 text-xl">@{username}</p>
-                <div className="space-x-2">
+                <div className="flex space-x-2 items-center">
                     <ShareButton
                         submissionId={submissionId}
                         onShare={() => {
@@ -97,12 +97,11 @@ function getShirtBoxBottom({
                         isInitiallyLiked={likeStatus.isInitiallyLiked}
                         submissionId={submissionId}
                         user_id={user_id}
+                        enableClick={votingStatus === VotingStatus.Voting}
                     />
                 </div>
             </div>
         );
-    } else if (votingStatus === VotingStatus.Finished) {
-        console.log('Voting has finished.');
     } else {
         console.log('Unknown voting status.');
     }
@@ -140,14 +139,11 @@ function getShirtBox({
             {...props}
             className={`border-2 ${isHighlighted ? 'border-[#5A61FF]' : 'border-gray-300'} p-4 rounded-lg w-full text-center`}
         >
-            <Image
+            <img
                 src={imgSrc}
                 alt="Mockup Image"
-                width={0}
-                height={0}
-                sizes="100vw"
                 className="w-full h-auto aspect-square object-cover rounded-lg"
-                onError={() => setImgSrc(fallbackImage)}
+                onError={(e) => e.currentTarget.src = fallbackImage}
             />
             {getShirtBoxBottom({ username, postedDate, submissionId, likeStatus, votingStatus, user_id, internalRef })}
         </div>
