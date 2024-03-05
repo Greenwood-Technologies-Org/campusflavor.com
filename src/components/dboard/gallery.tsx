@@ -75,8 +75,6 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
             // Handle finished logic here
             setVotingStatus(VotingStatus.Finished);
         }
-
-        setVotingStatus(VotingStatus.Finished); // This is just a placeholder, remove this line
     }, [votingStatus]);
 
     return (

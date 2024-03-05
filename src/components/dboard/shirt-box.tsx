@@ -52,8 +52,7 @@ async function getVotedForUser(user_id: string, submission_id: string) {
     return data;
 }
 
-// Define the getShirtBoxBottom function
-function getShirtBoxBottom({
+function ShirtBoxBottom({
     username,
     postedDate,
     submissionId,
@@ -107,49 +106,6 @@ function getShirtBoxBottom({
     }
 }
 
-function getShirtBox({
-    internalRef,
-    props,
-    imageUrl,
-    username,
-    postedDate,
-    submissionId,
-    isHighlighted,
-    likeStatus,
-    votingStatus,
-    user_id,
-}: {
-    internalRef: React.RefObject<HTMLDivElement>;
-    props: any;
-    imageUrl: string;
-    username: string;
-    postedDate: string;
-    submissionId: string;
-    isHighlighted: boolean;
-    likeStatus: { initialCount: number; isInitiallyLiked: boolean };
-    votingStatus: VotingStatus;
-    user_id: string;
-}) {
-    const [imgSrc, setImgSrc] = useState(imageUrl);
-    const fallbackImage = '/icons/no-image.svg';
-
-    return (
-        <div
-            ref={internalRef}
-            {...props}
-            className={`border-2 ${isHighlighted ? 'border-[#5A61FF]' : 'border-gray-300'} p-4 rounded-lg w-full text-center`}
-        >
-            <img
-                src={imgSrc}
-                alt="Mockup Image"
-                className="w-full h-auto aspect-square object-cover rounded-lg"
-                onError={(e) => e.currentTarget.src = fallbackImage}
-            />
-            {getShirtBoxBottom({ username, postedDate, submissionId, likeStatus, votingStatus, user_id, internalRef })}
-        </div>
-    );
-}
-
 export type ShirtBoxProps = {
     imageUrl: string;
     username: string;
@@ -197,19 +153,25 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             fetchLikeStatus();
         }, [submissionId]);
 
+        const [imgSrc, setImgSrc] = useState(imageUrl);
+        const fallbackImage = '/icons/no-image.svg';
 
-        return getShirtBox({
-            internalRef: internalRef,
-            props: props,
-            imageUrl: imageUrl,
-            username: username,
-            postedDate: postedDate,
-            submissionId: submissionId,
-            isHighlighted: isHighlighted || false,
-            likeStatus: likeStatus,
-            votingStatus: votingStatus,
-            user_id: user_id,
-        });
+
+        return (
+            <div
+                ref={internalRef}
+                {...props}
+                className={`border-2 ${isHighlighted ? 'border-[#5A61FF]' : 'border-gray-300'} p-4 rounded-lg w-full text-center`}
+            >
+                <img
+                    src={imgSrc}
+                    alt="Mockup Image"
+                    className="w-full h-auto aspect-square object-cover rounded-lg"
+                    onError={(e) => e.currentTarget.src = fallbackImage}
+                />
+                {ShirtBoxBottom({ username, postedDate, submissionId, likeStatus, votingStatus, user_id, internalRef })}
+            </div>
+        );
     }
 );
 
