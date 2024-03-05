@@ -21,7 +21,7 @@ const SubmissionCard: React.FC<SubmissionCardProps> = ({
                     width={500}
                     height={500}
                     className="aspect-square object-cover rounded-t-xl"
-                    loading="eager"
+                    priority={true}
                 />
             </div>
             <div className="border-t-2 border-gray w-full"></div>

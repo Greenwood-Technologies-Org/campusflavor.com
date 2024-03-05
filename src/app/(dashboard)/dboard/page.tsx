@@ -4,7 +4,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { SubmissionObject, VotingStatus } from "@/lib/types";
 
 import { Banner } from "@/components/banner";
-import GalleryPage from "@/components/gallery";
+import GalleryPage from "@/components/dboard/gallery";
 import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
 
