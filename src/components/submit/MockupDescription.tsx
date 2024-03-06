@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import InformationModal from "@/components/InformationModal";
+
 interface MockupDescriptionProps {
     onDescriptionChange: (description: string) => void;
 }
@@ -9,6 +11,7 @@ const MockupDescription: React.FC<MockupDescriptionProps> = ({
 }) => {
     const maxChars = 200;
     const [description, setDescription] = useState("");
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleInputChange = (
         event: React.ChangeEvent<HTMLTextAreaElement>
@@ -20,9 +23,17 @@ const MockupDescription: React.FC<MockupDescriptionProps> = ({
 
     return (
         <div className="flex flex-col w-full h-full relative">
-            <p className="text-left text-lg font-semibold text-black mb-2">
-                Description
-            </p>
+            <div className="flex items-center mb-2">
+                <p className="text-lg font-semibold text-black text-left">
+                    Description
+                </p>
+                <img
+                    src="/icons/info.svg"
+                    alt="Info"
+                    className="ml-2 w-5 h-5 cursor-pointer"
+                    onClick={() => setIsModalOpen(true)} // Open the modal on click
+                />
+            </div>
             <div className="flex-1 relative">
                 <textarea
                     placeholder="Describe your design (optional)."
@@ -35,6 +46,13 @@ const MockupDescription: React.FC<MockupDescriptionProps> = ({
                     {description.length}/{maxChars}
                 </div>
             </div>
+
+            <InformationModal
+                isOpen={isModalOpen}
+                title="Description"
+                information="This description is optional and will not be displayed alongside your design. You can use this space to explain your design."
+                onClose={() => setIsModalOpen(false)} // Function to close the modal
+            />
         </div>
     );
 };

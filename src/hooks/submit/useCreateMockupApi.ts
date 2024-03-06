@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import axios from "axios";
-import { get } from "http";
+import { createMockup, fakeCreateMockup } from "./createMockup";
+
 import {
     generateRandomImageName,
     uploadImageToSupabase,
@@ -16,9 +17,6 @@ interface ApiResponse {
 interface ApiError {
     message: string;
 }
-
-// NEEDS TO BE HIDDEN BEFORE PUBLISHING SITE
-const mediaModifierApiKey = "89cee3be-166b-4070-a7a9-e5c6417303d4";
 
 const resizeImage = async (
     blobUrl: string,
@@ -87,8 +85,7 @@ const getPublicDesignImageUrl = async (
 
     const imageBlob = await response.blob();
 
-    // THIS IS WHERE WE NEED TO UPLOAD IMAGE AND GET PUBLICLY ACCESSIBLE URL FOR 500X500 IMAGE
-    // simulate delay while getting image url
+    // GET PUBLICLY ACCESSIBLE URL FOR 500X500 IMAGE
     const publicDesignImageUrl = await uploadImageToSupabase(
         "public_design_submission_images",
         generateRandomImageName("jpg"),
@@ -116,16 +113,17 @@ const useCreateMockupApi = () => {
                 designImageUrl
             );
 
-            // const response = await callCreateMockupApi(
-            //     publicDesignImageUrl,
-            //     mockupType,
-            //     mockupColor
-            // ); // Uncomment this line to use the real API call
-            const response = await fakeCallCreateMockupApi(
+            const response = await callCreateMockupApi(
                 publicDesignImageUrl,
                 mockupType,
                 mockupColor
-            );
+            ); // Uncomment this line to use the real API call
+            // const response = await fakeCallCreateMockupApi(
+            //     publicDesignImageUrl,
+            //     mockupType,
+            //     mockupColor
+            // );
+            console.log(response);
             setUrl(response.url);
         } catch (e) {
             setError("Getting mockup failed");
@@ -174,9 +172,9 @@ const callCreateMockupApi = async (
     // get json RBG data for background color
     const backgroundColorJson = getBackgroundColorJson();
 
-    var mockupTypeData;
+    var mockupApiData;
     if (mockupType === "T-shirt") {
-        mockupTypeData = {
+        mockupApiData = {
             nr: 705,
             layer_inputs: [
                 {
@@ -198,7 +196,7 @@ const callCreateMockupApi = async (
             ],
         };
     } else if (mockupType === "Sweater") {
-        mockupTypeData = {
+        mockupApiData = {
             nr: 883,
             layer_inputs: [
                 {
@@ -220,7 +218,7 @@ const callCreateMockupApi = async (
             ],
         };
     } else if (mockupType === "Hoodie") {
-        mockupTypeData = {
+        mockupApiData = {
             nr: 153935,
             layer_inputs: [
                 {
@@ -245,19 +243,8 @@ const callCreateMockupApi = async (
         throw new Error("Mockup type not found");
     }
 
-    const options = {
-        method: "POST",
-        url: "https://api.mediamodifier.com/v2/mockup/render",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            api_key: mediaModifierApiKey,
-        },
-        data: mockupTypeData,
-    };
-
-    const response = await axios.request(options);
-    return response.data;
+    const response = await createMockup(mockupApiData);
+    return response;
 };
 
 // Simulated API call function for testing without actual API request
@@ -268,26 +255,8 @@ const fakeCallCreateMockupApi = async (
 ): Promise<ApiResponse> => {
     await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulate delay
 
-    var mockupTypeUrl;
-
-    if (mockupType === "T-shirt") {
-        mockupTypeUrl =
-            "https://mediamodifier.com/temporary/kxT4RMJdre2wLco7.jpeg";
-    } else if (mockupType === "Sweater") {
-        mockupTypeUrl =
-            "https://mediamodifier.com/temporary/6J4zf4zwygI8bkkm.jpeg";
-    } else if (mockupType === "Hoodie") {
-        mockupTypeUrl =
-            "https://mediamodifier.com/temporary/86Ct2gzDtQJAcPQ4.jpeg";
-    } else {
-        throw new Error("Mockup type not found");
-    }
-
-    return {
-        success: true,
-        message: "Image rendered successfully",
-        url: mockupTypeUrl,
-    };
+    const response = await fakeCreateMockup(mockupType);
+    return response;
 };
 
 export default useCreateMockupApi;
