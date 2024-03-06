@@ -25,9 +25,9 @@ const SubmissionCard: React.FC<SubmissionCardProps> = ({
                 />
             </div>
             <div className="border-t-2 border-gray w-full"></div>
-            <div className="px-4 py-2 text-left">
-                <div className="text-xl mb-1">@{username}</div>
-                <p className="text-gray-700 text-base">{description}</p>
+            <div className="flex justify-between items-center mx-4 py-2">
+                <p className="text-gray-800 text-xl">@{username}</p>
+                <p className="text-gray-600 text-xs">today</p>
             </div>
         </div>
     );
