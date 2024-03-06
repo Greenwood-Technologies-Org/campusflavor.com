@@ -35,6 +35,29 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         }
     }, [imageFile]);
 
+    const getDesignImageUrl = async (): Promise<string> => {
+        let designBlobUrl = "";
+
+        transformerRef.current.visible(false);
+        transformerRef.current.getLayer().draw();
+        if (containerRef.current) {
+            const stage = containerRef.current.querySelector("canvas");
+            if (stage) {
+                // Convert canvas to data URL
+                const dataUrl = stage.toDataURL();
+
+                // Convert data URL to Blob
+                const fetchResponse = await fetch(dataUrl);
+                const blob = await fetchResponse.blob();
+
+                // Create a blob URL from the Blob
+                designBlobUrl = URL.createObjectURL(blob);
+            }
+        }
+        transformerRef.current.visible(true);
+        return designBlobUrl;
+    };
+
     const updateDesignImageUrl = async () => {
         console.log("Updating design image URL");
         // need a delay to allow the updateImageUrl to start after the image has been uploaded
@@ -44,8 +67,39 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
     };
 
     useEffect(() => {
-        updateDesignImageUrl();
-    }, [imageRef, updateDesignImageUrl]);
+        const getDesignImageUrlEffect = async (): Promise<string> => {
+            let designBlobUrl = "";
+
+            transformerRef.current.visible(false);
+            transformerRef.current.getLayer().draw();
+            if (containerRef.current) {
+                const stage = containerRef.current.querySelector("canvas");
+                if (stage) {
+                    // Convert canvas to data URL
+                    const dataUrl = stage.toDataURL();
+
+                    // Convert data URL to Blob
+                    const fetchResponse = await fetch(dataUrl);
+                    const blob = await fetchResponse.blob();
+
+                    // Create a blob URL from the Blob
+                    designBlobUrl = URL.createObjectURL(blob);
+                }
+            }
+            transformerRef.current.visible(true);
+            return designBlobUrl;
+        };
+
+        const updateDesignImageUrlEffect = async () => {
+            console.log("Updating design image URL");
+            // need a delay to allow the updateImageUrl to start after the image has been uploaded
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            const designImageUrl = await getDesignImageUrlEffect();
+            setDesignImageUrl(designImageUrl);
+        };
+
+        updateDesignImageUrlEffect();
+    }, [imageRef, setDesignImageUrl]);
 
     useEffect(() => {
         const resizeObserver = new ResizeObserver((entries) => {
@@ -83,29 +137,6 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
             transformerRef.current.getLayer().batchDraw();
         }
     }, [image]);
-
-    const getDesignImageUrl = async (): Promise<string> => {
-        let designBlobUrl = "";
-
-        transformerRef.current.visible(false);
-        transformerRef.current.getLayer().draw();
-        if (containerRef.current) {
-            const stage = containerRef.current.querySelector("canvas");
-            if (stage) {
-                // Convert canvas to data URL
-                const dataUrl = stage.toDataURL();
-
-                // Convert data URL to Blob
-                const fetchResponse = await fetch(dataUrl);
-                const blob = await fetchResponse.blob();
-
-                // Create a blob URL from the Blob
-                designBlobUrl = URL.createObjectURL(blob);
-            }
-        }
-        transformerRef.current.visible(true);
-        return designBlobUrl;
-    };
 
     return (
         <div
