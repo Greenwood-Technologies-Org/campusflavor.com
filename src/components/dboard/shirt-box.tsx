@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useState, useEffect, forwardRef, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 
 import LikeButton from "./like_button";
 import ShareButton from "./share_botton";
@@ -148,6 +149,20 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
 
         let user_id = session.session?.user.id || "";
 
+        const searchParams = useSearchParams();
+        const submissionidParams = searchParams.get("submissionId");
+
+        useEffect(() => {
+            if (submissionidParams == submissionId) {
+                setTimeout(() => {
+                    internalRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                        inline: "nearest",
+                    });
+                }, 1000); // Adj
+            }
+        }, [submissionidParams, submissionId]);
         useEffect(() => {
             const fetchLikeStatus = async () => {
                 let initialCount = await getInitialVoteCount(submissionId);
