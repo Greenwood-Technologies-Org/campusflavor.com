@@ -1,6 +1,7 @@
 // components/UploadDesign.tsx
 import React, { useCallback } from "react";
 
+import { Icons } from "../icons";
 import { useDropzone } from "react-dropzone";
 
 // Add a prop type for the callback function
@@ -32,11 +33,7 @@ const UploadDesign: React.FC<UploadDesignProps> = ({ onImageUpload }) => {
         >
             <input {...getInputProps()} />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <img
-                    src="/icons/plus.svg"
-                    alt="Upload"
-                    className="mb-2 w-12 h-12"
-                />
+                <Icons.plus className="mb-2 w-12 h-12" />
                 <p className="text-gray-500">Drag or drop to upload design.</p>
             </div>
         </div>

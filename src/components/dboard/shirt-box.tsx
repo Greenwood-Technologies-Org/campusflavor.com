@@ -1,13 +1,15 @@
 // ShirtBox.tsx or wherever your ShirtBox component is defined
 "use client";
 
-import React, { useState, useEffect, forwardRef, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 
+import { Icons } from "../icons";
+import Image from "next/image";
 import LikeButton from "./like_button";
 import ShareButton from "./share_botton";
 import { VotingStatus } from "@/lib/types";
 import getDbClient from "@/lib/db/db-client";
+import { useSearchParams } from "next/navigation";
 import useSession from "@/hooks/use-session";
 
 function timeAgo(dateStr: string): string {
@@ -188,14 +190,14 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
                     isHighlighted ? "border-[#5A61FF]" : "border-gray-300"
                 } p-4 rounded-lg w-full text-center`}
             >
-                <img
+                <Image
                     src={imageUrl}
                     alt="Mockup Image"
                     className="w-full h-auto aspect-square object-cover rounded-lg"
-                    onError={(e) =>
-                        (e.currentTarget.src = "/icons/no-image.svg")
-                    }
-                />
+                    onError={() => {
+                        <Icons.noImage />;
+                    }}
+                ></Image>
                 {ShirtBoxBottom({
                     username,
                     postedDate,
