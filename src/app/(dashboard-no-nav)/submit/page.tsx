@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 import ConfirmSubmission from "@/components/submit/ConfirmSubmission";
+import { Icons } from "@/components/icons";
 import Link from "next/link";
 import MockupColor from "@/components/submit/MockupColor";
 import MockupDescription from "@/components/submit/MockupDescription";
@@ -27,7 +28,7 @@ const SubmitPage = () => {
         if (!session) {
             router.push(`/signin?callback=/submit`);
         }
-    }, [session, isLoading]);
+    }, [session, isLoading, router]);
 
     const [imageFile, setImageFile] = useState<File | null>(null); // State to hold the uploaded image file
     // Handler to update imageFile state, this should be triggered by UploadDesign component
@@ -71,18 +72,13 @@ const SubmitPage = () => {
             <div className="flex justify-between items-start pt-5 px-5">
                 <Link href="/submit-info">
                     <div className="flex items-center space-x-1">
-                        {" "}
                         {/* Use flex to align items horizontally */}
-                        <img
-                            src="/icons/left-chevron.svg"
-                            alt="Back"
-                            className="w-6 h-6"
-                        />
+                        <Icons.leftChevron className="w-6 h-6" />
                         <span>Back</span> {/* Add text next to the chevron */}
                     </div>
                 </Link>
                 <Link href="/competitions">
-                    <img src="/icons/x.svg" alt="Close" className="w-6 h-6" />
+                    <Icons.close className="w-6 h-6" />
                 </Link>
             </div>
 

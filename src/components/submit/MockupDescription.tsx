@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { Icons } from "../icons";
 import InformationModal from "@/components/InformationModal";
 
 interface MockupDescriptionProps {
@@ -27,11 +28,9 @@ const MockupDescription: React.FC<MockupDescriptionProps> = ({
                 <p className="text-lg font-semibold text-black text-left">
                     Description
                 </p>
-                <img
-                    src="/icons/info.svg"
-                    alt="Info"
+                <Icons.info
                     className="ml-2 w-5 h-5 cursor-pointer"
-                    onClick={() => setIsModalOpen(true)} // Open the modal on click
+                    onClick={() => setIsModalOpen(true)}
                 />
             </div>
             <div className="flex-1 relative">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { Icons } from "../icons";
 import InformationModal from "@/components/InformationModal";
 
 type MockupColorProps = {
@@ -22,29 +23,29 @@ const MockupColor: React.FC<MockupColorProps> = ({ colors, onColorSelect }) => {
                 <p className="text-lg font-semibold text-black text-left">
                     Mockup Color
                 </p>
-                <img
-                    src="/icons/info.svg"
-                    alt="Info"
+                <Icons.info
                     className="ml-2 w-5 h-5 cursor-pointer"
-                    onClick={() => setIsModalOpen(true)} // Open the modal on click
+                    onClick={() => setIsModalOpen(true)}
                 />
             </div>
 
-            <div className="flex flex-row items-start overflow-x-auto gap-2" style={{ scrollbarWidth: 'none' }}>
+            <div
+                className="flex flex-row items-start overflow-x-auto gap-2"
+                style={{ scrollbarWidth: "none" }}
+            >
                 {colors.map((color, index) => (
                     <div
                         key={index}
-                        className={`min-w-10 min-h-10 rounded-lg border ${color === selectedColor
-                            ? "border-black"
-                            : "border-gray-300"
-                            } cursor-pointer`}
+                        className={`min-w-10 min-h-10 rounded-lg border ${
+                            color === selectedColor
+                                ? "border-black"
+                                : "border-gray-300"
+                        } cursor-pointer`}
                         style={{ backgroundColor: color }}
                         onClick={() => handleColorSelect(color)}
                     ></div>
                 ))}
             </div>
-
-
 
             <InformationModal
                 isOpen={isModalOpen}

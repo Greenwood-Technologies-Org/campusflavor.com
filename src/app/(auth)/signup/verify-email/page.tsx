@@ -25,7 +25,7 @@ export default function VerifyEmailPage() {
 
     React.useEffect(() => {
         mutation.mutate({ resend: resend === "true", email });
-    }, [resend, email]);
+    }, [resend, email, mutation]);
 
     return (
         <div className="w-fit h-fit flex flex-col items-center gap-4">

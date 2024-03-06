@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { Icons } from "../icons";
 import InformationModal from "@/components/InformationModal";
 
 type MockupTypeProps = {
@@ -22,27 +23,30 @@ const MockupType: React.FC<MockupTypeProps> = ({ types, onTypeSelect }) => {
                 <p className="text-lg font-semibold text-black text-left">
                     Mockup Type
                 </p>
-                <img
-                    src="/icons/info.svg"
-                    alt="Info"
+                <Icons.info
                     className="ml-2 w-5 h-5 cursor-pointer"
-                    onClick={() => setIsModalOpen(true)} // Open the modal on click
+                    onClick={() => setIsModalOpen(true)}
                 />
             </div>
 
-            <div className="flex overflow-x-auto gap-2 items-start py-2" style={{ scrollbarWidth: 'none' }}>
+            <div
+                className="flex overflow-x-auto gap-2 items-start py-2"
+                style={{ scrollbarWidth: "none" }}
+            >
                 {types.map((type, index) => (
                     <button
                         key={index}
-                        className={`px-4 py-2 rounded-full border ${type === selectedType ? "border-black" : "border-gray-300"
-                            } cursor-pointer whitespace-nowrap`}
+                        className={`px-4 py-2 rounded-full border ${
+                            type === selectedType
+                                ? "border-black"
+                                : "border-gray-300"
+                        } cursor-pointer whitespace-nowrap`}
                         onClick={() => handleTypeSelect(type)}
                     >
                         {type}
                     </button>
                 ))}
             </div>
-
 
             <InformationModal
                 isOpen={isModalOpen}

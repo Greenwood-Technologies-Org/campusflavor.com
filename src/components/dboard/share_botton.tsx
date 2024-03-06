@@ -1,3 +1,4 @@
+import { Icons } from "../icons";
 // ShareButton.tsx
 import React from "react";
 
@@ -22,13 +23,8 @@ const ShareButton: React.FC<ShareButtonProps> = ({ submissionId, onShare }) => {
     };
 
     return (
-        <button
-            onClick={handleShare} className="w-7 h-7 cursor-pointer"
-        >
-            <img
-                src="/icons/share.svg"
-                alt="Share"
-            />
+        <button onClick={handleShare} className="w-7 h-7 cursor-pointer">
+            <Icons.share className="w-7 h-7" />
         </button>
     );
 };
