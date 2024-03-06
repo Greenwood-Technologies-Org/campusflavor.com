@@ -1,12 +1,11 @@
-import { useState } from "react";
-
-import axios from "axios";
 import { createMockup, fakeCreateMockup } from "./createMockup";
-
 import {
     generateRandomImageName,
     uploadImageToSupabase,
 } from "./fileGenerationUpload";
+
+import axios from "axios";
+import { useState } from "react";
 
 interface ApiResponse {
     success: boolean;

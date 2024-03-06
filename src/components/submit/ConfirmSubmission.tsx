@@ -4,6 +4,7 @@ import Link from "next/link";
 import SubmissionCard from "@/components/submit/SubmissionCard";
 import { SyncLoader } from "react-spinners";
 import useCreateMockupApi from "@/hooks/submit/useCreateMockupApi";
+import { useMutation } from "react-query";
 import useSubmissionApi from "@/hooks/submit/useSubmissionApi";
 
 interface ConfirmSubmissionProps {
@@ -28,6 +29,29 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     userId,
 }) => {
     const [isCheckboxSelected, setIsCheckboxSelected] = useState(false);
+
+    const messages: string[] = [
+        "Sneaking past the RA...",
+        "Getting ready for the pregame...",
+        "Running an 'errand' at GASUSA...",
+        "Copying polyatomic ions to calculator...",
+        "Negotiating with the WiFi gods...",
+        "Synchronizing with the academic ether...",
+    ];
+
+    const [loaderMessage, setLoaderMessage] = React.useState<string>(
+        messages[Math.floor(Math.random() * messages.length)]
+    );
+
+    useEffect(() => {
+        const updateMessage = () => {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            setLoaderMessage(messages[randomIndex]);
+        };
+
+        const intervalId = setInterval(updateMessage, 3000);
+        return () => clearInterval(intervalId);
+    }, []);
 
     // code for handling the creation of the mockup image
     const {
@@ -73,13 +97,15 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         return (
             <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
                 <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
-                    <div className="flex justify-center items-center my-8">
+                    <div className="flex flex-col justify-center items-center">
                         <SyncLoader
                             color="#000000"
                             size={20}
                             speedMultiplier={0.6}
                             margin={5}
+                            className="p-4"
                         />
+                        <p>{loaderMessage}</p>
                     </div>
                 </div>
             </div>
