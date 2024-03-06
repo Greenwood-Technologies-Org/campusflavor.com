@@ -1,6 +1,6 @@
 "use client";
 
-import React, { HTMLAttributes } from "react";
+import React, { HTMLAttributes, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { Session } from "@supabase/supabase-js";
@@ -30,8 +30,9 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
     ({ className, isLoading, session, ...props }, ref) => {
         const router = useRouter();
         const hasSession = !!session;
+        const [signedOut, setSignedOut] = useState(false);
 
-        if (!hasSession) {
+        if (!hasSession || signedOut) {
             return (
                 <div className={cn(className)} ref={ref} {...props}>
                     <div className="flex flex-row items-center justify-center gap-2">
@@ -81,7 +82,10 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                     <div className="border-r-2 border-primary-500 min-h-4 h-full" />
                     <button
                         className="text-lg font-bold text-center rounded-md py-1 px-1 text-primary-500 bg-secondary-500 hover:bg-primary-500 hover:text-secondary-500"
-                        onClick={() => router.push("/signout")}
+                        onClick={() => {
+                            router.push("/signout");
+                            setSignedOut(true);
+                        }}
                     >
                         Sign Out
                     </button>
