@@ -197,6 +197,8 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
                     onError={() => {
                         <Icons.noImage />;
                     }}
+                    width={1080}
+                    height={720}
                 ></Image>
                 {ShirtBoxBottom({
                     username,
