@@ -24,7 +24,8 @@ function useSession() {
     }, [supabase.auth]);
 
     supabase.auth.onAuthStateChange((event, session) => {
-        setSession(session);
+        if (event == "SIGNED_IN" && !session) setSession(session);
+        else if (event == "SIGNED_IN" && session) setSession(null);
     });
 
     return { isLoading, session };
