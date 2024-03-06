@@ -168,15 +168,23 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
         useEffect(() => {
             const fetchLikeStatus = async () => {
                 let initialCount = await getInitialVoteCount(submissionId);
-                let isInitiallyLiked = await getVotedForUser(
-                    user_id,
-                    submissionId
-                );
 
-                setLikeStatus({
-                    initialCount: initialCount,
-                    isInitiallyLiked: isInitiallyLiked,
-                });
+                if (user_id !== "") {
+                    let isInitiallyLiked = await getVotedForUser(
+                        user_id,
+                        submissionId
+                    );
+
+                    setLikeStatus({
+                        initialCount: initialCount,
+                        isInitiallyLiked: isInitiallyLiked,
+                    });
+                } else {
+                    setLikeStatus({
+                        initialCount: initialCount,
+                        isInitiallyLiked: false,
+                    });
+                }
             };
 
             fetchLikeStatus();
