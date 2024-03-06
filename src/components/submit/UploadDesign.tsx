@@ -10,12 +10,15 @@ interface UploadDesignProps {
 }
 
 const UploadDesign: React.FC<UploadDesignProps> = ({ onImageUpload }) => {
-    const onDrop = useCallback((acceptedFiles: File[]) => {
-        // Directly handle the file here
-        const file = acceptedFiles[0];
-        console.log(file.name);
-        onImageUpload(file); // Notify the parent component
-    }, []);
+    const onDrop = useCallback(
+        (acceptedFiles: File[]) => {
+            // Directly handle the file here
+            const file = acceptedFiles[0];
+            console.log(file.name);
+            onImageUpload(file); // Notify the parent component
+        },
+        [onImageUpload]
+    );
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,

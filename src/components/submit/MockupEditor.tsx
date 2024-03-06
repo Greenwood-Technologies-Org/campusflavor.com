@@ -1,9 +1,8 @@
+import { Image, Layer, Stage, Transformer } from "react-konva";
 import React, { useEffect, useRef, useState } from "react";
 
-import { Image, Layer, Stage, Transformer } from "react-konva";
-import useImage from "use-image";
-
 import axios from "axios";
+import useImage from "use-image";
 
 interface MockupEditorProps {
     imageFile: File;
@@ -36,9 +35,17 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         }
     }, [imageFile]);
 
+    const updateDesignImageUrl = async () => {
+        console.log("Updating design image URL");
+        // need a delay to allow the updateImageUrl to start after the image has been uploaded
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        const designImageUrl = await getDesignImageUrl();
+        setDesignImageUrl(designImageUrl);
+    };
+
     useEffect(() => {
         updateDesignImageUrl();
-    }, [imageRef]);
+    }, [imageRef, updateDesignImageUrl]);
 
     useEffect(() => {
         const resizeObserver = new ResizeObserver((entries) => {
@@ -83,7 +90,7 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         transformerRef.current.visible(false);
         transformerRef.current.getLayer().draw();
         if (containerRef.current) {
-            const stage = containerRef.current.querySelector('canvas');
+            const stage = containerRef.current.querySelector("canvas");
             if (stage) {
                 // Convert canvas to data URL
                 const dataUrl = stage.toDataURL();
@@ -100,23 +107,21 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
         return designBlobUrl;
     };
 
-
-
-    const updateDesignImageUrl = async () => {
-        console.log("Updating design image URL");
-        // need a delay to allow the updateImageUrl to start after the image has been uploaded
-        await new Promise(resolve => setTimeout(resolve, 500));
-        const designImageUrl = await getDesignImageUrl();
-        setDesignImageUrl(designImageUrl);
-    };
-
     return (
         <div
             ref={containerRef}
-            style={{ borderColor: 'gray', borderWidth: 2, backgroundColor: backgroundColor }} // Example for directly using backgroundColor prop.
+            style={{
+                borderColor: "gray",
+                borderWidth: 2,
+                backgroundColor: backgroundColor,
+            }} // Example for directly using backgroundColor prop.
             className={`w-full h-full rounded-xl overflow-hidden`}
         >
-            <Stage width={dimensions.width} height={dimensions.height} ref={stageRef}>
+            <Stage
+                width={dimensions.width}
+                height={dimensions.height}
+                ref={stageRef}
+            >
                 <Layer>
                     {image && (
                         <Image
@@ -136,9 +141,13 @@ const MockupEditor: React.FC<MockupEditorProps> = ({
                             ref={imageRef}
                             draggable
                             onDragEnd={updateDesignImageUrl}
+                            alt="Design Image"
                         />
                     )}
-                    <Transformer ref={transformerRef} onTransformEnd={updateDesignImageUrl} />
+                    <Transformer
+                        ref={transformerRef}
+                        onTransformEnd={updateDesignImageUrl}
+                    />
                 </Layer>
             </Stage>
         </div>

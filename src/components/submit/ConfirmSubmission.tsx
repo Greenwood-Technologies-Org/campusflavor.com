@@ -43,7 +43,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         if (isOpen) {
             handleOpen();
         }
-    }, [isOpen]);
+    }, [isOpen, handleOpen]);
 
     // code for handling user pressing the submit button
     const {

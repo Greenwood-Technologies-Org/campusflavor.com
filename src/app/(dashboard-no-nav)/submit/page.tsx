@@ -28,7 +28,7 @@ const SubmitPage = () => {
         if (!session) {
             router.push(`/signin?callback=/submit`);
         }
-    }, [session, isLoading]);
+    }, [session, isLoading, router]);
 
     const [imageFile, setImageFile] = useState<File | null>(null); // State to hold the uploaded image file
     // Handler to update imageFile state, this should be triggered by UploadDesign component
