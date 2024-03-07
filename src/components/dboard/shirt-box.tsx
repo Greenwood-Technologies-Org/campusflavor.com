@@ -140,6 +140,8 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
         },
         ref
     ) => {
+        const [imageLoaded, setImageLoaded] = useState(false); // New state to track image loading
+
         const [likeStatus, setLikeStatus] = useState({
             initialCount: 0,
             isInitiallyLiked: false,
@@ -155,16 +157,14 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
         const submissionidParams = searchParams.get("submissionId");
 
         useEffect(() => {
-            if (submissionidParams == submissionId) {
-                setTimeout(() => {
-                    internalRef.current?.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center",
-                        inline: "nearest",
-                    });
-                }, 1000); // Adj
+            if (submissionidParams == submissionId && imageLoaded) {
+                internalRef.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                    inline: "nearest",
+                });
             }
-        }, [submissionidParams, submissionId]);
+        }, [submissionidParams, submissionId, imageLoaded]);
         useEffect(() => {
             const fetchLikeStatus = async () => {
                 let initialCount = await getInitialVoteCount(submissionId);
@@ -207,6 +207,7 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
                     }}
                     width={1080}
                     height={720}
+                    onLoadingComplete={() => setImageLoaded(true)} // Use the onLoadingComplete callback to set imageLoaded to true
                 ></Image>
                 {ShirtBoxBottom({
                     username,
