@@ -119,7 +119,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
                         Your submission was successful. It will be posted to the
                         design board after review.
                     </p>
-                    <Link href="/dboard">
+                    <Link href="/competitions">
                         <button className="text-white py-2 px-5 rounded-lg focus:outline-none bg-black hover:bg-gray-700">
                             Close
                         </button>
@@ -168,10 +168,11 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                     <button
                         disabled={!isCheckboxSelected}
-                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${!isCheckboxSelected
-                            ? "bg-gray-500 text-white"
-                            : "bg-black text-white hover:bg-gray-700"
-                            }`}
+                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${
+                            !isCheckboxSelected
+                                ? "bg-gray-500 text-white"
+                                : "bg-black text-white hover:bg-gray-700"
+                        }`}
                         onClick={handleSubmit}
                     >
                         Submit
