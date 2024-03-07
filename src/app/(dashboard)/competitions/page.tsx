@@ -11,6 +11,7 @@ import { Banner } from "@/components/banner";
 import GalleryPage from "@/components/dboard/gallery";
 import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
+import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 
 async function getURLsForSchool(school_affiliation: string) {
     const supabase = getDbClient();
@@ -117,13 +118,43 @@ async function determineVotingStatusByDate(
     };
 }
 
+// Band-aid solution to rendering the desired objects
+function moveSubmissionIdToFront(
+    submissions: SubmissionObject[],
+    submissionId: string
+) {
+    // Find the index of the submission with the matching submission_id
+    const index = submissions.findIndex(
+        (submission) => submission.submission_id === submissionId
+    );
+
+    // If found and it's not already the first element, move it to the front
+    if (index > 0) {
+        const [itemToMove] = submissions.splice(index, 1); // Remove the item from its current position
+        submissions.unshift(itemToMove); // Add it to the beginning of the array
+    }
+}
+
 function Page() {
     const [submissions, setSubmissions] = useState<SubmissionObject[]>([]);
+
+    const [searchParams] = useSearchParams();
     const [votingInfo, setVotingInfo] = useState<VotingStatusResult>({
-        votingStatus: VotingStatus.Prevoting, // Default voting status
+        votingStatus: VotingStatus.NotStarted, // Default voting status
         countdownTimestamp: -1, // Default timestamp
     });
     const school_affiliation = "Case Western Reserve University";
+
+    useEffect(() => {
+        if (Array.isArray(searchParams) && searchParams.length === 2) {
+            const paramKey = searchParams[0];
+            const paramValue = searchParams[1];
+            if (paramKey === "submissionId") {
+                moveSubmissionIdToFront(submissions, paramValue);
+                setSubmissions(submissions);
+            }
+        }
+    }, [searchParams, submissions]);
 
     useEffect(() => {
         getURLsForSchool(school_affiliation)
