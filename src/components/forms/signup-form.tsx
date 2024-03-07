@@ -16,6 +16,7 @@ import {
 
 import { AuthError } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "../ui/checkbox";
 import { Icons } from "@/components/icons";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/password-input";
@@ -31,6 +32,7 @@ const formSchema = z.object({
     username: usernameSchema,
     email: emailSchema,
     password: passwordSchema,
+    optIntoCommunications: z.boolean().default(true),
 });
 
 type Inputs = z.infer<typeof formSchema>;
@@ -45,6 +47,7 @@ export function SignUpForm() {
             username: "",
             email: "",
             password: "",
+            optIntoCommunications: true,
         },
     });
 
@@ -59,6 +62,7 @@ export function SignUpForm() {
                         data: {
                             username: data.username,
                             api_calls: 0,
+                            opted_in: data.optIntoCommunications,
                         },
                     },
                 });
@@ -136,6 +140,25 @@ export function SignUpForm() {
                                 <PasswordInput
                                     placeholder="**********"
                                     {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="optIntoCommunications"
+                    render={({ field }) => (
+                        <FormItem className="flex flex-row justify-start items-center gap-1 align-middle">
+                            <FormLabel>Opt into communications</FormLabel>
+                            <FormControl className="flex flex-row items-center justify-center align-middle">
+                                <Checkbox
+                                    checked={field.value}
+                                    onCheckedChange={(checked) => {
+                                        field.onChange(checked);
+                                    }}
+                                    onBlur={field.onBlur}
                                 />
                             </FormControl>
                             <FormMessage />
