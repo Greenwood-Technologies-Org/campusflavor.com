@@ -4,7 +4,6 @@ import Link from "next/link";
 import SubmissionCard from "@/components/submit/SubmissionCard";
 import { SyncLoader } from "react-spinners";
 import useCreateMockupApi from "@/hooks/submit/useCreateMockupApi";
-import { useMutation } from "react-query";
 import useSubmissionApi from "@/hooks/submit/useSubmissionApi";
 
 interface ConfirmSubmissionProps {
@@ -60,15 +59,14 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         url: mockupUrl,
         error: mockupError,
     } = useCreateMockupApi();
-
+    const handleOpen = async () => {
+        await fetchMockupUrl(designImageUrl, mockupType, mockupColor);
+    };
     useEffect(() => {
-        const handleOpen = async () => {
-            await fetchMockupUrl(designImageUrl, mockupType, mockupColor);
-        };
         if (isOpen) {
             handleOpen();
         }
-    }, [isOpen, designImageUrl, mockupType, mockupColor, fetchMockupUrl]);
+    }, [isOpen]);
 
     // code for handling user pressing the submit button
     const {
@@ -170,11 +168,10 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                     <button
                         disabled={!isCheckboxSelected}
-                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${
-                            !isCheckboxSelected
-                                ? "bg-gray-500 text-white"
-                                : "bg-black text-white hover:bg-gray-700"
-                        }`}
+                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${!isCheckboxSelected
+                            ? "bg-gray-500 text-white"
+                            : "bg-black text-white hover:bg-gray-700"
+                            }`}
                         onClick={handleSubmit}
                     >
                         Submit
