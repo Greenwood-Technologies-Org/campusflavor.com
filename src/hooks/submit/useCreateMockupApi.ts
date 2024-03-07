@@ -4,7 +4,9 @@ import {
     uploadImageToSupabase,
 } from "./fileGenerationUpload";
 
+import { Session } from "@supabase/supabase-js";
 import axios from "axios";
+import { getBrowserClient } from "@/lib/db/db-client";
 import { useState } from "react";
 
 interface ApiResponse {
@@ -112,18 +114,36 @@ const useCreateMockupApi = () => {
                 designImageUrl
             );
 
-            const response = await callCreateMockupApi(
-                publicDesignImageUrl,
-                mockupType,
-                mockupColor
-            ); // Uncomment this line to use the real API call
-            // const response = await fakeCallCreateMockupApi(
-            //     publicDesignImageUrl,
-            //     mockupType,
-            //     mockupColor
-            // );
-            console.log(response);
-            setUrl(response.url);
+            const client = getBrowserClient();
+            const { data, error } = await client.auth.getUser();
+
+            if (error) {
+                throw new Error("Error fetching user. Not signed in.");
+            }
+
+            const user = data.user;
+            if (user.user_metadata.api_calls <= 100) {
+                const response = await callCreateMockupApi(
+                    publicDesignImageUrl,
+                    mockupType,
+                    mockupColor
+                ); // Uncomment this line to use the real API call
+                // const response = await fakeCallCreateMockupApi(
+                //     publicDesignImageUrl,
+                //     mockupType,
+                //     mockupColor
+                // );
+                setUrl(response.url);
+                console.log(response);
+
+                await client.auth.updateUser({
+                    data: {
+                        api_calls: user.user_metadata.api_calls + 1,
+                    },
+                });
+            } else {
+                setError("Maximum submissions reached.");
+            }
         } catch (e) {
             setError("Getting mockup failed");
             console.log(e);
