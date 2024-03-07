@@ -21,7 +21,7 @@ const ShareButton: React.FC<ShareButtonProps> = ({ submissionId, onShare }) => {
         if (navigator.share) {
             try {
                 await navigator.share({
-                    title: "Check this design out!",
+                    title: "Share this design!",
                     url: urlToShare,
                 });
                 // Call onShare callback if provided
