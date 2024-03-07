@@ -11,6 +11,7 @@ function getStatusMessage(status: VotingStatus): string {
         case VotingStatus.NotStarted:
             return "Accepting Submissions in";
         case VotingStatus.Prevoting:
+            return "Submissions Close In";
         case VotingStatus.Intermission:
             return "Voting Opens In";
         case VotingStatus.Voting:
