@@ -6,10 +6,10 @@ import { VotingStatus } from "@/lib/types";
 export default function Competitions() {
     return (
         <main className="w-full flex flex-col flex-grow items-center">
-            <Banner
+            {/* <Banner
                 rotatingBannerItems={rotatingBannerItems}
                 votingStatusParam={VotingStatus.Prevoting}
-            ></Banner>
+            ></Banner> */}
         </main>
     );
 }

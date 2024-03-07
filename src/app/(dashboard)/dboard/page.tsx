@@ -1,7 +1,11 @@
 "use client";
 
 import React, { Suspense, useEffect, useState } from "react";
-import { SubmissionObject, VotingStatus } from "@/lib/types";
+import {
+    SubmissionObject,
+    VotingStatus,
+    VotingStatusResult,
+} from "@/lib/types";
 
 import { Banner } from "@/components/banner";
 import GalleryPage from "@/components/dboard/gallery";
@@ -18,8 +22,6 @@ async function getURLsForSchool(school_affiliation: string) {
     if (error) {
         throw new Error(error.message);
     }
-
-    console.log(data);
 
     return data.map((item: any) => ({
         url_link: item.url_link,
@@ -57,12 +59,11 @@ function extractCompetitionDates(datesArray: any[]) {
 
 async function determineVotingStatusByDate(
     school_affiliation = "Case Western Reserve University"
-) {
+): Promise<VotingStatusResult> {
     const supabase = getDbClient();
-    const { data, error } = await supabase.rpc<any, any>(
-        "get_competition_dates",
-        { school_affil: school_affiliation }
-    );
+    const { data, error } = await supabase.rpc("get_competition_dates", {
+        school_affil: school_affiliation,
+    });
 
     if (error) {
         throw new Error(error.message);
@@ -75,31 +76,53 @@ async function determineVotingStatusByDate(
     const votingEnd = new Date(dataObject.votingEnd);
 
     const currentDate = new Date();
+    const currentTime = currentDate.getTime();
 
     if (currentDate < submissionStart) {
-        // If the current date is before the submission period has started.
-        return VotingStatus.NotStarted;
+        // Before submission period.
+        return {
+            votingStatus: VotingStatus.NotStarted,
+            countdownTimestamp: submissionStart.getTime() - currentTime,
+        };
     } else if (currentDate >= submissionStart && currentDate <= submissionEnd) {
-        // If the current date is between the start and end of the submission period.
-        return VotingStatus.Prevoting;
+        // During submission period.
+        return {
+            votingStatus: VotingStatus.Prevoting,
+            countdownTimestamp: submissionEnd.getTime() - currentTime,
+        };
     } else if (currentDate > submissionEnd && currentDate < votingStart) {
-        // If the current date is after the submission period but before voting starts.
-        return VotingStatus.Intermission; // Assuming there's a period between submission end and voting start.
+        // After submission period, before voting.
+        return {
+            votingStatus: VotingStatus.Intermission,
+            countdownTimestamp: votingStart.getTime() - currentTime,
+        };
     } else if (currentDate >= votingStart && currentDate <= votingEnd) {
-        // If the current date is between the start and end of the voting period.
-        return VotingStatus.Voting;
+        // During voting period.
+        return {
+            votingStatus: VotingStatus.Voting,
+            countdownTimestamp: votingEnd.getTime() - currentTime,
+        };
     } else if (currentDate > votingEnd) {
-        // If the current date is after the voting period.
-        return VotingStatus.Finished;
+        // After voting period.
+        // Assuming the cycle might restart or there's a next event to count down to, adjust accordingly.
+        // If there's no next event, you might want to handle this differently.
+        return {
+            votingStatus: VotingStatus.Finished,
+            countdownTimestamp: null, // or provide the timestamp for when the next cycle/event is expected to start, if known.
+        };
     }
-    return VotingStatus.NotStarted;
+    return {
+        votingStatus: VotingStatus.Finished,
+        countdownTimestamp: null, // or provide the timestamp for when the next cycle/event is expected to start, if known.
+    };
 }
 
 function Page() {
     const [submissions, setSubmissions] = useState<SubmissionObject[]>([]);
-    const [votingStatus, setVotingStatus] = useState<VotingStatus>(
-        VotingStatus.Prevoting
-    );
+    const [votingInfo, setVotingInfo] = useState<VotingStatusResult>({
+        votingStatus: VotingStatus.Prevoting, // Default voting status
+        countdownTimestamp: -1, // Default timestamp
+    });
     const school_affiliation = "Case Western Reserve University";
 
     useEffect(() => {
@@ -109,9 +132,7 @@ function Page() {
     }, [school_affiliation]);
 
     useEffect(() => {
-        determineVotingStatusByDate()
-            .then(setVotingStatus)
-            .catch(console.error);
+        determineVotingStatusByDate().then(setVotingInfo).catch(console.error);
     }, []);
 
     const bannerItems = submissions.map((submission) => submission.url_link);
@@ -120,12 +141,12 @@ function Page() {
         <main className="w-full flex flex-col flex-grow items-center">
             <Banner
                 rotatingBannerItems={rotatingBannerItems}
-                votingStatusParam={votingStatus}
+                votingStatusParam={votingInfo}
             />
             <Suspense fallback={<div>Loading...</div>}>
                 <GalleryPage
                     gallery={submissions}
-                    votingStatusParam={votingStatus}
+                    votingStatusParam={votingInfo}
                 />
             </Suspense>
         </main>

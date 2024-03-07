@@ -58,7 +58,6 @@ const LikeButton: React.FC<LikeButtonProps> = ({
         } else {
             // Inside the else block of handleLike
             setShowPopup(true);
-            console.log("user_id is empty");
 
             // Optionally, set a timeout to hide the popup automatically after a few seconds
             setTimeout(() => setShowPopup(false), 3000);

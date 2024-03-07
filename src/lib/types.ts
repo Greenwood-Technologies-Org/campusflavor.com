@@ -12,3 +12,8 @@ export enum VotingStatus {
     Voting = "voting",
     Finished = "finished",
 }
+
+export interface VotingStatusResult {
+    votingStatus: VotingStatus;
+    countdownTimestamp: number | null;
+}

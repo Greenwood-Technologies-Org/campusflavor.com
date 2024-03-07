@@ -1,11 +1,12 @@
 "use client";
 
-import { VotingStatus } from "@/lib/types";
+import { VotingStatus, VotingStatusResult } from "@/lib/types";
 import { cn, formatMilliseconds } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 import { HTMLAttributes } from "react";
 import Marquee from "react-fast-marquee";
+import { CountdownTimer } from "./dboard/countdown_timer";
 
 interface RotatingTickerProps extends HTMLAttributes<HTMLDivElement> {
     items: string[];
@@ -53,64 +54,9 @@ const RotatingTicker = React.forwardRef<HTMLDivElement, RotatingTickerProps>(
 
 RotatingTicker.displayName = "RotatingTicker";
 
-interface CountdownTimerProps extends HTMLAttributes<HTMLDivElement> {
-    timestamp: number;
-}
-
-const CountdownTimer = React.forwardRef<HTMLDivElement, CountdownTimerProps>(
-    ({ className, children, timestamp, ...props }, ref) => {
-        const [timestampLive, setTimestampLive] =
-            React.useState<number>(timestamp);
-
-        React.useEffect(() => {
-            const interval = setInterval(() => {
-                setTimestampLive((prev) => prev - 1000);
-            }, 1000);
-
-            return () => clearInterval(interval);
-        }, []);
-
-        const timeData = formatMilliseconds(timestampLive);
-
-        return (
-            <div
-                className={cn(
-                    "flex flex-col gap-1 justify-start items-center w-fit h-fit bg-primary-500 text-secondary-500 text-sm md:text-lg font-bold p-2 rounded-lg shadow-lg",
-                    className
-                )}
-                {...props}
-                ref={ref}
-            >
-                <p>Voting Opens In</p>
-                <div className="flex flex-row items-center justify-center gap-4">
-                    <div className="flex flex-col items-center justify-center">
-                        <p>{timeData.hours}</p>
-                        <p className="font-normal">
-                            {timeData.hours == 1 ? "hour" : "hours"}
-                        </p>
-                    </div>
-                    <div className="flex flex-col items-center justify-center">
-                        <p>{timeData.minutes}</p>
-                        <p className="font-normal">
-                            {timeData.minutes == 1 ? "minute" : "minutes"}
-                        </p>
-                    </div>
-                    <div className="flex flex-col items-center justify-center">
-                        <p>{timeData.seconds}</p>
-                        <p className="font-normal">
-                            {timeData.seconds == 1 ? "second" : "seconds"}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-);
-CountdownTimer.displayName = "CountdownTimer";
-
 interface BannerProps extends HTMLAttributes<HTMLDivElement> {
     rotatingBannerItems: string[];
-    votingStatusParam: VotingStatus;
+    votingStatusParam: VotingStatusResult;
 }
 
 const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
@@ -137,13 +83,17 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                                 Case Western Reserve University
                             </div>
                         </div>
-                        <CountdownTimer
-                            className=""
-                            timestamp={1000000}
-                        ></CountdownTimer>
+
+                        {votingStatusParam.countdownTimestamp !== null && (
+                            <CountdownTimer
+                                className=""
+                                VotingStatusResult={votingStatusParam}
+                            />
+                        )}
 
                         <Link href="/submit-info">
-                            {votingStatusParam === VotingStatus.Prevoting && (
+                            {votingStatusParam.votingStatus ===
+                                VotingStatus.Prevoting && (
                                 <button className="p-2 bg-[#FF3E51] rounded-lg text-sm md:text-xl">
                                     Submit a Design
                                 </button>
