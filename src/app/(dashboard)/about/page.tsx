@@ -9,23 +9,23 @@ export default function About() {
 
     const competitionSteps = [
         <CompetitionStep
-            icon={<Icons.noImage className="w-full h-auto aspect-square object-cover" />}
+            icon={<Icons.design />}
             title={"1. Design"}
         />,
         <CompetitionStep
-            icon={<Icons.noImage className="w-full h-auto aspect-square object-cover" />}
+            icon={<Icons.upload />}
             title={"2. Submit"}
         />,
         <CompetitionStep
-            icon={<Icons.noImage className="w-full h-auto aspect-square object-cover" />}
+            icon={<Icons.heart />}
             title={"3. Vote"}
         />,
         <CompetitionStep
-            icon={<Icons.noImage className="w-full h-auto aspect-square object-cover" />}
+            icon={<Icons.trophy />}
             title={"4. Win"}
         />,
         <CompetitionStep
-            icon={<Icons.noImage className="w-full h-auto aspect-square object-cover" />}
+            icon={<Icons.tshirt />}
             title={"5. Wear"}
         />,
     ];

@@ -8,10 +8,14 @@ interface CompetitionStepProps {
 
 const CompetitionStep: React.FC<CompetitionStepProps> = ({ icon, title }) => {
 
+    const iconWithClasses = React.cloneElement(icon, {
+        className: `${icon.props.className} w-full h-auto aspect-square object-cover`
+    });
+
     return (
         <div className="w-full items-center ">
             <div>
-                {icon}
+                {iconWithClasses}
             </div>
             <h4 className="text-xl font-semibold p-2 text-center">{title}</h4>
         </div>
