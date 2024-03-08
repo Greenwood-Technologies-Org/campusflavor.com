@@ -19,7 +19,7 @@ interface LayerInput {
     id: string;
     data?: string;
     crop?: Crop;
-    checked: boolean;
+    checked?: boolean;
     color?: ColorJson; // Optional, depending on if the layer uses color
 }
 

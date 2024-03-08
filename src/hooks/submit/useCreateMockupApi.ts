@@ -4,7 +4,6 @@ import {
     uploadImageToSupabase,
 } from "./fileGenerationUpload";
 
-import axios from "axios";
 import { useState } from "react";
 
 interface ApiResponse {
@@ -174,25 +173,22 @@ const callCreateMockupApi = async (
     var mockupApiData;
     if (mockupType === "T-shirt") {
         mockupApiData = {
-            nr: 705,
+            nr: 155410,
             layer_inputs: [
                 {
-                    id: "539fba27-3c25-4c33-b798-0b1628b3d6a0",
+                    id: 'eeacc340-5a01-4059-93fc-fc9a98787f71',
                     data: designImageUrl,
-                    crop: { x: -50, y: -50, width: 600, height: 965.4 },
-                    checked: true,
+                    crop: { x: -50, y: -50, width: 600, height: 768 }
                 },
                 {
-                    id: "16d9837d-8463-49ba-934b-42653270afaa",
-                    checked: true,
-                    color: mockupColorJson,
+                    id: '540067b7-7330-494b-ab66-00d47e12d3da',
+                    color: mockupColorJson
                 },
                 {
-                    id: "3c7aee09-37b7-42fe-9275-b5f0c7788dc6",
-                    checked: true,
-                    color: backgroundColorJson,
-                },
-            ],
+                    id: 'b5c700f8-fc92-40a8-9862-48c82fd7887c',
+                    color: backgroundColorJson
+                }
+            ]
         };
     } else if (mockupType === "Sweater") {
         mockupApiData = {
