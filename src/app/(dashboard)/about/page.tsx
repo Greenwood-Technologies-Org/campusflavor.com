@@ -36,10 +36,10 @@ export default function About() {
 
 
     return (
-        <div className="w-full py-12 px-[10%] space-y-12">
+        <div className="w-full py-12 px-[2%] space-y-12">
 
             {/* The Problem */}
-            <div className="flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
+            <div className="px-[8%] flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
                 <div className="w-full md:w-1/2">
                     <h2 className="text-4xl font-semibold pb-4">The Problem</h2>
                     <span>We noticed a trend at universities: school merchandise features generic designs that don’t accurately speak to student life. The college experience is about a lot more than just logos. Its about avoiding the dorm filth, pulling all nighters to catch up on studying, and surviving on a shitty meal plan. </span>
@@ -59,7 +59,7 @@ export default function About() {
             </div>
 
             {/* Our Solution (below medium size) */}
-            <div className="md:hidden flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
+            <div className="px-[8%] md:hidden flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
                 <div className="w-full md:w-1/2">
                     <h2 className="text-4xl font-semibold pb-4">Our Solution</h2>
                     <span>We host university-specific merchandise design competitions so students can create clothing that accurately speaks to their experiences in college. At Campus Flavor, apparel speaks to campus inside jokes, legendary study spots, and memorable events that every student can relate to.</span>
@@ -79,7 +79,7 @@ export default function About() {
             </div>
 
             {/* Our Solution (above medium size) */}
-            <div className="hidden md:flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
+            <div className="px-[8%] hidden md:flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
                 <div className="flex items-center justify-center w-full md:w-1/2"> {/* Adjusted: removed fixed height */}
                     <div className="max-w-md md:max-w-xs w-full h-auto"> {/* New: Control width, auto-adjust height */}
                         <Image
@@ -101,7 +101,7 @@ export default function About() {
             {/* How It Works */}
             <div>
                 <h2 className="text-4xl font-semibold pb-4 text-center">How It Works</h2>
-                <div className="grid grid-cols-2 md:grid-cols-6 gap-2 p-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 p-4">
                     {competitionSteps}
                 </div>
             </div>

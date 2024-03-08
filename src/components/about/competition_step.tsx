@@ -13,11 +13,11 @@ const CompetitionStep: React.FC<CompetitionStepProps> = ({ icon, title }) => {
     });
 
     return (
-        <div className="w-full items-center ">
+        <div className="w-full items-center space-y-2">
             <div>
                 {iconWithClasses}
             </div>
-            <h4 className="text-xl font-semibold p-2 text-center">{title}</h4>
+            <h4 className="text-xl font-semibold text-center">{title}</h4>
         </div>
     );
 };
