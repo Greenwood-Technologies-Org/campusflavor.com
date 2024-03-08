@@ -17,16 +17,20 @@ export default function About() {
             title={"2. Submit"}
         />,
         <CompetitionStep
+            icon={<Icons.share />}
+            title={"3. Share"}
+        />,
+        <CompetitionStep
             icon={<Icons.heart />}
-            title={"3. Vote"}
+            title={"4. Vote"}
         />,
         <CompetitionStep
             icon={<Icons.trophy />}
-            title={"4. Win"}
+            title={"5. Win"}
         />,
         <CompetitionStep
             icon={<Icons.tshirt />}
-            title={"5. Wear"}
+            title={"6. Wear"}
         />,
     ];
 
@@ -97,7 +101,7 @@ export default function About() {
             {/* How It Works */}
             <div>
                 <h2 className="text-4xl font-semibold pb-4 text-center">How It Works</h2>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-2 p-4">
+                <div className="grid grid-cols-2 md:grid-cols-6 gap-2 p-4">
                     {competitionSteps}
                 </div>
             </div>
