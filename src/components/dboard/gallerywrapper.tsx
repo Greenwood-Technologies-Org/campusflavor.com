@@ -30,8 +30,6 @@ const GalleryWrapper = ({
     const [processedGallery, setProcessedGallery] =
         useState<SubmissionObject[]>(initialGallery);
 
-    console.log("Pre UseEffect Gallery");
-
     useEffect(() => {
         // Process the gallery based on searchParams every time either the gallery or searchParams change
         let updatedGallery = [...initialGallery]; // Clone the initialGallery to avoid directly mutating props
@@ -42,9 +40,7 @@ const GalleryWrapper = ({
             }
         }
         setProcessedGallery(updatedGallery); // Update the state with the processed gallery
-        console.log("Useeffected Gallery");
     }, [initialGallery]); // React to changes in initialGallery or searchParams
-    console.log("Post UseEffect Gallery");
 
     return (
         <GalleryPage
