@@ -192,24 +192,21 @@ const callCreateMockupApi = async (
         };
     } else if (mockupType === "Sweater") {
         mockupApiData = {
-            nr: 883,
+            nr: 155412,
             layer_inputs: [
                 {
-                    id: "d4650742-abf2-4208-a754-c97b348b1282",
+                    id: '38122b5d-df37-4e59-9309-6dc2b5c5e41e',
                     data: designImageUrl,
-                    crop: { x: -50, y: -70, width: 600, height: 965.4 },
-                    checked: true,
+                    crop: { x: -100, y: -50, width: 700, height: 700 }
                 },
                 {
-                    id: "9ba9ee04-4859-4f38-8837-0786af210b6d",
-                    checked: true,
-                    color: mockupColorJson,
+                    id: 'fb1ccb3c-9173-456b-9776-6a8c07b77a20',
+                    color: mockupColorJson
                 },
                 {
-                    id: "d47d677f-d35f-44b9-bd2c-648a0a293259",
-                    checked: true,
-                    color: backgroundColorJson,
-                },
+                    id: '8e0a95da-2e44-4e23-9937-3b22403e2870',
+                    color: backgroundColorJson
+                }
             ],
         };
     } else if (mockupType === "Hoodie") {
