@@ -15,7 +15,6 @@ interface GalleryPageProps {
     gallery: SubmissionObject[];
     votingStatusParam: VotingStatusResult;
 }
-
 const GalleryPage: React.FC<GalleryPageProps> = ({
     gallery,
     votingStatusParam,

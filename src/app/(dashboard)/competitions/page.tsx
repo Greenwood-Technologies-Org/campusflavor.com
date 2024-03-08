@@ -11,6 +11,8 @@ import { Banner } from "@/components/banner";
 import GalleryPage from "@/components/dboard/gallery";
 import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
+import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
+import GalleryWrapper from "@/components/dboard/gallerywrapper";
 
 async function getURLsForSchool(school_affiliation: string) {
     const supabase = getDbClient();
@@ -119,8 +121,9 @@ async function determineVotingStatusByDate(
 
 function Page() {
     const [submissions, setSubmissions] = useState<SubmissionObject[]>([]);
+
     const [votingInfo, setVotingInfo] = useState<VotingStatusResult>({
-        votingStatus: VotingStatus.Prevoting, // Default voting status
+        votingStatus: VotingStatus.NotStarted, // Default voting status
         countdownTimestamp: -1, // Default timestamp
     });
     const school_affiliation = "Case Western Reserve University";
@@ -144,7 +147,7 @@ function Page() {
                 votingStatusParam={votingInfo}
             />
             <Suspense fallback={<div>Loading...</div>}>
-                <GalleryPage
+                <GalleryWrapper
                     gallery={submissions}
                     votingStatusParam={votingInfo}
                 />
