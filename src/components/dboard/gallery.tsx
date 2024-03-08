@@ -15,22 +15,6 @@ interface GalleryPageProps {
     gallery: SubmissionObject[];
     votingStatusParam: VotingStatusResult;
 }
-// Band-aid solution to rendering the desired objects
-function moveSubmissionIdToFront(
-    submissions: SubmissionObject[],
-    submissionId: string
-) {
-    // Find the index of the submission with the matching submission_id
-    const index = submissions.findIndex(
-        (submission) => submission.submission_id === submissionId
-    );
-
-    // If found and it's not already the first element, move it to the front
-    if (index > 0) {
-        const [itemToMove] = submissions.splice(index, 1); // Remove the item from its current position
-        submissions.unshift(itemToMove); // Add it to the beginning of the array
-    }
-}
 const GalleryPage: React.FC<GalleryPageProps> = ({
     gallery,
     votingStatusParam,
@@ -46,7 +30,6 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
                 const paramKey = searchParams[0];
                 const paramValue = searchParams[1];
                 if (paramKey === "submissionId") {
-                    moveSubmissionIdToFront(gallery, paramValue);
                     setUrlSubmissionId(paramValue);
                 }
             }

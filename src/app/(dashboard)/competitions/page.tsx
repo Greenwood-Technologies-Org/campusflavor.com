@@ -12,6 +12,7 @@ import GalleryPage from "@/components/dboard/gallery";
 import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
+import GalleryWrapper from "@/components/dboard/gallerywrapper";
 
 async function getURLsForSchool(school_affiliation: string) {
     const supabase = getDbClient();
@@ -146,7 +147,7 @@ function Page() {
                 votingStatusParam={votingInfo}
             />
             <Suspense fallback={<div>Loading...</div>}>
-                <GalleryPage
+                <GalleryWrapper
                     gallery={submissions}
                     votingStatusParam={votingInfo}
                 />
