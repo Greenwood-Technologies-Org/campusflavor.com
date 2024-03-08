@@ -1,5 +1,4 @@
 import React from 'react';
-import { Icons } from "../icons";
 
 interface CompetitionStepProps {
     icon: JSX.Element;

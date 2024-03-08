@@ -9,31 +9,37 @@ export default function About() {
 
     const competitionSteps = [
         <CompetitionStep
+            key="1. Design"
             icon={<Icons.design />}
             title={"1. Design"}
             content={"Student artists create a funny, pretty, or cute design related to their school."}
         />,
         <CompetitionStep
+            key="2. Submit"
             icon={<Icons.upload />}
             title={"2. Submit"}
             content={"Artists use our mockup editor to create a new piece of merchandise."}
         />,
         <CompetitionStep
+            key="3. Share"
             icon={<Icons.share />}
             title={"3. Share"}
             content={"Artists and other students can share a great submission from the design board."}
         />,
         <CompetitionStep
+            key="4. Vote"
             icon={<Icons.heart />}
             title={"4. Vote"}
             content={"Students vote on the best designs by liking a submission."}
         />,
         <CompetitionStep
+            key="5. Win"
             icon={<Icons.trophy />}
             title={"5. Win"}
             content={"The top 3 designs are awarded with clothing and cash prizes."}
         />,
         <CompetitionStep
+            key="6. Wear"
             icon={<Icons.tshirt />}
             title={"6. Wear"}
             content={"Anyone can order apparel with artist designs from the Campus Flavor Shop!"}
