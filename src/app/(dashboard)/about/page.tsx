@@ -11,26 +11,32 @@ export default function About() {
         <CompetitionStep
             icon={<Icons.design />}
             title={"1. Design"}
+            content={"Student artists create a funny, pretty, or cute design related to their school."}
         />,
         <CompetitionStep
             icon={<Icons.upload />}
             title={"2. Submit"}
+            content={"Artists use our mockup editor to create a new piece of merchandise."}
         />,
         <CompetitionStep
             icon={<Icons.share />}
             title={"3. Share"}
+            content={"Artists and other students can share a great submission from the design board."}
         />,
         <CompetitionStep
             icon={<Icons.heart />}
             title={"4. Vote"}
+            content={"Students vote on the best designs by liking a submission."}
         />,
         <CompetitionStep
             icon={<Icons.trophy />}
             title={"5. Win"}
+            content={"The top 3 designs are awarded with clothing and cash prizes."}
         />,
         <CompetitionStep
             icon={<Icons.tshirt />}
             title={"6. Wear"}
+            content={"Anyone can order apparel with artist designs from the Campus Flavor Shop!"}
         />,
     ];
 
@@ -101,7 +107,7 @@ export default function About() {
             {/* How It Works */}
             <div>
                 <h2 className="text-4xl font-semibold pb-4 text-center">How It Works</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 p-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 p-4">
                     {competitionSteps}
                 </div>
             </div>
