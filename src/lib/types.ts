@@ -3,6 +3,7 @@ export type SubmissionObject = {
     username: string;
     posted_date: string;
     submission_id: string;
+    rank: number;
 };
 
 export enum VotingStatus {

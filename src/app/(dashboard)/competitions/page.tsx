@@ -8,10 +8,8 @@ import {
 } from "@/lib/types";
 
 import { Banner } from "@/components/banner";
-import GalleryPage from "@/components/dboard/gallery";
 import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
-import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import GalleryWrapper from "@/components/dboard/gallerywrapper";
 
 async function getURLsForSchool(school_affiliation: string) {
@@ -30,6 +28,7 @@ async function getURLsForSchool(school_affiliation: string) {
         username: item.username,
         posted_date: item.posted_date,
         submission_id: item.submission_id,
+        rank: item.rank,
     }));
 }
 
