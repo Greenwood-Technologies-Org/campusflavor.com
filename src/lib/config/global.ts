@@ -4,8 +4,12 @@ interface S3Config {
     presignedUrlExpireIn: number; // in s
 }
 
+interface MediaModifierAPI {
+    maxCalls: 100;
+}
 interface Config {
     s3: S3Config;
+    mediaModifier: MediaModifierAPI;
 }
 
 const GlobalConfig: Config = {
@@ -13,6 +17,9 @@ const GlobalConfig: Config = {
         bucket: "campusflavor",
         region: "us-east-2",
         presignedUrlExpireIn: 60 * 60, // 1 hour
+    },
+    mediaModifier: {
+        maxCalls: 100,
     },
 };
 

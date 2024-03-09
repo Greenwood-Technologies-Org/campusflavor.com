@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+import GlobalConfig from "@/lib/config/global";
 import Link from "next/link";
+import { Session } from "@supabase/supabase-js";
 import SubmissionCard from "@/components/submit/SubmissionCard";
 import { SyncLoader } from "react-spinners";
 import useCreateMockupApi from "@/hooks/submit/useCreateMockupApi";
@@ -19,8 +21,7 @@ interface ConfirmSubmissionProps {
     mockupColor: string;
     mockupType: string;
     description: string;
-    username: string;
-    userId: string;
+    session: Session | null;
 }
 
 const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
@@ -30,8 +31,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     mockupColor,
     mockupType,
     description,
-    username,
-    userId,
+    session,
 }) => {
     const [isCheckboxSelected, setIsCheckboxSelected] = useState(false);
 
@@ -84,14 +84,23 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     } = useSubmissionApi();
 
     const handleSubmit = async () => {
+        if (!session) throw new Error("Session undefined.");
+
+        if (
+            session.user.user_metadata.api_calls >
+            GlobalConfig.mediaModifier.maxCalls
+        ) {
+            throw new Error("Maximum submission limit reached.");
+        }
+
         const submissionInfo = {
             mockupImageURL: mockupUrl,
             designImageURL: designImageUrl,
             mockupColor: mockupColor,
             mockupType: mockupType,
             description: description,
-            username: username,
-            userId: userId,
+            username: session.user.user_metadata.username,
+            userId: session.user.id,
         };
         await submit(submissionInfo);
     };
@@ -143,7 +152,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                 <SubmissionCard
                     mockupImageUrl={mockupUrl ? mockupUrl : designImageUrl}
-                    username={username}
+                    username={session?.user.user_metadata.username}
                     description={description}
                 />
 
