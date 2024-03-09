@@ -4,7 +4,6 @@ import {
     uploadImageToSupabase,
 } from "./fileGenerationUpload";
 
-import axios from "axios";
 import { useState } from "react";
 
 interface ApiResponse {
@@ -174,69 +173,69 @@ const callCreateMockupApi = async (
     var mockupApiData;
     if (mockupType === "T-shirt") {
         mockupApiData = {
-            nr: 705,
+            nr: 155410,
             layer_inputs: [
                 {
-                    id: "539fba27-3c25-4c33-b798-0b1628b3d6a0",
+                    id: 'eeacc340-5a01-4059-93fc-fc9a98787f71',
                     data: designImageUrl,
-                    crop: { x: -50, y: -50, width: 600, height: 965.4 },
-                    checked: true,
+                    crop: { x: -50, y: -50, width: 600, height: 768 }
                 },
                 {
-                    id: "16d9837d-8463-49ba-934b-42653270afaa",
-                    checked: true,
-                    color: mockupColorJson,
+                    id: '540067b7-7330-494b-ab66-00d47e12d3da',
+                    color: mockupColorJson
                 },
                 {
-                    id: "3c7aee09-37b7-42fe-9275-b5f0c7788dc6",
-                    checked: true,
-                    color: backgroundColorJson,
-                },
-            ],
+                    id: 'b5c700f8-fc92-40a8-9862-48c82fd7887c',
+                    color: backgroundColorJson
+                }
+            ]
         };
     } else if (mockupType === "Sweater") {
         mockupApiData = {
-            nr: 883,
+            nr: 155412,
             layer_inputs: [
                 {
-                    id: "d4650742-abf2-4208-a754-c97b348b1282",
+                    id: '38122b5d-df37-4e59-9309-6dc2b5c5e41e',
                     data: designImageUrl,
-                    crop: { x: -50, y: -70, width: 600, height: 965.4 },
-                    checked: true,
+                    crop: { x: -100, y: -50, width: 700, height: 700 }
                 },
                 {
-                    id: "9ba9ee04-4859-4f38-8837-0786af210b6d",
-                    checked: true,
-                    color: mockupColorJson,
+                    id: 'fb1ccb3c-9173-456b-9776-6a8c07b77a20',
+                    color: mockupColorJson
                 },
                 {
-                    id: "d47d677f-d35f-44b9-bd2c-648a0a293259",
-                    checked: true,
-                    color: backgroundColorJson,
-                },
+                    id: '8e0a95da-2e44-4e23-9937-3b22403e2870',
+                    color: backgroundColorJson
+                }
             ],
         };
     } else if (mockupType === "Hoodie") {
         mockupApiData = {
-            nr: 153935,
+
+            nr: 155413, //FIXXXXXXX
             layer_inputs: [
                 {
-                    id: "c197f8ef-ddc4-4d69-b2ce-63a58ba023e7",
+                    id: '524465c1-3ba9-4e1a-bc90-34639e3516e5',
                     data: designImageUrl,
-                    crop: { x: 0, y: -66, width: 500, height: 632 },
-                    checked: true,
+                    crop: { x: -70, y: -30, width: 650, height: 650 }
                 },
                 {
-                    id: "0f4ad8a2-70cf-4381-bc0a-e5f6754d388b",
-                    checked: true,
-                    color: mockupColorJson,
+                    id: '6d6da7c4-90c3-47ef-a24c-07c0e5568033',
+                    color: mockupColorJson
                 },
                 {
-                    id: "904d0277-b414-4179-b4e7-4ad8eedfe53d",
-                    checked: true,
-                    color: backgroundColorJson,
+                    id: 'aa608067-9112-44a5-b622-e96b25874525',
+                    color: mockupColorJson
                 },
-            ],
+                {
+                    id: '845d671e-3807-445c-94e5-580024e6bf70',
+                    color: mockupColorJson
+                },
+                {
+                    id: '92104417-6b35-4e23-8071-b89c15ee54ec',
+                    color: backgroundColorJson
+                }
+            ]
         };
     } else {
         throw new Error("Mockup type not found");
