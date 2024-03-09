@@ -12,6 +12,9 @@ const config: Config = {
                 "primary-500": "#1E1E1E",
                 "secondary-500": "#FEFEFE",
                 "tertiary-500": "#FF3333",
+                "custom-gold": "#FFD700",
+                "custom-silver": "#C0C0C0",
+                "custom-bronze": "#CD7F32",
             },
             backgroundImage: {
                 grainy: "url(/textures/grainy-blue.png)",

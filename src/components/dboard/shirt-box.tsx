@@ -65,6 +65,7 @@ function ShirtBoxBottom({
     votingStatus,
     user_id,
     internalRef,
+    rank,
 }: {
     username: string;
     postedDate: string;
@@ -73,7 +74,22 @@ function ShirtBoxBottom({
     votingStatus: VotingStatus;
     user_id: string;
     internalRef: React.RefObject<HTMLDivElement>;
+    rank: number;
 }) {
+    function getBorderColorByRank(rank: number): string {
+        if (rank === 1) {
+            return "bg-custom-gold";
+        } else if (rank === 2) {
+            return "bg-custom-silver";
+        } else if (rank === 3) {
+            return "bg-custom-bronze";
+        } else {
+            return "bg-gray-300";
+        }
+    }
+
+    const borderColor = getBorderColorByRank(rank);
+
     if (
         votingStatus === VotingStatus.NotStarted ||
         votingStatus === VotingStatus.Prevoting ||
@@ -92,6 +108,11 @@ function ShirtBoxBottom({
         return (
             <div className="flex justify-between items-center mx-4 mt-4">
                 <p className="text-gray-800 text-xl">@{username}</p>
+                {rank <= 3 && (
+                    <span className="text-sm font-semibold bg-gray-300 text-gray-800 py-1 px-2 rounded-full">
+                        #{rank}
+                    </span>
+                )}
                 <div className="flex space-x-2 items-center">
                     <ShareButton
                         submissionId={submissionId}
@@ -125,6 +146,8 @@ export type ShirtBoxProps = {
     submissionId: string;
     isHighlighted?: boolean;
     votingStatus: VotingStatus;
+    rank: number;
+    borderColor: string;
 };
 
 const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
@@ -136,6 +159,8 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             submissionId,
             isHighlighted,
             votingStatus,
+            rank,
+            borderColor,
             ...props
         },
         ref
@@ -190,12 +215,21 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
             fetchLikeStatus();
         }, [submissionId, user_id]);
 
+        // let borderColor = "border-gray-300";
+        // if (rank === 1) {
+        //     borderColor = "border-custom-gold";
+        // } else if (rank === 2) {
+        //     borderColor = "border-custom-silver";
+        // } else if (rank === 3) {
+        //     borderColor = "border-custom-bronze";
+        // }
+
         return (
             <div
                 ref={internalRef}
                 {...props}
                 className={`border-2 ${
-                    isHighlighted ? "border-[#5A61FF]" : "border-gray-300"
+                    isHighlighted ? "border-[#5A61FF]" : borderColor
                 } p-4 rounded-lg w-full text-center`}
             >
                 <Image
@@ -217,6 +251,7 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
                     votingStatus,
                     user_id,
                     internalRef,
+                    rank,
                 })}
             </div>
         );
