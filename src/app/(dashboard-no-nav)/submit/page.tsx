@@ -83,7 +83,7 @@ const SubmitPage = () => {
                         <span>Back</span> {/* Add text next to the chevron */}
                     </div>
                 </Link>
-                <Link href="/competitions">
+                <Link href="/design-board">
                     <Icons.close className="w-6 h-6" />
                 </Link>
             </div>
