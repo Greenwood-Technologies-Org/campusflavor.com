@@ -10,7 +10,7 @@ export default function AuthLayout({
     return (
         <main className="w-full h-screen flex flex-col items-center justify-start">
             <header className="absolute w-full h-fit p-4">
-                <Link href="/competitions">
+                <Link href="/design-board">
                     <div className="flex items-center">
                         <Image
                             src="/logos/logo_main_no_bg.svg"

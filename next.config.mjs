@@ -4,7 +4,7 @@ const nextConfig = {
         return [
             {
                 source: "/",
-                destination: "/competitions",
+                destination: "/design-board",
                 permanent: true,
             },
             {
@@ -24,7 +24,11 @@ const nextConfig = {
     },
 
     images: {
-        domains: ["mediamodifier.com", "assets.mediamodifier.com", "nhxchoaxvofyfgvsgssh.supabase.co"],
+        domains: [
+            "mediamodifier.com",
+            "assets.mediamodifier.com",
+            "nhxchoaxvofyfgvsgssh.supabase.co",
+        ],
     },
 };
 

@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from "react";
+import {
+    competitionLegalStuff,
+    websitePrivacyPolicy,
+    websiteTermsOfUse,
+} from "@/lib/constants";
 
 import GlobalConfig from "@/lib/config/global";
 import Link from "next/link";
@@ -7,12 +12,6 @@ import SubmissionCard from "@/components/submit/SubmissionCard";
 import { SyncLoader } from "react-spinners";
 import useCreateMockupApi from "@/hooks/submit/useCreateMockupApi";
 import useSubmissionApi from "@/hooks/submit/useSubmissionApi";
-
-import {
-    competitionLegalStuff,
-    websiteTermsOfUse,
-    websitePrivacyPolicy,
-} from '@/lib/constants';
 
 interface ConfirmSubmissionProps {
     isOpen: boolean;
@@ -135,7 +134,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
                         Your submission was successful. It will be posted to the
                         design board after review.
                     </p>
-                    <Link href="/competitions">
+                    <Link href="/design-board">
                         <button className="text-white py-2 px-5 rounded-lg focus:outline-none bg-black hover:bg-gray-700">
                             Close
                         </button>
@@ -165,17 +164,35 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
                             setIsCheckboxSelected(e.target.checked)
                         }
                     />
-                    <label htmlFor="termsCheckbox" className="text-xs text-gray-700">
-                        I agree to the competition{' '}
-                        <a href={competitionLegalStuff} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-800">
+                    <label
+                        htmlFor="termsCheckbox"
+                        className="text-xs text-gray-700"
+                    >
+                        I agree to the competition{" "}
+                        <a
+                            href={competitionLegalStuff}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-800"
+                        >
                             Legal Terms
                         </a>
-                        , website{' '}
-                        <a href={websiteTermsOfUse} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-800">
+                        , website{" "}
+                        <a
+                            href={websiteTermsOfUse}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-800"
+                        >
                             Terms of Use
                         </a>
-                        , and{' '}
-                        <a href={websitePrivacyPolicy} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-800">
+                        , and{" "}
+                        <a
+                            href={websitePrivacyPolicy}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-800"
+                        >
                             Privacy Policy
                         </a>
                         .
@@ -192,10 +209,11 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                     <button
                         disabled={!isCheckboxSelected}
-                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${!isCheckboxSelected
-                            ? "bg-gray-500 text-white"
-                            : "bg-black text-white hover:bg-gray-700"
-                            }`}
+                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${
+                            !isCheckboxSelected
+                                ? "bg-gray-500 text-white"
+                                : "bg-black text-white hover:bg-gray-700"
+                        }`}
                         onClick={handleSubmit}
                     >
                         Submit

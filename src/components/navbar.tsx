@@ -81,7 +81,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     ref={ref}
                 >
                     {/* Logo Left-aligned */}
-                    <Link href="/competitions">
+                    <Link href="/design-board">
                         <div className="flex items-center">
                             <Image
                                 src="/logos/logo_main_no_bg.svg"
@@ -103,11 +103,11 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                             Shop
                         </NavigationLink>
                         <NavigationLink
-                            href="/competitions"
+                            href="/design-board"
                             pathname={pathname}
                             activeOnSubpath
                         >
-                            Competitions
+                            Design Board
                         </NavigationLink>
                         <NavigationLink href="/about" pathname={pathname}>
                             About
@@ -154,11 +154,11 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                                 Shop
                             </NavigationLink>
                             <NavigationLink
-                                href="/competitions"
+                                href="/design-board"
                                 pathname={pathname}
                                 activeOnSubpath
                             >
-                                Competitions
+                                Design Board
                             </NavigationLink>
                             <NavigationLink href="/about" pathname={pathname}>
                                 About
