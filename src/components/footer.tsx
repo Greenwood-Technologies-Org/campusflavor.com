@@ -8,14 +8,15 @@ import {
 
 const Footer = () => {
     return (
-        <footer className="w-full bg-gray-100 py-4 flex justify-center items-center">
+        <footer className="w-full border-t-2 border-black py-4 flex justify-center items-center">
+
             <a
                 href={competitionLegalStuff}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-800 mx-2 text-xs"
             >
-                Competition Legal Terms
+                Legal Terms
             </a>
             |
             <a
@@ -24,7 +25,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-800 mx-2 text-xs"
             >
-                Website Terms of Use
+                Terms of Use
             </a>
             |
             <a
@@ -33,7 +34,16 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-800 mx-2 text-xs"
             >
-                Website Privacy Policy
+                Privacy Policy
+            </a>
+            |
+            <a
+                href="mailto:contact@campusflavor.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:text-blue-800 mx-2 text-xs"
+            >
+                Contact Us
             </a>
         </footer>
     );
