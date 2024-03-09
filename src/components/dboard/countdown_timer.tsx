@@ -60,6 +60,14 @@ export const CountdownTimer = React.forwardRef<
 
     const timeData = formatMilliseconds(timestampLive);
 
+    if (timestamp < 0) {
+        return (
+            <div className="flex justify-center items-center">
+                <div className="w-10 h-10 border-4 border-gray-300 rounded-full animate-spin"></div>
+            </div>
+        );
+    }
+
     return (
         <div
             className={`flex flex-col gap-1 justify-start items-center w-fit h-fit bg-primary-500 text-secondary-500 text-sm md:text-lg font-bold p-2 rounded-lg shadow-lg ${className}`}

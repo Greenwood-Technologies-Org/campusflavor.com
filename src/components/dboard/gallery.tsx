@@ -9,13 +9,23 @@ import {
 import { usePathname, useSearchParams } from "next/navigation";
 
 import ShirtBox from "./shirt-box";
-import { stat } from "fs";
+
+function getBorderColorByRank(rank: number): string {
+    let borderColor = "border-gray-300";
+    if (rank == 1) {
+        borderColor = "border-custom-gold"; // Gold color
+    } else if (rank == 2) {
+        borderColor = "border-gray-800"; // Silver color
+    } else if (rank == 3) {
+        borderColor = "border-custom-bronze"; // Bronze color
+    }
+    return borderColor;
+}
 
 interface GalleryPageProps {
     gallery: SubmissionObject[];
     votingStatusParam: VotingStatusResult;
 }
-
 const GalleryPage: React.FC<GalleryPageProps> = ({
     gallery,
     votingStatusParam,
@@ -84,6 +94,8 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
                     submissionId={item.submission_id}
                     isHighlighted={urlSubmissionId === item.submission_id}
                     votingStatus={votingStatus.votingStatus}
+                    rank={item.rank}
+                    borderColor={getBorderColorByRank(item.rank)}
                 />
             ))}
         </div>

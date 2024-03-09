@@ -1,17 +1,22 @@
 CREATE OR REPLACE FUNCTION get_competition_submission_information(school_affil text)
-RETURNS TABLE(url_link text, username text, posted_date timestamp, submission_id uuid) AS $$
+RETURNS TABLE(url_link text, username text, posted_date timestamp, submission_id uuid, rank bigint) AS $$
 BEGIN
   RETURN QUERY
   SELECT
-    file_uploads.mockup_image_url,
-    (raw_user_meta_data ->> 'username') AS username,
-    file_uploads.time as posted_date,
-    file_uploads.submission_id
+    fu.mockup_image_url,
+    (u.raw_user_meta_data ->> 'username') AS username,
+    fu.time as posted_date,
+    fu.submission_id,
+    ROW_NUMBER() OVER (ORDER BY count(cv.id) DESC) as rank
   FROM
-    competition
-    JOIN submission ON competition.id = submission.competition_id
-    JOIN auth.users ON submission.user_id = auth.users.id
-    JOIN file_uploads ON submission.id = file_uploads.submission_id;
+    competition c
+    JOIN submission s ON c.id = s.competition_id
+    JOIN auth.users u ON s.user_id = u.id
+    JOIN file_uploads fu ON s.id = fu.submission_id
+    LEFT JOIN casted_votes cv ON fu.submission_id = cv.submission_id
+  WHERE
+    c.school_affiliation = school_affil
+  GROUP BY fu.mockup_image_url, username, posted_date, fu.submission_id;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
