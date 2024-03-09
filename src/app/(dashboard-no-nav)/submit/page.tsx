@@ -142,7 +142,7 @@ const SubmitPage = () => {
                         <div className=" h-full w-3/4 bg-red-500 mt-8 text-secondary-500 p-2 rounded-lg">
                             You have reached your submission limit. You are no
                             longer allowed to make submissions to this
-                            competition.
+                            competition. If you have any questions feel free to contact contact@campusflavor.com.
                         </div>
                     </div>
                 )}
