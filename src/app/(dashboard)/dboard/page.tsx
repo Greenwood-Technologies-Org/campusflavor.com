@@ -28,6 +28,7 @@ async function getURLsForSchool(school_affiliation: string) {
         username: item.username,
         posted_date: item.posted_date,
         submission_id: item.submission_id,
+        rank: item.rank,
     }));
 }
 
@@ -119,8 +120,9 @@ async function determineVotingStatusByDate(
 
 function Page() {
     const [submissions, setSubmissions] = useState<SubmissionObject[]>([]);
+
     const [votingInfo, setVotingInfo] = useState<VotingStatusResult>({
-        votingStatus: VotingStatus.Prevoting, // Default voting status
+        votingStatus: VotingStatus.NotStarted, // Default voting status
         countdownTimestamp: -1, // Default timestamp
     });
     const school_affiliation = "Case Western Reserve University";
