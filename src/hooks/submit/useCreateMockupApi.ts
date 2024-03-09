@@ -4,6 +4,7 @@ import {
     uploadImageToSupabase,
 } from "./fileGenerationUpload";
 
+import GlobalConfig from "@/lib/config/global";
 import { Session } from "@supabase/supabase-js";
 import axios from "axios";
 import { getBrowserClient } from "@/lib/db/db-client";
@@ -122,7 +123,10 @@ const useCreateMockupApi = () => {
             }
 
             const user = data.user;
-            if (user.user_metadata.api_calls <= 100) {
+            if (
+                user.user_metadata.api_calls <=
+                GlobalConfig.mediaModifier.maxCalls
+            ) {
                 const response = await callCreateMockupApi(
                     publicDesignImageUrl,
                     mockupType,
@@ -143,6 +147,8 @@ const useCreateMockupApi = () => {
                 });
             } else {
                 setError("Maximum submissions reached.");
+
+                throw new Error("Maximum submissions reached.");
             }
         } catch (e) {
             setError("Getting mockup failed");

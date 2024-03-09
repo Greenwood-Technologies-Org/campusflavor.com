@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 import ConfirmSubmission from "@/components/submit/ConfirmSubmission";
+import GlobalConfig from "@/lib/config/global";
 import { Icons } from "@/components/icons";
 import Link from "next/link";
 import MockupColor from "@/components/submit/MockupColor";
@@ -29,6 +30,11 @@ const SubmitPage = () => {
             router.push(`/signin?callback=/submit`);
         }
     }, [session, isLoading, router]);
+
+    const submissionLimitReached =
+        session?.user.user_metadata.api_calls >
+        GlobalConfig.mediaModifier.maxCalls;
+    console.log(submissionLimitReached);
 
     const [imageFile, setImageFile] = useState<File | null>(null); // State to hold the uploaded image file
     // Handler to update imageFile state, this should be triggered by UploadDesign component
@@ -131,10 +137,20 @@ const SubmitPage = () => {
                     </div>
                 </div>
 
+                {submissionLimitReached && (
+                    <div className="h-full w-full flex flex-row items-center justify-center">
+                        <div className=" h-full w-3/4 bg-red-500 mt-8 text-secondary-500 p-2 rounded-lg">
+                            You have reached your submission limit. You are no
+                            longer allowed to make submissions to this
+                            competition.
+                        </div>
+                    </div>
+                )}
+
                 <button
-                    disabled={!imageFile}
+                    disabled={!imageFile || submissionLimitReached}
                     className={`flex-grow py-2 px-8 my-8 rounded-lg focus:outline-none ${
-                        !imageFile
+                        !imageFile || submissionLimitReached
                             ? "bg-gray-500 text-white"
                             : "bg-black text-white hover:bg-gray-700"
                     }`}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import GlobalConfig from "@/lib/config/global";
 import Link from "next/link";
 import { Session } from "@supabase/supabase-js";
 import SubmissionCard from "@/components/submit/SubmissionCard";
@@ -26,8 +27,6 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     description,
     session,
 }) => {
-    if (!session) throw new Error("Session undefined.");
-
     const [isCheckboxSelected, setIsCheckboxSelected] = useState(false);
 
     const messages: string[] = [
@@ -78,6 +77,15 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     } = useSubmissionApi();
 
     const handleSubmit = async () => {
+        if (!session) throw new Error("Session undefined.");
+
+        if (
+            session.user.user_metadata.api_calls >
+            GlobalConfig.mediaModifier.maxCalls
+        ) {
+            throw new Error("Maximum submission limit reached.");
+        }
+
         const submissionInfo = {
             mockupImageURL: mockupUrl,
             designImageURL: designImageUrl,
@@ -137,7 +145,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                 <SubmissionCard
                     mockupImageUrl={mockupUrl ? mockupUrl : designImageUrl}
-                    username={session.user.user_metadata.username}
+                    username={session?.user.user_metadata.username}
                     description={description}
                 />
 
