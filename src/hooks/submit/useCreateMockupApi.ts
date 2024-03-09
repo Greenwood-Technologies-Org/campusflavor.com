@@ -211,25 +211,31 @@ const callCreateMockupApi = async (
         };
     } else if (mockupType === "Hoodie") {
         mockupApiData = {
-            nr: 153935,
+
+            nr: 155413, //FIXXXXXXX
             layer_inputs: [
                 {
-                    id: "c197f8ef-ddc4-4d69-b2ce-63a58ba023e7",
+                    id: '524465c1-3ba9-4e1a-bc90-34639e3516e5',
                     data: designImageUrl,
-                    crop: { x: 0, y: -66, width: 500, height: 632 },
-                    checked: true,
+                    crop: { x: -70, y: -30, width: 650, height: 650 }
                 },
                 {
-                    id: "0f4ad8a2-70cf-4381-bc0a-e5f6754d388b",
-                    checked: true,
-                    color: mockupColorJson,
+                    id: '6d6da7c4-90c3-47ef-a24c-07c0e5568033',
+                    color: mockupColorJson
                 },
                 {
-                    id: "904d0277-b414-4179-b4e7-4ad8eedfe53d",
-                    checked: true,
-                    color: backgroundColorJson,
+                    id: 'aa608067-9112-44a5-b622-e96b25874525',
+                    color: mockupColorJson
                 },
-            ],
+                {
+                    id: '845d671e-3807-445c-94e5-580024e6bf70',
+                    color: mockupColorJson
+                },
+                {
+                    id: '92104417-6b35-4e23-8071-b89c15ee54ec',
+                    color: backgroundColorJson
+                }
+            ]
         };
     } else {
         throw new Error("Mockup type not found");
