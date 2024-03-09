@@ -15,7 +15,8 @@ BEGIN
     JOIN file_uploads fu ON s.id = fu.submission_id
     LEFT JOIN casted_votes cv ON fu.submission_id = cv.submission_id
   WHERE
-    c.school_affiliation = school_affil
+    c.school_affiliation = school_affil AND
+    s.approved = true
   GROUP BY fu.mockup_image_url, username, posted_date, fu.submission_id;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
