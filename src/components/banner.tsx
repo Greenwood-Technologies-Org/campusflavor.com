@@ -65,7 +65,7 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
             <div className="w-full h-fit">
                 <div
                     className={cn(
-                        "w-full h-72 min-h-72 bg-grainy flex flex-col items-center justify-center relative",
+                        "w-full min-h-80 bg-grainy flex flex-col items-center justify-center relative",
                         className
                     )}
                     {...props}
@@ -94,11 +94,13 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                         <Link href="/submit-info">
                             {votingStatusParam.votingStatus ===
                                 VotingStatus.Prevoting && (
-                                <button className="p-2 bg-[#FF3E51] rounded-lg text-sm md:text-xl">
-                                    Submit a Design
-                                </button>
-                            )}
+                                    <button className="p-2 bg-[#FF3E51] rounded-lg text-sm md:text-xl">
+                                        Submit a Design
+                                    </button>
+                                )}
                         </Link>
+
+                        <p className="text-sm text-center">Not affiliated with, licensed, sponsored, or endorsed by any college, university, or licensing entity.</p>
                     </div>
                 </div>
                 <RotatingTicker className="" items={rotatingBannerItems} />

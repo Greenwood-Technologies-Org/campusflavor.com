@@ -48,7 +48,7 @@ export default function About() {
 
 
     return (
-        <div className="w-full py-12 px-[2%] space-y-12">
+        <div className="w-full py-12 px-[2%] space-y-10">
 
             {/* The Problem */}
             <div className="px-[8%] flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
@@ -112,8 +112,8 @@ export default function About() {
 
             {/* How It Works */}
             <div>
-                <h2 className="text-4xl font-semibold pb-4 text-center">How It Works</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 p-4">
+                <h2 className="text-4xl font-semibold text-center">How It Works</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 px-4">
                     {competitionSteps}
                 </div>
             </div>

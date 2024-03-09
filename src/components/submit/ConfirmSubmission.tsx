@@ -6,6 +6,12 @@ import { SyncLoader } from "react-spinners";
 import useCreateMockupApi from "@/hooks/submit/useCreateMockupApi";
 import useSubmissionApi from "@/hooks/submit/useSubmissionApi";
 
+import {
+    competitionLegalStuff,
+    websiteTermsOfUse,
+    websitePrivacyPolicy,
+} from '@/lib/constants';
+
 interface ConfirmSubmissionProps {
     isOpen: boolean;
     onClose: () => void;
@@ -36,6 +42,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         "Copying polyatomic ions to calculator...",
         "Negotiating with the WiFi gods...",
         "Synchronizing with the academic ether...",
+        "Avoiding eye contact in Tink...",
     ];
 
     const [loaderMessage, setLoaderMessage] = React.useState<string>(
@@ -149,12 +156,20 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
                             setIsCheckboxSelected(e.target.checked)
                         }
                     />
-                    <label
-                        htmlFor="termsCheckbox"
-                        className="text-xs text-gray-700"
-                    >
-                        I agree to the challenge Legal Terms, website Terms of
-                        Use, and Privacy Policy.
+                    <label htmlFor="termsCheckbox" className="text-xs text-gray-700">
+                        I agree to the competition{' '}
+                        <a href={competitionLegalStuff} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-800">
+                            Legal Terms
+                        </a>
+                        , website{' '}
+                        <a href={websiteTermsOfUse} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-800">
+                            Terms of Use
+                        </a>
+                        , and{' '}
+                        <a href={websitePrivacyPolicy} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-800">
+                            Privacy Policy
+                        </a>
+                        .
                     </label>
                 </div>
 
@@ -168,11 +183,10 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                     <button
                         disabled={!isCheckboxSelected}
-                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${
-                            !isCheckboxSelected
-                                ? "bg-gray-500 text-white"
-                                : "bg-black text-white hover:bg-gray-700"
-                        }`}
+                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${!isCheckboxSelected
+                            ? "bg-gray-500 text-white"
+                            : "bg-black text-white hover:bg-gray-700"
+                            }`}
                         onClick={handleSubmit}
                     >
                         Submit
