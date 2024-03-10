@@ -11,7 +11,7 @@ const Footer = () => {
         <footer className="w-full border-t-2 border-black py-4 flex justify-center items-center">
 
             <a
-                href="/legal-terms"
+                href={competitionLegalStuff}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-800 mx-2 text-xs"
@@ -20,7 +20,7 @@ const Footer = () => {
             </a>
             |
             <a
-                href="/terms-of-use"
+                href={websiteTermsOfUse}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-800 mx-2 text-xs"
@@ -29,7 +29,7 @@ const Footer = () => {
             </a>
             |
             <a
-                href="/privacy-policy"
+                href={websitePrivacyPolicy}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:text-blue-800 mx-2 text-xs"
