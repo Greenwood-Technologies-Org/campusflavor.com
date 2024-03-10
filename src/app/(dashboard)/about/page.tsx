@@ -124,7 +124,7 @@ export default function About() {
                 <span>Have a question or just want to connect? Reach us at contact@campusflavor.com.</span>
             </div>
 
-            <Link href="/design-board" className="w-full flex flex-col flex-grow items-center">
+            <Link href="/dboard" className="w-full flex flex-col flex-grow items-center">
                 <button
                     className="py-2 px-8 rounded-lg focus:outline-none bg-black text-white hover:bg-gray-700"
                 >
