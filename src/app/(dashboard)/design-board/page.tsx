@@ -145,17 +145,12 @@ function Page() {
                 rotatingBannerItems={rotatingBannerItems}
                 votingStatusParam={votingInfo}
             />
-            <Suspense fallback={<div>Loading...</div>}>
+            {/* <Suspense fallback={<div>Loading...</div>}>
                 <GalleryWrapper
                     gallery={submissions}
                     votingStatusParam={votingInfo}
                 />
-            </Suspense>
-            <p className="text-sm text-center px-4 pb-4">
-                Campus Flavor design competitions not affiliated with, licensed,
-                sponsored, or endorsed by any college, university, or licensing
-                entity.
-            </p>
+            </Suspense> */}
         </main>
     );
 }
