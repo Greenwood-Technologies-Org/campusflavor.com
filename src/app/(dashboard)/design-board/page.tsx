@@ -145,12 +145,12 @@ function Page() {
                 rotatingBannerItems={rotatingBannerItems}
                 votingStatusParam={votingInfo}
             />
-            {/* <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div>Loading...</div>}>
                 <GalleryWrapper
                     gallery={submissions}
                     votingStatusParam={votingInfo}
                 />
-            </Suspense> */}
+            </Suspense>
         </main>
     );
 }
