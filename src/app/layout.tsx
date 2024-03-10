@@ -4,6 +4,8 @@ import "./globals.css";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 
+import Metrics from "@/metrics/index";
+
 import { Inter } from "next/font/google";
 import React from "react";
 
@@ -24,6 +26,7 @@ export default function RootLayout({
                 <QueryClientProvider client={client}>
                     {children}
                 </QueryClientProvider>
+                <Metrics />
             </body>
         </html>
     );
