@@ -48,7 +48,7 @@ export default function About() {
 
 
     return (
-        <div className="w-full py-12 px-[2%] space-y-10">
+        <div className="w-full my-8 px-[2%] space-y-10">
 
             {/* The Problem */}
             <div className="px-[8%] flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}

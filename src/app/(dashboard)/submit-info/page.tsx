@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function SubmitInfo() {
     return (
-        <div className="py-12 px-[10%]">
+        <div className="my-8 mx-[10%]">
             <div className="w-full space-y-12">
                 {/* Design Content */}
                 <div className="flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
@@ -89,7 +89,7 @@ export default function SubmitInfo() {
 
             <Link href="/submit" className="w-full flex flex-col flex-grow items-center">
                 <button
-                    className="py-2 px-8 my-8 rounded-lg focus:outline-none bg-black text-white hover:bg-gray-700"
+                    className="py-2 px-8 mt-8 rounded-lg focus:outline-none bg-black text-white hover:bg-gray-700"
                 >
                     Submit Design
                 </button>
