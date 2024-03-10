@@ -14,26 +14,28 @@ export default function TermsOfUse() {
                     By using and/or visiting the www.campusflavor.com website or
                     any other website owned by CampusFlavor.com (as defined
                     below) or any successor website of the foregoing
-                    (collectively the "Website") you ("You") acknowledge that
-                    You have read, understood, and agree to these Terms of Use.
+                    (collectively the &quot;Website&quot;) you (&quot;You&quot;)
+                    acknowledge that You have read, understood, and agree to
+                    these Terms of Use.
                 </p>
                 <p>
                     These Terms of Use constitute a binding agreement between
                     You and Inkori and its parents, subsidiaries, affiliates,
-                    successors, and assigns (collectively "CampusFlavor.com").
-                    You are authorized only to use the Website if You agree to
-                    abide by these Terms of Use and all applicable laws. Please
-                    read these Terms of Use carefully. If You do not agree to
-                    these Terms of Use, please do not use or visit the Website.
+                    successors, and assigns (collectively
+                    &quot;CampusFlavor.com&quot;). You are authorized only to
+                    use the Website if You agree to abide by these Terms of Use
+                    and all applicable laws. Please read these Terms of Use
+                    carefully. If You do not agree to these Terms of Use, please
+                    do not use or visit the Website.
                 </p>
             </section>
             <section>
                 <h2>2. ADDITIONAL POLICIES</h2>
                 <p>
                     In addition to these Terms of Use, the following additional
-                    terms and policies (the "Additional Policies") govern the
-                    rights and responsibilities of artists, visitors, and all
-                    users of the Website:
+                    terms and policies (the &quot;Additional Policies&quot;)
+                    govern the rights and responsibilities of artists, visitors,
+                    and all users of the Website:
                 </p>
                 <ul>
                     <li>The CampusFlavor.com Privacy Policy.</li>
@@ -107,12 +109,12 @@ export default function TermsOfUse() {
                 <h2>6. LINKED WEBSITES</h2>
                 <p>
                     The Website may contain links to third party websites that
-                    are not owned or controlled by CampusFlavor.com ("Linked
-                    Websites"). Those links are provided for convenience only
-                    and may not remain current or be maintained.
-                    CampusFlavor.com does not screen Linked Websites and has no
-                    control over, and assumes no responsibility for, the
-                    content, quality, suitability, functionality, legality,
+                    are not owned or controlled by CampusFlavor.com
+                    (&quot;Linked Websites&quot;). Those links are provided for
+                    convenience only and may not remain current or be
+                    maintained. CampusFlavor.com does not screen Linked Websites
+                    and has no control over, and assumes no responsibility for,
+                    the content, quality, suitability, functionality, legality,
                     privacy policies, or practices of any Linked Websites. You
                     acknowledge and agree that CampusFlavor.com is not
                     responsible for the content or privacy practices associated
@@ -140,16 +142,17 @@ export default function TermsOfUse() {
                 <p>
                     The ideas, suggestions, opinions, comments, chat, text
                     messages, and observations made by users of the Website
-                    ("Commentary"), the photographs, artwork, sketches, videos,
-                    designs, and images ("Artwork"), and any other files,
-                    material, or information provided to the Website by users
-                    (all of which are referred to as "User Submissions") are not
-                    endorsed by CampusFlavor.com, and we make no guarantee
-                    regarding the reliability, accuracy, nature, origin, or
-                    quality of any User Submission that is posted on the
-                    Website. You acknowledge that You will evaluate and bear any
-                    risks related to Your User Submission or Your use of any
-                    User Submission, including any reliance on the accuracy,
+                    (&quot;Commentary&quot;), the photographs, artwork,
+                    sketches, videos, designs, and images (&quot;Artwork&quot;),
+                    and any other files, material, or information provided to
+                    the Website by users (all of which are referred to as
+                    &quot;User Submissions&quot;) are not endorsed by
+                    CampusFlavor.com, and we make no guarantee regarding the
+                    reliability, accuracy, nature, origin, or quality of any
+                    User Submission that is posted on the Website. You
+                    acknowledge that You will evaluate and bear any risks
+                    related to Your User Submission or Your use of any User
+                    Submission, including any reliance on the accuracy,
                     completeness, or usefulness of such User Submission. All
                     User Submissions posted to the Website are the sole
                     responsibility of the person who originally posted the User
@@ -222,9 +225,10 @@ export default function TermsOfUse() {
                     vulgar, profane, obscene, excessively violent, or racially
                     or ethnically offensive; upload, post, email, or otherwise
                     transmit any unsolicited or unauthorized advertising,
-                    promotional materials, "junk mail," "spam," "chain letters,"
-                    "pyramid schemes," or any other forms of solicitation;
-                    upload, post, email, or otherwise transmit any material that
+                    promotional materials, &quot;junk mail,&quot;
+                    &quot;spam,&quot; &quot;chain letters,&quot; &quot;pyramid
+                    schemes,&quot; or any other forms of solicitation; upload,
+                    post, email, or otherwise transmit any material that
                     contains viruses, Trojan horses, worms, time bombs,
                     cancelbots, or any other computer codes, files, or programs
                     designed to interrupt, destroy, or limit the functionality
@@ -260,17 +264,17 @@ export default function TermsOfUse() {
                 <h2>10. PRIVACY</h2>
                 <p>
                     You agree not to collect or use anyone else’s personally
-                    identifiable information ("Personal Information") including
-                    without limitation individual names, account names, email
-                    addresses, or other user-identifying information from the
-                    Website. CampusFlavor.com uses Your information only as
-                    described in the Privacy Policy here. We view protection of
-                    users’ privacy as very important. You can access and modify
-                    the information you provide us and choose not to receive
-                    certain communications by signing-in to your account and
-                    changing your account preferences or opting-out of certain
-                    communications. If you object to your information being
-                    transferred or used in the manner provided for in the
+                    identifiable information (&quot;Personal Information&quot;)
+                    including without limitation individual names, account
+                    names, email addresses, or other user-identifying
+                    information from the Website. CampusFlavor.com uses Your
+                    information only as described in the Privacy Policy here. We
+                    view protection of users’ privacy as very important. You can
+                    access and modify the information you provide us and choose
+                    not to receive certain communications by signing-in to your
+                    account and changing your account preferences or opting-out
+                    of certain communications. If you object to your information
+                    being transferred or used in the manner provided for in the
                     CampusFlavor.com Privacy Policy your sole recourse is to
                     stop using the Website and services offered by
                     CampusFlavor.com.
@@ -466,10 +470,10 @@ export default function TermsOfUse() {
                     information to and in the United States and/or other
                     countries; and (ii) if you are using the Website from a
                     country sanctioned or embargoed by the United States or are
-                    on the United States Treasury Department's list of
-                    "Specially Designated Nationals" you agree that you will not
-                    engage in financial transactions or conduct any commercial
-                    activities using or through the Website.
+                    on the United States Treasury Department&#39;s list of
+                    &quot;Specially Designated Nationals&quot; you agree that
+                    you will not engage in financial transactions or conduct any
+                    commercial activities using or through the Website.
                 </p>
             </section>
             <section>
@@ -495,9 +499,9 @@ export default function TermsOfUse() {
                     LLC including but not limited to CAMPUS and trademarks
                     copyrights and other intellectual property owned by Website
                     users and other third party licensors (collectively
-                    "Licensors"). No portion of the Website may be copied
-                    reproduced displayed transmitted or otherwise used for any
-                    purpose without the prior written permission of
+                    &quot;Licensors&quot;). No portion of the Website may be
+                    copied reproduced displayed transmitted or otherwise used
+                    for any purpose without the prior written permission of
                     CampusFlavor.com or as otherwise agreed to in writing by the
                     appropriate Licensor.
                 </p>
@@ -506,16 +510,16 @@ export default function TermsOfUse() {
                 <h2>20. CONTESTS DESIGN CHALLENGES PROMOTIONS</h2>
                 <p>
                     Contests design challenges surveys games or other promotions
-                    (collectively "Promotions") made available through the
-                    Website may be governed by specific rules that are separate
-                    from these Terms of Use. By participating in any such
-                    Promotion You will become subject to those rules which may
-                    vary from the terms and conditions in these Terms of Use. We
-                    ask You to please review any specific rules applicable to a
-                    particular Promotion. To the extent that the terms and
-                    conditions of such rules conflict with these Terms of Use
-                    the terms and conditions of such Promotion shall control but
-                    only to that Promotion.
+                    (collectively &quot;Promotions&quot;) made available through
+                    the Website may be governed by specific rules that are
+                    separate from these Terms of Use. By participating in any
+                    such Promotion You will become subject to those rules which
+                    may vary from the terms and conditions in these Terms of
+                    Use. We ask You to please review any specific rules
+                    applicable to a particular Promotion. To the extent that the
+                    terms and conditions of such rules conflict with these Terms
+                    of Use the terms and conditions of such Promotion shall
+                    control but only to that Promotion.
                 </p>
             </section>
             <section>
@@ -539,17 +543,18 @@ export default function TermsOfUse() {
                 <h2>22. RELEASE</h2>
                 <p>
                     If You have a dispute with one or more Website users, You
-                    release CampusFlavor.com (and CampusFlavor.com's officers,
-                    directors, agents, subsidiaries, joint ventures, and
-                    employees) from any claims, demands, and damages (actual and
-                    consequential) of every kind and nature, known and unknown,
-                    arising out of or in any way connected with such dispute. If
-                    You are a California resident, You waive California Civil
-                    Code §1542, which states: "A general release does not extend
-                    to claims which the creditor does not know or suspect to
-                    exist in his or her favor at the time of executing the
-                    release, which if known by him or her must have materially
-                    affected his or her settlement with the debtor."
+                    release CampusFlavor.com (and CampusFlavor.com&#39;s
+                    officers, directors, agents, subsidiaries, joint ventures,
+                    and employees) from any claims, demands, and damages (actual
+                    and consequential) of every kind and nature, known and
+                    unknown, arising out of or in any way connected with such
+                    dispute. If You are a California resident, You waive
+                    California Civil Code §1542, which states: &quot;A general
+                    release does not extend to claims which the creditor does
+                    not know or suspect to exist in his or her favor at the time
+                    of executing the release, which if known by him or her must
+                    have materially affected his or her settlement with the
+                    debtor.&quot;
                 </p>
             </section>
             <section>
@@ -682,7 +687,7 @@ export default function TermsOfUse() {
                     and valid counter-notice to the alleged copyright owner for
                     review and consideration. If, within 10 business days of our
                     receipt of your counter notice, the party who submitted the
-                    initial copyright claim doesn't inform us of an action
+                    initial copyright claim doesn&#39;t inform us of an action
                     seeking a court order against you, the material specified in
                     the counter notice may be reactivated. Reactivating the
                     material before this time may result in account termination.
