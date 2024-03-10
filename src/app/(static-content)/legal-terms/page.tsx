@@ -8,14 +8,14 @@ export default function LegalTerms() {
             <h2>MARCH 6, 2024</h2>
             <h3>The Competition Terms were last modified March 6th, 2024.</h3>
             <p>
-                By submitting your design (the “Design”) to CampusFlavor.com you
-                express your intention to use the services offered by Inkori,
-                LLC d/b/a Campus Flavor, its affiliates and parents
-                (collectively “Campus Flavor”), which include the marketing and
-                advertising of your Design, and the manufacturing, distribution,
-                and sale of your Design on physical products, and you agree to
-                the following terms and conditions (the “Design Submission Terms
-                and Conditions”):
+                By submitting your design (the &ldquo;Design&rdquo;) to
+                CampusFlavor.com you express your intention to use the services
+                offered by Inkori, LLC d/b/a Campus Flavor, its affiliates and
+                parents (collectively &ldquo;Campus Flavor&rdquo;), which
+                include the marketing and advertising of your Design, and the
+                manufacturing, distribution, and sale of your Design on physical
+                products, and you agree to the following terms and conditions
+                (the &ldquo;Design Submission Terms and Conditions&rdquo;):
             </p>
             <ul>
                 <li>
@@ -51,8 +51,8 @@ export default function LegalTerms() {
                     derivative works of, distribute, sell, advertise, and
                     display the Design, in any manner now known or hereafter
                     devised. This license may be sub-licensed by Campus Flavor
-                    to others. You waive any “moral rights” you may have in the
-                    Design.
+                    to others. You waive any &ldquo;moral rights&rdquo; you may
+                    have in the Design.
                 </li>
                 <li>
                     You also grant Campus Flavor a worldwide, irrevocable,
@@ -76,11 +76,12 @@ export default function LegalTerms() {
                     recognizes that, on a rare occasion, you may need to request
                     a revocation of one or both of the irrevocable licenses you
                     granted to Campus Flavor in paragraphs 5 and 6 above (the
-                    “Non-Exclusive License(s)”). On such a rare occasion you can
-                    make this request by emailing contact@campusflavor.com. Your
-                    e-mail must have "Request for Revocation" in the subject
-                    line and explain the basis for the request. You understand
-                    and agree that Campus Flavor is not obligated to revoke a
+                    &ldquo;Non-Exclusive License(s)&rdquo;). On such a rare
+                    occasion you can make this request by emailing
+                    contact@campusflavor.com. Your e-mail must have
+                    &quot;Request for Revocation&quot; in the subject line and
+                    explain the basis for the request. You understand and agree
+                    that Campus Flavor is not obligated to revoke a
                     Non-Exclusive License and that, if Campus Flavor does revoke
                     a Non-Exclusive License, it may do so with certain
                     conditions, for example, preserving its or its sub-licensees
@@ -146,13 +147,14 @@ export default function LegalTerms() {
                 <li>
                     You agree to defend, indemnify and hold harmless Campus
                     Flavor, including Campus Flavor’s sublicensees (each an
-                    “Indemnified Party”) from and against any and all claims,
-                    damages, liabilities, costs and expenses (including without
-                    limitation reasonable attorneys’ fees and court costs)
-                    arising out of or relating to an Indemnified Party’s use of
-                    the Design (including reproducing, distributing, adapting,
-                    and displaying the Design) and/or a breach or alleged breach
-                    of the Design Submission Terms and Conditions by you.
+                    &ldquo;Indemnified Party&rdquo;) from and against any and
+                    all claims, damages, liabilities, costs and expenses
+                    (including without limitation reasonable attorneys’ fees and
+                    court costs) arising out of or relating to an Indemnified
+                    Party’s use of the Design (including reproducing,
+                    distributing, adapting, and displaying the Design) and/or a
+                    breach or alleged breach of the Design Submission Terms and
+                    Conditions by you.
                 </li>
                 <li>
                     The Design must not disparage any person; it must not be
