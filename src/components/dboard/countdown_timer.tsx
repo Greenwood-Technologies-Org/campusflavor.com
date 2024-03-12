@@ -9,15 +9,15 @@ interface CountdownTimerProps extends HTMLAttributes<HTMLDivElement> {
 function getStatusMessage(status: VotingStatus): string {
     switch (status) {
         case VotingStatus.NotStarted:
-            return "Accepting Submissions in";
+            return "Submissions Open in";
         case VotingStatus.Prevoting:
-            return "Submissions Close In";
+            return "Voting Opens In";
         case VotingStatus.Intermission:
             return "Voting Opens In";
         case VotingStatus.Voting:
-            return "Voting Ends In";
+            return "Voting Closed In";
         case VotingStatus.Finished:
-            return "Results Are In";
+            return "Voting Closed";
         default:
             return "Status Unknown";
     }
