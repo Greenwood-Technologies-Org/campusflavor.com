@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
@@ -27,9 +27,8 @@ interface LoadingSpinnerProps {
 }
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ src }) => {
-    const [loaderMessage, setLoaderMessage] = useState<string>(
-        loadingMessages[Math.floor(Math.random() * loadingMessages.length)]
-    );
+    // Initialize with the first message or any preferred static message
+    const [loaderMessage, setLoaderMessage] = useState<string>(loadingMessages[0]);
 
     useEffect(() => {
         const updateMessage = () => {
@@ -38,7 +37,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ src }) => {
         };
 
         // Match the message change interval to the spinner animation duration for synchronicity
-        const intervalId = setInterval(updateMessage, 1800); // Adjusted to match the spinner's cycle
+        const intervalId = setInterval(updateMessage, 1750); // Adjusted to match the spinner's cycle
         return () => clearInterval(intervalId);
     }, []);
 
