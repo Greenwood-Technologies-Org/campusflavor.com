@@ -1,8 +1,12 @@
+"use client"
+
 import Link from "next/link";
 import Image from 'next/image';
 
 import { Icons } from "@/components/icons";
 import CompetitionStep from "@/components/about/competition_step";
+
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 
 export default function About() {
@@ -49,6 +53,9 @@ export default function About() {
 
     return (
         <div className="w-full my-8 px-[2%] space-y-10">
+
+            <LoadingSpinner src="/logos/128x128.svg" />
+
 
             {/* The Problem */}
             <div className="px-[8%] flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
