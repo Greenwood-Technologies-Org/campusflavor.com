@@ -14,11 +14,11 @@ export const websiteTermsOfUse = "https://docs.google.com/document/d/1Zj4C1y9rkP
 export const websitePrivacyPolicy = "https://docs.google.com/document/d/1DP2YAA9_A6X8HF_pgQKWZjHioa4gAn_SOnf5X-n8c7s/edit?usp=sharing";
 
 export const loadingMessages: string[] = [
+    "Avoiding eye contact in Tink...",
     "Sneaking past the RA...",
     "Getting ready for the pregame...",
     "Running an 'errand' at GASUSA...",
     "Copying polyatomic ions to calculator...",
     "Negotiating with the WiFi gods...",
     "Synchronizing with the academic ether...",
-    "Avoiding eye contact in Tink...",
 ];
