@@ -43,7 +43,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ src }) => {
     }, []);
 
     return (
-        <div className="flex flex-col items-center w-full">
+        <div className="flex flex-col items-center w-full space-y-2">
             <RotatingImage src={src} alt="Loading" />
             <p>{loaderMessage}</p>
         </div>
