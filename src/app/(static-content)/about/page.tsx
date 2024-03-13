@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Icons } from "@/components/icons";
 import CompetitionStep from "@/components/about/competition_step";
 
-import LoadingSpinner from "@/components/LoadingSpinner";
+import LoadingSpinner from "@/components/CustomLoader";
 
 
 export default function About() {
