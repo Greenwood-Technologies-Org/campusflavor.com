@@ -1,5 +1,8 @@
-import React from 'react';
+"use client"
+
+import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { loadingMessages } from '@/lib/constants';
 
 // Define the keyframe animation with a pause
 const rotate = keyframes`
@@ -24,7 +27,27 @@ interface LoadingSpinnerProps {
 }
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ src }) => {
-    return <RotatingImage src={src} alt="Loading" />;
+    const [loaderMessage, setLoaderMessage] = useState<string>(
+        loadingMessages[Math.floor(Math.random() * loadingMessages.length)]
+    );
+
+    useEffect(() => {
+        const updateMessage = () => {
+            const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+            setLoaderMessage(loadingMessages[randomIndex]);
+        };
+
+        // Match the message change interval to the spinner animation duration for synchronicity
+        const intervalId = setInterval(updateMessage, 1800); // Adjusted to match the spinner's cycle
+        return () => clearInterval(intervalId);
+    }, []);
+
+    return (
+        <div className="flex flex-col items-center w-full">
+            <RotatingImage src={src} alt="Loading" />
+            <p>{loaderMessage}</p>
+        </div>
+    );
 };
 
 export default LoadingSpinner;
