@@ -48,7 +48,7 @@ export default function About() {
 
 
     return (
-        <div className="w-full py-12 px-[2%] space-y-10">
+        <div className="w-full my-8 px-[2%] space-y-10">
 
             {/* The Problem */}
             <div className="px-[8%] flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
@@ -124,7 +124,7 @@ export default function About() {
                 <span>Have a question or just want to connect? Reach us at contact@campusflavor.com.</span>
             </div>
 
-            <Link href="/dboard" className="w-full flex flex-col flex-grow items-center">
+            <Link href="/design-board" className="w-full flex flex-col flex-grow items-center">
                 <button
                     className="py-2 px-8 rounded-lg focus:outline-none bg-black text-white hover:bg-gray-700"
                 >

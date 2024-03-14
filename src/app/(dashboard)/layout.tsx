@@ -7,10 +7,12 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <main>
+        <div className="flex flex-col min-h-screen">
             <Navbar />
-            {children}
+            <div className="flex-grow">
+                {children}
+            </div>
             <Footer />
-        </main>
+        </div>
     );
 }
