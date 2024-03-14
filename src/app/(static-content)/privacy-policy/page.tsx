@@ -1,7 +1,9 @@
 export default function PrivacyPolicy() {
     return (
-        <div>
-            <h1>CAMPUSFLAVOR.COM PRIVACY POLICY</h1>
+        <div className="flex flex-col gap-2 px-8 md:px-0 w-full md:w-4/5 xl:w-3/5 2xl:w-1/2 text-lg">
+            <h1 className="text-4xl font-bold">
+                CAMPUSFLAVOR.COM PRIVACY POLICY
+            </h1>
             <p>
                 CampusFlavor.com recognizes that its customers, visitors, users,
                 and others (known collectively or individually as
@@ -12,7 +14,7 @@ export default function PrivacyPolicy() {
                 the use and disclosure of User information collected on the
                 Website.
             </p>
-            <ul>
+            <ul className="list-disc pl-8">
                 <li>
                     Your use of the Website and any personal information you
                     provide on the Website remains subject to the terms of this
@@ -38,9 +40,11 @@ export default function PrivacyPolicy() {
                     may be of interest to you.
                 </li>
             </ul>
-            <h2>1. INFORMATION COLLECTION AND USE</h2>
-            <h3>General</h3>
-            <ul>
+            <h2 className="text-3xl font-bold">
+                1. INFORMATION COLLECTION AND USE
+            </h2>
+            <h3 className="text-2xl font-bold">General</h3>
+            <ul className="list-disc pl-8">
                 <li>
                     CampusFlavor.com does not require that you register in order
                     to view its products or User comments. Registration is
@@ -75,8 +79,8 @@ export default function PrivacyPolicy() {
                     clients.
                 </li>
             </ul>
-            <h3>Registration</h3>
-            <ul>
+            <h3 className="text-2xl font-bold">Registration</h3>
+            <ul className="list-disc pl-8">
                 <li>
                     In order to participate on this Website, we request certain
                     personally identifiable information from you on the
@@ -97,8 +101,8 @@ export default function PrivacyPolicy() {
                     from our users at several different points on our Website.
                 </li>
             </ul>
-            <h3>Orders</h3>
-            <ul>
+            <h3 className="text-2xl font-bold">Orders</h3>
+            <ul className="list-disc pl-8">
                 <li>
                     If you purchase a product or service from us, we request
                     certain personally identifiable information from you on our
@@ -110,8 +114,8 @@ export default function PrivacyPolicy() {
                     order, we will use this information to contact you.
                 </li>
             </ul>
-            <h3>Newsletter</h3>
-            <ul>
+            <h3 className="text-2xl font-bold">Newsletter</h3>
+            <ul className="list-disc pl-8">
                 <li>
                     If you opt in to our newsletter, register a user account, or
                     make a purchase, we may contact you by email. We may receive
@@ -123,8 +127,8 @@ export default function PrivacyPolicy() {
                     any email we send to you.
                 </li>
             </ul>
-            <h3>Choice/Opt-out</h3>
-            <ul>
+            <h3 className="text-2xl font-bold">Choice/Opt-out</h3>
+            <ul className="list-disc pl-8">
                 <li>
                     We provide you the opportunity to ‘opt-out’ of having your
                     personally identifiable information used for certain
@@ -147,8 +151,8 @@ export default function PrivacyPolicy() {
                     party.
                 </li>
             </ul>
-            <h3>Children Under 13</h3>
-            <ul>
+            <h3 className="text-2xl font-bold">Children Under 13</h3>
+            <ul className="list-disc pl-8">
                 <li>
                     CampusFlavor.com is committed to protecting the privacy of
                     children. CampusFlavor.com does not knowingly or
@@ -156,14 +160,16 @@ export default function PrivacyPolicy() {
                     children under the age of 13.
                 </li>
             </ul>
-            <h2>2. INFORMATION SHARING AND DISCLOSURE</h2>
+            <h2 className="text-3xl font-bold">
+                2. INFORMATION SHARING AND DISCLOSURE
+            </h2>
             <p>
                 CampusFlavor.com does not rent, trade, or share Personal
                 Information with third parties except to provide products or
                 services you&#39;ve requested, when we have your permission, or
                 under the following circumstances:
             </p>
-            <ul>
+            <ul className="list-disc pl-8">
                 <li>
                     We use other third parties such as a shipping company to
                     fulfill orders, a credit card processing company to bill you
@@ -177,7 +183,7 @@ export default function PrivacyPolicy() {
                     your personally identifiable information for promotional
                     purposes.
                 </li>
-                <ul>
+                <ul className="list-disc pl-8">
                     <li>
                         The above excludes text messaging originator opt-in data
                         and consent; this information will not be shared with
@@ -248,8 +254,8 @@ export default function PrivacyPolicy() {
                 customer’s consent via email prior to posting the news and/or
                 event to post their name along with their news and/or event.
             </p>
-            <h2>3. COOKIES AND WEB BEACONS</h2>
-            <ul>
+            <h2 className="text-3xl font-bold">3. COOKIES AND WEB BEACONS</h2>
+            <ul className="list-disc pl-8">
                 <li>
                     A cookie is a small text file that is stored on a user’s
                     computer for record-keeping purposes. We use cookies on this
@@ -342,8 +348,10 @@ export default function PrivacyPolicy() {
                     gifs to our customers’ personally identifiable information.
                 </li>
             </ul>
-            <h2>4. CONFIDENTIALITY AND SECURITY</h2>
-            <ul>
+            <h2 className="text-3xl font-bold">
+                4. CONFIDENTIALITY AND SECURITY
+            </h2>
+            <ul className="list-disc pl-8">
                 <li>
                     We follow generally accepted industry standards to protect
                     the personally identifiable information submitted to us,
@@ -371,8 +379,10 @@ export default function PrivacyPolicy() {
                     that information using secure socket layer technology (SSL).
                 </li>
             </ul>
-            <h2>5. YOUR ABILITY TO EDIT AND DELETE YOUR ACCOUNT INFORMATION</h2>
-            <ul>
+            <h2 className="text-3xl font-bold">
+                5. YOUR ABILITY TO EDIT AND DELETE YOUR ACCOUNT INFORMATION
+            </h2>
+            <ul className="list-disc pl-8">
                 <li>
                     If your personally identifiable information changes, or if
                     you no longer desire to maintain an account on
@@ -391,7 +401,7 @@ export default function PrivacyPolicy() {
                     of consent or objection to processing.
                 </li>
             </ul>
-            <h2>6. INTERNATIONAL USERS</h2>
+            <h2 className="text-3xl font-bold">6. INTERNATIONAL USERS</h2>
             <p>
                 If you are a User accessing the Website from the European Union,
                 Asia, or any other region with laws or regulations governing
@@ -402,7 +412,9 @@ export default function PrivacyPolicy() {
                 will be transferring your Personal Information into the United
                 States and you consent to that transfer.
             </p>
-            <h2>7. CHANGES AND UPDATES TO THIS PRIVACY POLICY</h2>
+            <h2 className="text-3xl font-bold">
+                7. CHANGES AND UPDATES TO THIS PRIVACY POLICY
+            </h2>
             <p>
                 CampusFlavor.com may update this policy at any time in its sole
                 discretion and without prior notice. We will strive to notify
@@ -424,9 +436,9 @@ export default function PrivacyPolicy() {
                 changes to this policy, we will notify you here, by email, or by
                 means of a notice on our home page.
             </p>
-            <h2>8. EFFECTIVE DATE</h2>
+            <h2 className="text-3xl font-bold">8. EFFECTIVE DATE</h2>
             <p>This Privacy Policy was last modified March 2024.</p>
-            <h2>9. CONTACT INFORMATION</h2>
+            <h2 className="text-3xl font-bold">9. CONTACT INFORMATION</h2>
             <p>
                 If you have any questions or comments about this Privacy Policy,
                 you can contact us at contact@campusflavor.com

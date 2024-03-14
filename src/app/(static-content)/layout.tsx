@@ -9,7 +9,7 @@ export default function StaticContentLayout({
     return (
         <main>
             <Navbar />
-            {children}
+            <div className="flex flex-col items-center py-4">{children}</div>
             <Footer />
         </main>
     );
