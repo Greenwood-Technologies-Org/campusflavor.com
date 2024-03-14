@@ -1,12 +1,14 @@
 export default function LegalTerms() {
     return (
-        <div>
-            <h1>
+        <div className="flex flex-col gap-2 px-8 md:px-0 w-full md:w-4/5 xl:w-3/5 2xl:w-1/2 text-lg">
+            <h2 className="text-xl font-semibold">MARCH 6, 2024</h2>
+            <h1 className="text-4xl font-bold">
                 CAMPUS FLAVOR DESIGN COMPETITION SUBMISSION LEGAL TERMS &
                 CONDITIONS
             </h1>
-            <h2>MARCH 6, 2024</h2>
-            <h3>The Competition Terms were last modified March 6th, 2024.</h3>
+            <h3 className="italic">
+                The Competition Terms were last modified March 6th, 2024.
+            </h3>
             <p>
                 By submitting your design (the “Design”) to CampusFlavor.com you
                 express your intention to use the services offered by Inkori,
@@ -17,7 +19,7 @@ export default function LegalTerms() {
                 the following terms and conditions (the “Design Submission Terms
                 and Conditions”):
             </p>
-            <ul>
+            <ol className="list-decimal pl-8">
                 <li>
                     The Design is your own original work and does not contain
                     any trademarks, logos, copyrighted material, any other
@@ -181,7 +183,7 @@ export default function LegalTerms() {
                     modification of this Agreement shall be binding unless
                     confirmed in writing by Campus Flavor.
                 </li>
-            </ul>
+            </ol>
             <p>
                 By submitting your Design, you acknowledge that you have read
                 and agree to these Design Submission Terms and Conditions. Your
