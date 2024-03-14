@@ -6,12 +6,13 @@ export default function PrivacyPolicy() {
             </h1>
             <p>
                 CampusFlavor.com recognizes that its customers, visitors, users,
-                and others (known collectively or individually as "Users") who
-                use www.campusflavor.com (the "Website") value their privacy.
-                This Privacy Policy applies to all of the products, services,
-                and Websites offered by CampusFlavor.com, and details important
-                information regarding the use and disclosure of User information
-                collected on the Website.
+                and others (known collectively or individually as
+                &quot;Users&quot;) who use www.campusflavor.com (the
+                &quot;Website&quot;) value their privacy. This Privacy Policy
+                applies to all of the products, services, and Websites offered
+                by CampusFlavor.com, and details important information regarding
+                the use and disclosure of User information collected on the
+                Website.
             </p>
             <ul className="list-disc pl-8">
                 <li>
@@ -27,7 +28,7 @@ export default function PrivacyPolicy() {
                     others, and they may have different privacy policies. When
                     linking from CampusFlavor.com to other websites, if you have
                     privacy concerns, we urge you to review the privacy policies
-                    of those sites.{" "}
+                    of those sites.
                 </li>
                 <li>
                     We may use third-party advertising companies to serve or
@@ -64,11 +65,11 @@ export default function PrivacyPolicy() {
                 </li>
                 <li>
                     CampusFlavor.com automatically receives and records other
-                    non-personally-identifying information ("Non-Personal
-                    Information") on our server logs from your browser even if
-                    you do not register with CampusFlavor.com, for example, your
-                    IP address, CampusFlavor.com cookie information, and the
-                    pages you visit.
+                    non-personally-identifying information (&quot;Non-Personal
+                    Information&quot;) on our server logs from your browser even
+                    if you do not register with CampusFlavor.com, for example,
+                    your IP address, CampusFlavor.com cookie information, and
+                    the pages you visit.
                 </li>
                 <li>
                     CampusFlavor.com uses Non-Personal Information for the
@@ -122,8 +123,8 @@ export default function PrivacyPolicy() {
                     confirmation to help make emails more interesting and
                     helpful and improve our service. If you do not want to
                     receive email or other mail from us, please indicate your
-                    preference by using the "Unsubscribe" feature in any email
-                    we send to you.
+                    preference by using the &quot;Unsubscribe&quot; feature in
+                    any email we send to you.
                 </li>
             </ul>
             <h3 className="text-2xl font-bold">Choice/Opt-out</h3>
@@ -165,7 +166,7 @@ export default function PrivacyPolicy() {
             <p>
                 CampusFlavor.com does not rent, trade, or share Personal
                 Information with third parties except to provide products or
-                services you've requested, when we have your permission, or
+                services you&#39;ve requested, when we have your permission, or
                 under the following circumstances:
             </p>
             <ul className="list-disc pl-8">
@@ -313,7 +314,7 @@ export default function PrivacyPolicy() {
                     Settings, which will also opt the visitor out of
                     non-personally identifiable demographic and interest
                     tracking. Visitors can also take greater control of their
-                    privacy preferences through Google Analytics' currently
+                    privacy preferences through Google Analytics&#39; currently
                     available opt-outs for the web.
                 </li>
                 <li>
@@ -393,8 +394,8 @@ export default function PrivacyPolicy() {
                 <li>
                     Depending on your location, you may also have certain
                     additional rights with respect to your information, such as:
-                    obtaining a copy of your personal data you've provided to
-                    Campus Flavor; updating your personal data; deleting your
+                    obtaining a copy of your personal data you&#39;ve provided
+                    to Campus Flavor; updating your personal data; deleting your
                     personal data (except information we are required to retain,
                     by emailing us at contact@campusflavor.com); and withdrawal
                     of consent or objection to processing.

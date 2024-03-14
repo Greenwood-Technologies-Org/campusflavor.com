@@ -92,15 +92,31 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                         )}
 
                         <Link href="/submit-info">
-                            {votingStatusParam.votingStatus ===
-                                VotingStatus.Prevoting && (
-                                    <button className="p-2 bg-[#FF3E51] rounded-lg text-sm md:text-xl">
-                                        Submit a Design
-                                    </button>
-                                )}
+                            {(votingStatusParam.votingStatus ===
+                                VotingStatus.Prevoting ||
+                                votingStatusParam.votingStatus ===
+                                    VotingStatus.Voting) && (
+                                <button className="p-2 bg-[#FF3E51] rounded-lg text-sm md:text-xl">
+                                    Submit a Design
+                                </button>
+                            )}
                         </Link>
+                        {votingStatusParam.votingStatus ===
+                            VotingStatus.Finished && (
+                            <div className="flex flex-col gap-1 justify-start items-center w-fit h-fit bg-primary-500 text-secondary-500 text-sm md:text-lg font-bold p-2 rounded-lg shadow-lg">
+                                <p className="text-center">
+                                    Voting has concluded.
+                                </p>
+                            </div>
+                        )}
 
-                        <p className="text-sm text-center">Not affiliated with, licensed, sponsored, or endorsed by any college, university, or licensing entity.</p>
+                        <div className="text-center mt-auto">
+                            <p className="text-sm">
+                                Not affiliated with, licensed, sponsored, or
+                                endorsed by any college, university, or
+                                licensing entity.
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <RotatingTicker className="" items={rotatingBannerItems} />
