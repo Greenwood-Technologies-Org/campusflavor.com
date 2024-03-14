@@ -5,10 +5,10 @@ export default function TermsOfUse() {
                 CAMPUSFLAVOR.COM TERMS OF USE
             </h1>
             <p>
-                Hello! Welcome to Campus Flavor&quot;s Community Guidelines and Terms
-                of Use. Please read this carefully before using our website
-                services and products. This is a contract between you and
-                CampusFlavor.com.
+                Hello! Welcome to Campus Flavor&quot;s Community Guidelines and
+                Terms of Use. Please read this carefully before using our
+                website services and products. This is a contract between you
+                and CampusFlavor.com.
             </p>
             <section className="flex flex-col gap-2">
                 <h2 className="text-xl font-semibold">1. YOUR ACCEPTANCE</h2>
@@ -76,14 +76,15 @@ export default function TermsOfUse() {
                     but not limited to submitting a design, You have to create
                     an account. When creating Your account, You must provide
                     true, current, accurate, and complete information about
-                    yourself. You are not allowed to use another user&quot;s account
-                    without permission. You may not select a username that is
-                    vulgar, offensive, obscene, or attempts to impersonate
-                    another person. If CampusFlavor.com suspects that Your
-                    account information is not true, complete, current, or
-                    accurate, or that You have otherwise violated these Terms of
-                    Use, Your account may be subject to suspension or
-                    termination, and You may be barred from using the Website.
+                    yourself. You are not allowed to use another user&quot;s
+                    account without permission. You may not select a username
+                    that is vulgar, offensive, obscene, or attempts to
+                    impersonate another person. If CampusFlavor.com suspects
+                    that Your account information is not true, complete,
+                    current, or accurate, or that You have otherwise violated
+                    these Terms of Use, Your account may be subject to
+                    suspension or termination, and You may be barred from using
+                    the Website.
                 </p>
                 <p>
                     You are solely responsible for the activity that occurs on
@@ -227,11 +228,7 @@ export default function TermsOfUse() {
                 <ul className="list-disc pl-8">
                     <li>
                         Upload, post, email or otherwise transmit any material
-<<<<<<< HEAD
-                        that is libelous, invasive of another’s privacy,
-=======
                         that is libelous, invasive of another&quot;s privacy,
->>>>>>> c7e2c6a766bea0dfa085099c47f5fafb6b36f230
                         defamatory, pornographic, sexually explicit, unlawful or
                         plagiarized;
                     </li>
@@ -251,13 +248,10 @@ export default function TermsOfUse() {
                     <li>
                         Upload, post, email, or otherwise transmit any
                         unsolicited or unauthorized advertising, promotional
-<<<<<<< HEAD
-                        materials, "junk mail," "spam," "chain letters,"
-                        "pyramid schemes," or any other forms of solicitation;
-=======
-                        materials, &quot;&quot;junk mail,&quot;&quot; &quot;&quot;spam,&quot;&quot; &quot;&quot;chain letters,&quot;&quot;
-                        &quot;&quot;pyramid schemes,&quot;&quot; or any other forms of solicitation;
->>>>>>> c7e2c6a766bea0dfa085099c47f5fafb6b36f230
+                        materials, &quot;&quot;junk mail,&quot;&quot;
+                        &quot;&quot;spam,&quot;&quot; &quot;&quot;chain
+                        letters,&quot;&quot; &quot;&quot;pyramid
+                        schemes,&quot;&quot; or any other forms of solicitation;
                     </li>
                     <li>
                         Upload, post, email, or otherwise transmit any material
@@ -293,11 +287,7 @@ export default function TermsOfUse() {
                         relationships or under nondisclosure agreements);
                     </li>
                     <li>
-<<<<<<< HEAD
-                        Delete, add or otherwise change other people’s User
-=======
                         Delete, add or otherwise change other people&quot;s User
->>>>>>> c7e2c6a766bea0dfa085099c47f5fafb6b36f230
                         Submissions;
                     </li>
                     <li>
@@ -331,18 +321,19 @@ export default function TermsOfUse() {
             <section className="flex flex-col gap-2">
                 <h2 className="text-xl font-semibold">10. PRIVACY</h2>
                 <p>
-                    You agree not to collect or use anyone else&quot;s personally
-                    identifiable information (&quot;Personal Information&quot;)
-                    including without limitation individual names, account
-                    names, email addresses, or other user-identifying
-                    information from the Website. CampusFlavor.com uses Your
-                    information only as described in the Privacy Policy here. We
-                    view protection of users&quot; privacy as very important. You can
-                    access and modify the information you provide us and choose
-                    not to receive certain communications by signing-in to your
-                    account and changing your account preferences or opting-out
-                    of certain communications. If you object to your information
-                    being transferred or used in the manner provided for in the
+                    You agree not to collect or use anyone else&quot;s
+                    personally identifiable information (&quot;Personal
+                    Information&quot;) including without limitation individual
+                    names, account names, email addresses, or other
+                    user-identifying information from the Website.
+                    CampusFlavor.com uses Your information only as described in
+                    the Privacy Policy here. We view protection of users&quot;
+                    privacy as very important. You can access and modify the
+                    information you provide us and choose not to receive certain
+                    communications by signing-in to your account and changing
+                    your account preferences or opting-out of certain
+                    communications. If you object to your information being
+                    transferred or used in the manner provided for in the
                     CampusFlavor.com Privacy Policy your sole recourse is to
                     stop using the Website and services offered by
                     CampusFlavor.com.
@@ -420,31 +411,31 @@ export default function TermsOfUse() {
                     IMPLIED, IN CONNECTION WITH THE WEBSITE AND YOUR USE
                     THEREOF. CAMPUSFLAVOR.COM MAKES NO WARRANTIES OR
                     REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE
-                    WEBSITE&quot;S CONTENT OR THE CONTENT OF ANY SITES LINKED TO THIS
-                    SITE AND ASSUMES NO LIABILITY OR RESPONSIBILITY FOR ANY (I)
-                    ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (II) PERSONAL
-                    INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER,
-                    RESULTING FROM YOUR ACCESS TO AND USE OF THE WEBSITE, (III)
-                    ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS
-                    AND/OR ANY AND ALL PERSONAL INFORMATION STORED THEREIN, (IV)
-                    ANY INTERRUPTION OR CESSATION OF TRANSMISSION TO OR FROM THE
-                    WEBSITE, (V) ANY BUGS, VIRUSES, TROJAN HORSES, OR THE LIKE
-                    WHICH MAY BE TRANSMITTED TO OR THROUGH OUR WEBSITE BY ANY
-                    THIRD PARTY, AND/OR (VI) ANY ERRORS OR OMISSIONS IN ANY
-                    CONTENT OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A
-                    RESULT OF THE USE OF ANY CONTENT POSTED, EMAILED,
-                    TRANSMITTED, OR OTHERWISE MADE AVAILABLE VIA THE WEBSITE.
-                    CAMPUSFLAVOR.COM DOES NOT WARRANT, ENDORSE, GUARANTEE, OR
-                    ASSUME RESPONSIBILITY FOR ANY HYPERLINKED WEBSITE OR OTHER
-                    PROMOTION, AND CAMPUSFLAVOR.COM WILL NOT BE A PARTY TO OR IN
-                    ANY WAY BE RESPONSIBLE FOR MONITORING ANY TRANSACTION
-                    BETWEEN YOU AND THIRD-PARTY PROVIDERS OF PRODUCTS OR
-                    SERVICES. NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN,
-                    OBTAINED BY YOU FROM CAMPUSFLAVOR.COM SHALL CREATE ANY
-                    WARRANTY NOT EXPRESSLY STATED IN THE TERMS OF USE. AS WITH
-                    THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR
-                    IN ANY ENVIRONMENT, USE YOUR BEST JUDGMENT AND EXERCISE
-                    CAUTION WHERE APPROPRIATE.
+                    WEBSITE&quot;S CONTENT OR THE CONTENT OF ANY SITES LINKED TO
+                    THIS SITE AND ASSUMES NO LIABILITY OR RESPONSIBILITY FOR ANY
+                    (I) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (II)
+                    PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE
+                    WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF THE
+                    WEBSITE, (III) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR
+                    SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION
+                    STORED THEREIN, (IV) ANY INTERRUPTION OR CESSATION OF
+                    TRANSMISSION TO OR FROM THE WEBSITE, (V) ANY BUGS, VIRUSES,
+                    TROJAN HORSES, OR THE LIKE WHICH MAY BE TRANSMITTED TO OR
+                    THROUGH OUR WEBSITE BY ANY THIRD PARTY, AND/OR (VI) ANY
+                    ERRORS OR OMISSIONS IN ANY CONTENT OR FOR ANY LOSS OR DAMAGE
+                    OF ANY KIND INCURRED AS A RESULT OF THE USE OF ANY CONTENT
+                    POSTED, EMAILED, TRANSMITTED, OR OTHERWISE MADE AVAILABLE
+                    VIA THE WEBSITE. CAMPUSFLAVOR.COM DOES NOT WARRANT, ENDORSE,
+                    GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY HYPERLINKED
+                    WEBSITE OR OTHER PROMOTION, AND CAMPUSFLAVOR.COM WILL NOT BE
+                    A PARTY TO OR IN ANY WAY BE RESPONSIBLE FOR MONITORING ANY
+                    TRANSACTION BETWEEN YOU AND THIRD-PARTY PROVIDERS OF
+                    PRODUCTS OR SERVICES. NO ADVICE OR INFORMATION, WHETHER ORAL
+                    OR WRITTEN, OBTAINED BY YOU FROM CAMPUSFLAVOR.COM SHALL
+                    CREATE ANY WARRANTY NOT EXPRESSLY STATED IN THE TERMS OF
+                    USE. AS WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH
+                    ANY MEDIUM OR IN ANY ENVIRONMENT, USE YOUR BEST JUDGMENT AND
+                    EXERCISE CAUTION WHERE APPROPRIATE.
                 </p>
             </section>
             <section className="flex flex-col gap-2">
@@ -502,10 +493,10 @@ export default function TermsOfUse() {
                     operator of CampusFlavor.com, from and against any and all
                     alleged claims, claims, damages, obligations, losses,
                     liabilities, fines, costs or debt, and expenses (including
-                    but not limited to attorneys&quot; fees) arising from: (i) Your
-                    use of and access to the Website; (ii) Your violation of any
-                    term of these Terms of Use; (iii) Your violation of any
-                    third party right, including without limitation any
+                    but not limited to attorneys&quot; fees) arising from: (i)
+                    Your use of and access to the Website; (ii) Your violation
+                    of any term of these Terms of Use; (iii) Your violation of
+                    any third party right, including without limitation any
                     copyright, trademark, property, or privacy right; or (iv)
                     any alleged claim, claim, or cause of action that one (or
                     more) of Your User Submissions caused, is causing, or will
@@ -650,9 +641,9 @@ export default function TermsOfUse() {
                     will not be in any way impaired and shall remain in full
                     force and effect. No waiver of any term of these Terms of
                     Use shall be deemed a further or continuing waiver of such
-                    term or any other term, and CampusFlavor.com&quot;s failure to
-                    assert any right or provision under these Terms of Use shall
-                    not constitute a waiver of such right or provision.
+                    term or any other term, and CampusFlavor.com&quot;s failure
+                    to assert any right or provision under these Terms of Use
+                    shall not constitute a waiver of such right or provision.
                     CampusFlavor.com reserves the right at any time in its sole
                     discretion and without prior notice to change these Terms of
                     Use, including the Additional Policies, in whole or in part,
@@ -763,12 +754,8 @@ export default function TermsOfUse() {
                         A statement made under penalty of perjury, that the
                         above information in Your notice is accurate and that
                         You are the intellectual property owner or are
-<<<<<<< HEAD
-                        authorized to act on the intellectual property owner’s
-=======
-                        authorized to act on the intellectual property owner&quot;s
->>>>>>> c7e2c6a766bea0dfa085099c47f5fafb6b36f230
-                        behalf.
+                        authorized to act on the intellectual property
+                        owner&quot;s behalf.
                     </li>
                 </ul>
                 <p>
@@ -850,17 +837,13 @@ export default function TermsOfUse() {
                 <p>
                     If, within 10 business days of our receipt of your counter
                     notice, the party who submitted the initial copyright claim
-<<<<<<< HEAD
-                    doesn't inform us of an action seeking a court order against
-=======
-                    doesn&#39;t inform us of an action seeking a court order against
->>>>>>> c7e2c6a766bea0dfa085099c47f5fafb6b36f230
-                    you, the material specified in the counter notice may be
-                    reactivated. Reactivating the material before this time may
-                    result in account termination. If you have any questions or
-                    concerns, please consult an attorney. You may also consider
-                    communicating directly with the party who filed the initial
-                    infringement claim.
+                    doesn&#39;t inform us of an action seeking a court order
+                    against you, the material specified in the counter notice
+                    may be reactivated. Reactivating the material before this
+                    time may result in account termination. If you have any
+                    questions or concerns, please consult an attorney. You may
+                    also consider communicating directly with the party who
+                    filed the initial infringement claim.
                 </p>
             </section>
         </div>
