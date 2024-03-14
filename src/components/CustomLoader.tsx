@@ -23,30 +23,32 @@ const RotatingImage = styled.img`
 `;
 
 interface LoadingSpinnerProps {
-    src: string;
+  src: string;
 }
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ src }) => {
-    // Initialize with the first message or any preferred static message
-    const [loaderMessage, setLoaderMessage] = useState<string>(loadingMessages[0]);
+  // Initialize with the first message or any preferred static message
+  const [loaderMessage, setLoaderMessage] = useState<string>(loadingMessages[0]);
 
-    useEffect(() => {
-        const updateMessage = () => {
-            const randomIndex = Math.floor(Math.random() * loadingMessages.length);
-            setLoaderMessage(loadingMessages[randomIndex]);
-        };
+  useEffect(() => {
+    const updateMessage = () => {
+      const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+      setLoaderMessage(loadingMessages[randomIndex]);
+    };
 
-        // Match the message change interval to the spinner animation duration for synchronicity
-        const intervalId = setInterval(updateMessage, 1750); // Adjusted to match the spinner's cycle
-        return () => clearInterval(intervalId);
-    }, []);
+    // Match the message change interval to the spinner animation duration for synchronicity
+    const intervalId = setInterval(updateMessage, 1750); // Adjusted to match the spinner's cycle
+    return () => clearInterval(intervalId);
+  }, []);
 
-    return (
-        <div className="flex flex-col items-center w-full space-y-2">
-            <RotatingImage src={src} alt="Loading" />
-            <p>{loaderMessage}</p>
-        </div>
-    );
+  return (
+    <div className="flex h-full w-full items-center justify-center">
+      <div className="flex flex-col items-center justify-center space-y-4">
+        <RotatingImage src={src} alt="Loading" />
+        <p>{loaderMessage}</p>
+      </div>
+    </div>
+  );
 };
 
 export default LoadingSpinner;

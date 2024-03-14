@@ -13,6 +13,8 @@ import { SyncLoader } from "react-spinners";
 import useCreateMockupApi from "@/hooks/submit/useCreateMockupApi";
 import useSubmissionApi from "@/hooks/submit/useSubmissionApi";
 
+import LoadingSpinner from "@/components/CustomLoader";
+
 interface ConfirmSubmissionProps {
     isOpen: boolean;
     onClose: () => void;
@@ -33,30 +35,6 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
     session,
 }) => {
     const [isCheckboxSelected, setIsCheckboxSelected] = useState(false);
-
-    const messages: string[] = [
-        "Sneaking past the RA...",
-        "Getting ready for the pregame...",
-        "Running an 'errand' at GASUSA...",
-        "Copying polyatomic ions to calculator...",
-        "Negotiating with the WiFi gods...",
-        "Synchronizing with the academic ether...",
-        "Avoiding eye contact in Tink...",
-    ];
-
-    const [loaderMessage, setLoaderMessage] = React.useState<string>(
-        messages[Math.floor(Math.random() * messages.length)]
-    );
-
-    useEffect(() => {
-        const updateMessage = () => {
-            const randomIndex = Math.floor(Math.random() * messages.length);
-            setLoaderMessage(messages[randomIndex]);
-        };
-
-        const intervalId = setInterval(updateMessage, 3000);
-        return () => clearInterval(intervalId);
-    }, []);
 
     // code for handling the creation of the mockup image
     const {
@@ -106,20 +84,21 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
     if (!isOpen) return null;
 
+    if (true) {
+        return (
+            <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
+                <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center w-full max-w-xs aspect-square">
+                    <LoadingSpinner src="/logos/128x128.svg" />
+                </div>
+            </div>
+        );
+    }
+
     if (submissionLoading || mockupLoading) {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
                 <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
-                    <div className="flex flex-col justify-center items-center">
-                        <SyncLoader
-                            color="#000000"
-                            size={20}
-                            speedMultiplier={0.6}
-                            margin={5}
-                            className="p-4"
-                        />
-                        <p>{loaderMessage}</p>
-                    </div>
+                    <LoadingSpinner src="/logos/128x128.svg" />
                 </div>
             </div>
         );
@@ -209,11 +188,10 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
                     <button
                         disabled={!isCheckboxSelected}
-                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${
-                            !isCheckboxSelected
-                                ? "bg-gray-500 text-white"
-                                : "bg-black text-white hover:bg-gray-700"
-                        }`}
+                        className={`flex-grow text-white py-2 w-full rounded-lg focus:outline-none ${!isCheckboxSelected
+                            ? "bg-gray-500 text-white"
+                            : "bg-black text-white hover:bg-gray-700"
+                            }`}
                         onClick={handleSubmit}
                     >
                         Submit

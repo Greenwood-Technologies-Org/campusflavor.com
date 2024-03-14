@@ -15,10 +15,31 @@ export const websitePrivacyPolicy = "https://docs.google.com/document/d/1DP2YAA9
 
 export const loadingMessages: string[] = [
     "Avoiding eye contact in Tink...",
-    "Sneaking past the RA...",
-    "Getting ready for the pregame...",
-    "Running an 'errand' at GASUSA...",
+    "Getting mixers from the Den...",
+    "Running an \"errand\" at GASUSA...",
     "Copying polyatomic ions to calculator...",
     "Negotiating with the WiFi gods...",
-    "Synchronizing with the academic ether...",
+
+    // New messages
+    "Being antisocial at Toli...",
+    "Choking on Leutner tofu...",
+    "Walking around Ugly statue...",
+    "Sobering up at the Den...",
+    "Falling asleep in SAGES...",
+    "Trying flavors at Mitchell’s...",
+    "Flirting with O Week crush...",
+    "Mashing iClicker buttons...",
+    "Stealing swipes from sophomores...",
+    "Breaking floors on Ashbury...",
+    "Showing ID to Veale guy...",
+    "Burning Case cash at Flame...",
+    "Killing roaches in Hitchcock...",
+    "Acting athletic in a big blue jacket...",
+    "Gossiping on 3rd floor of KSL...",
+    "Making doodles in WSOM...",
+    "Finding corners in PBL...",
+    "Looking for salted sidewalks after snow...",
+    "Getting sexiled from dorm...",
+    "Getting evicted from Wyant...",
+    "Trying all 3 WiFi networks..."
 ];
