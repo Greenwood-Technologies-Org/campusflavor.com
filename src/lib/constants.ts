@@ -18,7 +18,6 @@ export const loadingMessages: string[] = [
     "Getting mixers from the Den...",
     "Running an \"errand\" at GASUSA...",
     "Copying polyatomic ions to calculator...",
-    "Negotiating with the WiFi gods...",
 
     // New messages
     "Being antisocial at Toli...",

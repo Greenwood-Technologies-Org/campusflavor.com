@@ -84,20 +84,10 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
 
     if (!isOpen) return null;
 
-    if (true) {
-        return (
-            <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
-                <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center w-full max-w-xs aspect-square">
-                    <LoadingSpinner src="/logos/128x128.svg" />
-                </div>
-            </div>
-        );
-    }
-
     if (submissionLoading || mockupLoading) {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
-                <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
+                <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center w-full max-w-xs aspect-square">
                     <LoadingSpinner src="/logos/128x128.svg" />
                 </div>
             </div>
