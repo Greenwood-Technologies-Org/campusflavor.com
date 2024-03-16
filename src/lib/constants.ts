@@ -1,8 +1,8 @@
 export const rotatingBannerItems: string[] = [
     "Winners get their design on clothing for free!",
-    "Submissions Open: March 18th - Mar 25th",
-    "Voting Open: March 26th - Mar 28th",
-    "Winners Announced: March 29th",
+    "Submissions Open: March 18th",
+    "Voting Open: March 27th",
+    "Winners Announced: April 3rd",
     "Win cash prizes!",
 ];
 
