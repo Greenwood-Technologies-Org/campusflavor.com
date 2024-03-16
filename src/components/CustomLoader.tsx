@@ -22,11 +22,11 @@ const RotatingImage = styled.img`
   animation: ${rotate} 1.75s ease-in-out infinite;
 `;
 
-interface LoadingSpinnerProps {
+interface CustomLoaderProps {
   src: string;
 }
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ src }) => {
+const CustomLoader: React.FC<CustomLoaderProps> = ({ src }) => {
   // Initialize with the first message or any preferred static message
   const [loaderMessage, setLoaderMessage] = useState<string>(loadingMessages[0]);
 
@@ -36,8 +36,8 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ src }) => {
       setLoaderMessage(loadingMessages[randomIndex]);
     };
 
-    // Match the message change interval to the spinner animation duration for synchronicity
-    const intervalId = setInterval(updateMessage, 1750); // Adjusted to match the spinner's cycle
+
+    const intervalId = setInterval(updateMessage, 1750);
     return () => clearInterval(intervalId);
   }, []);
 
@@ -51,4 +51,4 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ src }) => {
   );
 };
 
-export default LoadingSpinner;
+export default CustomLoader;

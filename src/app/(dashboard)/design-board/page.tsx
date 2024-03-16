@@ -12,6 +12,8 @@ import GalleryWrapper from "@/components/dboard/gallerywrapper";
 import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
 
+import CustomLoader from "@/components/CustomLoader";
+
 async function getURLsForSchool(school_affiliation: string) {
     const supabase = getDbClient();
     const { data, error } = await supabase.rpc<any, any>(
@@ -138,6 +140,27 @@ function Page() {
     }, []);
 
     const bannerItems = submissions.map((submission) => submission.url_link);
+
+    const [isArbitraryLoading, setIsArbitraryLoading] = useState(true);
+    useEffect(() => {
+        const randomTime = Math.random() * (4000 - 2000) + 2000; // This will generate a number between 2000 and 4000
+
+        const timer = setTimeout(() => {
+            setIsArbitraryLoading(false);
+        }, randomTime);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+
+    if (isArbitraryLoading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <CustomLoader src="/logos/128x128.svg" />
+            </div>
+        );
+    }
+
 
     return (
         <main className="w-full flex flex-col flex-grow items-center">

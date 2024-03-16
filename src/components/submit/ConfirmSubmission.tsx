@@ -9,11 +9,10 @@ import GlobalConfig from "@/lib/config/global";
 import Link from "next/link";
 import { Session } from "@supabase/supabase-js";
 import SubmissionCard from "@/components/submit/SubmissionCard";
-import { SyncLoader } from "react-spinners";
 import useCreateMockupApi from "@/hooks/submit/useCreateMockupApi";
 import useSubmissionApi from "@/hooks/submit/useSubmissionApi";
 
-import LoadingSpinner from "@/components/CustomLoader";
+import CustomLoader from "@/components/CustomLoader";
 
 interface ConfirmSubmissionProps {
     isOpen: boolean;
@@ -88,7 +87,7 @@ const ConfirmSubmission: React.FC<ConfirmSubmissionProps> = ({
         return (
             <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center z-10">
                 <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center w-full max-w-xs aspect-square">
-                    <LoadingSpinner src="/logos/128x128.svg" />
+                    <CustomLoader src="/logos/128x128.svg" />
                 </div>
             </div>
         );
