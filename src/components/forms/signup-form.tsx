@@ -151,7 +151,7 @@ export function SignUpForm() {
                     name="optIntoCommunications"
                     render={({ field }) => (
                         <FormItem className="flex flex-row justify-start items-center gap-1 align-middle">
-                            <FormLabel>Opt into communications</FormLabel>
+                            <FormLabel>Opt into marketing emails</FormLabel>
                             <FormControl className="flex flex-row items-center justify-center align-middle">
                                 <Checkbox
                                     checked={field.value}

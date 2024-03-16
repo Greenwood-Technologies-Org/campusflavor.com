@@ -1,17 +1,31 @@
 import BadWordsFilter from "bad-words";
 import { z } from "zod";
 
-const usernameRegex = new RegExp("^[A-Za-z0-9]{4,20}$");
+const usernameRegex = /^[A-Za-z0-9._]{4,20}$/;
 
 const usernameSchema = z
     .string()
     .min(4, { message: "Username must be at least 4 characters long." })
-    .max(20, { message: "Username must be at least 4 characters long." })
+    .max(20, { message: "Username must be no more than 20 characters long." })
     .refine((val) => usernameRegex.test(val), {
-        message: "Username can only contain numbers and letters.",
+        message:
+            "Username can only contain alphanumeric characters, '.', and '_'.",
+    })
+    .refine(
+        (val) =>
+            !val.startsWith(".") &&
+            !val.startsWith("_") &&
+            !val.endsWith(".") &&
+            !val.endsWith("_"),
+        {
+            message: "Username cannot start or end with '.' or '_'.",
+        }
+    )
+    .refine((val) => !/[_\.]{2,}/.test(val), {
+        message: "Username cannot have consecutive '.' or '_'.",
     })
     .refine((val) => !new BadWordsFilter().isProfane(val), {
-        message: "Username does not pass profanity check.",
+        message: "Username failed profanity check.",
     });
 
 const emailSchema = z
