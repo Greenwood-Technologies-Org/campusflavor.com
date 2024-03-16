@@ -71,7 +71,7 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                     {...props}
                     ref={ref}
                 >
-                    <div className="flex flex-col w-fit px-2 gap-3 md:gap-2 items-center justify-center text-2xl md:text-3xl lg:text-4xl text-secondary-500">
+                    <div className="flex flex-col w-fit gap-3 md:gap-2 items-center justify-center text-2xl md:text-3xl lg:text-4xl text-secondary-500">
                         <div className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4">
                             <div className="hidden md:inline font-bold">
                                 Campus Flavor
