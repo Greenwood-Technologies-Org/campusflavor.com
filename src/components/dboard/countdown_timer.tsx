@@ -15,7 +15,7 @@ function getStatusMessage(status: VotingStatus): string {
         case VotingStatus.Intermission:
             return "Voting Opens In";
         case VotingStatus.Voting:
-            return "Voting Closing In";
+            return "Voting Closes In";
         case VotingStatus.Finished:
             return "Voting Closed";
         default:

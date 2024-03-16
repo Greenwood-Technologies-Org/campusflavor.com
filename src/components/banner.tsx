@@ -71,7 +71,7 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                     {...props}
                     ref={ref}
                 >
-                    <div className="flex flex-col w-fit gap-3 md:gap-2 items-center justify-center text-2xl md:text-3xl lg:text-4xl text-secondary-500">
+                    <div className="flex flex-col w-fit px-2 gap-3 md:gap-2 items-center justify-center text-2xl md:text-3xl lg:text-4xl text-secondary-500">
                         <div className="flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4">
                             <div className="hidden md:inline font-bold">
                                 Campus Flavor
@@ -95,20 +95,20 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(
                             {(votingStatusParam.votingStatus ===
                                 VotingStatus.Prevoting ||
                                 votingStatusParam.votingStatus ===
-                                    VotingStatus.Voting) && (
-                                <button className="p-2 bg-[#FF3E51] rounded-lg text-sm md:text-xl">
-                                    Submit a Design
-                                </button>
-                            )}
+                                VotingStatus.Voting) && (
+                                    <button className="p-2 bg-[#FF3E51] rounded-lg text-sm md:text-xl">
+                                        Submit a Design
+                                    </button>
+                                )}
                         </Link>
                         {votingStatusParam.votingStatus ===
                             VotingStatus.Finished && (
-                            <div className="flex flex-col gap-1 justify-start items-center w-fit h-fit bg-primary-500 text-secondary-500 text-sm md:text-lg font-bold p-2 rounded-lg shadow-lg">
-                                <p className="text-center">
-                                    Voting has concluded.
-                                </p>
-                            </div>
-                        )}
+                                <div className="flex flex-col gap-1 justify-start items-center w-fit h-fit bg-primary-500 text-secondary-500 text-sm md:text-lg font-bold p-4 rounded-lg shadow-lg">
+                                    <p className="text-center">
+                                        Voting Closed
+                                    </p>
+                                </div>
+                            )}
 
                         <div className="text-center mt-auto">
                             <p className="text-sm">
