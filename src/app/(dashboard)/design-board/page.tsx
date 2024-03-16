@@ -143,7 +143,7 @@ function Page() {
 
     const [isArbitraryLoading, setIsArbitraryLoading] = useState(true);
     useEffect(() => {
-        const randomTime = Math.random() * 2000 + 2000; // This will generate a number between 2000 and 4000
+        const randomTime = Math.random() * 2000 + 2500; // This will generate a number between 2500 and 4500
 
         const timer = setTimeout(() => {
             setIsArbitraryLoading(false);
@@ -155,7 +155,7 @@ function Page() {
 
     if (isArbitraryLoading) {
         return (
-            <div className="flex justify-center items-center h-screen">
+            <div className="fixed top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-white">
                 <CustomLoader src="/logos/128x128.svg" />
             </div>
         );
