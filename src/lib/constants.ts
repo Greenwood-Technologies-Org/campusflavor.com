@@ -15,11 +15,8 @@ export const websitePrivacyPolicy = "https://docs.google.com/document/d/1DP2YAA9
 
 export const loadingMessages: string[] = [
     "Avoiding eye contact in Tink...",
-    "Getting mixers from the Den...",
     "Running an \"errand\" at GASUSA...",
     "Copying polyatomic ions to calculator...",
-
-    // New messages
     "Being antisocial at Toli...",
     "Choking on Leutner tofu...",
     "Walking around Ugly statue...",
@@ -31,14 +28,13 @@ export const loadingMessages: string[] = [
     "Stealing swipes from sophomores...",
     "Breaking floors on Ashbury...",
     "Showing ID to Veale guy...",
-    "Burning Case cash at Flame...",
+    "Hearing \"Case Cash isn\'t working\"...",
     "Killing roaches in Hitchcock...",
     "Acting athletic in a big blue jacket...",
     "Gossiping on 3rd floor of KSL...",
     "Making doodles in WSOM...",
     "Finding corners in PBL...",
     "Looking for salted sidewalks after snow...",
-    "Getting sexiled from dorm...",
     "Getting evicted from Wyant...",
     "Trying all 3 WiFi networks..."
 ];
