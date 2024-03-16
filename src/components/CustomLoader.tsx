@@ -27,16 +27,18 @@ interface CustomLoaderProps {
 }
 
 const CustomLoader: React.FC<CustomLoaderProps> = ({ src }) => {
-  // Initialize with the first message or any preferred static message
-  const [loaderMessage, setLoaderMessage] = useState<string>(loadingMessages[0]);
+  const [loaderMessage, setLoaderMessage] = useState<string>(
+    loadingMessages[Math.floor(Math.random() * loadingMessages.length)]
+  );
+
+
+  const updateMessage = () => {
+    const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+    setLoaderMessage(loadingMessages[randomIndex]);
+  };
 
   useEffect(() => {
-    const updateMessage = () => {
-      const randomIndex = Math.floor(Math.random() * loadingMessages.length);
-      setLoaderMessage(loadingMessages[randomIndex]);
-    };
-
-
+    const randomTime = Math.random() * 500 + 1000;
     const intervalId = setInterval(updateMessage, 1750);
     return () => clearInterval(intervalId);
   }, []);
@@ -45,7 +47,7 @@ const CustomLoader: React.FC<CustomLoaderProps> = ({ src }) => {
     <div className="flex h-full w-full items-center justify-center">
       <div className="flex flex-col items-center justify-center space-y-4">
         <RotatingImage src={src} alt="Loading" />
-        <p>{loaderMessage}</p>
+        <p suppressHydrationWarning>{loaderMessage}</p>
       </div>
     </div>
   );
