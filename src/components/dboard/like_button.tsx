@@ -5,6 +5,7 @@ import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import getDbClient from "@/lib/db/db-client";
 import NotificationPopup from "./notification_popup";
+import LoginModal from "./login_modal";
 
 type LikeButtonProps = {
     initialCount: number;
@@ -60,7 +61,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
             setShowPopup(true);
 
             // Optionally, set a timeout to hide the popup automatically after a few seconds
-            setTimeout(() => setShowPopup(false), 3000);
+            //setTimeout(() => setShowPopup(false), 3000);
         }
     };
 
@@ -80,7 +81,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
                 </div>
             </button>
 
-            {showPopup && <NotificationPopup message="Please Login to Like." />}
+            {showPopup && <LoginModal onClose={() => setShowPopup(false)} />}
         </>
     );
 };
