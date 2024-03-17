@@ -90,53 +90,35 @@ function ShirtBoxBottom({
 
     const borderColor = getBorderColorByRank(rank);
 
-    if (
-        votingStatus === VotingStatus.NotStarted ||
-        votingStatus === VotingStatus.Prevoting ||
-        votingStatus === VotingStatus.Intermission
-    ) {
-        return (
-            <div className="flex justify-between items-center mx-4 mt-4">
-                <p className="text-gray-800 text-xl">@{username}</p>
-                <p className="text-gray-600 text-xs">{timeAgo(postedDate)}</p>
+    return (
+        <div className="flex justify-between items-center mx-4 mt-4">
+            <p className="text-gray-800 text-xl">@{username}</p>
+            {rank <= 3 && (
+                <span className="text-sm font-semibold bg-gray-300 text-gray-800 py-1 px-2 rounded-full">
+                    #{rank}
+                </span>
+            )}
+            <div className="flex space-x-2 items-center">
+                <ShareButton
+                    submissionId={submissionId}
+                    onShare={() => {
+                        internalRef.current?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                            inline: "nearest",
+                        });
+                    }}
+                />
+                <LikeButton
+                    initialCount={likeStatus.initialCount}
+                    isInitiallyLiked={likeStatus.isInitiallyLiked}
+                    submissionId={submissionId}
+                    user_id={user_id}
+                    enableClick={votingStatus === VotingStatus.Voting}
+                />
             </div>
-        );
-    } else if (
-        votingStatus === VotingStatus.Voting ||
-        votingStatus === VotingStatus.Finished
-    ) {
-        return (
-            <div className="flex justify-between items-center mx-4 mt-4">
-                <p className="text-gray-800 text-xl">@{username}</p>
-                {rank <= 3 && (
-                    <span className="text-sm font-semibold bg-gray-300 text-gray-800 py-1 px-2 rounded-full">
-                        #{rank}
-                    </span>
-                )}
-                <div className="flex space-x-2 items-center">
-                    <ShareButton
-                        submissionId={submissionId}
-                        onShare={() => {
-                            internalRef.current?.scrollIntoView({
-                                behavior: "smooth",
-                                block: "center",
-                                inline: "nearest",
-                            });
-                        }}
-                    />
-                    <LikeButton
-                        initialCount={likeStatus.initialCount}
-                        isInitiallyLiked={likeStatus.isInitiallyLiked}
-                        submissionId={submissionId}
-                        user_id={user_id}
-                        enableClick={votingStatus === VotingStatus.Voting}
-                    />
-                </div>
-            </div>
-        );
-    } else {
-        console.log("Unknown voting status.");
-    }
+        </div>
+    );
 }
 
 export type ShirtBoxProps = {
