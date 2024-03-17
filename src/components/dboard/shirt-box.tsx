@@ -12,21 +12,6 @@ import getDbClient from "@/lib/db/db-client";
 import { useSearchParams } from "next/navigation";
 import useSession from "@/hooks/use-session";
 
-function timeAgo(dateStr: string): string {
-    const date = new Date(dateStr);
-    const now = new Date();
-    const diff = now.getTime() - date.getTime();
-    const daysAgo = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-    if (daysAgo <= 0) {
-        return "today";
-    } else if (daysAgo == 1) {
-        return "1 day ago";
-    } else {
-        return `${daysAgo} days ago`;
-    }
-}
-
 async function getInitialVoteCount(submission_id: string) {
     const supabase = getDbClient();
     const { data, error } = await supabase.rpc<any, any>(
@@ -88,16 +73,17 @@ function ShirtBoxBottom({
         }
     }
 
-    const borderColor = getBorderColorByRank(rank);
-
     return (
         <div className="flex justify-between items-center mx-4 mt-4">
             <p className="text-gray-800 text-xl">@{username}</p>
-            {rank <= 3 && (
-                <span className="text-sm font-semibold bg-gray-300 text-gray-800 py-1 px-2 rounded-full">
-                    #{rank}
-                </span>
-            )}
+
+            {(votingStatus === VotingStatus.Voting ||
+                votingStatus === VotingStatus.Finished) &&
+                rank <= 3 && (
+                    <span className="text-sm font-semibold bg-gray-300 text-gray-800 py-1 px-2 rounded-full">
+                        #{rank}
+                    </span>
+                )}
             <div className="flex space-x-2 items-center">
                 <ShareButton
                     submissionId={submissionId}
@@ -196,15 +182,6 @@ const ShirtBox = forwardRef<HTMLDivElement, ShirtBoxProps>(
 
             fetchLikeStatus();
         }, [submissionId, user_id]);
-
-        // let borderColor = "border-gray-300";
-        // if (rank === 1) {
-        //     borderColor = "border-custom-gold";
-        // } else if (rank === 2) {
-        //     borderColor = "border-custom-silver";
-        // } else if (rank === 3) {
-        //     borderColor = "border-custom-bronze";
-        // }
 
         return (
             <div

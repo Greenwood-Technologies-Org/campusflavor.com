@@ -10,8 +10,14 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 import ShirtBox from "./shirt-box";
 
-function getBorderColorByRank(rank: number): string {
+function getBorderColorByRank(rank: number, votingStage: VotingStatus): string {
     let borderColor = "border-gray-300";
+    if (
+        votingStage !== VotingStatus.Finished &&
+        votingStage !== VotingStatus.Voting
+    ) {
+        return borderColor;
+    }
     if (rank == 1) {
         borderColor = "border-custom-gold"; // Gold color
     } else if (rank == 2) {
@@ -95,7 +101,10 @@ const GalleryPage: React.FC<GalleryPageProps> = ({
                     isHighlighted={urlSubmissionId === item.submission_id}
                     votingStatus={votingStatus.votingStatus}
                     rank={item.rank}
-                    borderColor={getBorderColorByRank(item.rank)}
+                    borderColor={getBorderColorByRank(
+                        item.rank,
+                        votingStatus.votingStatus
+                    )}
                 />
             ))}
         </div>
