@@ -35,7 +35,7 @@ const MockupDescription: React.FC<MockupDescriptionProps> = ({
             </div>
             <div className="flex-1 relative">
                 <textarea
-                    placeholder="Describe your design (optional)."
+                    placeholder="Describe your design (optional... will not be displayed)."
                     className="border-2 border-gray-300 rounded-md w-full h-full resize-none p-2 text-gray-700 overflow-auto"
                     value={description}
                     onChange={handleInputChange}

@@ -177,6 +177,9 @@ export default function LegalTerms() {
                     Campus Flavor are final and binding.
                 </li>
                 <li>
+                    Competition winners will be determined by the number of likes each submission receives, with the top 3 submissions by likes receiving awards. Ties will be won by the submission that was submitted first, chronologically. Campus Flavor may, in its discretion, change these rules to determine winners and awards at any time.
+                </li>
+                <li>
                     Campus Flavor may, in its discretion, change these Design
                     Submission Terms and Conditions at any time and such changes
                     shall be effective immediately and incorporated into this

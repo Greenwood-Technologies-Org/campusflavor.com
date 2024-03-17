@@ -153,28 +153,28 @@ function Page() {
     }, []);
 
 
-    if (isArbitraryLoading) {
-        return (
-            <div className="fixed top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-white">
-                <CustomLoader src="/logos/128x128.svg" />
-            </div>
-        );
-    }
-
-
     return (
-        <main className="w-full flex flex-col flex-grow items-center">
-            <Banner
-                rotatingBannerItems={rotatingBannerItems}
-                votingStatusParam={votingInfo}
-            />
-            <Suspense fallback={<div>Loading...</div>}>
-                <GalleryWrapper
-                    gallery={submissions}
+        <div>
+
+            {isArbitraryLoading ? (
+                <div className="fixed top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-white">
+                    <CustomLoader src="/logos/128x128.svg" />
+                </div>
+            ) : null}
+
+            < div className="w-full flex flex-col flex-grow items-center">
+                <Banner
+                    rotatingBannerItems={rotatingBannerItems}
                     votingStatusParam={votingInfo}
                 />
-            </Suspense>
-        </main>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <GalleryWrapper
+                        gallery={submissions}
+                        votingStatusParam={votingInfo}
+                    />
+                </Suspense>
+            </div>
+        </div >
     );
 }
 
