@@ -21,4 +21,23 @@ function formatMilliseconds(ms: number): {
     };
 }
 
-export { cn, formatMilliseconds };
+async function fetchCurrentTime() {
+    try {
+        const response = await fetch(
+            "http://worldtimeapi.org/api/timezone/America/New_York"
+        );
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        // The datetime is in ISO 8601 format, which can be directly used to create a Date object
+        const serverTime = new Date(data.datetime);
+        return serverTime;
+    } catch (error) {
+        console.error("Failed to fetch current time from API", error);
+        // In case of an error, fall back to local time or handle appropriately
+        return new Date(); // This is a fallback and might not be ideal for your use case
+    }
+}
+
+export { cn, formatMilliseconds, fetchCurrentTime };
