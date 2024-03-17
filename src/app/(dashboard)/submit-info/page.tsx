@@ -69,7 +69,7 @@ export default function SubmitInfo() {
                 <div className="flex flex-col items-center space-y-8 md:flex-row md:space-x-12 md:space-y-0"> {/* Add items-center to align items vertically */}
                     <div className="w-full md:w-1/2">
                         <h2 className="text-4xl font-semibold pb-4">Win</h2>
-                        <span>Once submissions close, you can vote for the best designs by liking  them! Make sure to share your design with others so they know what to vote for!</span>
+                        <span>Vote for your favorite designs by liking them! The three designs with the most likes will win rewards. In the case of a tie, earlier submission date/time will determine the winners.</span>
                     </div>
                     <div className="flex items-center justify-center w-full md:w-1/2"> {/* Adjusted: removed fixed height */}
                         <div className="max-w-md md:max-w-xs w-full h-auto"> {/* New: Control width, auto-adjust height */}
