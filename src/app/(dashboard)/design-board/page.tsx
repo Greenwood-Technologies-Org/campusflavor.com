@@ -13,6 +13,7 @@ import getDbClient from "@/lib/db/db-client";
 import { rotatingBannerItems } from "@/lib/constants";
 
 import CustomLoader from "@/components/CustomLoader";
+import { fetchCurrentTime } from "@/lib/utils";
 
 async function getURLsForSchool(school_affiliation: string) {
     const supabase = getDbClient();
@@ -79,7 +80,7 @@ async function determineVotingStatusByDate(
     const votingEnd = new Date(dataObject.votingEnd);
 
     const currentDate = new Date();
-    const currentTime = currentDate.getTime();
+    const currentTime = (await fetchCurrentTime()).getTime();
 
     if (currentDate < submissionStart) {
         // Before submission period.
@@ -152,17 +153,15 @@ function Page() {
         return () => clearTimeout(timer);
     }, []);
 
-
     return (
         <div>
-
             {isArbitraryLoading ? (
                 <div className="fixed top-0 left-0 z-50 flex justify-center items-center w-full h-full bg-white">
                     <CustomLoader src="/logos/128x128.svg" />
                 </div>
             ) : null}
 
-            < div className="w-full flex flex-col flex-grow items-center">
+            <div className="w-full flex flex-col flex-grow items-center">
                 <Banner
                     rotatingBannerItems={rotatingBannerItems}
                     votingStatusParam={votingInfo}
@@ -174,7 +173,7 @@ function Page() {
                     />
                 </Suspense>
             </div>
-        </div >
+        </div>
     );
 }
 
