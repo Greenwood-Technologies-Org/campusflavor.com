@@ -27,10 +27,8 @@ interface CustomLoaderProps {
 }
 
 const CustomLoader: React.FC<CustomLoaderProps> = ({ src }) => {
-  const [loaderMessage, setLoaderMessage] = useState<string>(
-    loadingMessages[Math.floor(Math.random() * loadingMessages.length)]
-  );
-
+  const [loaderMessage, setLoaderMessage] = useState<string>(loadingMessages[0]);
+  // I really want a random message for the first one, but server side rendering makes it difficult
 
   const updateMessage = () => {
     const randomIndex = Math.floor(Math.random() * loadingMessages.length);
