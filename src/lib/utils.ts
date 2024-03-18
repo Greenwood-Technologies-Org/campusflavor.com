@@ -24,7 +24,7 @@ function formatMilliseconds(ms: number): {
 async function fetchCurrentTime() {
     try {
         const response = await fetch(
-            "http://worldtimeapi.org/api/timezone/America/New_York"
+            "https://worldtimeapi.org/api/timezone/America/New_York"
         );
         if (!response.ok) {
             throw new Error("Network response was not ok");
