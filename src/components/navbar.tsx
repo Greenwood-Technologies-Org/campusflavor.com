@@ -80,20 +80,22 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     {...props}
                     ref={ref}
                 >
-                    {/* Logo Left-aligned */}
-                    <Link href="/design-board">
-                        <div className="flex items-center">
-                            <Image
-                                src="/logos/logo_main_no_bg.svg"
-                                alt="Campus Flavor Logo"
-                                height={60}
-                                width={150}
-                                priority
-                            />
-                        </div>
-                    </Link>
+                    {/* Left-aligned section for logo */}
+                    <div className="flex-1 flex justify-start">
+                        <Link href="/design-board">
+                            <div className="flex items-center">
+                                <Image
+                                    src="/logos/logo_main_no_bg.svg"
+                                    alt="Campus Flavor Logo"
+                                    height={60}
+                                    width={150}
+                                    priority
+                                />
+                            </div>
+                        </Link>
+                    </div>
 
-                    {/* Navigation Items - Center-aligned for larger screens */}
+                    {/* Center-aligned navigation items */}
                     <div className="hidden md:flex flex-1 justify-center items-center space-x-4">
                         <NavigationLink
                             href="/shop"
@@ -114,17 +116,20 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                         </NavigationLink>
                     </div>
 
-                    {/* Session Data - Right-aligned */}
-                    <div className="hidden md:flex items-center">
-                        <SessionData
-                            session={session.session}
-                            isLoading={session.isLoading}
-                        />
-                    </div>
+                    {/* Right-aligned section for session data and hamburger menu */}
+                    <div className="flex-1 flex justify-end items-center">
+                        {/* Session Data - Only visible on desktop */}
+                        <div className="hidden md:flex items-center">
+                            <SessionData
+                                session={session.session}
+                                isLoading={session.isLoading}
+                            />
+                        </div>
 
-                    {/* Hamburger Menu - Right-aligned for medium screens and smaller */}
-                    <div className="md:hidden">
-                        <Hamburger toggled={isOpen} toggle={setOpen} />
+                        {/* Hamburger Menu - Visible on mobile */}
+                        <div className="md:hidden">
+                            <Hamburger toggled={isOpen} toggle={setOpen} />
+                        </div>
                     </div>
                 </nav>
 
