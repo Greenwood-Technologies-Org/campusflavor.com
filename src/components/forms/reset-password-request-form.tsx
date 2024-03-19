@@ -70,7 +70,7 @@ export function ResetPasswordRequestForm() {
                             <FormLabel>Email</FormLabel>
                             <FormControl>
                                 <Input
-                                    placeholder="someone@example.com"
+                                    placeholder="abc123@case.edu"
                                     {...field}
                                 />
                             </FormControl>
