@@ -9,6 +9,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 
+import { AuthError } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { Input } from "@/components/ui/input";
@@ -41,7 +42,13 @@ export function ResetPasswordRequestForm() {
 
     const mutation = useMutation(
         async (data: Inputs) => {
-            dbClient.auth.resetPasswordForEmail(data.email);
+            const { error } = await dbClient.auth.resetPasswordForEmail(
+                data.email
+            );
+
+            if (error) {
+                throw new AuthError(error.message);
+            }
         },
         { retry: false }
     );
