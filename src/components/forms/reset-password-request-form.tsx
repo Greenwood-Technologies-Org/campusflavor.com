@@ -23,7 +23,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const formSchema = z.object({
-    email: emailSchema,
+    email: z.string().email(),
 });
 
 type Inputs = z.infer<typeof formSchema>;
@@ -98,11 +98,11 @@ export function ResetPasswordRequestForm() {
                     </span>
                 </Button>
                 {mutation.isSuccess && (
-                    <span>
-                        If an account with this email address exists
-                        <br />
-                        we sent you an email with instructions
-                        <br />
+                    <span className="text-center">
+                        If an account with this email address exists&nbsp;
+                        <br className="hidden sm:inline" />
+                        we sent you an email with instructions&nbsp;
+                        <br className="hidden sm:inline" />
                         on resetting your password.
                     </span>
                 )}

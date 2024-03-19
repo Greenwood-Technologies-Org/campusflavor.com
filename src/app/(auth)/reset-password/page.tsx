@@ -12,7 +12,9 @@ export default function ResetPasswordRequestPage() {
     return (
         <div className="w-fit h-fit flex flex-col items-center gap-4">
             <h1 className="text-xl font-bold">Reset your password</h1>
-            <ResetPasswordRequestForm />
+            <div className="px-4">
+                <ResetPasswordRequestForm />
+            </div>
         </div>
     );
 }

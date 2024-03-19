@@ -19,15 +19,17 @@ export default function LoginPage() {
             )}
             {!fsi && (
                 <div>
-                    <div className="w-full h-fit flex flex-row text-gray-500">
+                    <div className="w-full h-fit flex flex-col md:flex-row text-gray-500">
                         <p>Sign in to Campus Flavor or&nbsp;</p>
-                        <Link
-                            className="text-blue-500 underline"
-                            href="/signup"
-                        >
-                            create an account
-                        </Link>
-                        <p>.</p>
+                        <div className="flex flex-row items-center justify-center">
+                            <Link
+                                className="text-blue-500 underline"
+                                href="/signup"
+                            >
+                                create an account
+                            </Link>
+                            <p>.</p>
+                        </div>
                     </div>
                 </div>
             )}
