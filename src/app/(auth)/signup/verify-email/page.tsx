@@ -28,15 +28,16 @@ export default function VerifyEmailPage() {
     }, [resend, email, mutation]);
 
     return (
-        <div className="w-fit h-fit flex flex-col items-center gap-4">
+        <div className="w-fit h-fit flex flex-col items-center gap-4 px-4">
             <h1 className="text-xl font-bold">Check your Inbox</h1>
             <div className="flex flex-col items-center justify-center">
-                <h2 className="text-lg">
-                    We sent an email to&nbsp;
+                <h2 className="text-lg text-center">
+                    We sent an email to{" "}
                     <span className="text-blue-500">{email}</span>, with a
                     verification link.
                 </h2>
-                <h2 className="text-lg">
+                <br />
+                <h2 className="text-lg text-center">
                     Please open it to verify your account.
                 </h2>
             </div>
