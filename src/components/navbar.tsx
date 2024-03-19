@@ -96,8 +96,11 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     </div>
 
                     {/* Center-aligned navigation items */}
-                    <div className="hidden md:flex flex-1 justify-center items-center space-x-4">
+                    <div className="hidden md:flex flex-1 justify-center items-center space-x-2 md:space-x-3">
+                        {" "}
+                        {/* reduced space */}
                         <NavigationLink
+                            className="text-sm md:text-base flex-shrink-0" // smaller text and prevent shrinking on medium screens
                             href="/shop"
                             pathname={pathname}
                             activeOnSubpath
@@ -105,13 +108,18 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                             Shop
                         </NavigationLink>
                         <NavigationLink
+                            className="text-sm md:text-base flex-shrink-0"
                             href="/design-board"
                             pathname={pathname}
                             activeOnSubpath
                         >
                             Design Board
                         </NavigationLink>
-                        <NavigationLink href="/about" pathname={pathname}>
+                        <NavigationLink
+                            className="text-sm md:text-base flex-shrink-0"
+                            href="/about"
+                            pathname={pathname}
+                        >
                             About
                         </NavigationLink>
                     </div>
@@ -123,6 +131,7 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                             <SessionData
                                 session={session.session}
                                 isLoading={session.isLoading}
+                                className="md:pr-2" // reduced padding on the right for medium screens
                             />
                         </div>
 
