@@ -1,12 +1,14 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
+
 import React from "react";
 import getDbClient from "@/lib/db/db-client";
 import { useMutation } from "react-query";
-import { useSearchParams } from "next/navigation";
 
 export default function VerifyEmailPage() {
     const params = useSearchParams();
+    const router = useRouter();
     const email = params.get("email");
     const resend = params.get("resend");
 
@@ -18,6 +20,7 @@ export default function VerifyEmailPage() {
                     type: "signup",
                     email: variables.email,
                 });
+                router.push(`/signup/verify-email?email=${email}`);
             }
         },
         { retry: false }
