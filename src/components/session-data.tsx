@@ -72,11 +72,8 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                                 aria-hidden="true"
                             />
                         )}
-                        <p className="text-lg font-bold -mb-2">
+                        <p className="text-lg font-bold">
                             {session.user.user_metadata.username}
-                        </p>
-                        <p className="text-sm font-normal">
-                            {session.user.email}
                         </p>
                     </div>
                     <div className="border-r-2 border-primary-500 min-h-4 h-full" />
