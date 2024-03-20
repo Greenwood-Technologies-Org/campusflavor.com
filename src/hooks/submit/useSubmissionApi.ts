@@ -23,7 +23,7 @@ async function insert_submission_records(
         _user_id: user_uuid,
         _description: submissionInfo.description,
         _mockup_type: submissionInfo.mockupType,
-        _approved: false,
+        _approval_status: "pending",
         _mockup_color: submissionInfo.mockupColor,
     });
     if (error) {
