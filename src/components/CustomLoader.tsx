@@ -36,8 +36,8 @@ const CustomLoader: React.FC<CustomLoaderProps> = ({ src }) => {
   };
 
   useEffect(() => {
-    const randomTime = Math.random() * 500 + 1000;
-    const intervalId = setInterval(updateMessage, 1750);
+    const randomTime = Math.random() * 500 + 750;
+    const intervalId = setInterval(updateMessage, randomTime);
     return () => clearInterval(intervalId);
   }, []);
 

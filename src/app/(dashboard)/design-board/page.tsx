@@ -144,7 +144,7 @@ function Page() {
 
     const [isArbitraryLoading, setIsArbitraryLoading] = useState(true);
     useEffect(() => {
-        const randomTime = Math.random() * 2000 + 2500; // This will generate a number between 2500 and 4500
+        const randomTime = Math.random() * 1000 + 2000; // This will generate a number between 2000 and 3000
 
         const timer = setTimeout(() => {
             setIsArbitraryLoading(false);
