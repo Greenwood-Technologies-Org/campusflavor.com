@@ -1,36 +1,42 @@
 import React from "react";
-import { IoClose } from "react-icons/io5"; // make sure to install react-icons if you haven't
 import { useRouter } from "next/navigation";
 
-type LoginModalProps = {
+interface LoginModalProps {
     onClose: () => void;
-};
+}
 
 const LoginModal: React.FC<LoginModalProps> = ({ onClose }) => {
     const router = useRouter();
 
+    const handleLogin = () => {
+        router.push("/signin");
+    };
+
     return (
-        <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-50">
-            <div className="bg-white w-64 h-auto rounded-lg shadow-lg relative flex flex-col items-center justify-center p-6">
-                <p className="text-lg font-semibold mb-2">
-                    Please Login to Vote!
-                </p>
-                <p className="text-sm text-gray-500 mb-8">
-                    One step away from creative merch designs!
-                </p>
-                <div className="flex justify-between items-center w-full">
-                    <button
-                        onClick={() => router.push("/signin")}
-                        className="bg-black text-white font-bold py-2 px-6 rounded-lg hover:bg-opacity-80 mr-2 flex-grow"
-                    >
-                        Login
-                    </button>
-                    <button
-                        onClick={onClose}
-                        className="text-black font-bold py-2 px-6 rounded-lg hover:bg-gray-100 ml-2 flex-grow"
-                    >
-                        Close
-                    </button>
+        <div className="fixed inset-0 z-50 flex justify-center items-center bg-gray-700 bg-opacity-0 bg-blend-multiply">
+            <div className="fixed inset-0 z-50 flex justify-center items-center bg-gray-700 bg-opacity-50">
+                <div className="bg-white w-96 h-auto rounded-lg shadow-lg relative p-6">
+                    <div className="text-center">
+                        <h2 className="text-xl font-bold mb-2">
+                            Login To Vote
+                        </h2>
+                        <p className="text-md mb-8">Please login to vote!</p>
+                        <div className="flex justify-between">
+                            {" "}
+                            <button
+                                onClick={onClose}
+                                className="border-2 border-gray-300 text-black py-2 flex-grow rounded-lg hover:bg-gray-200 focus:outline-none"
+                            >
+                                Close
+                            </button>
+                            <button
+                                onClick={handleLogin}
+                                className="bg-black text-white py-2 flex-grow ml-2 rounded-lg hover:bg-gray-700 focus:outline-none"
+                            >
+                                Login
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { SignUpForm } from "@/components/forms/signup-form";
-import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
     return (
