@@ -1,6 +1,10 @@
 import Image from "next/image";
 import React from "react";
 
+import { Icons } from "../icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
+
 type SubmissionCardProps = {
     mockupImageUrl: string;
     username: string;
@@ -24,10 +28,16 @@ const SubmissionCard: React.FC<SubmissionCardProps> = ({
                     priority={true}
                 />
             </div>
-            <div className="border-t-2 border-gray w-full"></div>
             <div className="flex justify-between items-center mx-4 py-2">
                 <p className="text-gray-800 text-xl">@{username}</p>
-                <p className="text-gray-600 text-xs">today</p>
+                <div className="flex space-x-2 items-center">
+                    <Icons.share className="w-7 h-7" />
+                    <FontAwesomeIcon
+                        icon={faHeart}
+                        color="black"
+                        className="w-5 h-5"
+                    />
+                </div>
             </div>
         </div>
     );
