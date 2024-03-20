@@ -73,7 +73,7 @@ const SessionData = React.forwardRef<HTMLDivElement, SessionDataProps>(
                             />
                         )}
                         <p className="text-lg font-bold">
-                            {session.user.user_metadata.username}
+                            @{session.user.user_metadata.username}
                         </p>
                     </div>
                     <div className="border-r-2 border-primary-500 min-h-4 h-full" />
