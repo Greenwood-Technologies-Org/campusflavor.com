@@ -12,10 +12,7 @@ import ShirtBox from "./shirt-box";
 
 function getBorderColorByRank(rank: number, votingStage: VotingStatus): string {
     let borderColor = "border-gray-300";
-    if (
-        votingStage !== VotingStatus.Finished &&
-        votingStage !== VotingStatus.Voting
-    ) {
+    if (votingStage !== VotingStatus.Finished) {
         return borderColor;
     }
     if (rank == 1) {

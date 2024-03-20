@@ -61,18 +61,6 @@ function ShirtBoxBottom({
     internalRef: React.RefObject<HTMLDivElement>;
     rank: number;
 }) {
-    function getBorderColorByRank(rank: number): string {
-        if (rank === 1) {
-            return "bg-custom-gold";
-        } else if (rank === 2) {
-            return "bg-custom-silver";
-        } else if (rank === 3) {
-            return "bg-custom-bronze";
-        } else {
-            return "bg-gray-300";
-        }
-    }
-
     console.log("This is the REAL votingStatus", votingStatus);
 
     return (
@@ -80,12 +68,11 @@ function ShirtBoxBottom({
             <p className="text-gray-800 text-xl">@{username}</p>
 
             {(votingStatus === VotingStatus.Voting ||
-                votingStatus === VotingStatus.Finished) &&
-                rank <= 3 && (
-                    <span className="text-sm font-semibold bg-gray-300 text-gray-800 py-1 px-2 rounded-full">
-                        #{rank}
-                    </span>
-                )}
+                votingStatus === VotingStatus.Finished) && (
+                <span className="text-sm font-semibold bg-gray-300 text-gray-800 py-1 px-2 rounded-full">
+                    #{rank}
+                </span>
+            )}
             <div className="flex space-x-2 items-center">
                 <ShareButton
                     submissionId={submissionId}
