@@ -72,28 +72,26 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
-
 CREATE OR REPLACE FUNCTION insert_submission(
     _competition_id UUID,
     _user_id UUID,
     _description TEXT,
     _mockup_type public.mockup_type,
-    _approved BOOLEAN,
+    _approval_status public.approval_status,
     _mockup_color TEXT
 ) RETURNS UUID AS $$
 DECLARE
     _submission_id UUID;
 BEGIN
     INSERT INTO submission (
-        competition_id, user_id, description, mockup_type, approved, mockup_color
+        competition_id, user_id, description, mockup_type, approval_status, mockup_color
     )
     VALUES (
         _competition_id,
         _user_id,
         _description,
         _mockup_type,
-        _approved,
+        _approval_status,
         _mockup_color
     )
     RETURNING id INTO _submission_id;
