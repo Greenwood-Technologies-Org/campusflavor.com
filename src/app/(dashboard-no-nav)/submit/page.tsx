@@ -156,7 +156,7 @@ const SubmitPage = () => {
                     }`}
                     onClick={handleSubmit}
                 >
-                    Submit
+                    Preview
                 </button>
 
                 <ConfirmSubmission
