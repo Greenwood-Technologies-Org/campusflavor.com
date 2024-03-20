@@ -5,6 +5,8 @@ import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as fasHeart } from "@fortawesome/free-solid-svg-icons";
 import getDbClient from "@/lib/db/db-client";
 import NotificationPopup from "./notification_popup";
+import VotingModal from "./vote_modal";
+import { VotingStatus } from "@/lib/types";
 import LoginModal from "./login_modal";
 
 type LikeButtonProps = {
@@ -13,6 +15,7 @@ type LikeButtonProps = {
     submissionId: string;
     user_id: string;
     enableClick: boolean;
+    votingStatus: VotingStatus;
 };
 
 const LikeButton: React.FC<LikeButtonProps> = ({
@@ -21,6 +24,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
     submissionId,
     user_id,
     enableClick,
+    votingStatus,
 }) => {
     const [isLiked, setIsLiked] = useState(isInitiallyLiked);
     const [likeCount, setLikeCount] = useState(initialCount);
@@ -34,7 +38,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
     const handleLike = async () => {
         const supabase = getDbClient();
 
-        if (user_id !== "") {
+        if (user_id !== "" && votingStatus === VotingStatus.Voting) {
             const { data, error } = await supabase.rpc<any, any>(
                 "insert_or_delete_vote_record",
                 {
@@ -65,12 +69,11 @@ const LikeButton: React.FC<LikeButtonProps> = ({
         }
     };
 
+    console.log("This is the votingStatus", votingStatus);
+
     return (
         <>
-            <button
-                onClick={() => enableClick && handleLike()}
-                className={enableClick ? "cursor-pointer" : "cursor-default"}
-            >
+            <button onClick={() => handleLike()} className={"cursor-pointer"}>
                 <div className="flex items-center space-x-1">
                     <FontAwesomeIcon
                         icon={isLiked ? fasHeart : farHeart}
@@ -81,7 +84,23 @@ const LikeButton: React.FC<LikeButtonProps> = ({
                 </div>
             </button>
 
-            {showPopup && <LoginModal onClose={() => setShowPopup(false)} />}
+            {votingStatus == VotingStatus.Prevoting && showPopup && (
+                <VotingModal
+                    onClose={() => setShowPopup(false)}
+                    title="Voting Not Started"
+                    message="We are still in the submission stage for this competition. Please come back when voting has begun!"
+                />
+            )}
+            {votingStatus == VotingStatus.Finished && showPopup && (
+                <VotingModal
+                    onClose={() => setShowPopup(false)}
+                    title="Voting Over"
+                    message="Voting is over this competition. The Design Board placements are final. Please come back next time!."
+                />
+            )}
+            {votingStatus == VotingStatus.Voting && showPopup && (
+                <LoginModal onClose={() => setShowPopup(false)} />
+            )}
         </>
     );
 };

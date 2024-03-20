@@ -73,6 +73,8 @@ function ShirtBoxBottom({
         }
     }
 
+    console.log("This is the REAL votingStatus", votingStatus);
+
     return (
         <div className="flex justify-between items-center mx-4 mt-4">
             <p className="text-gray-800 text-xl">@{username}</p>
@@ -101,6 +103,7 @@ function ShirtBoxBottom({
                     submissionId={submissionId}
                     user_id={user_id}
                     enableClick={votingStatus === VotingStatus.Voting}
+                    votingStatus={votingStatus}
                 />
             </div>
         </div>
