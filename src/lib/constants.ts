@@ -1,8 +1,8 @@
 export const rotatingBannerItems: string[] = [
     "Winners get their design on clothing for free!",
-    "Submissions Open: March 18th",
-    "Voting Open: March 27th",
-    "Winners Announced: April 3rd",
+    "Submissions Open: March 20th",
+    "Voting Open: March 31st",
+    "Winners Announced: April 4th",
     "Win cash prizes!",
 ];
 
@@ -11,7 +11,7 @@ export const cwru_folder = "cwru_sp_2024";
 
 export const loadingMessages: string[] = [
     "Avoiding eye contact in Tink...",
-    "Running an \"errand\" at GASUSA...",
+    'Running an "errand" at GASUSA...',
     "Copying polyatomic ions to calculator...",
     "Being antisocial at Toli...",
     "Choking on Leutner tofu...",
@@ -24,7 +24,7 @@ export const loadingMessages: string[] = [
     "Stealing swipes from sophomores...",
     "Breaking floors on Ashbury...",
     "Showing ID to Veale guy...",
-    "Hearing \"Case Cash isn\'t working\"...",
+    'Hearing "Case Cash isn\'t working"...',
     "Killing roaches in Hitchcock...",
     "Acting athletic in a big blue jacket...",
     "Gossiping on 3rd floor of KSL...",
@@ -32,7 +32,7 @@ export const loadingMessages: string[] = [
     "Finding corners in PBL...",
     "Looking for salted sidewalks after snow...",
     "Getting evicted from Wyant...",
-    "Trying all 3 WiFi networks..."
+    "Trying all 3 WiFi networks...",
 ];
 
 export const competitionLegalStuff = "/legal-terms";

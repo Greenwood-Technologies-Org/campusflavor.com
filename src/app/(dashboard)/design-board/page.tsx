@@ -140,8 +140,6 @@ function Page() {
         determineVotingStatusByDate().then(setVotingInfo).catch(console.error);
     }, []);
 
-    const bannerItems = submissions.map((submission) => submission.url_link);
-
     const [isArbitraryLoading, setIsArbitraryLoading] = useState(true);
     useEffect(() => {
         const randomTime = Math.random() * 1000 + 2000; // This will generate a number between 2000 and 3000
