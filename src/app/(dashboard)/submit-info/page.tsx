@@ -61,7 +61,7 @@ export default function SubmitInfo() {
                     </div>
                     <div className="w-full md:w-1/2">
                         <h2 className="text-4xl font-semibold pb-4">Review</h2>
-                        <span>We will review your submission  to make sure it doesn’t violate any CWRU trademarks. These submissions go to the design board!</span>
+                        <span>Submissions using trademarks like "CWRU" must have recognizable parody/humor. After review, approved submissions go to the design board!</span>
                     </div>
                 </div>
 
