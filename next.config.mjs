@@ -9,7 +9,7 @@ const nextConfig = {
             },
             {
                 source: "/shop",
-                destination: "https://shop.campusflavor.com/collections/cwru",
+                destination: "https://shop.campusflavor.com/",
                 permanent: true,
             },
         ];
