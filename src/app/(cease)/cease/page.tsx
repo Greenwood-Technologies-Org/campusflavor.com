@@ -9,14 +9,7 @@ export default function CeaseAndDesist() {
                 Hello,
                 <br />
                 <br />
-                We got a{" "}
-                <Link
-                    className="text-blue-500 underline"
-                    href={"/documents/cease-and-desist-letter.pdf"}
-                >
-                    cease and desist
-                </Link>{" "}
-                letter from the school.
+                We got a cease and desist letter from the school.
                 <br />
                 <br />
                 We are trying to talk it out with them. The outcome is
