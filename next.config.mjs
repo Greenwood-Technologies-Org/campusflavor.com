@@ -16,6 +16,7 @@ const nextConfig = {
 
         // cease and desist mode
         return [
+            { source: "/", destination: "/cease", permanent: false },
             { source: "/api/:path*", destination: "/cease", permanent: false },
             { source: "/auth", destination: "/cease", permanent: false },
             {
