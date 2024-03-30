@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 export default function CeaseAndDesist() {
     return (
         <div className="p-2 md:w-1/2 md:h-3/5 flex flex-col">
