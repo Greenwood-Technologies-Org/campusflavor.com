@@ -61,8 +61,6 @@ function ShirtBoxBottom({
     internalRef: React.RefObject<HTMLDivElement>;
     rank: number;
 }) {
-    console.log("This is the REAL votingStatus", votingStatus);
-
     return (
         <div className="flex justify-between items-center mx-4 mt-4">
             <p className="text-gray-800 text-xl">@{username}</p>

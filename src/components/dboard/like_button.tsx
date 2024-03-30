@@ -69,8 +69,6 @@ const LikeButton: React.FC<LikeButtonProps> = ({
         }
     };
 
-    console.log("This is the votingStatus", votingStatus);
-
     return (
         <>
             <button onClick={() => handleLike()} className={"cursor-pointer"}>
