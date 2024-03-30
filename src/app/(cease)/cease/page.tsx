@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function CeaseAndDesist() {
     return (
-        <div className="w-1/2 h-3/5 flex flex-col">
+        <div className="p-2 md:w-1/2 md:h-3/5 flex flex-col">
             <p className="text-lg">
                 Hello,
                 <br />
