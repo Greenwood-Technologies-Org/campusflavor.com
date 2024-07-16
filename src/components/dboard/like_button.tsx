@@ -93,7 +93,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
                 <VotingModal
                     onClose={() => setShowPopup(false)}
                     title="Voting Over"
-                    message="Voting is over this competition. The Design Board placements are final. Please come back next time!."
+                    message="Voting is over this competition. Please come back next time!"
                 />
             )}
             {votingStatus == VotingStatus.Voting && showPopup && (
