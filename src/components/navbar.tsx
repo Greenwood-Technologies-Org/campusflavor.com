@@ -100,14 +100,6 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                         {" "}
                         {/* reduced space */}
                         <NavigationLink
-                            className="text-sm md:text-base flex-shrink-0" // smaller text and prevent shrinking on medium screens
-                            href="/shop"
-                            pathname={pathname}
-                            activeOnSubpath
-                        >
-                            Shop
-                        </NavigationLink>
-                        <NavigationLink
                             className="text-sm md:text-base flex-shrink-0"
                             href="/design-board"
                             pathname={pathname}
@@ -147,10 +139,9 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     className="md:hidden z-45 shadow-xl overflow-hidden transition-all duration-500 ease-in-out"
                     style={{
                         height: isOpen
-                            ? `${
-                                  document.getElementById("menu-content")
-                                      ?.scrollHeight
-                              }px`
+                            ? `${document.getElementById("menu-content")
+                                ?.scrollHeight
+                            }px`
                             : "0",
                     }}
                 >
@@ -160,13 +151,6 @@ const Navbar = React.forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
                     >
                         {/* Menu Content */}
                         <div className="flex flex-col space-y-4">
-                            <NavigationLink
-                                href="/shop"
-                                pathname={pathname}
-                                activeOnSubpath
-                            >
-                                Shop
-                            </NavigationLink>
                             <NavigationLink
                                 href="/design-board"
                                 pathname={pathname}
